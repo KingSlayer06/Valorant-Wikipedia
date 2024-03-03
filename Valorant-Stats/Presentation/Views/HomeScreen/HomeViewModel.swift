@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 import Kingfisher
+import SwiftWebP
+import CoreImage
 
 final class HomeViewModel: NSObject, ObservableObject {
     @Published var selectedTab: SideMenuOptionsModel = .agents
@@ -26,6 +28,7 @@ final class HomeViewModel: NSObject, ObservableObject {
     @Published var shareImage: UIImage?
     @Published var showAlert: Bool = false
     @Published var alertText: String = ""
+    @Published var showShimmer: Bool = false
     
     private var getAgentsUseCase: PGetAgentsUseCase?
     private var getWeaponsUseCase: PGetWeaponsUseCase?
@@ -51,6 +54,10 @@ final class HomeViewModel: NSObject, ObservableObject {
             case .success(let response):
                 self?.agents = response.data.filter { $0.isPlayableCharacter == true }
                 self?.filteredAgents = self?.agents ?? []
+                
+                DispatchQueue.main.async {
+                    self?.showShimmer = false
+                }
                 
                 guard let agents = self?.agents else { return }
                 
@@ -197,5 +204,87 @@ final class HomeViewModel: NSObject, ObservableObject {
         }
         
         showAlert = true
+    }
+    
+    func shareStickerOnWhatsapp(image: UIImage?, completion: @escaping () -> Void) {
+        guard let image = image else { return }
+        
+        let outputImageTrayData = image.scaleToFit(targetSize: .init(width: 96, height: 96))
+            .scaledPNGData()
+        var id = StickerManager.shared.getID()
+        var json: [String: Any] = [:]
+        var stickersArray:[[String: Any]] = []
+        var currentStickeres = StickerManager.shared.getAllStickers()
+        if currentStickeres.count == 30 {
+            id = id + 1
+            print("increaseing id pack size has been 30 \(id)")
+            StickerManager.shared.saveStickerKey(id)
+            StickerManager.shared.deleteAllStickers()
+            currentStickeres = []
+        }
+        
+        if currentStickeres.count < 3 {
+            var stickersDict = [String: Any]()
+            for sticker in currentStickeres {
+                stickersDict["image_data"] = sticker
+                stickersDict["emojis"] = ["🤣"]
+                stickersArray.append(stickersDict)
+            }
+            while( stickersArray.count != 3 ){
+                let outputPngData = image.scaleToFit(targetSize: .init(width: 512, height: 512))
+                    .scaledPNGData()
+                if let imageData = WebPEncoder().encodePNG(data: outputPngData) {
+                    stickersDict["image_data"] = imageData.base64EncodedString()
+                    StickerManager.shared.addSticker(imageData.base64EncodedString())
+                    stickersDict["emojis"] = ["🤣"]
+                    stickersArray.append(stickersDict)
+                }
+            }
+        }else {
+            var stickersDict = [String: Any]()
+            for sticker in currentStickeres {
+                stickersDict["image_data"] = sticker
+                stickersDict["emojis"] = ["🤣"]
+                stickersArray.append(stickersDict)
+            }
+            let outputPngData = image.scaleToFit(targetSize: .init(width: 512, height: 512))
+                .scaledPNGData()
+            if let imageData = WebPEncoder().encodePNG(data: outputPngData) {
+                stickersDict["image_data"] = imageData.base64EncodedString()
+                StickerManager.shared.addSticker(imageData.base64EncodedString())
+                stickersDict["emojis"] = ["🤣"]
+                stickersArray.append(stickersDict)
+            }
+        }
+        
+        json["identifier"] = "Valorant-Wiki\(id)"
+        json["name"] = "Valorant Stickers"
+        json["publisher"] = "Valorant-Wiki"
+        json["tray_image"] = outputImageTrayData.base64EncodedString()
+        json["stickers"] = stickersArray
+        
+        var jsonWithAppStoreLink: [String: Any] = json
+        jsonWithAppStoreLink["ios_app_store_link"] = ""
+        jsonWithAppStoreLink["android_play_store_link"] = ""
+        
+        guard let dataToSend = try? JSONSerialization.data(withJSONObject: jsonWithAppStoreLink, options: []) else {
+            return
+        }
+        
+        let pasteboardStickerPackDataType = "net.whatsapp.third-party.sticker-pack"
+        
+        let pasteboard = UIPasteboard.general
+        pasteboard.setItems([[pasteboardStickerPackDataType: dataToSend]],
+                            options: [
+                                UIPasteboard.OptionsKey.localOnly: true,
+                                UIPasteboard.OptionsKey.expirationDate: Date(timeIntervalSinceNow: 60)
+                            ])
+        
+        
+        DispatchQueue.main.async {
+            if UIApplication.shared.canOpenURL(URL(string: "whatsapp://")!) {
+                UIApplication.shared.open(URL(string: "whatsapp://stickerPack")!)
+            }
+        }
     }
 }

@@ -69,6 +69,7 @@ struct HomeView: View {
             }
         }
         .onAppear {
+            homeViewModel.showShimmer = true
             homeViewModel.getAgents()
             homeViewModel.getWeapons()
             homeViewModel.getMaps()

@@ -14,6 +14,11 @@
 		A37A50B32B93A78400E55393 /* GetRanksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A50B22B93A78400E55393 /* GetRanksResponse.swift */; };
 		A37A50B52B93A7CC00E55393 /* GetRanksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A50B42B93A7CC00E55393 /* GetRanksUseCase.swift */; };
 		A37A50B72B93ADF200E55393 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A50B62B93ADF200E55393 /* ColorExtension.swift */; };
+		A37A50B92B941D2B00E55393 /* ShimmerEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A50B82B941D2B00E55393 /* ShimmerEffect.swift */; };
+		A37A50BB2B94244600E55393 /* StickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A50BA2B94244600E55393 /* StickerManager.swift */; };
+		A37A50C12B94256900E55393 /* SwiftWebP in Frameworks */ = {isa = PBXBuildFile; productRef = A37A50C02B94256900E55393 /* SwiftWebP */; };
+		A37A50C32B94256900E55393 /* YYImageLib in Frameworks */ = {isa = PBXBuildFile; productRef = A37A50C22B94256900E55393 /* YYImageLib */; };
+		A37A50C52B9426E400E55393 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A50C42B9426E400E55393 /* UIImageExtension.swift */; };
 		A388B6C12B8D83E6007D87DD /* MapDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A388B6C02B8D83E6007D87DD /* MapDetailsView.swift */; };
 		A388B6C42B8DB2B2007D87DD /* PlayerCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A388B6C32B8DB2B2007D87DD /* PlayerCardsView.swift */; };
 		A388B6C62B8DB359007D87DD /* PlayerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A388B6C52B8DB359007D87DD /* PlayerCard.swift */; };
@@ -24,7 +29,6 @@
 		A388B6D02B8DC187007D87DD /* GetSpraysResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A388B6CF2B8DC187007D87DD /* GetSpraysResponse.swift */; };
 		A388B6D22B8DC1DC007D87DD /* GetSpraysUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A388B6D12B8DC1DC007D87DD /* GetSpraysUseCase.swift */; };
 		A388B6D52B8DC294007D87DD /* SpraysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A388B6D42B8DC294007D87DD /* SpraysView.swift */; };
-		A388B6D72B8DC434007D87DD /* SprayDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A388B6D62B8DC434007D87DD /* SprayDetailsView.swift */; };
 		A388B6D92B8DC6A4007D87DD /* WeaponSkinDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A388B6D82B8DC6A4007D87DD /* WeaponSkinDetailsView.swift */; };
 		A3D9D7762B8F0F3900C5FC64 /* ShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D9D7752B8F0F3900C5FC64 /* ShareItem.swift */; };
 		A3D9D7782B8F10B900C5FC64 /* KingfisherManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D9D7772B8F10B900C5FC64 /* KingfisherManagerExtension.swift */; };
@@ -66,6 +70,9 @@
 		A37A50B22B93A78400E55393 /* GetRanksResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRanksResponse.swift; sourceTree = "<group>"; };
 		A37A50B42B93A7CC00E55393 /* GetRanksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRanksUseCase.swift; sourceTree = "<group>"; };
 		A37A50B62B93ADF200E55393 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		A37A50B82B941D2B00E55393 /* ShimmerEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerEffect.swift; sourceTree = "<group>"; };
+		A37A50BA2B94244600E55393 /* StickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerManager.swift; sourceTree = "<group>"; };
+		A37A50C42B9426E400E55393 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		A388B6C02B8D83E6007D87DD /* MapDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailsView.swift; sourceTree = "<group>"; };
 		A388B6C32B8DB2B2007D87DD /* PlayerCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCardsView.swift; sourceTree = "<group>"; };
 		A388B6C52B8DB359007D87DD /* PlayerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCard.swift; sourceTree = "<group>"; };
@@ -76,7 +83,6 @@
 		A388B6CF2B8DC187007D87DD /* GetSpraysResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSpraysResponse.swift; sourceTree = "<group>"; };
 		A388B6D12B8DC1DC007D87DD /* GetSpraysUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSpraysUseCase.swift; sourceTree = "<group>"; };
 		A388B6D42B8DC294007D87DD /* SpraysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpraysView.swift; sourceTree = "<group>"; };
-		A388B6D62B8DC434007D87DD /* SprayDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SprayDetailsView.swift; sourceTree = "<group>"; };
 		A388B6D82B8DC6A4007D87DD /* WeaponSkinDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponSkinDetailsView.swift; sourceTree = "<group>"; };
 		A3D9D7752B8F0F3900C5FC64 /* ShareItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareItem.swift; sourceTree = "<group>"; };
 		A3D9D7772B8F10B900C5FC64 /* KingfisherManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherManagerExtension.swift; sourceTree = "<group>"; };
@@ -117,7 +123,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A37A50C12B94256900E55393 /* SwiftWebP in Frameworks */,
 				2260A0B65DF5B8A443BF777C /* Pods_Valorant_Stats.framework in Frameworks */,
+				A37A50C32B94256900E55393 /* YYImageLib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +148,16 @@
 			path = RanksScreen;
 			sourceTree = "<group>";
 		};
+		A37A50C62B94270200E55393 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A3D9D7772B8F10B900C5FC64 /* KingfisherManagerExtension.swift */,
+				A37A50B62B93ADF200E55393 /* ColorExtension.swift */,
+				A37A50C42B9426E400E55393 /* UIImageExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A388B6C22B8DB2A1007D87DD /* PlayerCardsScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,7 +171,6 @@
 			isa = PBXGroup;
 			children = (
 				A388B6D42B8DC294007D87DD /* SpraysView.swift */,
-				A388B6D62B8DC434007D87DD /* SprayDetailsView.swift */,
 			);
 			path = SpraysScreen;
 			sourceTree = "<group>";
@@ -183,6 +200,7 @@
 				A3F70BA02B8C6EEF00CBA5C6 /* Domain */,
 				A3F70B972B8C546700CBA5C6 /* Presentation */,
 				A3F70B9C2B8C56A100CBA5C6 /* Utils */,
+				A37A50C62B94270200E55393 /* Extensions */,
 				A3F70BBE2B8CA4EF00CBA5C6 /* Fonts */,
 				A3F70B892B8C522A00CBA5C6 /* Valorant_StatsApp.swift */,
 				A3F70B8D2B8C522B00CBA5C6 /* Assets.xcassets */,
@@ -239,9 +257,8 @@
 				A3F70B9D2B8C56B000CBA5C6 /* KeyVariables.swift */,
 				A3F70BC72B8CAD8200CBA5C6 /* Haptics.swift */,
 				A3D9D7752B8F0F3900C5FC64 /* ShareItem.swift */,
-				A3D9D7772B8F10B900C5FC64 /* KingfisherManagerExtension.swift */,
 				A37A50AB2B93987000E55393 /* AVPlayerControllerRepresented.swift */,
-				A37A50B62B93ADF200E55393 /* ColorExtension.swift */,
+				A37A50BA2B94244600E55393 /* StickerManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -361,6 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				A3F70BDD2B8CEAC300CBA5C6 /* StatsCellView.swift */,
+				A37A50B82B941D2B00E55393 /* ShimmerEffect.swift */,
 			);
 			path = SupportingViews;
 			sourceTree = "<group>";
@@ -392,6 +410,10 @@
 			dependencies = (
 			);
 			name = "Valorant-Stats";
+			packageProductDependencies = (
+				A37A50C02B94256900E55393 /* SwiftWebP */,
+				A37A50C22B94256900E55393 /* YYImageLib */,
+			);
 			productName = "Valorant-Stats";
 			productReference = A3F70B862B8C522A00CBA5C6 /* Valorant-Stats.app */;
 			productType = "com.apple.product-type.application";
@@ -420,6 +442,9 @@
 				Base,
 			);
 			mainGroup = A3F70B7D2B8C522A00CBA5C6;
+			packageReferences = (
+				A37A50BF2B94256900E55393 /* XCRemoteSwiftPackageReference "SwiftWebP" */,
+			);
 			productRefGroup = A3F70B872B8C522A00CBA5C6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -498,12 +523,13 @@
 				A3F70BC42B8CA62200CBA5C6 /* AgentsView.swift in Sources */,
 				A3F70BDB2B8CE8E000CBA5C6 /* WeaponDetailsView.swift in Sources */,
 				A3F70BD32B8CCF7200CBA5C6 /* MapsView.swift in Sources */,
+				A37A50BB2B94244600E55393 /* StickerManager.swift in Sources */,
 				A3F70BBD2B8C7C7100CBA5C6 /* HomeViewModel.swift in Sources */,
+				A37A50C52B9426E400E55393 /* UIImageExtension.swift in Sources */,
 				A3F70BB82B8C74E200CBA5C6 /* SideMenuRowView.swift in Sources */,
 				A388B6C42B8DB2B2007D87DD /* PlayerCardsView.swift in Sources */,
 				A3F70BBB2B8C769600CBA5C6 /* SideMenuOptionsModel.swift in Sources */,
 				A37A50AC2B93987000E55393 /* AVPlayerControllerRepresented.swift in Sources */,
-				A388B6D72B8DC434007D87DD /* SprayDetailsView.swift in Sources */,
 				A37A50B32B93A78400E55393 /* GetRanksResponse.swift in Sources */,
 				A388B6CC2B8DB4CD007D87DD /* GetPlayerCardsResponse.swift in Sources */,
 				A388B6C62B8DB359007D87DD /* PlayerCard.swift in Sources */,
@@ -523,6 +549,7 @@
 				A37A50B72B93ADF200E55393 /* ColorExtension.swift in Sources */,
 				A3F70BC62B8CA8C900CBA5C6 /* Agent.swift in Sources */,
 				A3F70B8C2B8C522A00CBA5C6 /* HomeView.swift in Sources */,
+				A37A50B92B941D2B00E55393 /* ShimmerEffect.swift in Sources */,
 				A3F70BAF2B8C72A600CBA5C6 /* GetAgentsUseCase.swift in Sources */,
 				A388B6C82B8DB39F007D87DD /* PlayerCardDetailsView.swift in Sources */,
 				A3F70BE02B8CFC2100CBA5C6 /* Map.swift in Sources */,
@@ -748,6 +775,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A37A50BF2B94256900E55393 /* XCRemoteSwiftPackageReference "SwiftWebP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alfianlosari/SwiftWebP.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A37A50C02B94256900E55393 /* SwiftWebP */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A37A50BF2B94256900E55393 /* XCRemoteSwiftPackageReference "SwiftWebP" */;
+			productName = SwiftWebP;
+		};
+		A37A50C22B94256900E55393 /* YYImageLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A37A50BF2B94256900E55393 /* XCRemoteSwiftPackageReference "SwiftWebP" */;
+			productName = YYImageLib;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A3F70B7E2B8C522A00CBA5C6 /* Project object */;
 }

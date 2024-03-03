@@ -81,6 +81,7 @@ struct SprayGridView: View {
 }
 
 struct SprayCardView: View {
+    @EnvironmentObject var homeViewModel: HomeViewModel
     @Binding var expandSprayGrid: Bool
     @Binding var selectedSpray: Spray?
     
@@ -102,7 +103,14 @@ struct SprayCardView: View {
                 }
             
             Button {
-                
+                KingfisherManager.shared.downloadImage(with: selectedSpray?.fullTransparentIcon ?? "") { image in
+                    homeViewModel.shareStickerOnWhatsapp(image: image) {
+                        withAnimation(.bouncy(duration:0.2)) {
+                            expandSprayGrid = false
+                            self.selectedSpray = nil
+                        }
+                    }
+                }
             } label: {
                 HStack(spacing: 10) {
                     Text("Share on Whatsapp")

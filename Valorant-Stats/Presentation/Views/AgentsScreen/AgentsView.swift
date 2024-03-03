@@ -23,19 +23,36 @@ struct AgentsView: View {
                 VStack {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            allAgentRoles
-                            selectedAgentRole
+                            if homeViewModel.showShimmer {
+                                ForEach(0..<5) { _ in
+                                    ShimmerEffect()
+                                        .frame(width: 80, height: 40)
+                                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                                }
+                            } else {
+                                allAgentRoles
+                                selectedAgentRole
+                            }
+                            
                             Spacer()
                         }
                     }
                     .padding(.vertical)
                     
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(homeViewModel.filteredAgents, id: \.uuid) { agent in
-                            NavigationLink {
-                                AgentDetailsView(agent: agent)
-                            }label: {
-                                AgentGridView(agent: agent)
+                        if homeViewModel.showShimmer {
+                            ForEach(0..<10) { _ in
+                                ShimmerEffect()
+                                    .frame(height: 200)
+                                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                            }
+                        } else {
+                            ForEach(homeViewModel.filteredAgents, id: \.uuid) { agent in
+                                NavigationLink {
+                                    AgentDetailsView(agent: agent)
+                                }label: {
+                                    AgentGridView(agent: agent)
+                                }
                             }
                         }
                     }

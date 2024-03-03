@@ -11,5 +11,9 @@
 	<array>
 		<string>BowlbyOneSC-Regular.ttf</string>
 	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>whatsapp</string>
+	</array>
 </dict>
 </plist>
