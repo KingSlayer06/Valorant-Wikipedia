@@ -127,10 +127,21 @@ extension WeaponDetailsView {
     
     var weaponSkins: some View {
         VStack {
-            Text("Skins")
-                .font(Font.custom(KeyVariables.primaryFont, size: 20))
-                .foregroundStyle(KeyVariables.primaryColor)
-                .frame(maxWidth: .infinity, alignment: .leading)
+            HStack {
+                Text("Skins")
+                    .font(Font.custom(KeyVariables.primaryFont, size: 20))
+                    .foregroundStyle(KeyVariables.primaryColor)
+                
+                Spacer()
+                
+                NavigationLink {
+                    ViewAllSkinsView(skins: weapon.skins)
+                } label: {
+                    Text("View All")
+                        .font(Font.custom(KeyVariables.primaryFont, size: 20))
+                        .accentColor(.white)
+                }
+            }
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
