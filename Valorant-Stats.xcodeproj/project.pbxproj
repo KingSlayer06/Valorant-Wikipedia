@@ -30,6 +30,7 @@
 		A388B6D22B8DC1DC007D87DD /* GetSpraysUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A388B6D12B8DC1DC007D87DD /* GetSpraysUseCase.swift */; };
 		A388B6D52B8DC294007D87DD /* SpraysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A388B6D42B8DC294007D87DD /* SpraysView.swift */; };
 		A388B6D92B8DC6A4007D87DD /* WeaponSkinDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A388B6D82B8DC6A4007D87DD /* WeaponSkinDetailsView.swift */; };
+		A3A875512B9587DC00840A2B /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A875502B9587DC00840A2B /* SplashView.swift */; };
 		A3D9D7762B8F0F3900C5FC64 /* ShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D9D7752B8F0F3900C5FC64 /* ShareItem.swift */; };
 		A3D9D7782B8F10B900C5FC64 /* KingfisherManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D9D7772B8F10B900C5FC64 /* KingfisherManagerExtension.swift */; };
 		A3F70B8A2B8C522A00CBA5C6 /* Valorant_StatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F70B892B8C522A00CBA5C6 /* Valorant_StatsApp.swift */; };
@@ -84,6 +85,7 @@
 		A388B6D12B8DC1DC007D87DD /* GetSpraysUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSpraysUseCase.swift; sourceTree = "<group>"; };
 		A388B6D42B8DC294007D87DD /* SpraysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpraysView.swift; sourceTree = "<group>"; };
 		A388B6D82B8DC6A4007D87DD /* WeaponSkinDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponSkinDetailsView.swift; sourceTree = "<group>"; };
+		A3A875502B9587DC00840A2B /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		A3D9D7752B8F0F3900C5FC64 /* ShareItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareItem.swift; sourceTree = "<group>"; };
 		A3D9D7772B8F10B900C5FC64 /* KingfisherManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherManagerExtension.swift; sourceTree = "<group>"; };
 		A3F70B862B8C522A00CBA5C6 /* Valorant-Stats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Valorant-Stats.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +177,14 @@
 			path = SpraysScreen;
 			sourceTree = "<group>";
 		};
+		A3A8754F2B9587CE00840A2B /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A3A875502B9587DC00840A2B /* SplashView.swift */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
 		A3F70B7D2B8C522A00CBA5C6 = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +240,7 @@
 		A3F70B982B8C547300CBA5C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A3A8754F2B9587CE00840A2B /* SplashScreen */,
 				A3F70B992B8C547F00CBA5C6 /* HomeScreen */,
 				A3F70BC22B8CA60600CBA5C6 /* AgentsScreen */,
 				A3F70BCE2B8CCF4B00CBA5C6 /* MapsScreen */,
@@ -524,6 +535,7 @@
 				A3F70BDB2B8CE8E000CBA5C6 /* WeaponDetailsView.swift in Sources */,
 				A3F70BD32B8CCF7200CBA5C6 /* MapsView.swift in Sources */,
 				A37A50BB2B94244600E55393 /* StickerManager.swift in Sources */,
+				A3A875512B9587DC00840A2B /* SplashView.swift in Sources */,
 				A3F70BBD2B8C7C7100CBA5C6 /* HomeViewModel.swift in Sources */,
 				A37A50C52B9426E400E55393 /* UIImageExtension.swift in Sources */,
 				A3F70BB82B8C74E200CBA5C6 /* SideMenuRowView.swift in Sources */,
