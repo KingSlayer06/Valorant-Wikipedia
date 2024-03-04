@@ -32,6 +32,9 @@ struct WeaponsView: View {
                         } label: {
                             WeaponGridView(weapon: weapon)
                         }
+                        .simultaneousGesture(TapGesture().onEnded {
+                            AppAnalytics.shared.WeaponImageClick(weapon: weapon)
+                        })
                     }
                 }
             }
@@ -85,6 +88,7 @@ extension WeaponsView {
             }
             .onTapGesture {
                 selectedWeapon = nil
+                AppAnalytics.shared.WeaponTypeClick(weapon: selectedWeapon)
                 homeViewModel.getFilteredWeapons(catagory: selectedWeapon)
             }
     }
@@ -102,6 +106,7 @@ extension WeaponsView {
                 }
                 .onTapGesture {
                     selectedWeapon = weapon
+                    AppAnalytics.shared.WeaponTypeClick(weapon: selectedWeapon)
                     homeViewModel.getFilteredWeapons(catagory: selectedWeapon)
                 }
         }

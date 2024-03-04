@@ -53,6 +53,7 @@ struct AgentDetailsView: View {
                             }
                             .frame(width: 55, height: 55)
                             .onTapGesture {
+                                AppAnalytics.shared.AgentDetailsAbilityClick(ability: ability)
                                 selectedAbility = ability
                             }
                         }
@@ -77,6 +78,9 @@ struct AgentDetailsView: View {
         }
         .onAppear {
             selectedAbility = agent.abilities.first
+        }
+        .onDisappear {
+            AppAnalytics.shared.AgentDetailsBackClick(agent: agent)
         }
     }
     

@@ -34,6 +34,7 @@ struct SpraysView: View {
                                 withAnimation(.bouncy(duration:0.6)) {
                                     expandSprayGrid.toggle()
                                     selectedSpray = spray
+                                    AppAnalytics.shared.SprayImageClick(spray: selectedSpray)
                                 }
                             }
                     }
@@ -103,6 +104,7 @@ struct SprayCardView: View {
                 }
             
             Button {
+                AppAnalytics.shared.SprayShareOnWhatsappClick(spray: selectedSpray)
                 KingfisherManager.shared.downloadImage(with: selectedSpray?.fullTransparentIcon ?? "") { image in
                     homeViewModel.shareStickerOnWhatsapp(image: image) {
                         withAnimation(.bouncy(duration:0.2)) {

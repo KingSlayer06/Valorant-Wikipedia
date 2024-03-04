@@ -23,6 +23,9 @@ struct MapsView: View {
                         } label: {
                             MapGridView(map: map)
                         }
+                        .simultaneousGesture(TapGesture().onEnded {
+                            AppAnalytics.shared.MapImageClick(map: map)
+                        })
                     }
                 }
             }

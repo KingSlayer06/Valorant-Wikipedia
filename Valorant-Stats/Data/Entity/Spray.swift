@@ -9,6 +9,7 @@ import Foundation
 
 struct Spray: Codable {
     let uuid: String
+    let displayName: String
     let isNullSpray: Bool
     let fullTransparentIcon: String?
     let animationPng: String?

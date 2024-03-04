@@ -26,6 +26,9 @@ struct PlayerCardsView: View {
                         }label: {
                             PlayerCardGridView(card: card)
                         }
+                        .simultaneousGesture(TapGesture().onEnded {
+                            AppAnalytics.shared.PlayerCardImageClick(card: card)
+                        })
                     }
                 }
             }

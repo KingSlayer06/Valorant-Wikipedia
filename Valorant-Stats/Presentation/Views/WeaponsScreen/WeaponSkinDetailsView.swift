@@ -57,7 +57,7 @@ struct WeaponSkinDetailsView: View {
                                 .border(isSelected(chroma) ? .white : .clear, width: 2)
                                 .onTapGesture {
                                     selectedChroma = chroma
-                                    
+                                    AppAnalytics.shared.WeaponSkinDetailsColorClick(color: selectedChroma?.displayName)
                                     if let url = selectedChroma?.streamedVideo {
                                         Task {
                                             await loadPlayerItem(URL(string: url)!)
@@ -85,6 +85,7 @@ struct WeaponSkinDetailsView: View {
                                 }
                                 .onTapGesture {
                                     selectedSkinLevel = skin.levels[index]
+                                    AppAnalytics.shared.WeaponSkinDetailsLevelClick(level: "Level \(index+1)")
                                     
                                     if let url = selectedSkinLevel?.streamedVideo {
                                         Task {
@@ -148,6 +149,9 @@ struct WeaponSkinDetailsView: View {
                     await loadPlayerItem(URL(string: url)!)
                 }
             }
+        }
+        .onDisappear {
+            AppAnalytics.shared.WeaponSkinDetailsBackClick(skin: skin)
         }
     }
     

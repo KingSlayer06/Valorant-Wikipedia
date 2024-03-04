@@ -43,6 +43,9 @@ struct WeaponDetailsView: View {
                     .foregroundStyle(.foreground)
             }
         }
+        .onDisappear {
+            AppAnalytics.shared.WeaponDetailsBackClick(weapon: weapon)
+        }
     }
 }
 
@@ -152,6 +155,9 @@ extension WeaponDetailsView {
                             .frame(width: 175, height: 150)
                             .padding(.trailing)
                         }
+                        .simultaneousGesture(TapGesture().onEnded {
+                            AppAnalytics.shared.WeaponDetailsSkinClick(skin: skin)
+                        })
                     }
                 }
             }

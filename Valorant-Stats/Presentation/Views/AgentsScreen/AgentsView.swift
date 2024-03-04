@@ -50,9 +50,12 @@ struct AgentsView: View {
                             ForEach(homeViewModel.filteredAgents, id: \.uuid) { agent in
                                 NavigationLink {
                                     AgentDetailsView(agent: agent)
-                                }label: {
+                                } label: {
                                     AgentGridView(agent: agent)
                                 }
+                                .simultaneousGesture(TapGesture().onEnded {
+                                    AppAnalytics.shared.AgentImageClick(agent: agent)
+                                })
                             }
                         }
                     }
@@ -108,6 +111,7 @@ extension AgentsView {
             }
             .onTapGesture {
                 selectedRole = nil
+                AppAnalytics.shared.AgentRoleClick(role: selectedRole)
                 homeViewModel.getFilteredAgents(agentRole: selectedRole)
             }
     }
@@ -125,6 +129,7 @@ extension AgentsView {
                 }
                 .onTapGesture {
                     selectedRole = role
+                    AppAnalytics.shared.AgentRoleClick(role: selectedRole)
                     homeViewModel.getFilteredAgents(agentRole: selectedRole)
                 }
         }

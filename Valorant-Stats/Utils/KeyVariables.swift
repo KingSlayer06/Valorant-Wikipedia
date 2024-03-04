@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 struct KeyVariables {
+    static let devMode: DevMode = .development
+    
     static let primaryColor: Color = Color("kPrimary")
     static let secondaryColor: Color = Color("kSecondary")
     static let primaryFont: String = "BowlbyOneSC-Regular"

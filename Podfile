@@ -9,5 +9,7 @@ target 'Valorant-Stats' do
 
   pod 'Alamofire'
   pod 'Kingfisher'
+  pod 'Firebase/Core'
+  pod 'Firebase/Crashlytics'
 
 end

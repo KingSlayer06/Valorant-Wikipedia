@@ -21,10 +21,12 @@ struct PlayerCardDetailsView: View {
                 .overlay(alignment: .bottom) {
                     HStack(spacing: 20) {
                         CustomButton(image: "download", label: "Download") {
+                            AppAnalytics.shared.PlayerCardDetailsDownloadClick(card: card)
                             homeViewModel.saveImageToGallary(url: card.largeArt)
                         }
                         
                         CustomButton(image: "share", label: "Share") {
+                            AppAnalytics.shared.PlayerCardDetailsShareClick(card: card)
                             homeViewModel.downloadImage(url: card.largeArt) {
                                 self.showShareSheeet.toggle()
                             }
@@ -58,6 +60,9 @@ struct PlayerCardDetailsView: View {
                     .font(Font.custom(KeyVariables.primaryFont, size: 20))
                     .foregroundStyle(.foreground)
             }
+        }
+        .onDisappear {
+            AppAnalytics.shared.PlayerCardDetailsBackClick(card: card)
         }
     }
     
