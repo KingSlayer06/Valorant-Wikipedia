@@ -24,11 +24,13 @@ struct SideMenuView: View {
                         DragGesture()
                             .onEnded { value in
                                 if value.translation.width < 0 {
+                                    AppAnalytics.shared.SideMenuClosed(selectedTab: homeViewModel.selectedTab.title)
                                     isShowing.toggle()
                                 }
                             }
                     )
                     .onTapGesture {
+                        AppAnalytics.shared.SideMenuClosed(selectedTab: homeViewModel.selectedTab.title)
                         isShowing.toggle()
                     }
                 
@@ -40,12 +42,16 @@ struct SideMenuView: View {
                             ForEach(SideMenuOptionsModel.allCases) { option in
                                 SideMenuRowView(selectedOption: $homeViewModel.selectedTab, option: option) {
                                     homeViewModel.selectedTab = option
+                                    AppAnalytics.shared.SideMenuRowCick(selectedTab: homeViewModel.selectedTab.title)
                                     isShowing.toggle()
                                 }
                             }
                         }
                         
                         Spacer()
+                        
+                        footerView
+                            .frame(maxWidth: .infinity, alignment: .center)
                     }
                     .padding()
                     .frame(width: width, alignment: .leading)
@@ -61,6 +67,18 @@ struct SideMenuView: View {
 }
 
 extension SideMenuView {
+    
+    var appVersion: String {
+        if let buildVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
+            if let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String {
+                
+                let env = KeyVariables.devMode
+                return "App Version: \(buildVersion) (\(buildNumber))"
+            }
+        }
+        
+        return ""
+    }
     
     var headerView: some View {
         HStack {
@@ -79,15 +97,28 @@ extension SideMenuView {
                     .padding(.vertical)
             }
             
-            VStack(alignment: .leading, spacing: 6) {
+            VStack(alignment: .leading) {
                 Text("Valorant Wiki")
-                    .font(.subheadline.bold())
+                    .font(Font.custom(KeyVariables.primaryFont, size: 17))
                 
                 Text("Wikipedia for Valorant")
-                    .font(.footnote)
+                    .font(Font.custom(KeyVariables.primaryFont, size: 12))
                     .opacity(0.5)
             }
         }
+    }
+    
+    var footerView: some View {
+        VStack {
+            Text(appVersion)
+                .font(Font.custom(KeyVariables.primaryFont, size: 12))
+                .opacity(0.5)
+            
+            Text("© KingSlayer06")
+                .font(Font.custom(KeyVariables.primaryFont, size: 12))
+                .opacity(0.5)
+        }
+        .padding(.bottom)
     }
 }
 

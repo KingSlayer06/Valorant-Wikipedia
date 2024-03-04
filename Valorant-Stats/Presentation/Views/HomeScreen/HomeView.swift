@@ -44,6 +44,7 @@ struct HomeView: View {
                 DragGesture(minimumDistance: 0, coordinateSpace: .local)
                     .onEnded { value in
                         if value.translation.width > 0 {
+                            AppAnalytics.shared.SideMenuOpened(selectedTab: homeViewModel.selectedTab.title)
                             showMenu.toggle()
                         }
                     }
@@ -61,6 +62,7 @@ struct HomeView: View {
                 
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
+                        AppAnalytics.shared.SideMenuOpened(selectedTab: homeViewModel.selectedTab.title)
                         showMenu.toggle()
                     } label: {
                         Image(systemName: "line.3.horizontal")

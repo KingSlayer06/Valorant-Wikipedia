@@ -217,4 +217,38 @@ class AppAnalytics {
             "Screen": sprayScreen,
         ])
     }
+    
+    // MARK: - Side Menu
+    func SideMenuOpened(selectedTab: String) {
+        Analytics.logEvent("Side_Menu_Opened_Click", parameters: [
+            "Language": language ?? "en",
+            "BuildEnvironment": KeyVariables.devMode.rawValue,
+            "SelectedTab": selectedTab,
+        ])
+    }
+    
+    func SideMenuClosed(selectedTab: String) {
+        Analytics.logEvent("Side_Menu_Closed_Click", parameters: [
+            "Language": language ?? "en",
+            "BuildEnvironment": KeyVariables.devMode.rawValue,
+            "SelectedTab": selectedTab,
+        ])
+    }
+    
+    func SideMenuRowCick(selectedTab: String) {
+        Analytics.logEvent("Side_Menu_Row_Click", parameters: [
+            "Language": language ?? "en",
+            "BuildEnvironment": KeyVariables.devMode.rawValue,
+            "SelectedTab": selectedTab,
+        ])
+    }
+    
+    // MARK: - Screen Visit
+    func ScreenVisit(screen: String) {
+        Analytics.logEvent("Screen_Visit", parameters: [
+            "Language": language ?? "en",
+            "BuildEnvironment": KeyVariables.devMode.rawValue,
+            "Screen": screen,
+        ])
+    }
 }
