@@ -18,17 +18,21 @@ struct RanksView: View {
     var body: some View {
         let width = (UIScreen.main.bounds.width - 30)/3
         
-        ZStack {
-            KeyVariables.secondaryColor
-            
-            ScrollView(.vertical, showsIndicators: false) {
+        ScrollView(.vertical, showsIndicators: false) {
+            ZStack {
+                KeyVariables.secondaryColor
+                
                 LazyVGrid(columns: columns, spacing: 10) {
                     ForEach(homeViewModel.tiers, id: \.self) { tier in
                         TierGridView(tier: tier)
-                            .frame(width: width, height: width)
+                            .onTapGesture {
+                                
+                            }
                     }
                 }
             }
+            .padding(.horizontal)
+            .padding(.bottom, KeyVariables.bottomSafeAreaInsets)
         }
         .edgesIgnoringSafeArea(.bottom)
     }
