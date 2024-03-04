@@ -14,6 +14,7 @@ enum SideMenuOptionsModel: Int, CaseIterable {
     case playerCards
     case sprays
     case ranks
+    case about
     
     var title: String {
         switch self {
@@ -29,6 +30,8 @@ enum SideMenuOptionsModel: Int, CaseIterable {
                 return "Sprays"
             case .ranks:
                 return "Ranks"
+            case .about:
+                return "About"
         }
     }
 }

@@ -11,6 +11,18 @@ import SwiftUI
 struct KeyVariables {
     static let devMode: DevMode = .development
     
+    static var appVersion: String {
+        if let buildVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
+            if let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String {
+                
+                let env = KeyVariables.devMode
+                return "App Version: \(buildVersion) (\(buildNumber))"
+            }
+        }
+        
+        return ""
+    }
+    
     static let primaryColor: Color = Color("kPrimary")
     static let secondaryColor: Color = Color("kSecondary")
     static let primaryFont: String = "BowlbyOneSC-Regular"

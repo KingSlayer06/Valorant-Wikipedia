@@ -68,18 +68,6 @@ struct SideMenuView: View {
 
 extension SideMenuView {
     
-    var appVersion: String {
-        if let buildVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
-            if let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String {
-                
-                let env = KeyVariables.devMode
-                return "App Version: \(buildVersion) (\(buildNumber))"
-            }
-        }
-        
-        return ""
-    }
-    
     var headerView: some View {
         HStack {
             ZStack {
@@ -110,7 +98,7 @@ extension SideMenuView {
     
     var footerView: some View {
         VStack {
-            Text(appVersion)
+            Text(KeyVariables.appVersion)
                 .font(Font.custom(KeyVariables.primaryFont, size: 12))
                 .opacity(0.5)
             

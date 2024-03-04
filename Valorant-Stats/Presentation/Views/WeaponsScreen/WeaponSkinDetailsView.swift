@@ -29,7 +29,7 @@ struct WeaponSkinDetailsView: View {
         ZStack {
             KeyVariables.secondaryColor
             
-            VStack {
+            VStack(alignment: .leading) {
                 KFImage(URL(string: selectedChroma?.fullRender ?? ""))
                     .resizable()
                     .scaledToFit()
@@ -103,7 +103,7 @@ struct WeaponSkinDetailsView: View {
                     Text("No Video")
                         .font(Font.custom(KeyVariables.primaryFont, size: 20))
                         .foregroundStyle(.foreground)
-                        .frame(width: width - 10, height: 200)
+                        .frame(maxWidth: width - 10, maxHeight: 200)
                         .overlay {
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(Color.white, lineWidth: 2)
@@ -111,8 +111,7 @@ struct WeaponSkinDetailsView: View {
                 } else {
                     if let player = player {
                         AVPlayerControllerRepresented(player: player)
-                            .frame(width: width, height: 200)
-                            .aspectRatio(contentMode: .fill)
+                            .frame(maxWidth: width - 10, maxHeight: 200)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .overlay {
                                 RoundedRectangle(cornerRadius: 10)

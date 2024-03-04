@@ -34,6 +34,8 @@ struct HomeView: View {
                             SpraysView()
                         case .ranks:
                             RanksView()
+                        case .about:
+                            AboutView()
                     }
                 }
                 .edgesIgnoringSafeArea(.bottom)

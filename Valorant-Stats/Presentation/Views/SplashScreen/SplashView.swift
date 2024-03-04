@@ -25,10 +25,10 @@ struct SplashView: View {
                 Text("Valorant Wiki")
                     .font(Font.custom(KeyVariables.primaryFont, size: 20))
                     .foregroundStyle(KeyVariables.primaryColor)
-                    .padding(.bottom)
+                    .padding(.bottom, 3)
                 
                 Text("Wikipedia for Valorant")
-                    .font(Font.custom(KeyVariables.primaryFont, size: 12))
+                    .font(Font.custom(KeyVariables.primaryFont, size: 15))
                     .foregroundStyle(.white.opacity(0.5))
             }
         }

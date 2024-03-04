@@ -35,6 +35,7 @@
 		A3A875562B95AF0300840A2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A875552B95AF0300840A2B /* AppDelegate.swift */; };
 		A3A875582B95B15000840A2B /* AppAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A875572B95B15000840A2B /* AppAnalytics.swift */; };
 		A3A8755A2B95B33900840A2B /* DevMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A875592B95B33900840A2B /* DevMode.swift */; };
+		A3A8755D2B95CE8A00840A2B /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A8755C2B95CE8A00840A2B /* AboutView.swift */; };
 		A3D9D7762B8F0F3900C5FC64 /* ShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D9D7752B8F0F3900C5FC64 /* ShareItem.swift */; };
 		A3D9D7782B8F10B900C5FC64 /* KingfisherManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D9D7772B8F10B900C5FC64 /* KingfisherManagerExtension.swift */; };
 		A3F70B8A2B8C522A00CBA5C6 /* Valorant_StatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F70B892B8C522A00CBA5C6 /* Valorant_StatsApp.swift */; };
@@ -94,6 +95,7 @@
 		A3A875552B95AF0300840A2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3A875572B95B15000840A2B /* AppAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAnalytics.swift; sourceTree = "<group>"; };
 		A3A875592B95B33900840A2B /* DevMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevMode.swift; sourceTree = "<group>"; };
+		A3A8755C2B95CE8A00840A2B /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		A3D9D7752B8F0F3900C5FC64 /* ShareItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareItem.swift; sourceTree = "<group>"; };
 		A3D9D7772B8F10B900C5FC64 /* KingfisherManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherManagerExtension.swift; sourceTree = "<group>"; };
 		A3F70B862B8C522A00CBA5C6 /* Valorant-Stats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Valorant-Stats.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,6 +206,14 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		A3A8755B2B95CE7B00840A2B /* AboutScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A3A8755C2B95CE8A00840A2B /* AboutView.swift */,
+			);
+			path = AboutScreen;
+			sourceTree = "<group>";
+		};
 		A3F70B7D2B8C522A00CBA5C6 = {
 			isa = PBXGroup;
 			children = (
@@ -267,6 +277,7 @@
 				A388B6C22B8DB2A1007D87DD /* PlayerCardsScreen */,
 				A388B6D32B8DC281007D87DD /* SpraysScreen */,
 				A37A50AD2B93A67200E55393 /* RanksScreen */,
+				A3A8755B2B95CE7B00840A2B /* AboutScreen */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -565,6 +576,7 @@
 				A3F70BBB2B8C769600CBA5C6 /* SideMenuOptionsModel.swift in Sources */,
 				A37A50AC2B93987000E55393 /* AVPlayerControllerRepresented.swift in Sources */,
 				A37A50B32B93A78400E55393 /* GetRanksResponse.swift in Sources */,
+				A3A8755D2B95CE8A00840A2B /* AboutView.swift in Sources */,
 				A388B6CC2B8DB4CD007D87DD /* GetPlayerCardsResponse.swift in Sources */,
 				A388B6C62B8DB359007D87DD /* PlayerCard.swift in Sources */,
 				A3F70BDE2B8CEAC300CBA5C6 /* StatsCellView.swift in Sources */,
