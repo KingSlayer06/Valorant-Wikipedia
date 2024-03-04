@@ -68,7 +68,7 @@ extension WeaponDetailsView {
     }
     
     var damage: some View {
-        VStack {
+        VStack(spacing: 3) {
             Text("Damage")
                 .font(Font.custom(KeyVariables.primaryFont, size: 20))
                 .foregroundStyle(KeyVariables.primaryColor)

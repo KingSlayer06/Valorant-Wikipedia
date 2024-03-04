@@ -53,7 +53,7 @@ extension MapDetailsView {
     }
     
     var mapDescription: some View {
-        VStack {
+        VStack(spacing: 3) {
             Group {
                 Text("Description: ")
                     .foregroundStyle(KeyVariables.primaryColor)

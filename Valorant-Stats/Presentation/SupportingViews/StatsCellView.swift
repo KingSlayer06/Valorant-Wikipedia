@@ -14,7 +14,7 @@ struct StatsCellView: View {
     let value: String
     
     var body: some View {
-        VStack {
+        VStack(spacing: 3) {
             HStack {
                 Text("\(label):")
                     .font(Font.custom(KeyVariables.primaryFont, size: 20))
