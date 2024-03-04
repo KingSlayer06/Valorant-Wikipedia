@@ -27,7 +27,7 @@ struct SearchBarView: View {
         }
         .overlay(alignment: .trailing) {
             if !searchTerm.isEmpty {
-                Image(systemName: "xmark")
+                Image(systemName: "xmark.circle.fill")
                     .foregroundStyle(KeyVariables.primaryColor)
                     .padding()
                     .onTapGesture {
