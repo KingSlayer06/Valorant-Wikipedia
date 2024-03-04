@@ -59,7 +59,9 @@ struct WeaponSkinDetailsView: View {
                                     selectedChroma = chroma
                                     
                                     if let url = selectedChroma?.streamedVideo {
-                                        player?.replaceCurrentItem(with: AVPlayerItem(url: URL(string: url)!))
+                                        Task {
+                                            await loadPlayerItem(URL(string: url)!)
+                                        }
                                     }
                                 }
                         }
@@ -85,7 +87,9 @@ struct WeaponSkinDetailsView: View {
                                     selectedSkinLevel = skin.levels[index]
                                     
                                     if let url = selectedSkinLevel?.streamedVideo {
-                                        player?.replaceCurrentItem(with: AVPlayerItem(url: URL(string: url)!))
+                                        Task {
+                                            await loadPlayerItem(URL(string: url)!)
+                                        }
                                     }
                                 }
                         }
@@ -94,24 +98,7 @@ struct WeaponSkinDetailsView: View {
                     }
                 }
                 
-                if let player = player {
-                    AVPlayerControllerRepresented(player: player)
-                        .frame(width: width, height: 200)
-                        .aspectRatio(contentMode: .fill)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.white, lineWidth: 2)
-                        }
-                        .padding(.vertical)
-                        .onAppear {
-                            player.play()
-                            addObserver()
-                        }
-                        .onDisappear {
-                            removeObserver()
-                        }
-                } else {
+                if selectedSkinLevel?.streamedVideo == nil {
                     Text("No Video")
                         .font(Font.custom(KeyVariables.primaryFont, size: 20))
                         .foregroundStyle(.foreground)
@@ -120,6 +107,24 @@ struct WeaponSkinDetailsView: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(Color.white, lineWidth: 2)
                         }
+                } else {
+                    if let player = player {
+                        AVPlayerControllerRepresented(player: player)
+                            .frame(width: width, height: 200)
+                            .aspectRatio(contentMode: .fill)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.white, lineWidth: 2)
+                            }
+                            .padding(.vertical)
+                            .onAppear {
+                                addObserver()
+                            }
+                            .onDisappear {
+                                removeObserver()
+                            }
+                    }
                 }
                 
                 Spacer()
@@ -138,7 +143,10 @@ struct WeaponSkinDetailsView: View {
             selectedChroma = skin.chromas.first
             
             if let url = selectedSkinLevel?.streamedVideo {
-                player = AVPlayer(url: URL(string: url)!)
+                Task {
+                    player = AVPlayer()
+                    await loadPlayerItem(URL(string: url)!)
+                }
             }
         }
     }
@@ -158,15 +166,19 @@ struct WeaponSkinDetailsView: View {
     func addObserver() {
         foregroundEnteredObserver = NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: nil) { notification in
             print("App entered foreground state!")
-            player?.play()
+            Task {
+                player?.play()
+            }
         }
         
         videoCompleteObserver = NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime,
                                                object: player?.currentItem,
                                                queue: nil) { notification in
             print("Video Complete")
-            player?.seek(to: .zero)
-            player?.play()
+            Task {
+                player?.seek(to: .zero)
+                player?.play()
+            }
         }
     }
     
@@ -178,6 +190,19 @@ struct WeaponSkinDetailsView: View {
         if let videoCompleteObserver = videoCompleteObserver {
             NotificationCenter.default.removeObserver(videoCompleteObserver)
         }
+    }
+    
+    func loadPlayerItem(_ videoURL: URL) async {
+        let asset = AVAsset(url: videoURL)
+        do {
+            let (_, _, _) = try await asset.load(.tracks, .duration, .preferredTransform)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        let item = AVPlayerItem(asset: asset)
+        player?.replaceCurrentItem(with: item)
+        player?.play()
     }
 }
 
