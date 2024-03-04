@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2260A0B65DF5B8A443BF777C /* Pods_Valorant_Stats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6135AD81346E32F9827192D0 /* Pods_Valorant_Stats.framework */; };
+		A372A5D32B960B6600FF07A7 /* EmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A372A5D22B960B6600FF07A7 /* EmailController.swift */; };
 		A37A50AC2B93987000E55393 /* AVPlayerControllerRepresented.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A50AB2B93987000E55393 /* AVPlayerControllerRepresented.swift */; };
 		A37A50AF2B93A68100E55393 /* RanksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A50AE2B93A68100E55393 /* RanksView.swift */; };
 		A37A50B12B93A6EA00E55393 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A50B02B93A6EA00E55393 /* Rank.swift */; };
@@ -70,6 +71,7 @@
 /* Begin PBXFileReference section */
 		6135AD81346E32F9827192D0 /* Pods_Valorant_Stats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Valorant_Stats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F88229B6EBFFB447D832AE9 /* Pods-Valorant-Stats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Valorant-Stats.release.xcconfig"; path = "Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats.release.xcconfig"; sourceTree = "<group>"; };
+		A372A5D22B960B6600FF07A7 /* EmailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailController.swift; sourceTree = "<group>"; };
 		A37A50AB2B93987000E55393 /* AVPlayerControllerRepresented.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerControllerRepresented.swift; sourceTree = "<group>"; };
 		A37A50AE2B93A68100E55393 /* RanksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RanksView.swift; sourceTree = "<group>"; };
 		A37A50B02B93A6EA00E55393 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				A3D9D7772B8F10B900C5FC64 /* KingfisherManagerExtension.swift */,
 				A37A50B62B93ADF200E55393 /* ColorExtension.swift */,
 				A37A50C42B9426E400E55393 /* UIImageExtension.swift */,
+				A372A5D22B960B6600FF07A7 /* EmailController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				A3F70BC62B8CA8C900CBA5C6 /* Agent.swift in Sources */,
 				A3F70B8C2B8C522A00CBA5C6 /* HomeView.swift in Sources */,
 				A37A50B92B941D2B00E55393 /* ShimmerEffect.swift in Sources */,
+				A372A5D32B960B6600FF07A7 /* EmailController.swift in Sources */,
 				A3F70BAF2B8C72A600CBA5C6 /* GetAgentsUseCase.swift in Sources */,
 				A3A875582B95B15000840A2B /* AppAnalytics.swift in Sources */,
 				A388B6C82B8DB39F007D87DD /* PlayerCardDetailsView.swift in Sources */,

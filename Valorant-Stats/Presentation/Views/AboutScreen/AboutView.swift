@@ -53,6 +53,9 @@ struct AboutView: View {
                             .font(.headline.bold())
                             .accentColor(.white)
                             .frame(maxWidth: .infinity, alignment: .leading)
+                            .onTapGesture {
+                                EmailController.shared.sendEmail(subject: "", body: "")
+                            }
                     }
                     
                     VStack(spacing: 5) {
