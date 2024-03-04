@@ -47,6 +47,12 @@ struct AgentDetailsView: View {
                                     .stroke(isAbilitySelected(ability) ? KeyVariables.primaryColor : Color.white, lineWidth: 2)
                                 
                                 KFImage(URL(string: ability.displayIcon ?? ""))
+                                    .placeholder {
+                                        Image(systemName: "circle.slash")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 35, height: 35)
+                                    }
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 35, height: 35)
