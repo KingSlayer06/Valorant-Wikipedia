@@ -25,9 +25,6 @@ struct RanksView: View {
                 LazyVGrid(columns: columns, spacing: 10) {
                     ForEach(homeViewModel.tiers, id: \.self) { tier in
                         TierGridView(tier: tier)
-                            .onTapGesture {
-                                
-                            }
                     }
                 }
             }

@@ -34,6 +34,8 @@ struct HomeView: View {
                             SpraysView()
                         case .ranks:
                             RanksView()
+                        case .patchNotes:
+                            PatchNotesView()
                         case .about:
                             AboutView()
                     }
@@ -42,15 +44,6 @@ struct HomeView: View {
                 
                 SideMenuView(isShowing: $showMenu)
             }
-            .gesture (
-                DragGesture(minimumDistance: 0, coordinateSpace: .local)
-                    .onEnded { value in
-                        if value.translation.width > 0 {
-                            AppAnalytics.shared.SideMenuOpened(selectedTab: homeViewModel.selectedTab.title)
-                            showMenu.toggle()
-                        }
-                    }
-            )
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {

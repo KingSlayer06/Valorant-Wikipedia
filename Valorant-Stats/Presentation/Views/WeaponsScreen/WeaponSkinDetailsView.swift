@@ -110,7 +110,7 @@ struct WeaponSkinDetailsView: View {
                         }
                 } else {
                     if let player = player {
-                        AVPlayerControllerRepresented(player: player)
+                        AVPlayerControllerRepresentable(player: player)
                             .frame(maxWidth: width - 10, maxHeight: 200)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .overlay {

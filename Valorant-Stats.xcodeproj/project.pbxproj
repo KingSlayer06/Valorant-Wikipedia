@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		2260A0B65DF5B8A443BF777C /* Pods_Valorant_Stats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6135AD81346E32F9827192D0 /* Pods_Valorant_Stats.framework */; };
 		A372A5D32B960B6600FF07A7 /* EmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A372A5D22B960B6600FF07A7 /* EmailController.swift */; };
-		A37A50AC2B93987000E55393 /* AVPlayerControllerRepresented.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A50AB2B93987000E55393 /* AVPlayerControllerRepresented.swift */; };
+		A372A5D62B961FE200FF07A7 /* PatchNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A372A5D52B961FE200FF07A7 /* PatchNotesView.swift */; };
+		A372A5D82B96201000FF07A7 /* WebViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A372A5D72B96201000FF07A7 /* WebViewRepresentable.swift */; };
+		A37A50AC2B93987000E55393 /* AVPlayerControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A50AB2B93987000E55393 /* AVPlayerControllerRepresentable.swift */; };
 		A37A50AF2B93A68100E55393 /* RanksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A50AE2B93A68100E55393 /* RanksView.swift */; };
 		A37A50B12B93A6EA00E55393 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A50B02B93A6EA00E55393 /* Rank.swift */; };
 		A37A50B32B93A78400E55393 /* GetRanksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A50B22B93A78400E55393 /* GetRanksResponse.swift */; };
@@ -72,7 +74,9 @@
 		6135AD81346E32F9827192D0 /* Pods_Valorant_Stats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Valorant_Stats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F88229B6EBFFB447D832AE9 /* Pods-Valorant-Stats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Valorant-Stats.release.xcconfig"; path = "Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats.release.xcconfig"; sourceTree = "<group>"; };
 		A372A5D22B960B6600FF07A7 /* EmailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailController.swift; sourceTree = "<group>"; };
-		A37A50AB2B93987000E55393 /* AVPlayerControllerRepresented.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerControllerRepresented.swift; sourceTree = "<group>"; };
+		A372A5D52B961FE200FF07A7 /* PatchNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNotesView.swift; sourceTree = "<group>"; };
+		A372A5D72B96201000FF07A7 /* WebViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewRepresentable.swift; sourceTree = "<group>"; };
+		A37A50AB2B93987000E55393 /* AVPlayerControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerControllerRepresentable.swift; sourceTree = "<group>"; };
 		A37A50AE2B93A68100E55393 /* RanksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RanksView.swift; sourceTree = "<group>"; };
 		A37A50B02B93A6EA00E55393 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 		A37A50B22B93A78400E55393 /* GetRanksResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRanksResponse.swift; sourceTree = "<group>"; };
@@ -152,6 +156,14 @@
 				6135AD81346E32F9827192D0 /* Pods_Valorant_Stats.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A372A5D42B961FD000FF07A7 /* PatchNotesScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A372A5D52B961FE200FF07A7 /* PatchNotesView.swift */,
+			);
+			path = PatchNotesScreen;
 			sourceTree = "<group>";
 		};
 		A37A50AD2B93A67200E55393 /* RanksScreen */ = {
@@ -280,6 +292,7 @@
 				A388B6C22B8DB2A1007D87DD /* PlayerCardsScreen */,
 				A388B6D32B8DC281007D87DD /* SpraysScreen */,
 				A37A50AD2B93A67200E55393 /* RanksScreen */,
+				A372A5D42B961FD000FF07A7 /* PatchNotesScreen */,
 				A3A8755B2B95CE7B00840A2B /* AboutScreen */,
 			);
 			path = Views;
@@ -302,7 +315,8 @@
 				A3F70B9D2B8C56B000CBA5C6 /* KeyVariables.swift */,
 				A3F70BC72B8CAD8200CBA5C6 /* Haptics.swift */,
 				A3D9D7752B8F0F3900C5FC64 /* ShareItem.swift */,
-				A37A50AB2B93987000E55393 /* AVPlayerControllerRepresented.swift */,
+				A37A50AB2B93987000E55393 /* AVPlayerControllerRepresentable.swift */,
+				A372A5D72B96201000FF07A7 /* WebViewRepresentable.swift */,
 				A37A50BA2B94244600E55393 /* StickerManager.swift */,
 			);
 			path = Utils;
@@ -560,10 +574,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A372A5D82B96201000FF07A7 /* WebViewRepresentable.swift in Sources */,
 				A3F70BC82B8CAD8200CBA5C6 /* Haptics.swift in Sources */,
 				A388B6CA2B8DB4A4007D87DD /* GetPlayerCardsUseCase.swift in Sources */,
 				A3F70B9B2B8C555400CBA5C6 /* SideMenuView.swift in Sources */,
 				A388B6D02B8DC187007D87DD /* GetSpraysResponse.swift in Sources */,
+				A372A5D62B961FE200FF07A7 /* PatchNotesView.swift in Sources */,
 				A3F70BCB2B8CB21C00CBA5C6 /* GetAgentsResponse.swift in Sources */,
 				A3F70BD12B8CCF6A00CBA5C6 /* WeaponsView.swift in Sources */,
 				A3A8755A2B95B33900840A2B /* DevMode.swift in Sources */,
@@ -577,7 +593,7 @@
 				A3F70BB82B8C74E200CBA5C6 /* SideMenuRowView.swift in Sources */,
 				A388B6C42B8DB2B2007D87DD /* PlayerCardsView.swift in Sources */,
 				A3F70BBB2B8C769600CBA5C6 /* SideMenuOptionsModel.swift in Sources */,
-				A37A50AC2B93987000E55393 /* AVPlayerControllerRepresented.swift in Sources */,
+				A37A50AC2B93987000E55393 /* AVPlayerControllerRepresentable.swift in Sources */,
 				A37A50B32B93A78400E55393 /* GetRanksResponse.swift in Sources */,
 				A3A8755D2B95CE8A00840A2B /* AboutView.swift in Sources */,
 				A388B6CC2B8DB4CD007D87DD /* GetPlayerCardsResponse.swift in Sources */,
