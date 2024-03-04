@@ -18,11 +18,11 @@ struct AboutView: View {
                         .resizable()
                         .scaledToFit()
                         .foregroundStyle(.white)
-                        .frame(width: 54, height: 54)
+                        .frame(width: 100, height: 100)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                     
                     VStack(spacing: 5) {
-                        Text("Valorant Wiki")
+                        Text("Valorant Wikipedia")
                             .font(Font.custom(KeyVariables.primaryFont, size: 17))
                         
                         Text("Wikipedia for Valorant")
@@ -32,12 +32,13 @@ struct AboutView: View {
                     .padding(.bottom, 10)
                     
                     Group {
-                        Text("Valorant Wiki")
+                        Text("Valorant Wikipedia")
                             .foregroundStyle(KeyVariables.primaryColor)
                         +
                         Text(" is just an informative App and not endorsed by Riot Games in any way.")
                     }
                     .font(Font.custom(KeyVariables.primaryFont, size: 15))
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     
                     Text("Riot Games, Valorant, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.")
                         .font(Font.custom(KeyVariables.primaryFont, size: 15))

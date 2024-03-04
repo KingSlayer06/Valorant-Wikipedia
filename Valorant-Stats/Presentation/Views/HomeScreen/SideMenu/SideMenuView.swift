@@ -86,8 +86,8 @@ extension SideMenuView {
             }
             
             VStack(alignment: .leading) {
-                Text("Valorant Wiki")
-                    .font(Font.custom(KeyVariables.primaryFont, size: 17))
+                Text("Valorant Wikipedia")
+                    .font(Font.custom(KeyVariables.primaryFont, size: 15))
                 
                 Text("Wikipedia for Valorant")
                     .font(Font.custom(KeyVariables.primaryFont, size: 12))
