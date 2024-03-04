@@ -15,5 +15,7 @@
 	<array>
 		<string>BowlbyOneSC-Regular.ttf</string>
 	</array>
+	<key>CFBundleDisplayName</key>
+	<string>Valorant Wikipedia</string>
 </dict>
 </plist>

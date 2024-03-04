@@ -22,7 +22,7 @@ struct SplashView: View {
                     .scaledToFit()
                     .frame(width: 150, height: 150)
                 
-                Text("Valorant Wiki")
+                Text("Valorant Wikipedia")
                     .font(Font.custom(KeyVariables.primaryFont, size: 20))
                     .foregroundStyle(KeyVariables.primaryColor)
                     .padding(.bottom, 3)
