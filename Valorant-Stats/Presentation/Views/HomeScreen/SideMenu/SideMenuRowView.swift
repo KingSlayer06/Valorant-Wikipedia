@@ -29,6 +29,7 @@ struct SideMenuRowView: View {
         .frame(height: 44)
         .background(isSelected ? KeyVariables.primaryColor : .clear)
         .clipShape(RoundedRectangle(cornerRadius: 10))
+        .contentShape(RoundedRectangle(cornerRadius: 10))
         .onTapGesture {
             onClick()
         }

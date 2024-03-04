@@ -19,34 +19,35 @@ struct HomeView: View {
         NavigationStack {
             ZStack {
                 KeyVariables.secondaryColor
-                TabView(selection: $homeViewModel.selectedTab) {
-                    ForEach(SideMenuOptionsModel.allCases) { tab in
-                        switch tab {
+                
+                VStack {
+                    switch(homeViewModel.selectedTab) {
                         case .agents:
                             AgentsView()
-                                .tag(tab)
                         case .maps:
                             MapsView()
-                                .tag(tab)
                         case .weapons:
                             WeaponsView()
-                                .tag(tab)
                         case .playerCards:
                             PlayerCardsView()
-                                .tag(tab)
                         case .sprays:
                             SpraysView()
-                                .tag(tab)
                         case .ranks:
                             RanksView()
-                                .tag(tab)
-                        }
                     }
                 }
-                .ignoresSafeArea()
+                .edgesIgnoringSafeArea(.bottom)
                 
                 SideMenuView(isShowing: $showMenu)
             }
+            .gesture (
+                DragGesture(minimumDistance: 0, coordinateSpace: .local)
+                    .onEnded { value in
+                        if value.translation.width > 0 {
+                            showMenu.toggle()
+                        }
+                    }
+            )
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -69,7 +70,6 @@ struct HomeView: View {
             }
         }
         .onAppear {
-            homeViewModel.showShimmer = true
             homeViewModel.getAgents()
             homeViewModel.getWeapons()
             homeViewModel.getMaps()

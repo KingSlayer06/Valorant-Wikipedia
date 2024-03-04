@@ -49,6 +49,10 @@ final class HomeViewModel: NSObject, ObservableObject {
     }
     
     func getAgents() {
+        DispatchQueue.main.async {
+            self.showShimmer = true
+        }
+        
         self.getAgentsUseCase?.execute { [weak self] result in
             switch result {
             case .success(let response):

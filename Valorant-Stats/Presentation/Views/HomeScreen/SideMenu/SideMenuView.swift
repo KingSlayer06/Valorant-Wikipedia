@@ -20,6 +20,14 @@ struct SideMenuView: View {
                 Rectangle()
                     .opacity(0.2)
                     .ignoresSafeArea()
+                    .gesture(
+                        DragGesture()
+                            .onEnded { value in
+                                if value.translation.width < 0 {
+                                    isShowing.toggle()
+                                }
+                            }
+                    )
                     .onTapGesture {
                         isShowing.toggle()
                     }
