@@ -36,8 +36,6 @@ struct HomeView: View {
                             RanksView()
                         case .patchNotes:
                             PatchNotesView()
-                        case .about:
-                            AboutView()
                     }
                 }
                 .edgesIgnoringSafeArea(.bottom)
@@ -61,6 +59,15 @@ struct HomeView: View {
                         showMenu.toggle()
                     } label: {
                         Image(systemName: "line.3.horizontal")
+                            .foregroundStyle(KeyVariables.primaryColor)
+                    }
+                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink {
+                        AboutView()
+                    } label: {
+                        Image(systemName: "questionmark.circle")
                             .foregroundStyle(KeyVariables.primaryColor)
                     }
                 }

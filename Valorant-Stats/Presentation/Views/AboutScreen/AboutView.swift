@@ -135,6 +135,15 @@ struct AboutView: View {
             }
             .padding(.bottom, 20)
         }
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                withAnimation(.easeInOut(duration: 3)) {
+                    Text("About")
+                        .font(Font.custom(KeyVariables.primaryFont, size: 20))
+                        .foregroundStyle(.foreground)
+                }
+            }
+        }
     }
     
     func openUrl(url: String) {

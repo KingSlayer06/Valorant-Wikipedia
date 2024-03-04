@@ -16,8 +16,6 @@ struct RanksView: View {
                    GridItem(.flexible(), spacing: 10)]
     
     var body: some View {
-        let width = (UIScreen.main.bounds.width - 30)/3
-        
         ScrollView(.vertical, showsIndicators: false) {
             ZStack {
                 KeyVariables.secondaryColor
