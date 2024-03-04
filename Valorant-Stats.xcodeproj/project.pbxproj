@@ -12,6 +12,7 @@
 		A372A5D62B961FE200FF07A7 /* PatchNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A372A5D52B961FE200FF07A7 /* PatchNotesView.swift */; };
 		A372A5D82B96201000FF07A7 /* WebViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A372A5D72B96201000FF07A7 /* WebViewRepresentable.swift */; };
 		A372A5DA2B9623BF00FF07A7 /* ViewAllSkinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A372A5D92B9623BF00FF07A7 /* ViewAllSkinsView.swift */; };
+		A372A5DC2B9628C300FF07A7 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A372A5DB2B9628C300FF07A7 /* SearchBarView.swift */; };
 		A37A50AC2B93987000E55393 /* AVPlayerControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A50AB2B93987000E55393 /* AVPlayerControllerRepresentable.swift */; };
 		A37A50AF2B93A68100E55393 /* RanksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A50AE2B93A68100E55393 /* RanksView.swift */; };
 		A37A50B12B93A6EA00E55393 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A50B02B93A6EA00E55393 /* Rank.swift */; };
@@ -78,6 +79,7 @@
 		A372A5D52B961FE200FF07A7 /* PatchNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNotesView.swift; sourceTree = "<group>"; };
 		A372A5D72B96201000FF07A7 /* WebViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewRepresentable.swift; sourceTree = "<group>"; };
 		A372A5D92B9623BF00FF07A7 /* ViewAllSkinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllSkinsView.swift; sourceTree = "<group>"; };
+		A372A5DB2B9628C300FF07A7 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		A37A50AB2B93987000E55393 /* AVPlayerControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerControllerRepresentable.swift; sourceTree = "<group>"; };
 		A37A50AE2B93A68100E55393 /* RanksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RanksView.swift; sourceTree = "<group>"; };
 		A37A50B02B93A6EA00E55393 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 			children = (
 				A3F70BDD2B8CEAC300CBA5C6 /* StatsCellView.swift */,
 				A37A50B82B941D2B00E55393 /* ShimmerEffect.swift */,
+				A372A5DB2B9628C300FF07A7 /* SearchBarView.swift */,
 			);
 			path = SupportingViews;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				A388B6C12B8D83E6007D87DD /* MapDetailsView.swift in Sources */,
 				A3D9D7762B8F0F3900C5FC64 /* ShareItem.swift in Sources */,
 				A3F70B9E2B8C56B000CBA5C6 /* KeyVariables.swift in Sources */,
+				A372A5DC2B9628C300FF07A7 /* SearchBarView.swift in Sources */,
 				A3F70BD52B8CDCBE00CBA5C6 /* GetWeaponsUseCase.swift in Sources */,
 				A37A50B52B93A7CC00E55393 /* GetRanksUseCase.swift in Sources */,
 				A3D9D7782B8F10B900C5FC64 /* KingfisherManagerExtension.swift in Sources */,

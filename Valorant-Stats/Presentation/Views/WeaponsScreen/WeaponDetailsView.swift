@@ -135,7 +135,7 @@ extension WeaponDetailsView {
                 Spacer()
                 
                 NavigationLink {
-                    ViewAllSkinsView(skins: weapon.skins)
+                    ViewAllSkinsView(skins: weapon.skins, weaponName: weapon.displayName)
                 } label: {
                     Text("View All")
                         .font(Font.custom(KeyVariables.primaryFont, size: 20))

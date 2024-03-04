@@ -10,21 +10,34 @@ import Kingfisher
 
 struct ViewAllSkinsView: View {
     let skins: [WeaponSkin]
+    let weaponName: String
     
     let columns = [GridItem(.flexible(), spacing: 20),
                    GridItem(.flexible(), spacing: 20)]
+    
+    @State private var searchSkin = ""
+    
+    var filteredSkins: [WeaponSkin] {
+        guard !searchSkin.isEmpty else { return skins }
+        
+        return skins.filter { $0.displayName.localizedCaseInsensitiveContains(searchSkin) }
+    }
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             ZStack {
                 KeyVariables.secondaryColor
                 
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(skins, id:\.uuid) { skin in
-                        NavigationLink {
-                            WeaponSkinDetailsView(skin: skin)
-                        } label: {
-                            SkinGridView(skin: skin)
+                VStack {
+                    SearchBarView(searchTerm: $searchSkin, prompt: "Search Skin")
+                    
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(filteredSkins, id:\.uuid) { skin in
+                            NavigationLink {
+                                WeaponSkinDetailsView(skin: skin)
+                            } label: {
+                                SkinGridView(skin: skin)
+                            }
                         }
                     }
                 }
@@ -33,6 +46,13 @@ struct ViewAllSkinsView: View {
             .padding(.bottom, KeyVariables.bottomSafeAreaInsets)
         }
         .edgesIgnoringSafeArea(.bottom)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("\(weaponName) Skins")
+                    .font(Font.custom(KeyVariables.primaryFont, size: 20))
+                    .foregroundStyle(.foreground)
+            }
+        }
     }
 }
 
@@ -67,5 +87,5 @@ struct SkinGridView: View {
 }
 
 #Preview {
-    ViewAllSkinsView(skins: [])
+    ViewAllSkinsView(skins: [], weaponName: "")
 }
