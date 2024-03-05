@@ -12,6 +12,9 @@ struct PatchNotesView: View {
         let url = URL(string: "https://playvalorant.com/en-us/news/tags/patch-notes/")!
         
         WebViewRepresentable(url: url)
+            .onAppear {
+                AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.patchNotesScreen)
+            }
     }
 }
 

@@ -42,6 +42,9 @@ struct WeaponsView: View {
             .padding(.bottom, KeyVariables.bottomSafeAreaInsets)
         }
         .edgesIgnoringSafeArea(.bottom)
+        .onAppear {
+            AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.weaponScreen)
+        }
     }
     
     func isSelected(_ catagory: String?) -> Bool {

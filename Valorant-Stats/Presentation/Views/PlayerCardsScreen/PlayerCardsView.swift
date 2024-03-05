@@ -36,6 +36,9 @@ struct PlayerCardsView: View {
             .padding(.bottom, KeyVariables.bottomSafeAreaInsets)
         }
         .edgesIgnoringSafeArea(.bottom)
+        .onAppear {
+            AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.playerCardScreen)
+        }
     }
 }
 

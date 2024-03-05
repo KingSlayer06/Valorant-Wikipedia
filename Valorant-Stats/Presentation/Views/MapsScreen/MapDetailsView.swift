@@ -36,6 +36,9 @@ struct MapDetailsView: View {
                     .foregroundStyle(.foreground)
             }
         }
+        .onAppear {
+            AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.mapDetailsScreen)
+        }
         .onDisappear {
             AppAnalytics.shared.MapDetailsBackClick(map: map)
         }

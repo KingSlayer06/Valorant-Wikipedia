@@ -55,6 +55,7 @@ struct AboutView: View {
                             .accentColor(.white)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .onTapGesture {
+                                AppAnalytics.shared.AboutScreenEmailClick()
                                 EmailController.shared.sendEmail(subject: "", body: "")
                             }
                     }
@@ -82,6 +83,7 @@ struct AboutView: View {
                                 .font(Font.custom(KeyVariables.primaryFont, size: 15))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .onTapGesture {
+                                    AppAnalytics.shared.AboutScreenGithubClick()
                                     openUrl(url: "https://github.com/KingSlayer06")
                                 }
                         }
@@ -96,6 +98,7 @@ struct AboutView: View {
                                 .font(Font.custom(KeyVariables.primaryFont, size: 15))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .onTapGesture {
+                                    AppAnalytics.shared.AboutScreenLinkedInClick()
                                     openUrl(url: "https://www.linkedin.com/in/himanshu-sherkar/")
                                 }
                         }
@@ -116,6 +119,7 @@ struct AboutView: View {
                                 .font(Font.custom(KeyVariables.primaryFont, size: 15))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .onTapGesture {
+                                    AppAnalytics.shared.AboutScreenTwitterClick()
                                     openUrl(url: "https://twitter.com/KingSlayer0826")
                                 }
                         }
@@ -144,6 +148,9 @@ struct AboutView: View {
                         .foregroundStyle(.foreground)
                 }
             }
+        }
+        .onDisappear {
+            AppAnalytics.shared.AboutScreenBackClick()
         }
     }
     

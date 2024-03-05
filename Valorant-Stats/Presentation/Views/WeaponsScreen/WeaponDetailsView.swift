@@ -43,6 +43,9 @@ struct WeaponDetailsView: View {
                     .foregroundStyle(.foreground)
             }
         }
+        .onAppear {
+            AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.weaponDetailsScreen)
+        }
         .onDisappear {
             AppAnalytics.shared.WeaponDetailsBackClick(weapon: weapon)
         }

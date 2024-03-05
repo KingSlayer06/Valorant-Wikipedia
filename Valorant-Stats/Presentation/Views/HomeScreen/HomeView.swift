@@ -55,6 +55,7 @@ struct HomeView: View {
                 
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
+                        AppAnalytics.shared.BergerMenuIconClick(screen: homeViewModel.selectedTab.title)
                         AppAnalytics.shared.SideMenuOpened(selectedTab: homeViewModel.selectedTab.title)
                         showMenu.toggle()
                     } label: {
@@ -70,6 +71,9 @@ struct HomeView: View {
                         Image(systemName: "questionmark.circle")
                             .foregroundStyle(KeyVariables.primaryColor)
                     }
+                    .simultaneousGesture(TapGesture().onEnded {
+                        AppAnalytics.shared.QuestionMarkIconClick(screen: homeViewModel.selectedTab.title)
+                    })
                 }
             }
         }

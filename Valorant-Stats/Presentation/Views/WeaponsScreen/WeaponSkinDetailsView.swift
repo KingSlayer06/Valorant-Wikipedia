@@ -139,6 +139,7 @@ struct WeaponSkinDetailsView: View {
             }
         }
         .onAppear {
+            AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.weaponSkinDetailsScreen)
             selectedSkinLevel = skin.levels.first
             selectedChroma = skin.chromas.first
             

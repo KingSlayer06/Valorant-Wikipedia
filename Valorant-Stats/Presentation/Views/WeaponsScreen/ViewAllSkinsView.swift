@@ -38,6 +38,9 @@ struct ViewAllSkinsView: View {
                             } label: {
                                 SkinGridView(skin: skin)
                             }
+                            .simultaneousGesture(TapGesture().onEnded {
+                                AppAnalytics.shared.ViewAllSkinsImageClick(weaponName: weaponName, skin: skin)
+                            })
                         }
                     }
                 }
@@ -52,6 +55,12 @@ struct ViewAllSkinsView: View {
                     .font(Font.custom(KeyVariables.primaryFont, size: 20))
                     .foregroundStyle(.foreground)
             }
+        }
+        .onAppear {
+            AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.viewAllSkinsScreen)
+        }
+        .onDisappear {
+            AppAnalytics.shared.ViewAllSkinsBackClick(weaponName: weaponName)
         }
     }
 }

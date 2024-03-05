@@ -83,6 +83,7 @@ struct AgentDetailsView: View {
             }
         }
         .onAppear {
+            AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.agentDetailsScreen)
             selectedAbility = agent.abilities.first
         }
         .onDisappear {

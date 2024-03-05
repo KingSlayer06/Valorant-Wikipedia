@@ -35,6 +35,8 @@ struct SplashView: View {
         .opacity(opacity)
         .scaleEffect(scale)
         .onAppear {
+            AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.splash)
+            
             withAnimation(.easeIn(duration: 0.15)) {
                 scale = CGSize(width: 1, height: 1)
                 opacity = 1

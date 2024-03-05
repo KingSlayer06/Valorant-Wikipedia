@@ -23,12 +23,33 @@ class AppAnalytics {
     let weaponScreen = "Weapon_Screen"
     let weaponDetailsScreen = "Weapon_Details_Screen"
     let weaponSkinDetailsScreen = "Weapon_Skin_Details_Screen"
+    let viewAllSkinsScreen = "View_All_Skins_Screen"
     let playerCardScreen = "Player_Card_Screen"
     let playerCardDetailsScreen = "Player_Card_Details_Screen"
     let sprayScreen = "Spray_Screen"
+    let rankScreen = "Rank_Screen"
+    let patchNotesScreen = "Patch_Notes_Screen"
+    let aboutScreen = "About_Screen"
     
     var language: String? {
         return self.supportedLanguages.contains(preferredLanguage ?? "en") ? preferredLanguage : "en"
+    }
+    
+    // MARK: - Home Screen
+    func QuestionMarkIconClick(screen: String) {
+        Analytics.logEvent("Question_Mark_Icon_Click", parameters: [
+            "Language": language ?? "en",
+            "BuildEnvironment": KeyVariables.devMode.rawValue,
+            "Screen": screen,
+        ])
+    }
+    
+    func BergerMenuIconClick(screen: String) {
+        Analytics.logEvent("Berger_Menu_Icon_Click", parameters: [
+            "Language": language ?? "en",
+            "BuildEnvironment": KeyVariables.devMode.rawValue,
+            "Screen": screen,
+        ])
     }
     
     // MARK: - Agent Screen
@@ -157,6 +178,26 @@ class AppAnalytics {
         ])
     }
     
+    // MARK: - View All Skins Screen
+    func ViewAllSkinsBackClick(weaponName: String) {
+        Analytics.logEvent("View_All_Skins_Back_Click", parameters: [
+            "Language": language ?? "en",
+            "BuildEnvironment": KeyVariables.devMode.rawValue,
+            "WeaponName": weaponName,
+            "Screen": viewAllSkinsScreen,
+        ])
+    }
+    
+    func ViewAllSkinsImageClick(weaponName: String, skin: WeaponSkin) {
+        Analytics.logEvent("View_All_Skins_Back_Click", parameters: [
+            "Language": language ?? "en",
+            "BuildEnvironment": KeyVariables.devMode.rawValue,
+            "WeaponName": weaponName,
+            "SkinName": skin.displayName,
+            "Screen": viewAllSkinsScreen,
+        ])
+    }
+    
     // MARK: - Player Card Screen
     func PlayerCardImageClick(card: PlayerCard) {
         Analytics.logEvent("Player_Card_Image_Click", parameters: [
@@ -240,6 +281,42 @@ class AppAnalytics {
             "Language": language ?? "en",
             "BuildEnvironment": KeyVariables.devMode.rawValue,
             "SelectedTab": selectedTab,
+        ])
+    }
+    
+    // MARK: - About Screen
+    func AboutScreenBackClick() {
+        Analytics.logEvent("About_Screen_Back_Click", parameters: [
+            "Language": language ?? "en",
+            "BuildEnvironment": KeyVariables.devMode.rawValue,
+        ])
+    }
+    
+    func AboutScreenEmailClick() {
+        Analytics.logEvent("About_Screen_Email_Click", parameters: [
+            "Language": language ?? "en",
+            "BuildEnvironment": KeyVariables.devMode.rawValue,
+        ])
+    }
+    
+    func AboutScreenGithubClick() {
+        Analytics.logEvent("About_Screen_Github_Click", parameters: [
+            "Language": language ?? "en",
+            "BuildEnvironment": KeyVariables.devMode.rawValue,
+        ])
+    }
+    
+    func AboutScreenLinkedInClick() {
+        Analytics.logEvent("About_Screen_LinkedIn_Click", parameters: [
+            "Language": language ?? "en",
+            "BuildEnvironment": KeyVariables.devMode.rawValue,
+        ])
+    }
+    
+    func AboutScreenTwitterClick() {
+        Analytics.logEvent("About_Screen_Twitter_Click", parameters: [
+            "Language": language ?? "en",
+            "BuildEnvironment": KeyVariables.devMode.rawValue,
         ])
     }
     

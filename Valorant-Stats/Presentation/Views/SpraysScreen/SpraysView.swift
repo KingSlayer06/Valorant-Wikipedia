@@ -50,6 +50,9 @@ struct SpraysView: View {
                     selectedSpray = nil
                 }
             }
+            .onAppear {
+                AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.sprayScreen)
+            }
             .onDisappear {
                 withAnimation(.linear(duration:0.2)) {
                     expandSprayGrid = false

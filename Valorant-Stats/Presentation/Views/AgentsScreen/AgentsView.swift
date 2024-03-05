@@ -65,6 +65,9 @@ struct AgentsView: View {
             .padding(.bottom, KeyVariables.bottomSafeAreaInsets)
         }
         .edgesIgnoringSafeArea(.bottom)
+        .onAppear {
+            AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.agentScreen)
+        }
     }
     
     func isSelected(_ role: AgentRole) -> Bool {

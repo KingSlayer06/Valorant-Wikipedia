@@ -30,6 +30,9 @@ struct RanksView: View {
             .padding(.bottom, KeyVariables.bottomSafeAreaInsets)
         }
         .edgesIgnoringSafeArea(.bottom)
+        .onAppear {
+            AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.rankScreen)
+        }
     }
 }
 

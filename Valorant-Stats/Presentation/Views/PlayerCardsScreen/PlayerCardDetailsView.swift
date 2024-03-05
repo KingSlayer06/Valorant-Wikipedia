@@ -61,6 +61,9 @@ struct PlayerCardDetailsView: View {
                     .foregroundStyle(.foreground)
             }
         }
+        .onAppear {
+            AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.playerCardDetailsScreen)
+        }
         .onDisappear {
             AppAnalytics.shared.PlayerCardDetailsBackClick(card: card)
         }
