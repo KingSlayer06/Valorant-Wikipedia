@@ -1,5 +1,5 @@
 
-![Logo](https://i.imgur.com/cnG578w.png)
+![Logo](Images/header.png)
 
 
 # Valorant Wikipedia
