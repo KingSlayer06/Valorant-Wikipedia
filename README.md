@@ -41,6 +41,11 @@ Other frameworks I used:
 - [App Demo](Images/demo.mp4)
 
 
+## Acknowledgements
+
+ - Valorant Wikipedia is just an informative App and not endorsed by Riot Games in any way.
+ - Riot Games, Valorant, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
+
 ## 🔗 Support Me
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://sites.google.com/view/himanshu-sherkar/)
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/himanshu-sherkar/)
