@@ -38,7 +38,7 @@ Other frameworks I used:
 
 ## Demo
 
-![App Screenshot](https://github.com/KingSlayer06/Expense-Tracker/blob/main/Screenshots/Screenshots.png?raw=true)
+- [App Demo](Images/demo.mp4)
 
 
 ## 🔗 Support Me
