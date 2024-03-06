@@ -17,7 +17,7 @@ Valorant Wikipedia is a wikipedia for Valorant game developed by Riot Games. You
 
 ## Screenshots
 
-![App Screenshot](https://github.com/KingSlayer06/Expense-Tracker/blob/main/Screenshots/Screenshots.png?raw=true)
+![App Screenshot](Images/screenshots.png)
 
 
 
