@@ -1,5 +1,5 @@
 
-![Logo](https://i.imgur.com/cnG578w.png)
+![Logo](Images/header.png)
 
 
 # Valorant Wikipedia
@@ -17,7 +17,7 @@ Valorant Wikipedia is a wikipedia for Valorant game developed by Riot Games. You
 
 ## Screenshots
 
-![App Screenshot](https://github.com/KingSlayer06/Expense-Tracker/blob/main/Screenshots/Screenshots.png?raw=true)
+![App Screenshot](Images/screenshots.png)
 
 
 
@@ -38,8 +38,13 @@ Other frameworks I used:
 
 ## Demo
 
-![App Screenshot](https://github.com/KingSlayer06/Expense-Tracker/blob/main/Screenshots/Screenshots.png?raw=true)
+- [App Demo](https://youtu.be/TvfZ9LvVe7U)
 
+
+## Acknowledgements
+
+ - Valorant Wikipedia is just an informative App and not endorsed by Riot Games in any way.
+ - Riot Games, Valorant, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
 
 ## 🔗 Support Me
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://sites.google.com/view/himanshu-sherkar/)
