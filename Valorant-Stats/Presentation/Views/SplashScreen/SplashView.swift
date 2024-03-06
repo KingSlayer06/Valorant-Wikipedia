@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseRemoteConfig
 
 struct SplashView: View {
     @Binding var splashScreenPresented: Bool
@@ -37,6 +38,8 @@ struct SplashView: View {
         .onAppear {
             AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.splash)
             
+            fetchRemoteConfig()
+            
             withAnimation(.easeIn(duration: 0.15)) {
                 scale = CGSize(width: 1, height: 1)
                 opacity = 1
@@ -53,6 +56,29 @@ struct SplashView: View {
                 withAnimation(.easeIn(duration: 0.2)) {
                     splashScreenPresented = false
                 }
+            }
+        }
+    }
+    
+    func fetchRemoteConfig() {
+        let remoteConfig = RemoteConfig.remoteConfig()
+        
+        let defaults: [String: Bool] = [
+            "show_skin_details" : false
+        ]
+        try? remoteConfig.setDefaults(from: defaults)
+        
+        let settings = RemoteConfigSettings()
+        settings.minimumFetchInterval = 0
+        remoteConfig.configSettings = settings
+        
+        remoteConfig.fetchAndActivate() { (status, error) -> Void in
+            if status == .error {
+                print("Config not fetched")
+                print("Error: \(error?.localizedDescription ?? "No error available.")")
+            } else {
+                let showSkinDetails = remoteConfig.configValue(forKey: "show_skin_details").boolValue
+                KeyVariables.showSkinDetails = showSkinDetails
             }
         }
     }

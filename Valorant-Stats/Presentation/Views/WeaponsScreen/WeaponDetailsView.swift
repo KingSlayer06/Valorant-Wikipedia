@@ -172,6 +172,7 @@ extension WeaponDetailsView {
                         .simultaneousGesture(TapGesture().onEnded {
                             AppAnalytics.shared.WeaponDetailsSkinClick(skin: skin)
                         })
+                        .allowsHitTesting(KeyVariables.showSkinDetails)
                     }
                 }
             }

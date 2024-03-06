@@ -11,5 +11,6 @@ target 'Valorant-Stats' do
   pod 'Kingfisher'
   pod 'Firebase/Core'
   pod 'Firebase/Crashlytics'
+  pod 'Firebase/RemoteConfig'
 
 end

@@ -41,6 +41,7 @@ struct ViewAllSkinsView: View {
                             .simultaneousGesture(TapGesture().onEnded {
                                 AppAnalytics.shared.ViewAllSkinsImageClick(weaponName: weaponName, skin: skin)
                             })
+                            .allowsHitTesting(KeyVariables.showSkinDetails)
                         }
                     }
                 }
