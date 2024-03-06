@@ -38,7 +38,7 @@ Other frameworks I used:
 
 ## Demo
 
-- [App Demo](Images/demo.mp4)
+- [App Demo](https://youtu.be/TvfZ9LvVe7U)
 
 
 ## Acknowledgements
