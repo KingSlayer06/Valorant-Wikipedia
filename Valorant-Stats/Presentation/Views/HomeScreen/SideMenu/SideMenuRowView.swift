@@ -24,6 +24,15 @@ struct SideMenuRowView: View {
                 .foregroundStyle(.primary)
             
             Spacer()
+            
+            if option == .patchNotes {
+                Image(systemName: "link")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 15, height: 15)
+                    .foregroundStyle(.primary)
+                    .padding(.horizontal)
+            }
         }
         .padding(.leading)
         .frame(height: 44)

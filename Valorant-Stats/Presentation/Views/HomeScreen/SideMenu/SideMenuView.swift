@@ -39,12 +39,23 @@ struct SideMenuView: View {
                         headerView
                         
                         VStack {
-                            ForEach(SideMenuOptionsModel.allCases) { option in
+                            ForEach(menuOptions) { option in
                                 SideMenuRowView(selectedOption: $homeViewModel.selectedTab, option: option) {
                                     homeViewModel.selectedTab = option
                                     AppAnalytics.shared.SideMenuRowCick(selectedTab: homeViewModel.selectedTab.title)
                                     isShowing.toggle()
                                 }
+                            }
+                            
+                            Rectangle()
+                                .fill(.white.opacity(0.5))
+                                .frame(height: 1.5)
+                                .padding(.vertical, 2)
+                            
+                            SideMenuRowView(selectedOption: $homeViewModel.selectedTab, option: .patchNotes) {
+                                openUrl(url: "https://playvalorant.com/en-us/news/tags/patch-notes/")
+                                AppAnalytics.shared.SideMenuRowCick(selectedTab: "Patch Notes")
+                                isShowing.toggle()
                             }
                         }
                         
@@ -63,6 +74,14 @@ struct SideMenuView: View {
             }
         }
         .animation(.easeInOut, value: isShowing)
+    }
+    
+    func openUrl(url: String) {
+        if let url = URL(string: url) {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }
     }
 }
 

@@ -39,3 +39,5 @@ enum SideMenuOptionsModel: Int, CaseIterable {
 extension SideMenuOptionsModel: Identifiable {
     var id: Int { return self.rawValue }
 }
+
+let menuOptions: [SideMenuOptionsModel] = [.agents, .maps, .weapons, .playerCards, .sprays, .ranks]
