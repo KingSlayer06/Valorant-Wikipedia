@@ -23,7 +23,9 @@ class AppAnalytics {
     let weaponScreen = "Weapon_Screen"
     let weaponDetailsScreen = "Weapon_Details_Screen"
     let weaponSkinDetailsScreen = "Weapon_Skin_Details_Screen"
+    let weaponBuddyDetailsScreen = "Weapon_Buddy_Details_Screen"
     let viewAllSkinsScreen = "View_All_Skins_Screen"
+    let viewAllBuddiesScreen = "View_All_Buddies_Screen"
     let playerCardScreen = "Player_Card_Screen"
     let playerCardDetailsScreen = "Player_Card_Details_Screen"
     let sprayScreen = "Spray_Screen"
@@ -148,6 +150,15 @@ class AppAnalytics {
         ])
     }
     
+    func WeaponDetailsBuddyClick(buddy: Buddy) {
+        Analytics.logEvent("Weapon_Details_Buddy_Click", parameters: [
+            "Language": language ?? "en",
+            "BuildEnvironment": KeyVariables.devMode.rawValue,
+            "Buddy": buddy.displayName,
+            "Screen": weaponDetailsScreen,
+        ])
+    }
+    
     // MARK: - Weapon Skin Details Screen
     func WeaponSkinDetailsBackClick(skin: WeaponSkin) {
         Analytics.logEvent("Weapon_Skin_Details_Back_Click", parameters: [
@@ -178,6 +189,16 @@ class AppAnalytics {
         ])
     }
     
+    // MARK: - Weapon Buddy Details Screen
+    func WeaponBuddyDetailsBackClick(buddy: Buddy) {
+        Analytics.logEvent("Weapon_Buddy_Details_Back_Click", parameters: [
+            "Language": language ?? "en",
+            "BuildEnvironment": KeyVariables.devMode.rawValue,
+            "Buddy": buddy.displayName,
+            "Screen": weaponSkinDetailsScreen,
+        ])
+    }
+    
     // MARK: - View All Skins Screen
     func ViewAllSkinsBackClick(weaponName: String) {
         Analytics.logEvent("View_All_Skins_Back_Click", parameters: [
@@ -189,12 +210,30 @@ class AppAnalytics {
     }
     
     func ViewAllSkinsImageClick(weaponName: String, skin: WeaponSkin) {
-        Analytics.logEvent("View_All_Skins_Back_Click", parameters: [
+        Analytics.logEvent("View_All_Skins_Image_Click", parameters: [
             "Language": language ?? "en",
             "BuildEnvironment": KeyVariables.devMode.rawValue,
             "WeaponName": weaponName,
             "SkinName": skin.displayName,
             "Screen": viewAllSkinsScreen,
+        ])
+    }
+    
+    // MARK: - View All Buddies Screen
+    func ViewAllBuddiesBackClick() {
+        Analytics.logEvent("View_All_Buddies_Back_Click", parameters: [
+            "Language": language ?? "en",
+            "BuildEnvironment": KeyVariables.devMode.rawValue,
+            "Screen": viewAllBuddiesScreen,
+        ])
+    }
+    
+    func ViewAllBuddiesImageClick(buddy: Buddy) {
+        Analytics.logEvent("View_All_Buddies_Image_Click", parameters: [
+            "Language": language ?? "en",
+            "BuildEnvironment": KeyVariables.devMode.rawValue,
+            "Buddy": buddy.displayName,
+            "Screen": viewAllBuddiesScreen,
         ])
     }
     

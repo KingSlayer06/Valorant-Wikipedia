@@ -16,6 +16,7 @@ protocol PGameAssetsRepository {
     func getPlayerCards(completion: @escaping (Result<GetPlayerCardsResponse, AFError>) -> Void)
     func getSprays(completion: @escaping (Result<GetSpraysResponse, AFError>) -> Void)
     func getRanks(completion: @escaping (Result<GetRanksResponse, AFError>) -> Void)
+    func getBuddies(completion: @escaping (Result<GetBuddiesResponse, AFError>) -> Void)
 }
 
 final class GameAssetsRepository: PGameAssetsRepository {
@@ -82,6 +83,17 @@ final class GameAssetsRepository: PGameAssetsRepository {
         
         AF.request("\(KeyVariables.baseApiUrl)/v1/competitivetiers", method: .get, parameters: nil)
             .publishDecodable(type: GetRanksResponse.self)
+            .sink(receiveValue: { response in
+                completion(response.result)
+            })
+            .store(in: &cancellables)
+    }
+    
+    func getBuddies(completion: @escaping (Result<GetBuddiesResponse, AFError>) -> Void) {
+        print("getBuddies API called")
+        
+        AF.request("\(KeyVariables.baseApiUrl)/v1/buddies", method: .get, parameters: nil)
+            .publishDecodable(type: GetBuddiesResponse.self)
             .sink(receiveValue: { response in
                 completion(response.result)
             })

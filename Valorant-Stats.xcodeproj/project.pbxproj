@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		2260A0B65DF5B8A443BF777C /* Pods_Valorant_Stats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6135AD81346E32F9827192D0 /* Pods_Valorant_Stats.framework */; };
 		A355D6242B9980F600D4DF6F /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355D6232B9980F600D4DF6F /* CustomTabBar.swift */; };
+		A355D6262B99983100D4DF6F /* GetBuddiesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355D6252B99983100D4DF6F /* GetBuddiesResponse.swift */; };
+		A355D6282B99984600D4DF6F /* Buddy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355D6272B99984600D4DF6F /* Buddy.swift */; };
+		A355D62A2B9998A300D4DF6F /* GetBuddiesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355D6292B9998A300D4DF6F /* GetBuddiesUseCase.swift */; };
+		A355D62C2B999DD400D4DF6F /* ViewAllBuddiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355D62B2B999DD400D4DF6F /* ViewAllBuddiesView.swift */; };
+		A355D62E2B99A07D00D4DF6F /* WeaponBuddyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355D62D2B99A07D00D4DF6F /* WeaponBuddyDetailView.swift */; };
 		A372A5D32B960B6600FF07A7 /* EmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A372A5D22B960B6600FF07A7 /* EmailController.swift */; };
 		A372A5D62B961FE200FF07A7 /* PatchNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A372A5D52B961FE200FF07A7 /* PatchNotesView.swift */; };
 		A372A5D82B96201000FF07A7 /* WebViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A372A5D72B96201000FF07A7 /* WebViewRepresentable.swift */; };
@@ -77,6 +82,11 @@
 		6135AD81346E32F9827192D0 /* Pods_Valorant_Stats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Valorant_Stats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F88229B6EBFFB447D832AE9 /* Pods-Valorant-Stats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Valorant-Stats.release.xcconfig"; path = "Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats.release.xcconfig"; sourceTree = "<group>"; };
 		A355D6232B9980F600D4DF6F /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		A355D6252B99983100D4DF6F /* GetBuddiesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBuddiesResponse.swift; sourceTree = "<group>"; };
+		A355D6272B99984600D4DF6F /* Buddy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buddy.swift; sourceTree = "<group>"; };
+		A355D6292B9998A300D4DF6F /* GetBuddiesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBuddiesUseCase.swift; sourceTree = "<group>"; };
+		A355D62B2B999DD400D4DF6F /* ViewAllBuddiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllBuddiesView.swift; sourceTree = "<group>"; };
+		A355D62D2B99A07D00D4DF6F /* WeaponBuddyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponBuddyDetailView.swift; sourceTree = "<group>"; };
 		A372A5D22B960B6600FF07A7 /* EmailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailController.swift; sourceTree = "<group>"; };
 		A372A5D52B961FE200FF07A7 /* PatchNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNotesView.swift; sourceTree = "<group>"; };
 		A372A5D72B96201000FF07A7 /* WebViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewRepresentable.swift; sourceTree = "<group>"; };
@@ -364,6 +374,7 @@
 				A388B6C92B8DB4A4007D87DD /* GetPlayerCardsUseCase.swift */,
 				A388B6D12B8DC1DC007D87DD /* GetSpraysUseCase.swift */,
 				A37A50B42B93A7CC00E55393 /* GetRanksUseCase.swift */,
+				A355D6292B9998A300D4DF6F /* GetBuddiesUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -385,6 +396,7 @@
 				A388B6C52B8DB359007D87DD /* PlayerCard.swift */,
 				A388B6CD2B8DC145007D87DD /* Spray.swift */,
 				A37A50B02B93A6EA00E55393 /* Rank.swift */,
+				A355D6272B99984600D4DF6F /* Buddy.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -425,6 +437,7 @@
 				A388B6CB2B8DB4CD007D87DD /* GetPlayerCardsResponse.swift */,
 				A388B6CF2B8DC187007D87DD /* GetSpraysResponse.swift */,
 				A37A50B22B93A78400E55393 /* GetRanksResponse.swift */,
+				A355D6252B99983100D4DF6F /* GetBuddiesResponse.swift */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -445,6 +458,8 @@
 				A3F70BDA2B8CE8E000CBA5C6 /* WeaponDetailsView.swift */,
 				A388B6D82B8DC6A4007D87DD /* WeaponSkinDetailsView.swift */,
 				A372A5D92B9623BF00FF07A7 /* ViewAllSkinsView.swift */,
+				A355D62B2B999DD400D4DF6F /* ViewAllBuddiesView.swift */,
+				A355D62D2B99A07D00D4DF6F /* WeaponBuddyDetailView.swift */,
 			);
 			path = WeaponsScreen;
 			sourceTree = "<group>";
@@ -592,14 +607,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				A372A5D82B96201000FF07A7 /* WebViewRepresentable.swift in Sources */,
+				A355D6282B99984600D4DF6F /* Buddy.swift in Sources */,
+				A355D6262B99983100D4DF6F /* GetBuddiesResponse.swift in Sources */,
 				A3F70BC82B8CAD8200CBA5C6 /* Haptics.swift in Sources */,
 				A388B6CA2B8DB4A4007D87DD /* GetPlayerCardsUseCase.swift in Sources */,
 				A3F70B9B2B8C555400CBA5C6 /* SideMenuView.swift in Sources */,
 				A388B6D02B8DC187007D87DD /* GetSpraysResponse.swift in Sources */,
 				A372A5DA2B9623BF00FF07A7 /* ViewAllSkinsView.swift in Sources */,
 				A372A5D62B961FE200FF07A7 /* PatchNotesView.swift in Sources */,
+				A355D62C2B999DD400D4DF6F /* ViewAllBuddiesView.swift in Sources */,
 				A3F70BCB2B8CB21C00CBA5C6 /* GetAgentsResponse.swift in Sources */,
 				A3F70BD12B8CCF6A00CBA5C6 /* WeaponsView.swift in Sources */,
+				A355D62A2B9998A300D4DF6F /* GetBuddiesUseCase.swift in Sources */,
 				A3A8755A2B95B33900840A2B /* DevMode.swift in Sources */,
 				A3F70BC42B8CA62200CBA5C6 /* AgentsView.swift in Sources */,
 				A3F70BDB2B8CE8E000CBA5C6 /* WeaponDetailsView.swift in Sources */,
@@ -633,6 +652,7 @@
 				A37A50B72B93ADF200E55393 /* ColorExtension.swift in Sources */,
 				A355D6242B9980F600D4DF6F /* CustomTabBar.swift in Sources */,
 				A3F70BC62B8CA8C900CBA5C6 /* Agent.swift in Sources */,
+				A355D62E2B99A07D00D4DF6F /* WeaponBuddyDetailView.swift in Sources */,
 				A3F70B8C2B8C522A00CBA5C6 /* HomeView.swift in Sources */,
 				A37A50B92B941D2B00E55393 /* ShimmerEffect.swift in Sources */,
 				A372A5D32B960B6600FF07A7 /* EmailController.swift in Sources */,

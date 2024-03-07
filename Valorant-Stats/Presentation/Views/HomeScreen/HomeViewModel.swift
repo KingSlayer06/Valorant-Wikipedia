@@ -22,6 +22,7 @@ final class HomeViewModel: NSObject, ObservableObject {
     @Published var playerCards = [PlayerCard]()
     @Published var sprays = [Spray]()
     @Published var tiers = [Tier]()
+    @Published var buddies = [Buddy]()
     @Published var agentRoles = [AgentRole]()
     @Published var weaponCatagories = [String]()
     
@@ -36,6 +37,7 @@ final class HomeViewModel: NSObject, ObservableObject {
     private var getPlayerCardsUseCase: PGetPlayerCardsUseCase?
     private var getSpraysUseCase: PGetSpraysUseCase?
     private var getRanksUseCase: PGetRanksUseCase?
+    private var getBuddiesUseCase: PGetBuddiesUseCase?
     
     override init() {
         super.init()
@@ -46,6 +48,7 @@ final class HomeViewModel: NSObject, ObservableObject {
         self.getPlayerCardsUseCase = GetPlayerCardsUseCase(gameAssetsRepo: GameAssetsRepository())
         self.getSpraysUseCase = GetSpraysUseCase(gameAssetsRepo: GameAssetsRepository())
         self.getRanksUseCase = GetRanksUseCase(gameAssetsRepo: GameAssetsRepository())
+        self.getBuddiesUseCase = GetBuddiesUseCase(gameAssetsRepo: GameAssetsRepository())
     }
     
     func getAgents() {
@@ -176,6 +179,17 @@ final class HomeViewModel: NSObject, ObservableObject {
                                                                    $0.tierName == "Unused1" ||
                                                                    $0.tierName == "Unused2") }
                 
+            case .failure(let error):
+                print("Failed to fetch agent data \(error)")
+            }
+        }
+    }
+    
+    func getBuddies() {
+        self.getBuddiesUseCase?.execute { [weak self] result in
+            switch result {
+            case .success(let response):
+                self?.buddies = response.data
             case .failure(let error):
                 print("Failed to fetch agent data \(error)")
             }

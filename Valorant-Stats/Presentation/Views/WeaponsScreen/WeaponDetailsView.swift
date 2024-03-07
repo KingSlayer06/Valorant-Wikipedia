@@ -9,6 +9,8 @@ import SwiftUI
 import Kingfisher
 
 struct WeaponDetailsView: View {
+    @EnvironmentObject var homeViewModel: HomeViewModel
+    
     let weapon: Weapon
     let width = (UIScreen.main.bounds.width)/4
     
@@ -30,6 +32,7 @@ struct WeaponDetailsView: View {
                         fireRate
                         damage
                         weaponSkins
+                        buddies
                     }
                 }
                 .padding(.horizontal)
@@ -148,7 +151,7 @@ extension WeaponDetailsView {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    ForEach(weapon.skins, id: \.uuid) { skin in
+                    ForEach(weapon.skins.prefix(10), id: \.uuid) { skin in
                         NavigationLink {
                             WeaponSkinDetailsView(skin: skin)
                         } label: {
@@ -166,13 +169,68 @@ extension WeaponDetailsView {
                                         .foregroundStyle(.foreground)
                                 }
                             }
-                            .frame(width: 175, height: 150)
+                            .frame(width: 175, height: 175)
                             .padding(.trailing)
                         }
                         .simultaneousGesture(TapGesture().onEnded {
                             AppAnalytics.shared.WeaponDetailsSkinClick(skin: skin)
                         })
-                        .allowsHitTesting(KeyVariables.showSkinDetails)
+                    }
+                }
+            }
+            
+            Rectangle()
+                .foregroundStyle(.foreground)
+                .frame(height: 2)
+                .padding(.top, 3)
+        }
+    }
+    
+    var buddies: some View {
+        VStack {
+            HStack {
+                Text("Buddies")
+                    .font(Font.custom(KeyVariables.primaryFont, size: 20))
+                    .foregroundStyle(KeyVariables.primaryColor)
+                
+                Spacer()
+                
+                NavigationLink {
+                    ViewAllBuddiesView()
+                } label: {
+                    Text("View All")
+                        .font(Font.custom(KeyVariables.primaryFont, size: 20))
+                        .accentColor(.white)
+                }
+            }
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(homeViewModel.buddies.prefix(10), id: \.uuid) { buddy in
+                        NavigationLink {
+                            WeaponBuddyDetailView(buddy: buddy)
+                        } label: {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(KeyVariables.primaryColor, lineWidth: 2)
+                                
+                                VStack {
+                                    KFImage(URL(string: buddy.displayIcon))
+                                        .resizable()
+                                        .scaledToFit()
+                                        .padding(.top)
+                                    
+                                    Text(buddy.displayName)
+                                        .font(Font.custom(KeyVariables.primaryFont, size: 15))
+                                        .foregroundStyle(.foreground)
+                                }
+                            }
+                            .frame(width: 175, height: 175)
+                            .padding(.trailing)
+                        }
+                        .simultaneousGesture(TapGesture().onEnded {
+                            AppAnalytics.shared.WeaponDetailsBuddyClick(buddy: buddy)
+                        })
                     }
                 }
             }

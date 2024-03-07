@@ -1,26 +1,25 @@
 //
-//  ViewAllSkinsView.swift
+//  ViewAllBuddiesView.swift
 //  Valorant-Stats
 //
-//  Created by Himanshu Sherkar on 04/03/24.
+//  Created by Himanshu Sherkar on 07/03/24.
 //
 
 import SwiftUI
 import Kingfisher
 
-struct ViewAllSkinsView: View {
-    let skins: [WeaponSkin]
-    let weaponName: String
+struct ViewAllBuddiesView: View {
+    @EnvironmentObject var homeViewModel: HomeViewModel
     
     let columns = [GridItem(.flexible(), spacing: 20),
                    GridItem(.flexible(), spacing: 20)]
     
-    @State private var searchSkin = ""
+    @State private var searchBuddy = ""
     
-    var filteredSkins: [WeaponSkin] {
-        guard !searchSkin.isEmpty else { return skins }
+    var filteredBuddies: [Buddy] {
+        guard !searchBuddy.isEmpty else { return homeViewModel.buddies }
         
-        return skins.filter { $0.displayName.localizedCaseInsensitiveContains(searchSkin) }
+        return homeViewModel.buddies.filter { $0.displayName.localizedCaseInsensitiveContains(searchBuddy) }
     }
     
     var body: some View {
@@ -29,17 +28,17 @@ struct ViewAllSkinsView: View {
                 KeyVariables.secondaryColor
                 
                 VStack {
-                    SearchBarView(searchTerm: $searchSkin, prompt: "Search Skin")
+                    SearchBarView(searchTerm: $searchBuddy, prompt: "Search Gun Buddy")
                     
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(filteredSkins, id:\.uuid) { skin in
+                        ForEach(filteredBuddies, id:\.uuid) { buddy in
                             NavigationLink {
-                                WeaponSkinDetailsView(skin: skin)
+                                WeaponBuddyDetailView(buddy: buddy)
                             } label: {
-                                SkinGridView(skin: skin)
+                                BuddyGridView(buddy: buddy)
                             }
                             .simultaneousGesture(TapGesture().onEnded {
-                                AppAnalytics.shared.ViewAllSkinsImageClick(weaponName: weaponName, skin: skin)
+                                AppAnalytics.shared.ViewAllBuddiesImageClick(buddy: buddy)
                             })
                         }
                     }
@@ -51,22 +50,22 @@ struct ViewAllSkinsView: View {
         .edgesIgnoringSafeArea(.bottom)
         .toolbar {
             ToolbarItem(placement: .principal) {
-                Text("\(weaponName) Skins")
+                Text("Gun Buddies")
                     .font(Font.custom(KeyVariables.primaryFont, size: 20))
                     .foregroundStyle(.foreground)
             }
         }
         .onAppear {
-            AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.viewAllSkinsScreen)
+            AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.viewAllBuddiesScreen)
         }
         .onDisappear {
-            AppAnalytics.shared.ViewAllSkinsBackClick(weaponName: weaponName)
+            AppAnalytics.shared.ViewAllBuddiesBackClick()
         }
     }
 }
 
-struct SkinGridView: View {
-    let skin: WeaponSkin
+struct BuddyGridView: View {
+    let buddy: Buddy
     
     var body: some View {
         ZStack {
@@ -74,7 +73,7 @@ struct SkinGridView: View {
                 .stroke(KeyVariables.primaryColor, lineWidth: 2)
             
             VStack {
-                KFImage(URL(string: skin.displayIcon ?? ""))
+                KFImage(URL(string: buddy.displayIcon))
                     .placeholder {
                         Image(systemName: "questionmark.app.dashed")
                             .resizable()
@@ -85,8 +84,9 @@ struct SkinGridView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(height: 100)
+                    .padding(.top)
                 
-                Text(skin.displayName)
+                Text(buddy.displayName)
                     .font(Font.custom(KeyVariables.primaryFont, size: 15))
                     .foregroundStyle(.foreground)
             }
@@ -96,5 +96,6 @@ struct SkinGridView: View {
 }
 
 #Preview {
-    ViewAllSkinsView(skins: [], weaponName: "")
+    ViewAllBuddiesView()
+        .environmentObject(HomeViewModel())
 }

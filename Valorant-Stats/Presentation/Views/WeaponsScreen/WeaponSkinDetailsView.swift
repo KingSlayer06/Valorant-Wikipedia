@@ -71,63 +71,65 @@ struct WeaponSkinDetailsView: View {
                 }
                 .padding(.bottom)
                 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 10) {
-                        ForEach(skin.levels.indices, id: \.self) { index in
-                            Text("Level \(index+1)")
-                                .font(Font.custom(KeyVariables.primaryFont, size: 15))
-                                .foregroundStyle(isSelected(skin.levels[index]) ? .white : .black)
-                                .padding(.horizontal)
-                                .padding(.vertical, 5)
-                                .background {
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .fill(isSelected(skin.levels[index]) ? KeyVariables.primaryColor : Color.white)
-                                }
-                                .onTapGesture {
-                                    selectedSkinLevel = skin.levels[index]
-                                    AppAnalytics.shared.WeaponSkinDetailsLevelClick(level: "Level \(index+1)")
-                                    
-                                    if let url = selectedSkinLevel?.streamedVideo {
-                                        Task {
-                                            await loadPlayerItem(URL(string: url)!)
+                if KeyVariables.showSkinDetails {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 10) {
+                            ForEach(skin.levels.indices, id: \.self) { index in
+                                Text("Level \(index+1)")
+                                    .font(Font.custom(KeyVariables.primaryFont, size: 15))
+                                    .foregroundStyle(isSelected(skin.levels[index]) ? .white : .black)
+                                    .padding(.horizontal)
+                                    .padding(.vertical, 5)
+                                    .background {
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .fill(isSelected(skin.levels[index]) ? KeyVariables.primaryColor : Color.white)
+                                    }
+                                    .onTapGesture {
+                                        selectedSkinLevel = skin.levels[index]
+                                        AppAnalytics.shared.WeaponSkinDetailsLevelClick(level: "Level \(index+1)")
+                                        
+                                        if let url = selectedSkinLevel?.streamedVideo {
+                                            Task {
+                                                await loadPlayerItem(URL(string: url)!)
+                                            }
                                         }
                                     }
-                                }
+                            }
+                            
+                            Spacer()
                         }
-                        
-                        Spacer()
                     }
-                }
-                
-                if selectedSkinLevel?.streamedVideo == nil {
-                    Text("No Video")
-                        .font(Font.custom(KeyVariables.primaryFont, size: 20))
-                        .foregroundStyle(.foreground)
-                        .frame(maxWidth: width - 10, maxHeight: 200)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.white, lineWidth: 2)
-                        }
-                } else {
-                    if let player = player {
-                        AVPlayerControllerRepresentable(player: player)
+                    
+                    if selectedSkinLevel?.streamedVideo == nil {
+                        Text("No Video")
+                            .font(Font.custom(KeyVariables.primaryFont, size: 20))
+                            .foregroundStyle(.foreground)
                             .frame(maxWidth: width - 10, maxHeight: 200)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
                             .overlay {
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(Color.white, lineWidth: 2)
                             }
-                            .padding(.vertical)
-                            .onAppear {
-                                addObserver()
-                            }
-                            .onDisappear {
-                                removeObserver()
-                            }
+                    } else {
+                        if let player = player {
+                            AVPlayerControllerRepresentable(player: player)
+                                .frame(maxWidth: width - 10, maxHeight: 200)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.white, lineWidth: 2)
+                                }
+                                .padding(.vertical)
+                                .onAppear {
+                                    addObserver()
+                                }
+                                .onDisappear {
+                                    removeObserver()
+                                }
+                        }
                     }
+                    
+                    Spacer()
                 }
-                
-                Spacer()
             }
         }
         .padding(.horizontal)
@@ -143,7 +145,7 @@ struct WeaponSkinDetailsView: View {
             selectedSkinLevel = skin.levels.first
             selectedChroma = skin.chromas.first
             
-            if let url = selectedSkinLevel?.streamedVideo {
+            if let url = selectedSkinLevel?.streamedVideo, KeyVariables.showSkinDetails {
                 Task {
                     player = AVPlayer()
                     await loadPlayerItem(URL(string: url)!)

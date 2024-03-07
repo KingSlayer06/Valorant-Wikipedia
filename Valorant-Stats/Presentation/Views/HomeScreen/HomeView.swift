@@ -104,6 +104,7 @@ struct HomeView: View {
                     .simultaneousGesture(TapGesture().onEnded {
                         AppAnalytics.shared.QuestionMarkIconClick(screen: homeViewModel.selectedTab.title)
                     })
+                    .allowsHitTesting(!showMenu)
                 }
             }
         }
@@ -111,6 +112,7 @@ struct HomeView: View {
             homeViewModel.getAgents()
             homeViewModel.getWeapons()
             homeViewModel.getMaps()
+            homeViewModel.getBuddies()
             homeViewModel.getPlayerCards()
             homeViewModel.getSprays()
             homeViewModel.getRanks()
