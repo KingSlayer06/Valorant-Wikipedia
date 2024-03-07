@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2260A0B65DF5B8A443BF777C /* Pods_Valorant_Stats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6135AD81346E32F9827192D0 /* Pods_Valorant_Stats.framework */; };
+		A355D6242B9980F600D4DF6F /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355D6232B9980F600D4DF6F /* CustomTabBar.swift */; };
 		A372A5D32B960B6600FF07A7 /* EmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A372A5D22B960B6600FF07A7 /* EmailController.swift */; };
 		A372A5D62B961FE200FF07A7 /* PatchNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A372A5D52B961FE200FF07A7 /* PatchNotesView.swift */; };
 		A372A5D82B96201000FF07A7 /* WebViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A372A5D72B96201000FF07A7 /* WebViewRepresentable.swift */; };
@@ -75,6 +76,7 @@
 /* Begin PBXFileReference section */
 		6135AD81346E32F9827192D0 /* Pods_Valorant_Stats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Valorant_Stats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F88229B6EBFFB447D832AE9 /* Pods-Valorant-Stats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Valorant-Stats.release.xcconfig"; path = "Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats.release.xcconfig"; sourceTree = "<group>"; };
+		A355D6232B9980F600D4DF6F /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		A372A5D22B960B6600FF07A7 /* EmailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailController.swift; sourceTree = "<group>"; };
 		A372A5D52B961FE200FF07A7 /* PatchNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNotesView.swift; sourceTree = "<group>"; };
 		A372A5D72B96201000FF07A7 /* WebViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewRepresentable.swift; sourceTree = "<group>"; };
@@ -160,6 +162,14 @@
 				6135AD81346E32F9827192D0 /* Pods_Valorant_Stats.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A355D6222B9980E600D4DF6F /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				A355D6232B9980F600D4DF6F /* CustomTabBar.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		A372A5D42B961FD000FF07A7 /* PatchNotesScreen */ = {
@@ -307,6 +317,7 @@
 			children = (
 				A3F70B8B2B8C522A00CBA5C6 /* HomeView.swift */,
 				A3F70BBC2B8C7C7100CBA5C6 /* HomeViewModel.swift */,
+				A355D6222B9980E600D4DF6F /* TabBar */,
 				A3F70BB92B8C758C00CBA5C6 /* SideMenu */,
 			);
 			path = HomeScreen;
@@ -620,6 +631,7 @@
 				A3F70BD72B8CDD0C00CBA5C6 /* GetWeaponsResponse.swift in Sources */,
 				A3F70BE42B8CFEA600CBA5C6 /* GetMapsResponse.swift in Sources */,
 				A37A50B72B93ADF200E55393 /* ColorExtension.swift in Sources */,
+				A355D6242B9980F600D4DF6F /* CustomTabBar.swift in Sources */,
 				A3F70BC62B8CA8C900CBA5C6 /* Agent.swift in Sources */,
 				A3F70B8C2B8C522A00CBA5C6 /* HomeView.swift in Sources */,
 				A37A50B92B941D2B00E55393 /* ShimmerEffect.swift in Sources */,

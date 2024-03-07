@@ -27,6 +27,7 @@ struct KeyVariables {
     static let secondaryColor: Color = Color("kSecondary")
     static let primaryFont: String = "BowlbyOneSC-Regular"
     static let bottomSafeAreaInsets: CGFloat = 50
+    static let sideMenuWidth = UIScreen.main.bounds.width/1.45
     
     static let apiKey = "RGAPI-204a7c22-42b5-4ea4-98d7-9a3ba09bf9d5"
     static let baseApiUrl = "https://valorant-api.com"
