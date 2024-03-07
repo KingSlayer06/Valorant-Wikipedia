@@ -231,6 +231,7 @@ extension WeaponDetailsView {
                         .simultaneousGesture(TapGesture().onEnded {
                             AppAnalytics.shared.WeaponDetailsBuddyClick(buddy: buddy)
                         })
+                        .allowsHitTesting(KeyVariables.showBuddyDetails)
                     }
                 }
             }

@@ -40,6 +40,7 @@ struct ViewAllBuddiesView: View {
                             .simultaneousGesture(TapGesture().onEnded {
                                 AppAnalytics.shared.ViewAllBuddiesImageClick(buddy: buddy)
                             })
+                            .allowsHitTesting(KeyVariables.showBuddyDetails)
                         }
                     }
                 }

@@ -33,4 +33,5 @@ struct KeyVariables {
     static let baseApiUrl = "https://valorant-api.com"
     
     static var showSkinDetails: Bool = false
+    static var showBuddyDetails: Bool = false
 }

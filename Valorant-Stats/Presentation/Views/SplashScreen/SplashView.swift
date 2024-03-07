@@ -64,6 +64,7 @@ struct SplashView: View {
         let remoteConfig = RemoteConfig.remoteConfig()
         
         let defaults: [String: Bool] = [
+            "show_buddy_details" : false,
             "show_skin_details" : false
         ]
         try? remoteConfig.setDefaults(from: defaults)
@@ -78,7 +79,10 @@ struct SplashView: View {
                 print("Error: \(error?.localizedDescription ?? "No error available.")")
             } else {
                 let showSkinDetails = remoteConfig.configValue(forKey: "show_skin_details").boolValue
+                let showBuddyDetails = remoteConfig.configValue(forKey: "show_buddy_details").boolValue
+                
                 KeyVariables.showSkinDetails = showSkinDetails
+                KeyVariables.showBuddyDetails = showBuddyDetails
             }
         }
     }
