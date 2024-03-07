@@ -46,6 +46,12 @@ struct TierGridView: View {
             
             VStack {
                 KFImage(URL(string: tier.largeIcon ?? ""))
+                    .placeholder {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .foregroundStyle(KeyVariables.primaryColor)
+                            .scaleEffect(3)
+                    }
                     .resizable()
                     .scaledToFit()
                 

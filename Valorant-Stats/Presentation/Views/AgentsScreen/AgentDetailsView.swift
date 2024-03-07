@@ -25,6 +25,12 @@ struct AgentDetailsView: View {
                             .frame(height: 380)
                         
                         KFImage(URL(string: agent.fullPortrait ?? ""))
+                            .placeholder {
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle())
+                                    .foregroundStyle(KeyVariables.primaryColor)
+                                    .scaleEffect(5)
+                            }
                             .resizable()
                             .scaledToFit()
                             .frame(height: 350)

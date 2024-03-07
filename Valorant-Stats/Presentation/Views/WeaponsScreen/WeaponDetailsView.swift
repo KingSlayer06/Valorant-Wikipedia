@@ -22,6 +22,12 @@ struct WeaponDetailsView: View {
                     
                     VStack {
                         KFImage(URL(string: weapon.displayIcon))
+                            .placeholder {
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle())
+                                    .foregroundStyle(KeyVariables.primaryColor)
+                                    .scaleEffect(5)
+                            }
                             .resizable()
                             .scaledToFit()
                             .frame(height: 200)
@@ -161,6 +167,12 @@ extension WeaponDetailsView {
                                 
                                 VStack {
                                     KFImage(URL(string: skin.displayIcon ?? ""))
+                                        .placeholder {
+                                            ProgressView()
+                                                .progressViewStyle(CircularProgressViewStyle())
+                                                .foregroundStyle(KeyVariables.primaryColor)
+                                                .scaleEffect(3)
+                                        }
                                         .resizable()
                                         .scaledToFit()
                                     
@@ -216,6 +228,12 @@ extension WeaponDetailsView {
                                 
                                 VStack {
                                     KFImage(URL(string: buddy.displayIcon))
+                                        .placeholder {
+                                            ProgressView()
+                                                .progressViewStyle(CircularProgressViewStyle())
+                                                .foregroundStyle(KeyVariables.primaryColor)
+                                                .scaleEffect(3)
+                                        }
                                         .resizable()
                                         .scaledToFit()
                                         .padding(.top)

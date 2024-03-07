@@ -16,6 +16,12 @@ struct PlayerCardDetailsView: View {
     var body: some View {
         VStack {
             KFImage(URL(string: card.largeArt))
+                .placeholder {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .foregroundStyle(KeyVariables.primaryColor)
+                        .scaleEffect(5)
+                }
                 .resizable()
                 .scaledToFit()
                 .overlay(alignment: .bottom) {

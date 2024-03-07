@@ -18,6 +18,12 @@ struct MapDetailsView: View {
                 
                 VStack {
                     KFImage(URL(string: map.displayIcon ?? ""))
+                        .placeholder {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle())
+                                .foregroundStyle(KeyVariables.primaryColor)
+                                .scaleEffect(5)
+                        }
                         .resizable()
                         .scaledToFit()
                         .frame(height: 350)

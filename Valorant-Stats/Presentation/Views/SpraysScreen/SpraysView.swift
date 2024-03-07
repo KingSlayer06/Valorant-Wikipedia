@@ -74,6 +74,12 @@ struct SprayGridView: View {
     var body: some View {
         ZStack {
             KFImage(URL(string: spray.fullTransparentIcon ?? ""))
+                .placeholder {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .foregroundStyle(KeyVariables.primaryColor)
+                        .scaleEffect(3)
+                }
                 .resizable()
                 .scaledToFit()
                 .clipShape(RoundedRectangle(cornerRadius: 5))

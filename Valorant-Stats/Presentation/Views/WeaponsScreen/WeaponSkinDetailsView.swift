@@ -31,6 +31,12 @@ struct WeaponSkinDetailsView: View {
             
             VStack(alignment: .leading) {
                 KFImage(URL(string: selectedChroma?.fullRender ?? ""))
+                    .placeholder {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .foregroundStyle(KeyVariables.primaryColor)
+                            .scaleEffect(5)
+                    }
                     .resizable()
                     .scaledToFit()
                     .frame(height: 200)

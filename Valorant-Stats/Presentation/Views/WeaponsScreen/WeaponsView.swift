@@ -69,6 +69,12 @@ struct WeaponGridView: View {
                     .foregroundStyle(.foreground)
                 
                 KFImage(URL(string: weapon.displayIcon))
+                    .placeholder {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .foregroundStyle(KeyVariables.primaryColor)
+                            .scaleEffect(3)
+                    }
                     .resizable()
                     .scaledToFit()
                     .padding(.vertical)
