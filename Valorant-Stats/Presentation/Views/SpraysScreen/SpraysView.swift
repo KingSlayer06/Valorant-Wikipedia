@@ -100,6 +100,12 @@ struct SprayCardView: View {
     var body: some View {
         VStack {
             KFImage(URL(string: selectedSpray?.fullTransparentIcon ?? ""))
+                .placeholder {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .foregroundStyle(KeyVariables.primaryColor)
+                        .scaleEffect(5)
+                }
                 .resizable()
                 .scaledToFit()
                 .clipShape(RoundedRectangle(cornerRadius: 10))
