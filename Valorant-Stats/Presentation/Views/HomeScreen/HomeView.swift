@@ -44,6 +44,8 @@ struct HomeView: View {
                                 SpraysView()
                             case .ranks:
                                 RanksView()
+                            case .bundles:
+                                BundlesView()
                             case .patchNotes:
                                 PatchNotesView()
                         }
@@ -116,6 +118,7 @@ struct HomeView: View {
             homeViewModel.getPlayerCards()
             homeViewModel.getSprays()
             homeViewModel.getRanks()
+            homeViewModel.getBundles()
         }
         .animation(.easeOut, value: offset == 0)
         .onChange(of: showMenu) {

@@ -14,6 +14,11 @@
 		A355D62A2B9998A300D4DF6F /* GetBuddiesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355D6292B9998A300D4DF6F /* GetBuddiesUseCase.swift */; };
 		A355D62C2B999DD400D4DF6F /* ViewAllBuddiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355D62B2B999DD400D4DF6F /* ViewAllBuddiesView.swift */; };
 		A355D62E2B99A07D00D4DF6F /* WeaponBuddyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355D62D2B99A07D00D4DF6F /* WeaponBuddyDetailView.swift */; };
+		A355D6312B99B83F00D4DF6F /* BundlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355D6302B99B83F00D4DF6F /* BundlesView.swift */; };
+		A355D6332B99B87300D4DF6F /* WeaponBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355D6322B99B87300D4DF6F /* WeaponBundle.swift */; };
+		A355D6352B99B94800D4DF6F /* GetBundlesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355D6342B99B94800D4DF6F /* GetBundlesResponse.swift */; };
+		A355D6372B99B9D200D4DF6F /* GetBundlesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355D6362B99B9D200D4DF6F /* GetBundlesUseCase.swift */; };
+		A355D6392B99C98500D4DF6F /* BundleDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355D6382B99C98500D4DF6F /* BundleDetailsView.swift */; };
 		A372A5D32B960B6600FF07A7 /* EmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A372A5D22B960B6600FF07A7 /* EmailController.swift */; };
 		A372A5D62B961FE200FF07A7 /* PatchNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A372A5D52B961FE200FF07A7 /* PatchNotesView.swift */; };
 		A372A5D82B96201000FF07A7 /* WebViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A372A5D72B96201000FF07A7 /* WebViewRepresentable.swift */; };
@@ -87,6 +92,11 @@
 		A355D6292B9998A300D4DF6F /* GetBuddiesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBuddiesUseCase.swift; sourceTree = "<group>"; };
 		A355D62B2B999DD400D4DF6F /* ViewAllBuddiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllBuddiesView.swift; sourceTree = "<group>"; };
 		A355D62D2B99A07D00D4DF6F /* WeaponBuddyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponBuddyDetailView.swift; sourceTree = "<group>"; };
+		A355D6302B99B83F00D4DF6F /* BundlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundlesView.swift; sourceTree = "<group>"; };
+		A355D6322B99B87300D4DF6F /* WeaponBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponBundle.swift; sourceTree = "<group>"; };
+		A355D6342B99B94800D4DF6F /* GetBundlesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBundlesResponse.swift; sourceTree = "<group>"; };
+		A355D6362B99B9D200D4DF6F /* GetBundlesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBundlesUseCase.swift; sourceTree = "<group>"; };
+		A355D6382B99C98500D4DF6F /* BundleDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleDetailsView.swift; sourceTree = "<group>"; };
 		A372A5D22B960B6600FF07A7 /* EmailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailController.swift; sourceTree = "<group>"; };
 		A372A5D52B961FE200FF07A7 /* PatchNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNotesView.swift; sourceTree = "<group>"; };
 		A372A5D72B96201000FF07A7 /* WebViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewRepresentable.swift; sourceTree = "<group>"; };
@@ -180,6 +190,15 @@
 				A355D6232B9980F600D4DF6F /* CustomTabBar.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		A355D62F2B99B82B00D4DF6F /* BundlesScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A355D6302B99B83F00D4DF6F /* BundlesView.swift */,
+				A355D6382B99C98500D4DF6F /* BundleDetailsView.swift */,
+			);
+			path = BundlesScreen;
 			sourceTree = "<group>";
 		};
 		A372A5D42B961FD000FF07A7 /* PatchNotesScreen */ = {
@@ -316,6 +335,7 @@
 				A388B6C22B8DB2A1007D87DD /* PlayerCardsScreen */,
 				A388B6D32B8DC281007D87DD /* SpraysScreen */,
 				A37A50AD2B93A67200E55393 /* RanksScreen */,
+				A355D62F2B99B82B00D4DF6F /* BundlesScreen */,
 				A372A5D42B961FD000FF07A7 /* PatchNotesScreen */,
 				A3A8755B2B95CE7B00840A2B /* AboutScreen */,
 			);
@@ -375,6 +395,7 @@
 				A388B6D12B8DC1DC007D87DD /* GetSpraysUseCase.swift */,
 				A37A50B42B93A7CC00E55393 /* GetRanksUseCase.swift */,
 				A355D6292B9998A300D4DF6F /* GetBuddiesUseCase.swift */,
+				A355D6362B99B9D200D4DF6F /* GetBundlesUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -397,6 +418,7 @@
 				A388B6CD2B8DC145007D87DD /* Spray.swift */,
 				A37A50B02B93A6EA00E55393 /* Rank.swift */,
 				A355D6272B99984600D4DF6F /* Buddy.swift */,
+				A355D6322B99B87300D4DF6F /* WeaponBundle.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -438,6 +460,7 @@
 				A388B6CF2B8DC187007D87DD /* GetSpraysResponse.swift */,
 				A37A50B22B93A78400E55393 /* GetRanksResponse.swift */,
 				A355D6252B99983100D4DF6F /* GetBuddiesResponse.swift */,
+				A355D6342B99B94800D4DF6F /* GetBundlesResponse.swift */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -607,6 +630,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A372A5D82B96201000FF07A7 /* WebViewRepresentable.swift in Sources */,
+				A355D6332B99B87300D4DF6F /* WeaponBundle.swift in Sources */,
 				A355D6282B99984600D4DF6F /* Buddy.swift in Sources */,
 				A355D6262B99983100D4DF6F /* GetBuddiesResponse.swift in Sources */,
 				A3F70BC82B8CAD8200CBA5C6 /* Haptics.swift in Sources */,
@@ -637,6 +661,7 @@
 				A388B6C62B8DB359007D87DD /* PlayerCard.swift in Sources */,
 				A3F70BDE2B8CEAC300CBA5C6 /* StatsCellView.swift in Sources */,
 				A388B6D52B8DC294007D87DD /* SpraysView.swift in Sources */,
+				A355D6352B99B94800D4DF6F /* GetBundlesResponse.swift in Sources */,
 				A388B6D92B8DC6A4007D87DD /* WeaponSkinDetailsView.swift in Sources */,
 				A37A50B12B93A6EA00E55393 /* Rank.swift in Sources */,
 				A3A875562B95AF0300840A2B /* AppDelegate.swift in Sources */,
@@ -650,6 +675,8 @@
 				A3F70BD72B8CDD0C00CBA5C6 /* GetWeaponsResponse.swift in Sources */,
 				A3F70BE42B8CFEA600CBA5C6 /* GetMapsResponse.swift in Sources */,
 				A37A50B72B93ADF200E55393 /* ColorExtension.swift in Sources */,
+				A355D6392B99C98500D4DF6F /* BundleDetailsView.swift in Sources */,
+				A355D6372B99B9D200D4DF6F /* GetBundlesUseCase.swift in Sources */,
 				A355D6242B9980F600D4DF6F /* CustomTabBar.swift in Sources */,
 				A3F70BC62B8CA8C900CBA5C6 /* Agent.swift in Sources */,
 				A355D62E2B99A07D00D4DF6F /* WeaponBuddyDetailView.swift in Sources */,
@@ -665,6 +692,7 @@
 				A3D9D7762B8F0F3900C5FC64 /* ShareItem.swift in Sources */,
 				A3F70B9E2B8C56B000CBA5C6 /* KeyVariables.swift in Sources */,
 				A372A5DC2B9628C300FF07A7 /* SearchBarView.swift in Sources */,
+				A355D6312B99B83F00D4DF6F /* BundlesView.swift in Sources */,
 				A3F70BD52B8CDCBE00CBA5C6 /* GetWeaponsUseCase.swift in Sources */,
 				A37A50B52B93A7CC00E55393 /* GetRanksUseCase.swift in Sources */,
 				A3D9D7782B8F10B900C5FC64 /* KingfisherManagerExtension.swift in Sources */,
@@ -800,7 +828,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"Valorant-Stats/Preview Content\"";
 				DEVELOPMENT_TEAM = 4B485XW35X;
 				ENABLE_PREVIEWS = YES;
@@ -818,7 +846,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.KingSlayer.Valorant-Wiki";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -837,7 +865,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"Valorant-Stats/Preview Content\"";
 				DEVELOPMENT_TEAM = 4B485XW35X;
 				ENABLE_PREVIEWS = YES;
@@ -855,7 +883,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.KingSlayer.Valorant-Wiki";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

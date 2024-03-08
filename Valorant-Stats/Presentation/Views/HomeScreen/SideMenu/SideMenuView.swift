@@ -37,6 +37,7 @@ struct SideMenuView: View {
                     isShowing.toggle()
                 }
             }
+            .padding(.horizontal)
             
             Spacer()
             

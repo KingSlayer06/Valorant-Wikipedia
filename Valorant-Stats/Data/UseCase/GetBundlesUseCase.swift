@@ -1,5 +1,5 @@
 //
-//  GetBuddies.swift
+//  GetBundlesUseCase.swift
 //  Valorant-Stats
 //
 //  Created by Himanshu Sherkar on 07/03/24.
@@ -8,11 +8,11 @@
 import Foundation
 import Alamofire
 
-protocol PGetBuddiesUseCase {
-    func execute(completion: @escaping (Result<GetBuddiesResponse, AFError>) -> Void)
+protocol PGetBundlesUseCase {
+    func execute(completion: @escaping (Result<GetBundlesResponse, AFError>) -> Void)
 }
 
-final class GetBuddiesUseCase: PGetBuddiesUseCase {
+final class GetBundlesUseCase: PGetBundlesUseCase {
     
     private var gameAssetsRepo: GameAssetsRepository
     
@@ -20,8 +20,8 @@ final class GetBuddiesUseCase: PGetBuddiesUseCase {
         self.gameAssetsRepo = gameAssetsRepo
     }
     
-    func execute(completion: @escaping (Result<GetBuddiesResponse, AFError>) -> Void) {
-        gameAssetsRepo.getBuddies { result in
+    func execute(completion: @escaping (Result<GetBundlesResponse, AFError>) -> Void) {
+        gameAssetsRepo.getBundles { result in
             completion(result)
         }
     }

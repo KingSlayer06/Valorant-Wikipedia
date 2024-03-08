@@ -99,4 +99,15 @@ final class GameAssetsRepository: PGameAssetsRepository {
             })
             .store(in: &cancellables)
     }
+    
+    func getBundles(completion: @escaping (Result<GetBundlesResponse, AFError>) -> Void) {
+        print("getBundles API called")
+        
+        AF.request("\(KeyVariables.baseApiUrl)/v1/bundles", method: .get, parameters: nil)
+            .publishDecodable(type: GetBundlesResponse.self)
+            .sink(receiveValue: { response in
+                completion(response.result)
+            })
+            .store(in: &cancellables)
+    }
 }

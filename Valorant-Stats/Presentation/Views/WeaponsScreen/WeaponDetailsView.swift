@@ -34,11 +34,18 @@ struct WeaponDetailsView: View {
                         
                         weaponName
                         weaponCreds
-                        weaponMagzine
-                        fireRate
-                        damage
+                        
+                        if weapon.displayName != "Melee" {
+                            weaponMagzine
+                            fireRate
+                            damage
+                        }
+                            
                         weaponSkins
-                        buddies
+                        
+                        if weapon.displayName != "Melee" {
+                            buddies
+                        }
                     }
                 }
                 .padding(.horizontal)
@@ -107,27 +114,29 @@ extension WeaponDetailsView {
                     .frame(maxWidth: width)
             }
             
-            ForEach(weapon.weaponStats!.damageRanges, id: \.self) { damage in
-                HStack {
-                    Text("\(damage.rangeStartMeters)-\(damage.rangeEndMeters)")
-                        .font(Font.custom(KeyVariables.primaryFont, size: 20))
-                        .foregroundStyle(.foreground)
-                        .frame(maxWidth: width)
-                    
-                    Text("\(String(format: "%.1f", damage.bodyDamage))")
-                        .font(Font.custom(KeyVariables.primaryFont, size: 20))
-                        .foregroundStyle(.foreground)
-                        .frame(maxWidth: width)
-                    
-                    Text("\(String(format: "%.1f", damage.headDamage))")
-                        .font(Font.custom(KeyVariables.primaryFont, size: 20))
-                        .foregroundStyle(.foreground)
-                        .frame(maxWidth: width)
-                    
-                    Text("\(String(format: "%.1f", damage.legDamage))")
-                        .font(Font.custom(KeyVariables.primaryFont, size: 20))
-                        .foregroundStyle(.foreground)
-                        .frame(maxWidth: width)
+            if let damageRanges = weapon.weaponStats?.damageRanges {
+                ForEach(damageRanges, id: \.self) { damage in
+                    HStack {
+                        Text("\(damage.rangeStartMeters)-\(damage.rangeEndMeters)")
+                            .font(Font.custom(KeyVariables.primaryFont, size: 20))
+                            .foregroundStyle(.foreground)
+                            .frame(maxWidth: width)
+                        
+                        Text("\(String(format: "%.1f", damage.bodyDamage))")
+                            .font(Font.custom(KeyVariables.primaryFont, size: 20))
+                            .foregroundStyle(.foreground)
+                            .frame(maxWidth: width)
+                        
+                        Text("\(String(format: "%.1f", damage.headDamage))")
+                            .font(Font.custom(KeyVariables.primaryFont, size: 20))
+                            .foregroundStyle(.foreground)
+                            .frame(maxWidth: width)
+                        
+                        Text("\(String(format: "%.1f", damage.legDamage))")
+                            .font(Font.custom(KeyVariables.primaryFont, size: 20))
+                            .foregroundStyle(.foreground)
+                            .frame(maxWidth: width)
+                    }
                 }
             }
             
