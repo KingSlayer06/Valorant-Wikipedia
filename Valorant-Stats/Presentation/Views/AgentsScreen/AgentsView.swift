@@ -11,6 +11,8 @@ import Kingfisher
 struct AgentsView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
     @State var selectedRole: AgentRole?
+    @State var viewAppeared = false
+    @Binding var hideView: (Bool, Bool)
     
     let columns = [GridItem(.flexible(), spacing: 20),
                    GridItem(.flexible(), spacing: 20)]
@@ -47,18 +49,35 @@ struct AgentsView: View {
                                     .clipShape(RoundedRectangle(cornerRadius: 5))
                             }
                         } else {
-                            ForEach(homeViewModel.filteredAgents, id: \.uuid) { agent in
+                            ForEach(homeViewModel.filteredAgents.indices, id: \.self) { index in
                                 NavigationLink {
-                                    AgentDetailsView(agent: agent)
+                                    AgentDetailsView(agent: homeViewModel.filteredAgents[index], hideView: $hideView)
                                 } label: {
-                                    AgentGridView(agent: agent)
+                                    AgentGridView(agent: homeViewModel.filteredAgents[index])
+                                        .opacity(viewAppeared ? 1 : 0)
+                                        .scaleEffect(viewAppeared ? 1 : 0.5)
+                                        .animation(.easeInOut(duration: 0.3).delay(0.075 * Double(index + 1)), value: viewAppeared)
                                 }
                                 .simultaneousGesture(TapGesture().onEnded {
-                                    AppAnalytics.shared.AgentImageClick(agent: agent)
+                                    homeViewModel.selectedAgent = homeViewModel.filteredAgents[index]
+                                    AppAnalytics.shared.AgentImageClick(agent: homeViewModel.filteredAgents[index])
                                 })
                             }
                         }
                     }
+                    .overlayPreferenceValue(MAnchorKey.self, { value in
+                        GeometryReader { geometry in
+                            ForEach(homeViewModel.filteredAgents, id: \.uuid) { agent in
+                                if let anchor = value[agent.uuid], homeViewModel.selectedAgent != agent {
+                                    let rect = geometry[anchor]
+                                    
+                                    AgentImageView(agent: agent, size: rect.size)
+                                        .offset(x: rect.minX, y: rect.minY)
+                                        .allowsHitTesting(false)
+                                }
+                            }
+                        }
+                    })
                 }
             }
             .padding(.horizontal)
@@ -66,7 +85,15 @@ struct AgentsView: View {
         }
         .edgesIgnoringSafeArea(.bottom)
         .onAppear {
+            viewAppeared = true
+            
             AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.agentScreen)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                hideView.0 = false
+                hideView.1 = false
+                homeViewModel.selectedAgent = nil
+            }
         }
     }
     
@@ -91,18 +118,32 @@ struct AgentGridView: View {
                     .padding(.vertical)
                     .foregroundStyle(.foreground)
                 
-                KFImage(URL(string: agent.fullPortrait ?? ""))
-                    .placeholder {
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle())
-                            .foregroundStyle(KeyVariables.primaryColor)
-                            .scaleEffect(3)
-                    }
-                    .resizable()
-                    .scaledToFit()
-                    .padding(.vertical)
+                Color.clear
+                    .frame(width: 170, height: 170)
+                    .padding(.bottom)
+                    .anchorPreference(key: MAnchorKey.self, value: .bounds, transform: { anchor in
+                        return [agent.uuid : anchor]
+                    })
             }
         }
+    }
+}
+
+struct AgentImageView: View {
+    let agent: Agent
+    let size: CGSize
+    
+    var body: some View {
+        KFImage(URL(string: agent.fullPortrait ?? ""))
+            .placeholder {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .foregroundStyle(KeyVariables.primaryColor)
+                    .scaleEffect(3)
+            }
+            .resizable()
+            .scaledToFit()
+            .frame(maxWidth: size.width, maxHeight: size.height)
     }
 }
 
@@ -119,9 +160,12 @@ extension AgentsView {
                     .fill(selectedRole == nil ? KeyVariables.primaryColor : Color.white)
             }
             .onTapGesture {
-                selectedRole = nil
                 AppAnalytics.shared.AgentRoleClick(role: selectedRole)
-                homeViewModel.getFilteredAgents(agentRole: selectedRole)
+                
+                withAnimation(.bouncy(duration: 0.35)) {
+                    selectedRole = nil
+                    homeViewModel.getFilteredAgents(agentRole: selectedRole)
+                }
             }
     }
     
@@ -137,15 +181,18 @@ extension AgentsView {
                         .fill(isSelected(role) ? KeyVariables.primaryColor : Color.white)
                 }
                 .onTapGesture {
-                    selectedRole = role
                     AppAnalytics.shared.AgentRoleClick(role: selectedRole)
-                    homeViewModel.getFilteredAgents(agentRole: selectedRole)
+                    
+                    withAnimation(.bouncy(duration: 0.35)) {
+                        selectedRole = role
+                        homeViewModel.getFilteredAgents(agentRole: selectedRole)
+                    }
                 }
         }
     }
 }
 
 #Preview {
-    AgentsView()
+    AgentsView(hideView: .constant((false, false)))
         .environmentObject(HomeViewModel())
 }

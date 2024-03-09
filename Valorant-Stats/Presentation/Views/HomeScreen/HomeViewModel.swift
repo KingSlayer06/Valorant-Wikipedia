@@ -27,6 +27,8 @@ final class HomeViewModel: NSObject, ObservableObject {
     @Published var agentRoles = [AgentRole]()
     @Published var weaponCatagories = [String]()
     
+    @Published var selectedAgent: Agent?
+    
     @Published var shareImage: UIImage?
     @Published var showAlert: Bool = false
     @Published var alertText: String = ""

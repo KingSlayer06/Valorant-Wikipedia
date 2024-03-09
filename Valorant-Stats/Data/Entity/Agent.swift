@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Agent: Codable {
+struct Agent: Codable, Equatable {
     let uuid: String
     let displayName: String
     let description: String
@@ -17,6 +17,10 @@ struct Agent: Codable {
     let isPlayableCharacter: Bool
     let role: AgentRole?
     let abilities: [AgentAbilities]
+    
+    static func == (lhs: Agent, rhs: Agent) -> Bool {
+        return lhs.uuid == rhs.uuid
+    }
 }
 
 struct AgentRole: Codable, Hashable {

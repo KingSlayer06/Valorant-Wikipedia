@@ -9,8 +9,11 @@ import SwiftUI
 import Kingfisher
 
 struct AgentDetailsView: View {
-    @State var selectedAbility: AgentAbilities?
     let agent: Agent
+    
+    @EnvironmentObject var homeViewModel: HomeViewModel
+    @State var selectedAbility: AgentAbilities?
+    @Binding var hideView: (Bool, Bool)
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -23,17 +26,27 @@ struct AgentDetailsView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(height: 380)
-                        
-                        KFImage(URL(string: agent.fullPortrait ?? ""))
-                            .placeholder {
-                                ProgressView()
-                                    .progressViewStyle(CircularProgressViewStyle())
-                                    .foregroundStyle(KeyVariables.primaryColor)
-                                    .scaleEffect(5)
+                            .opacity(hideView.1 ? 1 : 0)
+                            .animation(.snappy, value: hideView.1)
+                            .onAppear {
+                                DispatchQueue.main.asyncAfter(deadline: .now()) {
+                                    hideView.1 = true
+                                }
                             }
-                            .resizable()
-                            .scaledToFit()
+                        
+                        GeometryReader { geometry in
+                            VStack {
+                                if hideView.0 {
+                                    AgentImageView(agent: agent, size: geometry.size)
+                                } else {
+                                    Color.clear
+                                }
+                            }
                             .frame(height: 350)
+                            .anchorPreference(key: MAnchorKey.self, value: .bounds, transform: { anchor in
+                                return [agent.uuid : anchor]
+                            })
+                        }
                     }
                     
                     agentName
@@ -91,9 +104,15 @@ struct AgentDetailsView: View {
         .onAppear {
             AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.agentDetailsScreen)
             selectedAbility = agent.abilities.first
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                hideView.0 = true
+            }
         }
         .onDisappear {
             AppAnalytics.shared.AgentDetailsBackClick(agent: agent)
+            
+            hideView.0 = false
         }
     }
     

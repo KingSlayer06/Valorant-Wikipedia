@@ -19,6 +19,7 @@
 		A355D6352B99B94800D4DF6F /* GetBundlesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355D6342B99B94800D4DF6F /* GetBundlesResponse.swift */; };
 		A355D6372B99B9D200D4DF6F /* GetBundlesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355D6362B99B9D200D4DF6F /* GetBundlesUseCase.swift */; };
 		A355D6392B99C98500D4DF6F /* BundleDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355D6382B99C98500D4DF6F /* BundleDetailsView.swift */; };
+		A355D63B2B9ADD9300D4DF6F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A355D63A2B9ADD9300D4DF6F /* GoogleService-Info.plist */; };
 		A372A5D32B960B6600FF07A7 /* EmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A372A5D22B960B6600FF07A7 /* EmailController.swift */; };
 		A372A5D62B961FE200FF07A7 /* PatchNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A372A5D52B961FE200FF07A7 /* PatchNotesView.swift */; };
 		A372A5D82B96201000FF07A7 /* WebViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A372A5D72B96201000FF07A7 /* WebViewRepresentable.swift */; };
@@ -47,11 +48,11 @@
 		A388B6D52B8DC294007D87DD /* SpraysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A388B6D42B8DC294007D87DD /* SpraysView.swift */; };
 		A388B6D92B8DC6A4007D87DD /* WeaponSkinDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A388B6D82B8DC6A4007D87DD /* WeaponSkinDetailsView.swift */; };
 		A3A875512B9587DC00840A2B /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A875502B9587DC00840A2B /* SplashView.swift */; };
-		A3A875532B95ACC700840A2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3A875522B95ACC700840A2B /* GoogleService-Info.plist */; };
 		A3A875562B95AF0300840A2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A875552B95AF0300840A2B /* AppDelegate.swift */; };
 		A3A875582B95B15000840A2B /* AppAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A875572B95B15000840A2B /* AppAnalytics.swift */; };
 		A3A8755A2B95B33900840A2B /* DevMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A875592B95B33900840A2B /* DevMode.swift */; };
 		A3A8755D2B95CE8A00840A2B /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A8755C2B95CE8A00840A2B /* AboutView.swift */; };
+		A3B67CFC2B9C04840065C3B3 /* MAnchorKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B67CFB2B9C04840065C3B3 /* MAnchorKey.swift */; };
 		A3D9D7762B8F0F3900C5FC64 /* ShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D9D7752B8F0F3900C5FC64 /* ShareItem.swift */; };
 		A3D9D7782B8F10B900C5FC64 /* KingfisherManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D9D7772B8F10B900C5FC64 /* KingfisherManagerExtension.swift */; };
 		A3F70B8A2B8C522A00CBA5C6 /* Valorant_StatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F70B892B8C522A00CBA5C6 /* Valorant_StatsApp.swift */; };
@@ -97,6 +98,7 @@
 		A355D6342B99B94800D4DF6F /* GetBundlesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBundlesResponse.swift; sourceTree = "<group>"; };
 		A355D6362B99B9D200D4DF6F /* GetBundlesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBundlesUseCase.swift; sourceTree = "<group>"; };
 		A355D6382B99C98500D4DF6F /* BundleDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleDetailsView.swift; sourceTree = "<group>"; };
+		A355D63A2B9ADD9300D4DF6F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A372A5D22B960B6600FF07A7 /* EmailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailController.swift; sourceTree = "<group>"; };
 		A372A5D52B961FE200FF07A7 /* PatchNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchNotesView.swift; sourceTree = "<group>"; };
 		A372A5D72B96201000FF07A7 /* WebViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewRepresentable.swift; sourceTree = "<group>"; };
@@ -123,11 +125,11 @@
 		A388B6D42B8DC294007D87DD /* SpraysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpraysView.swift; sourceTree = "<group>"; };
 		A388B6D82B8DC6A4007D87DD /* WeaponSkinDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponSkinDetailsView.swift; sourceTree = "<group>"; };
 		A3A875502B9587DC00840A2B /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
-		A3A875522B95ACC700840A2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A3A875552B95AF0300840A2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3A875572B95B15000840A2B /* AppAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAnalytics.swift; sourceTree = "<group>"; };
 		A3A875592B95B33900840A2B /* DevMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevMode.swift; sourceTree = "<group>"; };
 		A3A8755C2B95CE8A00840A2B /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		A3B67CFB2B9C04840065C3B3 /* MAnchorKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAnchorKey.swift; sourceTree = "<group>"; };
 		A3D9D7752B8F0F3900C5FC64 /* ShareItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareItem.swift; sourceTree = "<group>"; };
 		A3D9D7772B8F10B900C5FC64 /* KingfisherManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherManagerExtension.swift; sourceTree = "<group>"; };
 		A3F70B862B8C522A00CBA5C6 /* Valorant-Stats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Valorant-Stats.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -259,7 +261,7 @@
 				A3A875552B95AF0300840A2B /* AppDelegate.swift */,
 				A3A875572B95B15000840A2B /* AppAnalytics.swift */,
 				A3F70B892B8C522A00CBA5C6 /* Valorant_StatsApp.swift */,
-				A3A875522B95ACC700840A2B /* GoogleService-Info.plist */,
+				A355D63A2B9ADD9300D4DF6F /* GoogleService-Info.plist */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -363,6 +365,7 @@
 				A37A50AB2B93987000E55393 /* AVPlayerControllerRepresentable.swift */,
 				A372A5D72B96201000FF07A7 /* WebViewRepresentable.swift */,
 				A37A50BA2B94244600E55393 /* StickerManager.swift */,
+				A3B67CFB2B9C04840065C3B3 /* MAnchorKey.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -574,7 +577,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3F70B912B8C522B00CBA5C6 /* Preview Assets.xcassets in Resources */,
-				A3A875532B95ACC700840A2B /* GoogleService-Info.plist in Resources */,
+				A355D63B2B9ADD9300D4DF6F /* GoogleService-Info.plist in Resources */,
 				A3F70B8E2B8C522B00CBA5C6 /* Assets.xcassets in Resources */,
 				A3F70BC02B8CA51200CBA5C6 /* BowlbyOneSC-Regular.ttf in Resources */,
 			);
@@ -645,6 +648,7 @@
 				A355D62A2B9998A300D4DF6F /* GetBuddiesUseCase.swift in Sources */,
 				A3A8755A2B95B33900840A2B /* DevMode.swift in Sources */,
 				A3F70BC42B8CA62200CBA5C6 /* AgentsView.swift in Sources */,
+				A3B67CFC2B9C04840065C3B3 /* MAnchorKey.swift in Sources */,
 				A3F70BDB2B8CE8E000CBA5C6 /* WeaponDetailsView.swift in Sources */,
 				A3F70BD32B8CCF7200CBA5C6 /* MapsView.swift in Sources */,
 				A37A50BB2B94244600E55393 /* StickerManager.swift in Sources */,
@@ -835,6 +839,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Valorant-Stats/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Valorant Wikipedia";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow app to save image to your device.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -872,6 +877,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Valorant-Stats/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Valorant Wikipedia";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow app to save image to your device.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

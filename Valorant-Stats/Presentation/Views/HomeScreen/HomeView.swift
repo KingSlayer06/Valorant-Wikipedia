@@ -13,6 +13,7 @@ struct HomeView: View {
     
     @State var offset: CGFloat = 0
     @State var lastStoredOffset: CGFloat = 0
+    @State var hideView: (Bool, Bool) = (false, false)
     
     @GestureState var gestureOffset: CGFloat = 0
     
@@ -33,7 +34,7 @@ struct HomeView: View {
                     VStack(spacing: 0) {
                         switch(homeViewModel.selectedTab) {
                             case .agents:
-                                AgentsView()
+                                AgentsView(hideView: $hideView)
                             case .maps:
                                 MapsView()
                             case .weapons:
@@ -110,6 +111,18 @@ struct HomeView: View {
                 }
             }
         }
+        .overlayPreferenceValue(MAnchorKey.self, { value in
+            GeometryReader { geometry in
+                if let selectedAgent = homeViewModel.selectedAgent, let anchor = value[selectedAgent.uuid], !hideView.0 {
+                    let rect = geometry[anchor]
+                    
+                    AgentImageView(agent: selectedAgent, size: rect.size)
+                        .offset(x: rect.minX, y: rect.minY)
+                        .allowsHitTesting(false)
+                        .animation(.snappy(duration: 0.35, extraBounce: 0), value: rect)
+                }
+            }
+        })
         .onAppear {
             homeViewModel.getAgents()
             homeViewModel.getWeapons()
