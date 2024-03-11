@@ -104,21 +104,24 @@ struct BundleDetailsView: View {
                             Spacer(minLength: spacerLength)
                             
                             ForEach(bundleWeapons.indices, id:\.self) { index in
-                                BundleDetailsGridView(image: bundleWeapons[index].displayIcon) {
+                                BundleDetailsGridView(image: bundleWeapons[index].displayIcon,
+                                                      isSelected: selectedIndex == index) {
                                     selectedIndex = index
                                 }
                                 .id(index)
                             }
                             
                             ForEach(bundleCards.indices, id: \.self) { index in
-                                BundleDetailsGridView(image: bundleCards[index].largeArt) {
+                                BundleDetailsGridView(image: bundleCards[index].largeArt,
+                                                      isSelected: selectedIndex == index + bundleWeapons.count) {
                                     selectedIndex = index + bundleWeapons.count
                                 }
                                 .id(index + bundleWeapons.count)
                             }
                             
                             ForEach(bundleSprays.indices, id: \.self) { index in
-                                BundleDetailsGridView(image: bundleSprays[index].fullTransparentIcon) {
+                                BundleDetailsGridView(image: bundleSprays[index].fullTransparentIcon,
+                                                      isSelected: selectedIndex == index + bundleWeapons.count + bundleSprays.count) {
                                     selectedIndex = index + bundleWeapons.count + bundleSprays.count
                                 }
                                 .id(index + bundleWeapons.count + bundleSprays.count)
@@ -153,9 +156,12 @@ struct BundleDetailsView: View {
 
 struct BundleDetailsGridView: View {
     let image: String?
+    let isSelected: Bool
     let onClick: () -> Void
     
     var body: some View {
+        let size: CGFloat = isSelected ? 120 : 100
+        
         ZStack {
             KFImage(URL(string: image ?? ""))
                 .placeholder {
@@ -166,15 +172,15 @@ struct BundleDetailsGridView: View {
                 }
                 .resizable()
                 .scaledToFit()
-                .edgesIgnoringSafeArea(.all)
                 .padding()
-                .clipShape(RoundedRectangle(cornerRadius: 5))
             
             RoundedRectangle(cornerRadius: 5)
-                .stroke(KeyVariables.primaryColor, lineWidth: 2)
+                .stroke(isSelected ? .white : KeyVariables.primaryColor, lineWidth: 2)
         }
+        .frame(width: size, height: size)
+        .clipShape(RoundedRectangle(cornerRadius: 5))
         .contentShape(RoundedRectangle(cornerRadius: 5))
-        .frame(width: 100, height: 100)
+        .animation(.smooth, value: isSelected)
         .onTapGesture {
             onClick()
         }
