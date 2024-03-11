@@ -38,7 +38,9 @@ struct SplashView: View {
         .onAppear {
             AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.splash)
             
-            fetchRemoteConfig()
+            if KeyVariables.devMode == .production {
+                fetchRemoteConfig()
+            }
             
             withAnimation(.easeIn(duration: 0.15)) {
                 scale = CGSize(width: 1, height: 1)

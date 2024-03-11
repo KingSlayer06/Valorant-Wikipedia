@@ -15,7 +15,6 @@ struct KeyVariables {
         if let buildVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
             if let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String {
                 
-                let env = KeyVariables.devMode
                 return "App Version: \(buildVersion) (\(buildNumber))"
             }
         }
@@ -31,6 +30,6 @@ struct KeyVariables {
     
     static let baseApiUrl = "https://valorant-api.com"
     
-    static var showSkinDetails: Bool = false
-    static var showBuddyDetails: Bool = false
+    static var showSkinDetails: Bool = (devMode == .development)
+    static var showBuddyDetails: Bool = (devMode == .development)
 }

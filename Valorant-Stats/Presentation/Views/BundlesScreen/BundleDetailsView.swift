@@ -10,6 +10,8 @@ import Kingfisher
 
 struct BundleDetailsView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
+    @State var selectedIndex = 0
+    
     let bundle: WeaponBundle
     
     var bundleWeapons: [WeaponSkin] {
@@ -45,6 +47,10 @@ struct BundleDetailsView: View {
         return sprays
     }
     
+    var spacerLength: CGFloat {
+        return (UIScreen.main.bounds.width - 100)/2
+    }
+    
     var body: some View {
         ZStack {
             KFImage(URL(string: bundle.verticalPromoImage ?? ""))
@@ -56,28 +62,79 @@ struct BundleDetailsView: View {
                 }
                 .resizable()
                 .scaledToFill()
+                .frame(width: UIScreen.main.bounds.width)
+                .clipShape(Rectangle())
+                .opacity(0.75)
+                .edgesIgnoringSafeArea(.all)
+            
+            LinearGradient(colors: [.black, .clear, .black], startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
-                Spacer()
+                Spacer(minLength: 100)
                 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 10) {
-                        ForEach(bundleWeapons, id:\.uuid) { weapon in
-                            BundleDetailsGridView(image: weapon.displayIcon)
+                if selectedIndex < bundleWeapons.count {
+                    NavigationLink {
+                        WeaponSkinDetailsView(skin: bundleWeapons[selectedIndex])
+                    } label: {
+                        BundleDetailsImageView(name: bundleWeapons[selectedIndex].displayName,
+                                               image: bundleWeapons[selectedIndex].displayIcon)
+                    }
+//                    .animation(Animation.smooth, value: selectedIndex)
+                } else if selectedIndex < bundleWeapons.count + bundleSprays.count {
+                    NavigationLink {
+                        PlayerCardDetailsView(card: bundleCards[selectedIndex - bundleWeapons.count])
+                    } label: {
+                        BundleDetailsImageView(name: bundleCards[selectedIndex - bundleWeapons.count].displayName,
+                                               image: bundleCards[selectedIndex - bundleWeapons.count].largeArt)
+                    }
+//                    .animation(Animation.smooth, value: selectedIndex)
+                } else {
+                    BundleDetailsImageView(name: bundleSprays[selectedIndex - bundleWeapons.count - bundleCards.count].displayName,
+                                           image: bundleSprays[selectedIndex - bundleWeapons.count - bundleCards.count].fullTransparentIcon)
+//                    .animation(Animation.smooth, value: selectedIndex)
+                }
+                
+                Spacer(minLength: 100)
+                
+                ScrollViewReader { scrollView in
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 15) {
+                            
+                            Spacer(minLength: spacerLength)
+                            
+                            ForEach(bundleWeapons.indices, id:\.self) { index in
+                                BundleDetailsGridView(image: bundleWeapons[index].displayIcon) {
+                                    selectedIndex = index
+                                }
+                                .id(index)
+                            }
+                            
+                            ForEach(bundleCards.indices, id: \.self) { index in
+                                BundleDetailsGridView(image: bundleCards[index].largeArt) {
+                                    selectedIndex = index + bundleWeapons.count
+                                }
+                                .id(index + bundleWeapons.count)
+                            }
+                            
+                            ForEach(bundleSprays.indices, id: \.self) { index in
+                                BundleDetailsGridView(image: bundleSprays[index].fullTransparentIcon) {
+                                    selectedIndex = index + bundleWeapons.count + bundleSprays.count
+                                }
+                                .id(index + bundleWeapons.count + bundleSprays.count)
+                            }
+                            
+                            Spacer(minLength: spacerLength)
                         }
-                        
-                        ForEach(bundleCards, id: \.uuid) { card in
-                            BundleDetailsGridView(image: card.largeArt)
-                        }
-                        
-                        ForEach(bundleSprays, id: \.uuid) { spray in
-                            BundleDetailsGridView(image: spray.fullTransparentIcon)
+                        .padding(.horizontal)
+                    }
+                    .onChange(of: selectedIndex) { oldValue, newValue in
+                        withAnimation(.smooth) {
+                            scrollView.scrollTo(newValue, anchor: .center)
                         }
                     }
                 }
             }
-            .padding(.horizontal)
         }
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -96,6 +153,7 @@ struct BundleDetailsView: View {
 
 struct BundleDetailsGridView: View {
     let image: String?
+    let onClick: () -> Void
     
     var body: some View {
         ZStack {
@@ -115,6 +173,52 @@ struct BundleDetailsGridView: View {
             RoundedRectangle(cornerRadius: 5)
                 .stroke(KeyVariables.primaryColor, lineWidth: 2)
         }
-        .frame(maxWidth: 100, maxHeight: 100)
+        .contentShape(RoundedRectangle(cornerRadius: 5))
+        .frame(width: 100, height: 100)
+        .onTapGesture {
+            onClick()
+        }
+    }
+}
+
+struct BundleDetailsImageView: View {
+    let name: String
+    let image: String?
+    
+    var body: some View {
+        ZStack {
+            Color.black
+                .opacity(0.75)
+                .blur(radius: 0.75)
+            
+            VStack(spacing: 10) {
+                Text(name)
+                    .font(Font.custom(KeyVariables.primaryFont, size: 20))
+                    .foregroundStyle(.foreground)
+                    .multilineTextAlignment(.center)
+                
+                Spacer(minLength: 0)
+                
+                KFImage(URL(string: image ?? ""))
+                    .placeholder {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .foregroundStyle(KeyVariables.primaryColor)
+                            .scaleEffect(3)
+                    }
+                    .resizable()
+                    .scaledToFit()
+                    .edgesIgnoringSafeArea(.all)
+                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                
+                Spacer(minLength: 0)
+            }
+            .padding()
+            
+            RoundedRectangle(cornerRadius: 5)
+                .stroke(KeyVariables.primaryColor, lineWidth: 2)
+            
+        }
+        .padding(.horizontal)
     }
 }
