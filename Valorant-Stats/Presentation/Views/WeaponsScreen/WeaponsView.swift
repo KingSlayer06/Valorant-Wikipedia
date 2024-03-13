@@ -37,6 +37,7 @@ struct WeaponsView: View {
                         })
                     }
                 }
+                .padding(.top)
             }
             .padding(.horizontal)
             .padding(.bottom, KeyVariables.bottomSafeAreaInsets)

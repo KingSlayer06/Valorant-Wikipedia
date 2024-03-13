@@ -8,6 +8,7 @@
 import Foundation
 
 enum SideMenuOptionsModel: Int, CaseIterable {
+    case home
     case agents
     case maps
     case weapons
@@ -20,6 +21,8 @@ enum SideMenuOptionsModel: Int, CaseIterable {
     
     var title: String {
         switch self {
+            case .home:
+                return "Home"
             case .agents:
                 return "Agents"
             case .maps:
@@ -46,5 +49,6 @@ extension SideMenuOptionsModel: Identifiable {
     var id: Int { return self.rawValue }
 }
 
-let menuOptions: [SideMenuOptionsModel] = [.agents, .maps, .weapons, .bundles, .contracts, .playerCards, .sprays, .ranks]
+let tabOptions: [SideMenuOptionsModel] = [.agents, .maps, .weapons]
+let menuOptions: [SideMenuOptionsModel] = [.home, .bundles, .contracts, .playerCards, .sprays, .ranks]
 

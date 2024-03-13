@@ -17,11 +17,9 @@ struct AgentContractsView: View {
     @State var selectedContract: AgentContract?
     @State var selectedChapter1: Bool = true
     
-    @State var chapter1Items: (spray1: Spray?, playerCard: PlayerCard,
-                               title: PlayerTitle, spray2: Spray?,
-                               currency: GameCurrency)
-    
-    @State var chapter2Items: [Any] = []
+//    @State var chapter1Items: (spray1: Spray?, playerCard: PlayerCard,
+//                               title: PlayerTitle, spray2: Spray?,
+//                               currency: GameCurrency)
     
     let columns = [GridItem(.flexible(), spacing: 20),
                    GridItem(.flexible(), spacing: 20)]
@@ -64,38 +62,38 @@ struct AgentContractsView: View {
         .onChange(of: selectedAgent) {
             selectedChapter1 = true
         }
-        .onChange(of: selectedContract) {
-            chapter1Items.spray1 = nil
-            chapter1Items.spray2 = nil
-            selectedContract?.content.chapters[0].levels.forEach { level in
-                switch level.reward.type {
-                    case "Spray":
-                        viewModel.getSpray(uuid: level.reward.uuid) { spray in
-                            if chapter1Items.spray1 == nil {
-                                chapter1Items.spray1 = spray
-                            } else {
-                                chapter1Items.spray2 = spray
-                            }
-                        }
-                    case "PlayerCard":
-                        viewModel.getPlayerCard(uuid: level.reward.uuid) { playerCard in
-                            chapter1Items.playerCard = playerCard
-                        }
-                    case "Title":
-                        viewModel.getPlayerTitle(uuid: level.reward.uuid) { title in
-                            chapter1Items.title = title
-                        }
-                    case "Currency":
-                        viewModel.getCurrency(uuid: level.reward.uuid) { currency in
-                            chapter1Items.currency = currency
-                        }
-                    default:
-                        break
-                }
-            }
-            
-            chapter2Items.removeAll()
-        }
+//        .onChange(of: selectedContract) {
+//            chapter1Items.spray1 = nil
+//            chapter1Items.spray2 = nil
+//            selectedContract?.content.chapters[0].levels.forEach { level in
+//                switch level.reward.type {
+//                    case "Spray":
+//                        viewModel.getSpray(uuid: level.reward.uuid) { spray in
+//                            if chapter1Items.spray1 == nil {
+//                                chapter1Items.spray1 = spray
+//                            } else {
+//                                chapter1Items.spray2 = spray
+//                            }
+//                        }
+//                    case "PlayerCard":
+//                        viewModel.getPlayerCard(uuid: level.reward.uuid) { playerCard in
+//                            chapter1Items.playerCard = playerCard
+//                        }
+//                    case "Title":
+//                        viewModel.getPlayerTitle(uuid: level.reward.uuid) { title in
+//                            chapter1Items.title = title
+//                        }
+//                    case "Currency":
+//                        viewModel.getCurrency(uuid: level.reward.uuid) { currency in
+//                            chapter1Items.currency = currency
+//                        }
+//                    default:
+//                        break
+//                }
+//            }
+//            
+//            chapter2Items.removeAll()
+//        }
         .onAppear {
             selectedAgent = homeViewModel.agents.first
             selectedContract = homeViewModel.contracts.first(where: { $0.displayName.contains(selectedAgent!.displayName) })
@@ -250,8 +248,4 @@ extension AgentContractsView {
         }
         .padding(.vertical)
     }
-}
-
-#Preview {
-    AgentContractsView()
 }

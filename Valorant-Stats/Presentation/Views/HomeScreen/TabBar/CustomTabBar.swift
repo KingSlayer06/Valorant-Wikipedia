@@ -13,25 +13,36 @@ struct CustomTabBar: View {
     var body: some View {
         VStack {
             HStack {
-                ForEach(menuOptions, id: \.id) { tab in
+                ForEach(tabOptions, id: \.id) { tab in
                     
                     VStack(spacing: 10) {
-                        Image(systemName: "")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 25, height: 25)
-                            .foregroundStyle(homeViewModel.selectedTab == tab ? KeyVariables.primaryColor : .white)
+                        Text(tab.title)
+                            .font(Font.custom(KeyVariables.primaryFont, size: 15))
+                            .frame(width: 100, height: 30)
+                            .foregroundStyle(.white)
+                            .background {
+                                if homeViewModel.selectedBottomTab == tab {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .fill(KeyVariables.primaryColor)
+                                        .frame(width: 100, height: 30)
+                                }
+                            }
                     }
+                    .animation(.snappy, value: homeViewModel.selectedBottomTab == tab)
                     .onTapGesture {
-                        homeViewModel.selectedTab = tab
+                        homeViewModel.selectedBottomTab = tab
                     }
-                    
-                    Spacer()
                 }
             }
             .padding(.bottom, 15)
             .frame(height: 108)
-            .background(KeyVariables.secondaryColor)
+            .frame(maxWidth: .infinity)
+            .background {
+                KeyVariables.secondaryColor
+                    .opacity(0.75)
+                    .blur(radius: 0.75)
+            }
+            .clipShape(UnevenRoundedRectangle(cornerRadii: RectangleCornerRadii(topLeading: 20, bottomLeading: 0, bottomTrailing: 0, topTrailing: 20)))
         }
     }
 }

@@ -32,12 +32,8 @@ struct HomeView: View {
                     
                     VStack(spacing: 0) {
                         switch(homeViewModel.selectedTab) {
-                            case .agents:
-                                AgentsView()
-                            case .maps:
-                                MapsView()
-                            case .weapons:
-                                WeaponsView()
+                            case .home:
+                                tabBar
                             case .playerCards:
                                 PlayerCardsView()
                             case .sprays:
@@ -50,6 +46,8 @@ struct HomeView: View {
                                 AgentContractsView()
                             case .patchNotes:
                                 PatchNotesView()
+                            default:
+                                EmptyView()
                         }
                     }
                     .frame(width: UIScreen.main.bounds.width)
@@ -179,6 +177,32 @@ struct HomeView: View {
         }
         
         lastStoredOffset = offset
+    }
+}
+
+extension HomeView {
+    
+    var tabBar: some View {
+        TabView(selection: $homeViewModel.selectedBottomTab) {
+            ForEach(tabOptions) { tab in
+                switch tab {
+                    case .agents:
+                        AgentsView()
+                            .tag(tab)
+                    case .maps:
+                        MapsView()
+                            .tag(tab)
+                    case .weapons:
+                        WeaponsView()
+                            .tag(tab)
+                    default:
+                        EmptyView()
+                }
+            }
+        }
+        .overlay(alignment: .bottom) {
+            CustomTabBar()
+        }
     }
 }
 

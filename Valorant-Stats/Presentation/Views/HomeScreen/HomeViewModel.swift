@@ -12,7 +12,8 @@ import SwiftWebP
 import CoreImage
 
 final class HomeViewModel: NSObject, ObservableObject {
-    @Published var selectedTab: SideMenuOptionsModel = .agents
+    @Published var selectedTab: SideMenuOptionsModel = .home
+    @Published var selectedBottomTab: SideMenuOptionsModel = .agents
     
     @Published var agents = [Agent]()
     @Published var filteredAgents = [Agent]()
