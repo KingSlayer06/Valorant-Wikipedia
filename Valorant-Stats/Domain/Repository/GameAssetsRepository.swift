@@ -20,7 +20,7 @@ protocol PGameAssetsRepository {
     
     func getSprayById(uuid: String, completion: @escaping (Result<GetSprayByIdResponse, AFError>) -> Void)
     func getPlayerCardById(uuid: String, completion: @escaping (Result<GetPlayerCardByIdResponse, AFError>) -> Void)
-    func getTitleById(uuid: String, completion: @escaping (Result<GetPlayerTitleByIdResponse, AFError>) -> Void)
+    func getPlayerTitleById(uuid: String, completion: @escaping (Result<GetPlayerTitleByIdResponse, AFError>) -> Void)
     func getCurrencyById(uuid: String, completion: @escaping (Result<GetCurrencyByIdResponse, AFError>) -> Void)
 }
 

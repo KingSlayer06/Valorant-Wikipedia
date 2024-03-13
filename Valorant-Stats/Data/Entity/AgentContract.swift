@@ -7,10 +7,14 @@
 
 import Foundation
 
-struct AgentContract: Codable {
+struct AgentContract: Codable, Equatable {
     let uuid: String
     let displayName: String
     let content: ContractContent
+    
+    static func == (lhs: AgentContract, rhs: AgentContract) -> Bool {
+        return lhs.uuid == rhs.uuid
+    }
 }
 
 struct ContractContent: Codable {
