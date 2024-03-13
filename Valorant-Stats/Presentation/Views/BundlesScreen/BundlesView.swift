@@ -61,7 +61,7 @@ struct BundleGridView: View {
     let bundle: WeaponBundle
     
     var body: some View {
-        let width = UIScreen.main.bounds.width
+        let width = UIScreen.main.bounds.width/2 - 20
         
         ZStack {
             KFImage(URL(string: bundle.verticalPromoImage ?? ""))
@@ -73,10 +73,10 @@ struct BundleGridView: View {
                 }
                 .resizable()
                 .scaledToFill()
-//                .clipShape(RoundedRectangle(cornerRadius: 5))
+                .frame(maxWidth: width)
             
             LinearGradient(colors: [.black.opacity(0.8), .clear], startPoint: .bottom, endPoint: .top)
-//                .clipShape(RoundedRectangle(cornerRadius: 5))
+                .frame(maxWidth: width)
             
             Text(bundle.displayName)
                 .font(Font.custom(KeyVariables.primaryFont, size: 20))
@@ -85,9 +85,10 @@ struct BundleGridView: View {
             
             RoundedRectangle(cornerRadius: 5)
                 .stroke(KeyVariables.primaryColor, lineWidth: 2)
+                .frame(maxWidth: width)
         }
-        .clipShape(RoundedRectangle(cornerRadius: 5))
         .frame(maxHeight: 300)
+        .clipShape(RoundedRectangle(cornerRadius: 5))
     }
 }
 

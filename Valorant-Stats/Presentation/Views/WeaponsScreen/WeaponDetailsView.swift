@@ -30,7 +30,7 @@ struct WeaponDetailsView: View {
                             }
                             .resizable()
                             .scaledToFit()
-                            .frame(height: 200)
+                            .frame(maxWidth: .infinity, maxHeight: 200)
                         
                         weaponName
                         weaponCreds

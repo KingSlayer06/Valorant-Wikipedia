@@ -8,6 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		2260A0B65DF5B8A443BF777C /* Pods_Valorant_Stats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6135AD81346E32F9827192D0 /* Pods_Valorant_Stats.framework */; };
+		A31E83FB2BA1B256006A283E /* GetSprayByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31E83FA2BA1B256006A283E /* GetSprayByIdUseCase.swift */; };
+		A31E83FD2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31E83FC2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift */; };
+		A34131A02BA1701A0004E908 /* AgentContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = A341319F2BA1701A0004E908 /* AgentContract.swift */; };
+		A34131A22BA1711F0004E908 /* GetAgentContractsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34131A12BA1711F0004E908 /* GetAgentContractsResponse.swift */; };
+		A34131A42BA171590004E908 /* GetAgentContractsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34131A32BA171590004E908 /* GetAgentContractsUseCase.swift */; };
+		A34131A72BA174FC0004E908 /* AgentContractsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34131A62BA174FC0004E908 /* AgentContractsView.swift */; };
+		A34131A92BA1ACAE0004E908 /* AgentContractsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34131A82BA1ACAE0004E908 /* AgentContractsViewModel.swift */; };
+		A34131AB2BA1ADF90004E908 /* PlayerTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34131AA2BA1ADF90004E908 /* PlayerTitle.swift */; };
+		A34131AD2BA1AE6F0004E908 /* GetPlayerTitleByIdResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34131AC2BA1AE6F0004E908 /* GetPlayerTitleByIdResponse.swift */; };
+		A34131B12BA1AF930004E908 /* GetPlayerCardByIdResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34131B02BA1AF930004E908 /* GetPlayerCardByIdResponse.swift */; };
+		A34131B32BA1AFC90004E908 /* GetSprayByIdResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34131B22BA1AFC90004E908 /* GetSprayByIdResponse.swift */; };
+		A34131B52BA1B0690004E908 /* GameCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34131B42BA1B0690004E908 /* GameCurrency.swift */; };
+		A34131B72BA1B0C10004E908 /* GetCurrencyByIdResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34131B62BA1B0C10004E908 /* GetCurrencyByIdResponse.swift */; };
 		A355D6242B9980F600D4DF6F /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355D6232B9980F600D4DF6F /* CustomTabBar.swift */; };
 		A355D6262B99983100D4DF6F /* GetBuddiesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355D6252B99983100D4DF6F /* GetBuddiesResponse.swift */; };
 		A355D6282B99984600D4DF6F /* Buddy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A355D6272B99984600D4DF6F /* Buddy.swift */; };
@@ -46,6 +59,8 @@
 		A388B6D22B8DC1DC007D87DD /* GetSpraysUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A388B6D12B8DC1DC007D87DD /* GetSpraysUseCase.swift */; };
 		A388B6D52B8DC294007D87DD /* SpraysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A388B6D42B8DC294007D87DD /* SpraysView.swift */; };
 		A388B6D92B8DC6A4007D87DD /* WeaponSkinDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A388B6D82B8DC6A4007D87DD /* WeaponSkinDetailsView.swift */; };
+		A392377F2BA1B3F1004DF58E /* GetPlayerTitleByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392377E2BA1B3F1004DF58E /* GetPlayerTitleByIdUseCase.swift */; };
+		A39237812BA1B470004DF58E /* GetCurrencyByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39237802BA1B470004DF58E /* GetCurrencyByIdUseCase.swift */; };
 		A3A875512B9587DC00840A2B /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A875502B9587DC00840A2B /* SplashView.swift */; };
 		A3A875532B95ACC700840A2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3A875522B95ACC700840A2B /* GoogleService-Info.plist */; };
 		A3A875562B95AF0300840A2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A875552B95AF0300840A2B /* AppDelegate.swift */; };
@@ -86,6 +101,19 @@
 /* Begin PBXFileReference section */
 		6135AD81346E32F9827192D0 /* Pods_Valorant_Stats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Valorant_Stats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F88229B6EBFFB447D832AE9 /* Pods-Valorant-Stats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Valorant-Stats.release.xcconfig"; path = "Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats.release.xcconfig"; sourceTree = "<group>"; };
+		A31E83FA2BA1B256006A283E /* GetSprayByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSprayByIdUseCase.swift; sourceTree = "<group>"; };
+		A31E83FC2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlayerCardByIdUseCase.swift; sourceTree = "<group>"; };
+		A341319F2BA1701A0004E908 /* AgentContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentContract.swift; sourceTree = "<group>"; };
+		A34131A12BA1711F0004E908 /* GetAgentContractsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAgentContractsResponse.swift; sourceTree = "<group>"; };
+		A34131A32BA171590004E908 /* GetAgentContractsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAgentContractsUseCase.swift; sourceTree = "<group>"; };
+		A34131A62BA174FC0004E908 /* AgentContractsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentContractsView.swift; sourceTree = "<group>"; };
+		A34131A82BA1ACAE0004E908 /* AgentContractsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentContractsViewModel.swift; sourceTree = "<group>"; };
+		A34131AA2BA1ADF90004E908 /* PlayerTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTitle.swift; sourceTree = "<group>"; };
+		A34131AC2BA1AE6F0004E908 /* GetPlayerTitleByIdResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlayerTitleByIdResponse.swift; sourceTree = "<group>"; };
+		A34131B02BA1AF930004E908 /* GetPlayerCardByIdResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlayerCardByIdResponse.swift; sourceTree = "<group>"; };
+		A34131B22BA1AFC90004E908 /* GetSprayByIdResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSprayByIdResponse.swift; sourceTree = "<group>"; };
+		A34131B42BA1B0690004E908 /* GameCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCurrency.swift; sourceTree = "<group>"; };
+		A34131B62BA1B0C10004E908 /* GetCurrencyByIdResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrencyByIdResponse.swift; sourceTree = "<group>"; };
 		A355D6232B9980F600D4DF6F /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		A355D6252B99983100D4DF6F /* GetBuddiesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBuddiesResponse.swift; sourceTree = "<group>"; };
 		A355D6272B99984600D4DF6F /* Buddy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buddy.swift; sourceTree = "<group>"; };
@@ -122,6 +150,8 @@
 		A388B6D12B8DC1DC007D87DD /* GetSpraysUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSpraysUseCase.swift; sourceTree = "<group>"; };
 		A388B6D42B8DC294007D87DD /* SpraysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpraysView.swift; sourceTree = "<group>"; };
 		A388B6D82B8DC6A4007D87DD /* WeaponSkinDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponSkinDetailsView.swift; sourceTree = "<group>"; };
+		A392377E2BA1B3F1004DF58E /* GetPlayerTitleByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlayerTitleByIdUseCase.swift; sourceTree = "<group>"; };
+		A39237802BA1B470004DF58E /* GetCurrencyByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrencyByIdUseCase.swift; sourceTree = "<group>"; };
 		A3A875502B9587DC00840A2B /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		A3A875522B95ACC700840A2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A3A875552B95AF0300840A2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -182,6 +212,69 @@
 				6135AD81346E32F9827192D0 /* Pods_Valorant_Stats.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A31E83F82BA1B1D6006A283E /* GetAll */ = {
+			isa = PBXGroup;
+			children = (
+				A3F70BAE2B8C72A600CBA5C6 /* GetAgentsUseCase.swift */,
+				A3F70BD42B8CDCBE00CBA5C6 /* GetWeaponsUseCase.swift */,
+				A3F70BE12B8CFE5500CBA5C6 /* GetMapsUseCase.swift */,
+				A388B6C92B8DB4A4007D87DD /* GetPlayerCardsUseCase.swift */,
+				A388B6D12B8DC1DC007D87DD /* GetSpraysUseCase.swift */,
+				A37A50B42B93A7CC00E55393 /* GetRanksUseCase.swift */,
+				A355D6292B9998A300D4DF6F /* GetBuddiesUseCase.swift */,
+				A355D6362B99B9D200D4DF6F /* GetBundlesUseCase.swift */,
+				A34131A32BA171590004E908 /* GetAgentContractsUseCase.swift */,
+			);
+			path = GetAll;
+			sourceTree = "<group>";
+		};
+		A31E83F92BA1B1E3006A283E /* GetById */ = {
+			isa = PBXGroup;
+			children = (
+				A31E83FA2BA1B256006A283E /* GetSprayByIdUseCase.swift */,
+				A31E83FC2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift */,
+				A392377E2BA1B3F1004DF58E /* GetPlayerTitleByIdUseCase.swift */,
+				A39237802BA1B470004DF58E /* GetCurrencyByIdUseCase.swift */,
+			);
+			path = GetById;
+			sourceTree = "<group>";
+		};
+		A34131A52BA174DE0004E908 /* AgentContractsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A34131A62BA174FC0004E908 /* AgentContractsView.swift */,
+				A34131A82BA1ACAE0004E908 /* AgentContractsViewModel.swift */,
+			);
+			path = AgentContractsScreen;
+			sourceTree = "<group>";
+		};
+		A34131AE2BA1AF030004E908 /* GetById */ = {
+			isa = PBXGroup;
+			children = (
+				A34131AC2BA1AE6F0004E908 /* GetPlayerTitleByIdResponse.swift */,
+				A34131B02BA1AF930004E908 /* GetPlayerCardByIdResponse.swift */,
+				A34131B22BA1AFC90004E908 /* GetSprayByIdResponse.swift */,
+				A34131B62BA1B0C10004E908 /* GetCurrencyByIdResponse.swift */,
+			);
+			path = GetById;
+			sourceTree = "<group>";
+		};
+		A34131AF2BA1AF1D0004E908 /* GetAll */ = {
+			isa = PBXGroup;
+			children = (
+				A3F70BCA2B8CB21C00CBA5C6 /* GetAgentsResponse.swift */,
+				A3F70BD62B8CDD0C00CBA5C6 /* GetWeaponsResponse.swift */,
+				A3F70BE32B8CFEA600CBA5C6 /* GetMapsResponse.swift */,
+				A388B6CB2B8DB4CD007D87DD /* GetPlayerCardsResponse.swift */,
+				A388B6CF2B8DC187007D87DD /* GetSpraysResponse.swift */,
+				A37A50B22B93A78400E55393 /* GetRanksResponse.swift */,
+				A355D6252B99983100D4DF6F /* GetBuddiesResponse.swift */,
+				A355D6342B99B94800D4DF6F /* GetBundlesResponse.swift */,
+				A34131A12BA1711F0004E908 /* GetAgentContractsResponse.swift */,
+			);
+			path = GetAll;
 			sourceTree = "<group>";
 		};
 		A355D6222B9980E600D4DF6F /* TabBar */ = {
@@ -336,6 +429,7 @@
 				A388B6D32B8DC281007D87DD /* SpraysScreen */,
 				A37A50AD2B93A67200E55393 /* RanksScreen */,
 				A355D62F2B99B82B00D4DF6F /* BundlesScreen */,
+				A34131A52BA174DE0004E908 /* AgentContractsScreen */,
 				A372A5D42B961FD000FF07A7 /* PatchNotesScreen */,
 				A3A8755B2B95CE7B00840A2B /* AboutScreen */,
 			);
@@ -388,14 +482,8 @@
 		A3F70BA12B8C6EF700CBA5C6 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				A3F70BAE2B8C72A600CBA5C6 /* GetAgentsUseCase.swift */,
-				A3F70BD42B8CDCBE00CBA5C6 /* GetWeaponsUseCase.swift */,
-				A3F70BE12B8CFE5500CBA5C6 /* GetMapsUseCase.swift */,
-				A388B6C92B8DB4A4007D87DD /* GetPlayerCardsUseCase.swift */,
-				A388B6D12B8DC1DC007D87DD /* GetSpraysUseCase.swift */,
-				A37A50B42B93A7CC00E55393 /* GetRanksUseCase.swift */,
-				A355D6292B9998A300D4DF6F /* GetBuddiesUseCase.swift */,
-				A355D6362B99B9D200D4DF6F /* GetBundlesUseCase.swift */,
+				A31E83F82BA1B1D6006A283E /* GetAll */,
+				A31E83F92BA1B1E3006A283E /* GetById */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -419,6 +507,9 @@
 				A37A50B02B93A6EA00E55393 /* Rank.swift */,
 				A355D6272B99984600D4DF6F /* Buddy.swift */,
 				A355D6322B99B87300D4DF6F /* WeaponBundle.swift */,
+				A341319F2BA1701A0004E908 /* AgentContract.swift */,
+				A34131AA2BA1ADF90004E908 /* PlayerTitle.swift */,
+				A34131B42BA1B0690004E908 /* GameCurrency.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -453,14 +544,8 @@
 		A3F70BC92B8CB1FB00CBA5C6 /* ResponseModel */ = {
 			isa = PBXGroup;
 			children = (
-				A3F70BCA2B8CB21C00CBA5C6 /* GetAgentsResponse.swift */,
-				A3F70BD62B8CDD0C00CBA5C6 /* GetWeaponsResponse.swift */,
-				A3F70BE32B8CFEA600CBA5C6 /* GetMapsResponse.swift */,
-				A388B6CB2B8DB4CD007D87DD /* GetPlayerCardsResponse.swift */,
-				A388B6CF2B8DC187007D87DD /* GetSpraysResponse.swift */,
-				A37A50B22B93A78400E55393 /* GetRanksResponse.swift */,
-				A355D6252B99983100D4DF6F /* GetBuddiesResponse.swift */,
-				A355D6342B99B94800D4DF6F /* GetBundlesResponse.swift */,
+				A34131AF2BA1AF1D0004E908 /* GetAll */,
+				A34131AE2BA1AF030004E908 /* GetById */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -631,6 +716,7 @@
 			files = (
 				A372A5D82B96201000FF07A7 /* WebViewRepresentable.swift in Sources */,
 				A355D6332B99B87300D4DF6F /* WeaponBundle.swift in Sources */,
+				A34131B72BA1B0C10004E908 /* GetCurrencyByIdResponse.swift in Sources */,
 				A355D6282B99984600D4DF6F /* Buddy.swift in Sources */,
 				A355D6262B99983100D4DF6F /* GetBuddiesResponse.swift in Sources */,
 				A3F70BC82B8CAD8200CBA5C6 /* Haptics.swift in Sources */,
@@ -645,20 +731,26 @@
 				A355D62A2B9998A300D4DF6F /* GetBuddiesUseCase.swift in Sources */,
 				A3A8755A2B95B33900840A2B /* DevMode.swift in Sources */,
 				A3F70BC42B8CA62200CBA5C6 /* AgentsView.swift in Sources */,
+				A31E83FD2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift in Sources */,
 				A3F70BDB2B8CE8E000CBA5C6 /* WeaponDetailsView.swift in Sources */,
 				A3F70BD32B8CCF7200CBA5C6 /* MapsView.swift in Sources */,
 				A37A50BB2B94244600E55393 /* StickerManager.swift in Sources */,
+				A34131B32BA1AFC90004E908 /* GetSprayByIdResponse.swift in Sources */,
 				A3A875512B9587DC00840A2B /* SplashView.swift in Sources */,
 				A3F70BBD2B8C7C7100CBA5C6 /* HomeViewModel.swift in Sources */,
 				A37A50C52B9426E400E55393 /* UIImageExtension.swift in Sources */,
 				A3F70BB82B8C74E200CBA5C6 /* SideMenuRowView.swift in Sources */,
 				A388B6C42B8DB2B2007D87DD /* PlayerCardsView.swift in Sources */,
+				A39237812BA1B470004DF58E /* GetCurrencyByIdUseCase.swift in Sources */,
 				A3F70BBB2B8C769600CBA5C6 /* SideMenuOptionsModel.swift in Sources */,
 				A37A50AC2B93987000E55393 /* AVPlayerControllerRepresentable.swift in Sources */,
 				A37A50B32B93A78400E55393 /* GetRanksResponse.swift in Sources */,
+				A34131B12BA1AF930004E908 /* GetPlayerCardByIdResponse.swift in Sources */,
 				A3A8755D2B95CE8A00840A2B /* AboutView.swift in Sources */,
+				A34131A92BA1ACAE0004E908 /* AgentContractsViewModel.swift in Sources */,
 				A388B6CC2B8DB4CD007D87DD /* GetPlayerCardsResponse.swift in Sources */,
 				A388B6C62B8DB359007D87DD /* PlayerCard.swift in Sources */,
+				A34131A42BA171590004E908 /* GetAgentContractsUseCase.swift in Sources */,
 				A3F70BDE2B8CEAC300CBA5C6 /* StatsCellView.swift in Sources */,
 				A388B6D52B8DC294007D87DD /* SpraysView.swift in Sources */,
 				A355D6352B99B94800D4DF6F /* GetBundlesResponse.swift in Sources */,
@@ -668,20 +760,27 @@
 				A37A50AF2B93A68100E55393 /* RanksView.swift in Sources */,
 				A388B6D22B8DC1DC007D87DD /* GetSpraysUseCase.swift in Sources */,
 				A3F70BCD2B8CC12E00CBA5C6 /* AgentDetailsView.swift in Sources */,
+				A34131AD2BA1AE6F0004E908 /* GetPlayerTitleByIdResponse.swift in Sources */,
+				A392377F2BA1B3F1004DF58E /* GetPlayerTitleByIdUseCase.swift in Sources */,
 				A3F70BD92B8CDD2700CBA5C6 /* Weapon.swift in Sources */,
 				A388B6CE2B8DC145007D87DD /* Spray.swift in Sources */,
 				A3F70BA72B8C722400CBA5C6 /* GameAssetsRepository.swift in Sources */,
 				A3F70BE22B8CFE5500CBA5C6 /* GetMapsUseCase.swift in Sources */,
 				A3F70BD72B8CDD0C00CBA5C6 /* GetWeaponsResponse.swift in Sources */,
 				A3F70BE42B8CFEA600CBA5C6 /* GetMapsResponse.swift in Sources */,
+				A34131AB2BA1ADF90004E908 /* PlayerTitle.swift in Sources */,
 				A37A50B72B93ADF200E55393 /* ColorExtension.swift in Sources */,
 				A355D6392B99C98500D4DF6F /* BundleDetailsView.swift in Sources */,
+				A34131A02BA1701A0004E908 /* AgentContract.swift in Sources */,
 				A355D6372B99B9D200D4DF6F /* GetBundlesUseCase.swift in Sources */,
+				A34131A22BA1711F0004E908 /* GetAgentContractsResponse.swift in Sources */,
 				A355D6242B9980F600D4DF6F /* CustomTabBar.swift in Sources */,
 				A3F70BC62B8CA8C900CBA5C6 /* Agent.swift in Sources */,
 				A355D62E2B99A07D00D4DF6F /* WeaponBuddyDetailView.swift in Sources */,
 				A3F70B8C2B8C522A00CBA5C6 /* HomeView.swift in Sources */,
 				A37A50B92B941D2B00E55393 /* ShimmerEffect.swift in Sources */,
+				A31E83FB2BA1B256006A283E /* GetSprayByIdUseCase.swift in Sources */,
+				A34131B52BA1B0690004E908 /* GameCurrency.swift in Sources */,
 				A372A5D32B960B6600FF07A7 /* EmailController.swift in Sources */,
 				A3F70BAF2B8C72A600CBA5C6 /* GetAgentsUseCase.swift in Sources */,
 				A3A875582B95B15000840A2B /* AppAnalytics.swift in Sources */,
@@ -694,6 +793,7 @@
 				A372A5DC2B9628C300FF07A7 /* SearchBarView.swift in Sources */,
 				A355D6312B99B83F00D4DF6F /* BundlesView.swift in Sources */,
 				A3F70BD52B8CDCBE00CBA5C6 /* GetWeaponsUseCase.swift in Sources */,
+				A34131A72BA174FC0004E908 /* AgentContractsView.swift in Sources */,
 				A37A50B52B93A7CC00E55393 /* GetRanksUseCase.swift in Sources */,
 				A3D9D7782B8F10B900C5FC64 /* KingfisherManagerExtension.swift in Sources */,
 			);

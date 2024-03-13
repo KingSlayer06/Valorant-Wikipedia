@@ -17,11 +17,18 @@ protocol PGameAssetsRepository {
     func getSprays(completion: @escaping (Result<GetSpraysResponse, AFError>) -> Void)
     func getRanks(completion: @escaping (Result<GetRanksResponse, AFError>) -> Void)
     func getBuddies(completion: @escaping (Result<GetBuddiesResponse, AFError>) -> Void)
+    
+    func getSprayById(uuid: String, completion: @escaping (Result<GetSprayByIdResponse, AFError>) -> Void)
+    func getPlayerCardById(uuid: String, completion: @escaping (Result<GetPlayerCardByIdResponse, AFError>) -> Void)
+    func getTitleById(uuid: String, completion: @escaping (Result<GetPlayerTitleByIdResponse, AFError>) -> Void)
+    func getCurrencyById(uuid: String, completion: @escaping (Result<GetCurrencyByIdResponse, AFError>) -> Void)
 }
 
 final class GameAssetsRepository: PGameAssetsRepository {
     
     private var cancellables = Set<AnyCancellable>()
+    
+    // MARK: - Fetch All
     
     func getAgents(completion: @escaping (Result<GetAgentsResponse, AFError>) -> Void) {
         print("getAgents API called")
@@ -105,6 +112,63 @@ final class GameAssetsRepository: PGameAssetsRepository {
         
         AF.request("\(KeyVariables.baseApiUrl)/v1/bundles", method: .get, parameters: nil)
             .publishDecodable(type: GetBundlesResponse.self)
+            .sink(receiveValue: { response in
+                completion(response.result)
+            })
+            .store(in: &cancellables)
+    }
+    
+    func getAgentContracts(completion: @escaping (Result<GetAgentContractsResponse, AFError>) -> Void) {
+        print("getAgentContracts API called")
+        
+        AF.request("\(KeyVariables.baseApiUrl)/v1/contracts", method: .get, parameters: nil)
+            .publishDecodable(type: GetAgentContractsResponse.self)
+            .sink(receiveValue: { response in
+                completion(response.result)
+            })
+            .store(in: &cancellables)
+    }
+    
+    // MARK: - Fetch By UUID
+    
+    func getSprayById(uuid: String, completion: @escaping (Result<GetSprayByIdResponse, AFError>) -> Void) {
+        print("getSprayById API called")
+        
+        AF.request("\(KeyVariables.baseApiUrl)/v1/sprays/\(uuid)", method: .get, parameters: nil)
+            .publishDecodable(type: GetSprayByIdResponse.self)
+            .sink(receiveValue: { response in
+                completion(response.result)
+            })
+            .store(in: &cancellables)
+    }
+    
+    func getPlayerCardById(uuid: String, completion: @escaping (Result<GetPlayerCardByIdResponse, AFError>) -> Void) {
+        print("getPlayerCardById API called")
+        
+        AF.request("\(KeyVariables.baseApiUrl)/v1/playercards/\(uuid)", method: .get, parameters: nil)
+            .publishDecodable(type: GetPlayerCardByIdResponse.self)
+            .sink(receiveValue: { response in
+                completion(response.result)
+            })
+            .store(in: &cancellables)
+    }
+    
+    func getPlayerTitleById(uuid: String, completion: @escaping (Result<GetPlayerTitleByIdResponse, AFError>) -> Void) {
+        print("getPlayerTitleById API called")
+        
+        AF.request("\(KeyVariables.baseApiUrl)/v1/playertitles/\(uuid)", method: .get, parameters: nil)
+            .publishDecodable(type: GetPlayerTitleByIdResponse.self)
+            .sink(receiveValue: { response in
+                completion(response.result)
+            })
+            .store(in: &cancellables)
+    }
+    
+    func getCurrencyById(uuid: String, completion: @escaping (Result<GetCurrencyByIdResponse, AFError>) -> Void) {
+        print("getCurrencyById API called")
+        
+        AF.request("\(KeyVariables.baseApiUrl)/v1/currencies/\(uuid)", method: .get, parameters: nil)
+            .publishDecodable(type: GetCurrencyByIdResponse.self)
             .sink(receiveValue: { response in
                 completion(response.result)
             })

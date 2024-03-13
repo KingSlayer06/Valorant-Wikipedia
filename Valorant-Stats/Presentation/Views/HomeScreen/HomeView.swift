@@ -46,6 +46,8 @@ struct HomeView: View {
                                 RanksView()
                             case .bundles:
                                 BundlesView()
+                            case .contracts:
+                                AgentContractsView()
                             case .patchNotes:
                                 PatchNotesView()
                         }
@@ -119,6 +121,7 @@ struct HomeView: View {
             homeViewModel.getSprays()
             homeViewModel.getRanks()
             homeViewModel.getBundles()
+            homeViewModel.getAgentContracts()
         }
         .animation(.easeOut, value: offset == 0)
         .onChange(of: showMenu) {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Agent: Codable {
+struct Agent: Codable, Equatable {
     let uuid: String
     let displayName: String
     let description: String

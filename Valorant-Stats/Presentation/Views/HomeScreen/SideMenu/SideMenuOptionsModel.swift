@@ -15,6 +15,7 @@ enum SideMenuOptionsModel: Int, CaseIterable {
     case sprays
     case ranks
     case bundles
+    case contracts
     case patchNotes
     
     var title: String {
@@ -33,6 +34,8 @@ enum SideMenuOptionsModel: Int, CaseIterable {
                 return "Ranks"
             case .bundles:
                 return "Bundles"
+            case .contracts:
+                return "Agent Contracts"
             case .patchNotes:
                 return "Patch Notes"
         }
@@ -43,5 +46,5 @@ extension SideMenuOptionsModel: Identifiable {
     var id: Int { return self.rawValue }
 }
 
-let menuOptions: [SideMenuOptionsModel] = [.agents, .maps, .weapons, .bundles, .playerCards, .sprays, .ranks]
+let menuOptions: [SideMenuOptionsModel] = [.agents, .maps, .weapons, .bundles, .contracts, .playerCards, .sprays, .ranks]
 

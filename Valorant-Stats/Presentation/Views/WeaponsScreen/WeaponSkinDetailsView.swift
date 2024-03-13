@@ -35,11 +35,11 @@ struct WeaponSkinDetailsView: View {
                         ProgressView()
                             .progressViewStyle(CircularProgressViewStyle())
                             .foregroundStyle(KeyVariables.primaryColor)
-                            .scaleEffect(5)
+                            .scaleEffect(3)
                     }
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 200)
+                    .frame(maxWidth: .infinity, maxHeight: 200, alignment: .center)
                 
                 Text("Colors")
                     .font(Font.custom(KeyVariables.primaryFont, size: 20))

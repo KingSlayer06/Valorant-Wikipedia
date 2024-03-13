@@ -24,6 +24,7 @@ final class HomeViewModel: NSObject, ObservableObject {
     @Published var tiers = [Tier]()
     @Published var buddies = [Buddy]()
     @Published var bundles = [WeaponBundle]()
+    @Published var contracts = [AgentContract]()
     @Published var agentRoles = [AgentRole]()
     @Published var weaponCatagories = [String]()
     
@@ -40,6 +41,7 @@ final class HomeViewModel: NSObject, ObservableObject {
     private var getRanksUseCase: PGetRanksUseCase?
     private var getBuddiesUseCase: PGetBuddiesUseCase?
     private var getBundlesUseCase: PGetBundlesUseCase?
+    private var getAgentsContractsUseCase: PGetAgentContractsUseCase?
     
     override init() {
         super.init()
@@ -52,6 +54,7 @@ final class HomeViewModel: NSObject, ObservableObject {
         self.getRanksUseCase = GetRanksUseCase(gameAssetsRepo: GameAssetsRepository())
         self.getBuddiesUseCase = GetBuddiesUseCase(gameAssetsRepo: GameAssetsRepository())
         self.getBundlesUseCase = GetBundlesUseCase(gameAssetsRepo: GameAssetsRepository())
+        self.getAgentsContractsUseCase = GetAgentContractsUseCase(gameAssetsRepo: GameAssetsRepository())
     }
     
     func getAgents() {
@@ -120,7 +123,7 @@ final class HomeViewModel: NSObject, ObservableObject {
                 }
                 
             case .failure(let error):
-                print("Failed to fetch agent data \(error)")
+                print("Failed to fetch weapons data \(error)")
             }
         }
     }
@@ -145,7 +148,7 @@ final class HomeViewModel: NSObject, ObservableObject {
                                                       $0.displayName == "The Range") }
                 
             case .failure(let error):
-                print("Failed to fetch agent data \(error)")
+                print("Failed to fetch maps data \(error)")
             }
         }
     }
@@ -157,7 +160,7 @@ final class HomeViewModel: NSObject, ObservableObject {
                 self?.playerCards = response.data
                 
             case .failure(let error):
-                print("Failed to fetch agent data \(error)")
+                print("Failed to fetch player cards data \(error)")
             }
         }
     }
@@ -169,7 +172,7 @@ final class HomeViewModel: NSObject, ObservableObject {
                 self?.sprays = response.data.filter { !$0.isNullSpray && $0.fullTransparentIcon != nil }
                 
             case .failure(let error):
-                print("Failed to fetch agent data \(error)")
+                print("Failed to fetch sprays data \(error)")
             }
         }
     }
@@ -183,7 +186,7 @@ final class HomeViewModel: NSObject, ObservableObject {
                                                                    $0.tierName == "Unused2") }
                 
             case .failure(let error):
-                print("Failed to fetch agent data \(error)")
+                print("Failed to fetch ranks data \(error)")
             }
         }
     }
@@ -194,7 +197,7 @@ final class HomeViewModel: NSObject, ObservableObject {
             case .success(let response):
                 self?.buddies = response.data
             case .failure(let error):
-                print("Failed to fetch agent data \(error)")
+                print("Failed to fetch buddies data \(error)")
             }
         }
     }
@@ -205,7 +208,18 @@ final class HomeViewModel: NSObject, ObservableObject {
             case .success(let response):
                 self?.bundles = response.data
             case .failure(let error):
-                print("Failed to fetch agent data \(error)")
+                print("Failed to fetch bundles data \(error)")
+            }
+        }
+    }
+                                                                  
+    func getAgentContracts() {
+        self.getAgentsContractsUseCase?.execute { [weak self] result in
+            switch result {
+            case .success(let response):
+                self?.contracts = response.data
+            case .failure(let error):
+                print("Failed to fetch contracts data \(error)")
             }
         }
     }
