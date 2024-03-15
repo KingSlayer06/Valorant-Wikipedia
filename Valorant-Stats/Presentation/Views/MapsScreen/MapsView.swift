@@ -31,6 +31,7 @@ struct MapsView: View {
                 .padding(.top)
             }
             .padding(.horizontal)
+            .padding(.bottom, 62)
             .padding(.bottom, KeyVariables.bottomSafeAreaInsets)
         }
         .edgesIgnoringSafeArea(.bottom)

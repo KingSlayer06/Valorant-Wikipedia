@@ -16,9 +16,8 @@ final class HomeViewModel: NSObject, ObservableObject {
     @Published var selectedBottomTab: SideMenuOptionsModel = .agents
     
     @Published var agents = [Agent]()
-    @Published var filteredAgents = [Agent]()
+//    @Published var filteredAgents = [Agent]()
     @Published var weapons = [Weapon]()
-    @Published var filteredWeapons = [Weapon]()
     @Published var maps = [GameMap]()
     @Published var playerCards = [PlayerCard]()
     @Published var sprays = [Spray]()
@@ -26,8 +25,6 @@ final class HomeViewModel: NSObject, ObservableObject {
     @Published var buddies = [Buddy]()
     @Published var bundles = [WeaponBundle]()
     @Published var contracts = [AgentContract]()
-    @Published var agentRoles = [AgentRole]()
-    @Published var weaponCatagories = [String]()
     
     @Published var shareImage: UIImage?
     @Published var showAlert: Bool = false
@@ -71,23 +68,17 @@ final class HomeViewModel: NSObject, ObservableObject {
         self.getAgentsUseCase?.execute { [weak self] result in
             switch result {
             case .success(let response):
-                self?.agents = response.data.filter { $0.isPlayableCharacter == true }
-                self?.filteredAgents = self?.agents ?? []
+                guard let self = self else { return }
+                
+                self.agents = response.data.filter { $0.isPlayableCharacter == true }
                 
                 DispatchQueue.main.async {
-                    self?.showShimmer = false
+                    self.showShimmer = false
                 }
                 
-                guard let agents = self?.agents else { return }
-                
-                for agent in agents {
-                    // Save Agents to CoreData
-                    self?.agentDataRepository?.add(agent: agent)
-                    
-                    if ((self?.agentRoles.first(where: { $0.displayName == agent.role!.displayName })) != nil) {
-                        continue
-                    }
-                    self?.agentRoles.append(agent.role!)
+                // Save Agents to CoreData
+                self.agents.forEach { agent in
+                    self.agentDataRepository?.add(agent: agent)
                 }
                 
             case .failure(let error):
@@ -96,54 +87,23 @@ final class HomeViewModel: NSObject, ObservableObject {
         }
     }
     
-    func getFilteredAgents(agentRole: AgentRole?) {
-        guard let agentRole = agentRole else {
-            filteredAgents = agents
-            return
-        }
-        
-        filteredAgents = agents.filter { $0.role?.displayName == agentRole.displayName }
-    }
-    
     func getWeapons() {
         self.getWeaponsUseCase?.execute { [weak self] result in
             switch result {
             case .success(let response):
-                self?.weapons = response.data
+                guard let self = self else { return }
                 
-                let weaponCount = self?.weapons.count ?? 0
-                for index in 0..<weaponCount {
-                    self?.weapons[index].skins.removeAll(where: { $0.displayName == "Random Favorite Skin" ||
+                self.weapons = response.data
+                
+                for index in 0..<self.weapons.count {
+                    self.weapons[index].skins.removeAll(where: { $0.displayName == "Random Favorite Skin" ||
                         $0.displayName.contains("Standard") })
-                }
-                
-                self?.filteredWeapons = self?.weapons ?? []
-                
-                guard let weapons = self?.weapons else { return }
-                
-                for weapon in weapons {
-                    if ((self?.weaponCatagories.first(where: { $0 == weapon.shopData?.categoryText })) != nil) {
-                        continue
-                    }
-                    
-                    if let catagory = weapon.shopData?.categoryText {
-                        self?.weaponCatagories.append(catagory)
-                    }
                 }
                 
             case .failure(let error):
                 print("Failed to fetch weapons data \(error)")
             }
         }
-    }
-    
-    func getFilteredWeapons(catagory: String?) {
-        guard let catagory = catagory else {
-            filteredWeapons = weapons
-            return
-        }
-        
-        filteredWeapons = weapons.filter { $0.shopData?.categoryText == catagory }
     }
     
     func getMaps() {

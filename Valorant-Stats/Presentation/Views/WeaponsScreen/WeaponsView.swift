@@ -12,6 +12,30 @@ struct WeaponsView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
     @State var selectedWeapon: String?
     
+    var weaponCatagories: [String] {
+        var catagories = [String]()
+        
+        homeViewModel.weapons.forEach { weapon in
+            if (!catagories.contains(where: { $0 == weapon.shopData?.categoryText })) {
+                if let catagory = weapon.shopData?.categoryText {
+                    catagories.append(catagory)
+                }
+            }
+        }
+        
+        return catagories
+    }
+    
+    var filteredWeapons: [Weapon] {
+        guard let selectedWeapon = selectedWeapon else { return homeViewModel.weapons }
+        
+        if selectedWeapon.contains("Melee") {
+            return homeViewModel.weapons.filter { $0.displayName == "Melee" }
+        }
+        
+        return homeViewModel.weapons.filter { $0.shopData?.categoryText == selectedWeapon }
+    }
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             ZStack {
@@ -22,11 +46,12 @@ struct WeaponsView: View {
                         HStack {
                             allWeaponsCatagory
                             selectedWeaponCatagory
+                            meleeWeaponCatagory
                             Spacer()
                         }
                     }
                     
-                    ForEach(homeViewModel.filteredWeapons, id: \.uuid) { weapon in
+                    ForEach(filteredWeapons, id: \.uuid) { weapon in
                         NavigationLink {
                             WeaponDetailsView(weapon: weapon)
                         } label: {
@@ -40,6 +65,7 @@ struct WeaponsView: View {
                 .padding(.top)
             }
             .padding(.horizontal)
+            .padding(.bottom, 62)
             .padding(.bottom, KeyVariables.bottomSafeAreaInsets)
         }
         .edgesIgnoringSafeArea(.bottom)
@@ -78,9 +104,10 @@ struct WeaponGridView: View {
                     }
                     .resizable()
                     .scaledToFit()
-                    .padding(.vertical)
+                    .padding()
             }
         }
+        .frame(height: 180)
     }
 }
 
@@ -99,12 +126,27 @@ extension WeaponsView {
             .onTapGesture {
                 selectedWeapon = nil
                 AppAnalytics.shared.WeaponTypeClick(weapon: selectedWeapon)
-                homeViewModel.getFilteredWeapons(catagory: selectedWeapon)
+            }
+    }
+    
+    var meleeWeaponCatagory: some View {
+        Text("Melee")
+            .font(Font.custom(KeyVariables.primaryFont, size: 15))
+            .foregroundStyle(selectedWeapon == "Melee" ? .white : .black)
+            .padding(.horizontal)
+            .padding(.vertical, 5)
+            .background {
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(selectedWeapon == "Melee" ? KeyVariables.primaryColor : Color.white)
+            }
+            .onTapGesture {
+                selectedWeapon = "Melee"
+                AppAnalytics.shared.WeaponTypeClick(weapon: selectedWeapon)
             }
     }
     
     var selectedWeaponCatagory: some View {
-        ForEach(homeViewModel.weaponCatagories, id: \.self) { weapon in
+        ForEach(weaponCatagories, id: \.self) { weapon in
             Text(weapon)
                 .font(Font.custom(KeyVariables.primaryFont, size: 15))
                 .foregroundStyle(isSelected(weapon) ? .white : .black)
@@ -117,7 +159,6 @@ extension WeaponsView {
                 .onTapGesture {
                     selectedWeapon = weapon
                     AppAnalytics.shared.WeaponTypeClick(weapon: selectedWeapon)
-                    homeViewModel.getFilteredWeapons(catagory: selectedWeapon)
                 }
         }
     }

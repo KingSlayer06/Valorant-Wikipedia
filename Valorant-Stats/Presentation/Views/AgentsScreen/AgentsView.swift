@@ -15,6 +15,24 @@ struct AgentsView: View {
     let columns = [GridItem(.flexible(), spacing: 20),
                    GridItem(.flexible(), spacing: 20)]
     
+    var agentRoles: [AgentRole] {
+        var roles = [AgentRole]()
+        
+        homeViewModel.agents.forEach { agent in
+            if (!roles.contains(where: { $0.displayName == agent.role!.displayName })) {
+                roles.append(agent.role!)
+            }
+        }
+        
+        return roles
+    }
+    
+    var filteredAgents: [Agent] {
+        guard let selectedRole = selectedRole else { return homeViewModel.agents }
+        
+        return homeViewModel.agents.filter { $0.role?.displayName == selectedRole.displayName }
+    }
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             ZStack {
@@ -47,7 +65,7 @@ struct AgentsView: View {
                                     .clipShape(RoundedRectangle(cornerRadius: 5))
                             }
                         } else {
-                            ForEach(homeViewModel.filteredAgents, id: \.uuid) { agent in
+                            ForEach(filteredAgents, id: \.uuid) { agent in
                                 NavigationLink {
                                     AgentDetailsView(agent: agent)
                                 } label: {
@@ -62,6 +80,7 @@ struct AgentsView: View {
                 }
             }
             .padding(.horizontal)
+            .padding(.bottom, 62)
             .padding(.bottom, KeyVariables.bottomSafeAreaInsets)
         }
         .edgesIgnoringSafeArea(.bottom)
@@ -121,12 +140,11 @@ extension AgentsView {
             .onTapGesture {
                 selectedRole = nil
                 AppAnalytics.shared.AgentRoleClick(role: selectedRole)
-                homeViewModel.getFilteredAgents(agentRole: selectedRole)
             }
     }
     
     var selectedAgentRole: some View {
-        ForEach(homeViewModel.agentRoles, id: \.uuid) { role in
+        ForEach(agentRoles, id: \.uuid) { role in
             Text(role.displayName)
                 .font(Font.custom(KeyVariables.primaryFont, size: 15))
                 .foregroundStyle(isSelected(role) ? .white : .black)
@@ -139,7 +157,6 @@ extension AgentsView {
                 .onTapGesture {
                     selectedRole = role
                     AppAnalytics.shared.AgentRoleClick(role: selectedRole)
-                    homeViewModel.getFilteredAgents(agentRole: selectedRole)
                 }
         }
     }
