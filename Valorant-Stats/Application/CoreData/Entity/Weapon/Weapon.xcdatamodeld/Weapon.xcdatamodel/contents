@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22225" systemVersion="23C64" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
-    <entity name="DamageRangesModel" representedClassName="DamageRangesModel" syncable="YES" codeGenerationType="class">
+    <entity name="DamageRangesModel" representedClassName="DamageRangesModel" syncable="YES">
         <attribute name="bodyDamage" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="headDamage" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="legDamage" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -14,7 +14,7 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="ShopDataModel" representedClassName="ShopDataModel" syncable="YES" codeGenerationType="class">
+    <entity name="ShopDataModel" representedClassName="ShopDataModel" syncable="YES">
         <attribute name="categoryText" attributeType="String"/>
         <attribute name="cost" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
@@ -25,7 +25,7 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="WeaponModel" representedClassName="WeaponModel" syncable="YES" codeGenerationType="class">
+    <entity name="WeaponModel" representedClassName="WeaponModel" syncable="YES">
         <attribute name="category" attributeType="String"/>
         <attribute name="displayIcon" attributeType="String"/>
         <attribute name="displayName" attributeType="String"/>
@@ -39,7 +39,7 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="WeaponSkinChromasModel" representedClassName="WeaponSkinChromasModel" syncable="YES" codeGenerationType="class">
+    <entity name="WeaponSkinChromasModel" representedClassName="WeaponSkinChromasModel" syncable="YES">
         <attribute name="displayName" attributeType="String"/>
         <attribute name="fullRender" optional="YES" attributeType="String"/>
         <attribute name="streamedVideo" optional="YES" attributeType="String"/>
@@ -52,7 +52,7 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="WeaponSkinLevelModel" representedClassName="WeaponSkinLevelModel" syncable="YES" codeGenerationType="class">
+    <entity name="WeaponSkinLevelModel" representedClassName="WeaponSkinLevelModel" syncable="YES">
         <attribute name="displayIcon" optional="YES" attributeType="String"/>
         <attribute name="displayName" attributeType="String"/>
         <attribute name="streamedVideo" optional="YES" attributeType="String"/>
@@ -64,7 +64,7 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="WeaponSkinModel" representedClassName="WeaponSkinModel" syncable="YES" codeGenerationType="class">
+    <entity name="WeaponSkinModel" representedClassName="WeaponSkinModel" syncable="YES">
         <attribute name="displayIcon" optional="YES" attributeType="String"/>
         <attribute name="displayName" attributeType="String"/>
         <attribute name="uuid" attributeType="String"/>
@@ -77,7 +77,7 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="WeaponStatsModel" representedClassName="WeaponStatsModel" syncable="YES" codeGenerationType="class">
+    <entity name="WeaponStatsModel" representedClassName="WeaponStatsModel" syncable="YES">
         <attribute name="fireRate" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="magazineSize" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>

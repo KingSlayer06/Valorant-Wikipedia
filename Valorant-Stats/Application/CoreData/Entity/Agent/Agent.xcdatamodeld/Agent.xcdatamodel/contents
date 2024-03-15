@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22225" systemVersion="23C64" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
-    <entity name="AgentAbilitiesModel" representedClassName="AgentAbilitiesModel" syncable="YES" codeGenerationType="class">
+    <entity name="AgentAbilitiesModel" representedClassName="AgentAbilitiesModel" syncable="YES">
         <attribute name="desc" attributeType="String"/>
         <attribute name="displayIcon" optional="YES" attributeType="String"/>
         <attribute name="displayName" attributeType="String"/>
@@ -11,7 +11,7 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="AgentModel" representedClassName="AgentModel" syncable="YES" codeGenerationType="class">
+    <entity name="AgentModel" representedClassName="AgentModel" syncable="YES">
         <attribute name="background" optional="YES" attributeType="String"/>
         <attribute name="desc" attributeType="String"/>
         <attribute name="displayIcon" attributeType="String"/>
@@ -27,7 +27,7 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="AgentRoleModel" representedClassName="AgentRoleModel" syncable="YES" codeGenerationType="class">
+    <entity name="AgentRoleModel" representedClassName="AgentRoleModel" syncable="YES">
         <attribute name="displayIcon" attributeType="String"/>
         <attribute name="displayName" attributeType="String"/>
         <attribute name="uuid" attributeType="String"/>

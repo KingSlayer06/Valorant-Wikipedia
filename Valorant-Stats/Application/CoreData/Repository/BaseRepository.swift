@@ -10,6 +10,7 @@ import Foundation
 protocol PBaseRepository {
     associatedtype T
     
+    func getAll() -> [T]
     func add(_ item: T)
     func save()
 }

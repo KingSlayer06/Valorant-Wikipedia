@@ -89,7 +89,14 @@ final class HomeViewModel: NSObject, ObservableObject {
                 self.agentDataRepository.save()
                 
             case .failure(let error):
-                print("Failed to fetch agent data \(error)")
+                print("Failed to fetch agent data \(error.localizedDescription)")
+                
+                guard let self = self else { return }
+                self.agents = self.agentDataRepository.getAll()
+                
+                DispatchQueue.main.async {
+                    self.showAgentsShimmer = false
+                }
             }
         }
     }
@@ -122,7 +129,7 @@ final class HomeViewModel: NSObject, ObservableObject {
                 self.weaponDataRepository.save()
                 
             case .failure(let error):
-                print("Failed to fetch weapons data \(error)")
+                print("Failed to fetch weapons data \(error.localizedDescription)")
             }
         }
     }
@@ -148,7 +155,7 @@ final class HomeViewModel: NSObject, ObservableObject {
                 }
                 
             case .failure(let error):
-                print("Failed to fetch maps data \(error)")
+                print("Failed to fetch maps data \(error.localizedDescription)")
             }
         }
     }
@@ -170,7 +177,7 @@ final class HomeViewModel: NSObject, ObservableObject {
                 }
                 
             case .failure(let error):
-                print("Failed to fetch player cards data \(error)")
+                print("Failed to fetch player cards data \(error.localizedDescription)")
             }
         }
     }
@@ -192,7 +199,7 @@ final class HomeViewModel: NSObject, ObservableObject {
                 }
                 
             case .failure(let error):
-                print("Failed to fetch sprays data \(error)")
+                print("Failed to fetch sprays data \(error.localizedDescription)")
             }
         }
     }
@@ -216,7 +223,7 @@ final class HomeViewModel: NSObject, ObservableObject {
                 }
                 
             case .failure(let error):
-                print("Failed to fetch ranks data \(error)")
+                print("Failed to fetch ranks data \(error.localizedDescription)")
             }
         }
     }
@@ -227,7 +234,7 @@ final class HomeViewModel: NSObject, ObservableObject {
             case .success(let response):
                 self?.buddies = response.data
             case .failure(let error):
-                print("Failed to fetch buddies data \(error)")
+                print("Failed to fetch buddies data \(error.localizedDescription)")
             }
         }
     }
@@ -248,7 +255,7 @@ final class HomeViewModel: NSObject, ObservableObject {
                     self.showBundlesShimmer = false
                 }
             case .failure(let error):
-                print("Failed to fetch bundles data \(error)")
+                print("Failed to fetch bundles data \(error.localizedDescription)")
             }
         }
     }
@@ -263,7 +270,7 @@ final class HomeViewModel: NSObject, ObservableObject {
             case .success(let response):
                 self?.contracts = response.data
             case .failure(let error):
-                print("Failed to fetch contracts data \(error)")
+                print("Failed to fetch contracts data \(error.localizedDescription)")
             }
         }
     }

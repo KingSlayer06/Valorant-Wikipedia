@@ -63,4 +63,17 @@ final class AgentDataRepository: PAgentDataRepository {
             print("Failed to save agents:", error.localizedDescription)
         }
     }
+    
+    func getAll() -> [Agent] {
+        guard let records = try? context.fetch(AgentModel.fetchRequest()) as? [AgentModel] else { return [] }
+        
+        var agents: [Agent] = []
+        records.forEach { agentModel in
+            agents.append(agentModel.getAgent())
+        }
+        
+        print("Agents fetched successfully")
+        
+        return agents
+    }
 }

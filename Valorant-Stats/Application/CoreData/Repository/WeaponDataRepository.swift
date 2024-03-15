@@ -109,4 +109,8 @@ final class WeaponDataRepository: PWeaponDataRepository {
             print("Failed to save weapon:", error.localizedDescription)
         }
     }
+    
+    func getAll() -> [Weapon] {
+        return []
+    }
 }
