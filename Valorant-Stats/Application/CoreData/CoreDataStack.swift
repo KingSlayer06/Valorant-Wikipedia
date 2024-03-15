@@ -58,6 +58,18 @@ class CoreDataStack: ObservableObject {
         }
         return container
     }()
+    
+    lazy var sprayPersistentContainer: NSPersistentContainer = {
+        
+        let container = NSPersistentContainer(name: "Spray")
+
+        container.loadPersistentStores { _, error in
+            if let error {
+                fatalError("Failed to load Spray persistent stores: \(error.localizedDescription)")
+            }
+        }
+        return container
+    }()
         
     private init() { }
 }

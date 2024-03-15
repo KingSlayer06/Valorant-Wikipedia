@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22225" systemVersion="23C64" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="SprayModel" representedClassName="SprayModel" syncable="YES" codeGenerationType="class">
+        <attribute name="animationGif" optional="YES" attributeType="String"/>
+        <attribute name="animationPng" optional="YES" attributeType="String"/>
+        <attribute name="displayName" attributeType="String"/>
+        <attribute name="fullTransparentIcon" optional="YES" attributeType="String"/>
+        <attribute name="isNullSpray" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="uuid" attributeType="String"/>
+    </entity>
+</model>

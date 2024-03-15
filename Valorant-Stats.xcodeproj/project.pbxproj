@@ -23,6 +23,9 @@
 		A3405A672BA4A2FF00574D5B /* PlayerCard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3405A652BA4A2FF00574D5B /* PlayerCard.xcdatamodeld */; };
 		A3405A692BA4A3BE00574D5B /* PlayerCardDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A682BA4A3BE00574D5B /* PlayerCardDataRepository.swift */; };
 		A3405A6B2BA4A47700574D5B /* PlayerCardModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A6A2BA4A47700574D5B /* PlayerCardModelExtension.swift */; };
+		A3405A6E2BA4A87E00574D5B /* Spray.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3405A6C2BA4A87E00574D5B /* Spray.xcdatamodeld */; };
+		A3405A702BA4A90900574D5B /* SprayModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A6F2BA4A90900574D5B /* SprayModelExtension.swift */; };
+		A3405A722BA4A97500574D5B /* SprayDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A712BA4A97500574D5B /* SprayDataRepository.swift */; };
 		A34131A02BA1701A0004E908 /* AgentContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = A341319F2BA1701A0004E908 /* AgentContract.swift */; };
 		A34131A22BA1711F0004E908 /* GetAgentContractsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34131A12BA1711F0004E908 /* GetAgentContractsResponse.swift */; };
 		A34131A42BA171590004E908 /* GetAgentContractsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34131A32BA171590004E908 /* GetAgentContractsUseCase.swift */; };
@@ -130,6 +133,9 @@
 		A3405A662BA4A2FF00574D5B /* PlayerCardModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PlayerCardModel.xcdatamodel; sourceTree = "<group>"; };
 		A3405A682BA4A3BE00574D5B /* PlayerCardDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCardDataRepository.swift; sourceTree = "<group>"; };
 		A3405A6A2BA4A47700574D5B /* PlayerCardModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCardModelExtension.swift; sourceTree = "<group>"; };
+		A3405A6D2BA4A87E00574D5B /* Spray.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spray.xcdatamodel; sourceTree = "<group>"; };
+		A3405A6F2BA4A90900574D5B /* SprayModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SprayModelExtension.swift; sourceTree = "<group>"; };
+		A3405A712BA4A97500574D5B /* SprayDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SprayDataRepository.swift; sourceTree = "<group>"; };
 		A341319F2BA1701A0004E908 /* AgentContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentContract.swift; sourceTree = "<group>"; };
 		A34131A12BA1711F0004E908 /* GetAgentContractsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAgentContractsResponse.swift; sourceTree = "<group>"; };
 		A34131A32BA171590004E908 /* GetAgentContractsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAgentContractsUseCase.swift; sourceTree = "<group>"; };
@@ -276,6 +282,7 @@
 				A3405A172BA441C900574D5B /* Weapon.xcdatamodeld */,
 				A3405A5E2BA49D6600574D5B /* Map.xcdatamodeld */,
 				A3405A652BA4A2FF00574D5B /* PlayerCard.xcdatamodeld */,
+				A3405A6C2BA4A87E00574D5B /* Spray.xcdatamodeld */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -288,6 +295,7 @@
 				A3405A1C2BA44FF900574D5B /* BaseRepository.swift */,
 				A3405A632BA49FD800574D5B /* MapDataRepository.swift */,
 				A3405A682BA4A3BE00574D5B /* PlayerCardDataRepository.swift */,
+				A3405A712BA4A97500574D5B /* SprayDataRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -299,6 +307,7 @@
 				A3405A5C2BA4971F00574D5B /* WeaponModelExtension.swift */,
 				A3405A612BA49E1F00574D5B /* MapModelExtension.swift */,
 				A3405A6A2BA4A47700574D5B /* PlayerCardModelExtension.swift */,
+				A3405A6F2BA4A90900574D5B /* SprayModelExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -791,6 +800,7 @@
 				A372A5D82B96201000FF07A7 /* WebViewRepresentable.swift in Sources */,
 				A355D6332B99B87300D4DF6F /* WeaponBundle.swift in Sources */,
 				A34131B72BA1B0C10004E908 /* GetCurrencyByIdResponse.swift in Sources */,
+				A3405A6E2BA4A87E00574D5B /* Spray.xcdatamodeld in Sources */,
 				A355D6282B99984600D4DF6F /* Buddy.swift in Sources */,
 				A355D6262B99983100D4DF6F /* GetBuddiesResponse.swift in Sources */,
 				A3F70BC82B8CAD8200CBA5C6 /* Haptics.swift in Sources */,
@@ -802,6 +812,7 @@
 				A372A5D62B961FE200FF07A7 /* PatchNotesView.swift in Sources */,
 				A355D62C2B999DD400D4DF6F /* ViewAllBuddiesView.swift in Sources */,
 				A3F70BCB2B8CB21C00CBA5C6 /* GetAgentsResponse.swift in Sources */,
+				A3405A722BA4A97500574D5B /* SprayDataRepository.swift in Sources */,
 				A3F70BD12B8CCF6A00CBA5C6 /* WeaponsView.swift in Sources */,
 				A355D62A2B9998A300D4DF6F /* GetBuddiesUseCase.swift in Sources */,
 				A3A8755A2B95B33900840A2B /* DevMode.swift in Sources */,
@@ -854,6 +865,7 @@
 				A37A50B72B93ADF200E55393 /* ColorExtension.swift in Sources */,
 				A355D6392B99C98500D4DF6F /* BundleDetailsView.swift in Sources */,
 				A34131A02BA1701A0004E908 /* AgentContract.swift in Sources */,
+				A3405A702BA4A90900574D5B /* SprayModelExtension.swift in Sources */,
 				A355D6372B99B9D200D4DF6F /* GetBundlesUseCase.swift in Sources */,
 				A34131A22BA1711F0004E908 /* GetAgentContractsResponse.swift in Sources */,
 				A355D6242B9980F600D4DF6F /* CustomTabBar.swift in Sources */,
@@ -1158,6 +1170,16 @@
 			);
 			currentVersion = A3405A662BA4A2FF00574D5B /* PlayerCardModel.xcdatamodel */;
 			path = PlayerCard.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		A3405A6C2BA4A87E00574D5B /* Spray.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A3405A6D2BA4A87E00574D5B /* Spray.xcdatamodel */,
+			);
+			currentVersion = A3405A6D2BA4A87E00574D5B /* Spray.xcdatamodel */;
+			path = Spray.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

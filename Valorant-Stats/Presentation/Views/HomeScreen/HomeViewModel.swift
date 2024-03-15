@@ -53,6 +53,7 @@ final class HomeViewModel: NSObject, ObservableObject {
     private var weaponDataRepository = WeaponDataRepository()
     private var mapDataRepository = MapDataRepository()
     private var playerCardDataRepository = PlayerCardDataRepository()
+    private var sprayDataRepository = SprayDataRepository()
     
     override init() {
         super.init()
@@ -237,8 +238,22 @@ final class HomeViewModel: NSObject, ObservableObject {
                     self.showSpraysShimmer = false
                 }
                 
+                // Save Sprays to CoreData
+                self.sprays.forEach { spray in
+                    self.sprayDataRepository.add(spray)
+                }
+                self.sprayDataRepository.save()
+                
             case .failure(let error):
                 print("Failed to fetch sprays data \(error.localizedDescription)")
+                
+                // Load Sprays from CoreData
+                guard let self = self else { return }
+                self.sprays = self.sprayDataRepository.getAll()
+                
+                DispatchQueue.main.async {
+                    self.showSpraysShimmer = false
+                }
             }
         }
     }
