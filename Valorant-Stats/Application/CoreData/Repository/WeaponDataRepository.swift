@@ -17,7 +17,7 @@ final class WeaponDataRepository: PWeaponDataRepository {
     typealias T = Weapon
     
     var context: NSManagedObjectContext {
-        return CoreDataStack.shared.weaponContext
+        return CoreDataStack.shared.weaponPersistentContainer.viewContext
     }
     
     func add(_ item: Weapon) {
@@ -113,7 +113,7 @@ final class WeaponDataRepository: PWeaponDataRepository {
     func getAll() -> [Weapon] {
         guard let records = try? context.fetch(WeaponModel.fetchRequest()) as? [WeaponModel] else { return [] }
         
-        var weapons: [Weapon] = []
+        var weapons = [Weapon]()
         records.forEach { weaponModel in
             weapons.append(weaponModel.getWeapon())
         }

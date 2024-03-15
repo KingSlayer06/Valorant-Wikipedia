@@ -17,7 +17,7 @@ final class AgentDataRepository: PAgentDataRepository {
     typealias T = Agent
     
     var context: NSManagedObjectContext {
-        return CoreDataStack.shared.agentContext
+        return CoreDataStack.shared.agentPersistentContainer.viewContext
     }
     
     func add(_ item: Agent) {
@@ -67,7 +67,7 @@ final class AgentDataRepository: PAgentDataRepository {
     func getAll() -> [Agent] {
         guard let records = try? context.fetch(AgentModel.fetchRequest()) as? [AgentModel] else { return [] }
         
-        var agents: [Agent] = []
+        var agents = [Agent]()
         records.forEach { agentModel in
             agents.append(agentModel.getAgent())
         }

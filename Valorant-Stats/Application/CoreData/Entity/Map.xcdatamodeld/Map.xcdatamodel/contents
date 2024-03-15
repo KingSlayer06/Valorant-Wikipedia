@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22225" systemVersion="23C64" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="MapModel" representedClassName="MapModel" syncable="YES" codeGenerationType="class">
+        <attribute name="coordinates" optional="YES" attributeType="String"/>
+        <attribute name="displayIcon" optional="YES" attributeType="String"/>
+        <attribute name="displayName" attributeType="String"/>
+        <attribute name="listViewIcon" optional="YES" attributeType="String"/>
+        <attribute name="narrativeDescription" optional="YES" attributeType="String"/>
+        <attribute name="splash" attributeType="String"/>
+        <attribute name="stylizedBackgroundImage" optional="YES" attributeType="String"/>
+        <attribute name="uuid" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="uuid"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+</model>

@@ -35,8 +35,29 @@ class CoreDataStack: ObservableObject {
         return container
     }()
     
-    lazy var agentContext = agentPersistentContainer.viewContext
-    lazy var weaponContext = weaponPersistentContainer.viewContext
+    lazy var mapPersistentContainer: NSPersistentContainer = {
+        
+        let container = NSPersistentContainer(name: "Map")
+
+        container.loadPersistentStores { _, error in
+            if let error {
+                fatalError("Failed to load weapon persistent stores: \(error.localizedDescription)")
+            }
+        }
+        return container
+    }()
+    
+    lazy var playerCardPersistentContainer: NSPersistentContainer = {
+        
+        let container = NSPersistentContainer(name: "PlayerCard")
+
+        container.loadPersistentStores { _, error in
+            if let error {
+                fatalError("Failed to load PlayerCard persistent stores: \(error.localizedDescription)")
+            }
+        }
+        return container
+    }()
         
     private init() { }
 }

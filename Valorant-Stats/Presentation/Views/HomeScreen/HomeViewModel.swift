@@ -51,6 +51,8 @@ final class HomeViewModel: NSObject, ObservableObject {
     //CoreData Repositories
     private var agentDataRepository = AgentDataRepository()
     private var weaponDataRepository = WeaponDataRepository()
+    private var mapDataRepository = MapDataRepository()
+    private var playerCardDataRepository = PlayerCardDataRepository()
     
     override init() {
         super.init()
@@ -163,8 +165,22 @@ final class HomeViewModel: NSObject, ObservableObject {
                     self.showMapsShimmer = false
                 }
                 
+                // Save Maps to CoreData
+                self.maps.forEach { map in
+                    self.mapDataRepository.add(map)
+                }
+                self.mapDataRepository.save()
+                
             case .failure(let error):
                 print("Failed to fetch maps data \(error.localizedDescription)")
+                
+                // Load Maps from CoreData
+                guard let self = self else { return }
+                self.maps = self.mapDataRepository.getAll()
+                
+                DispatchQueue.main.async {
+                    self.showMapsShimmer = false
+                }
             }
         }
     }
@@ -185,8 +201,22 @@ final class HomeViewModel: NSObject, ObservableObject {
                     self.showPlayerCardsShimmer = false
                 }
                 
+                // Save Player Cards to CoreData
+                self.playerCards.forEach { playerCard in
+                    self.playerCardDataRepository.add(playerCard)
+                }
+                self.playerCardDataRepository.save()
+                
             case .failure(let error):
                 print("Failed to fetch player cards data \(error.localizedDescription)")
+                
+                // Load Player Cards from CoreData
+                guard let self = self else { return }
+                self.playerCards = self.playerCardDataRepository.getAll()
+                
+                DispatchQueue.main.async {
+                    self.showPlayerCardsShimmer = false
+                }
             }
         }
     }

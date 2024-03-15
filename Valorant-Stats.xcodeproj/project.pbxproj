@@ -17,6 +17,12 @@
 		A3405A1D2BA44FF900574D5B /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A1C2BA44FF900574D5B /* BaseRepository.swift */; };
 		A3405A592BA4867000574D5B /* AgentModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A582BA4867000574D5B /* AgentModelExtension.swift */; };
 		A3405A5D2BA4971F00574D5B /* WeaponModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A5C2BA4971F00574D5B /* WeaponModelExtension.swift */; };
+		A3405A602BA49D6600574D5B /* Map.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3405A5E2BA49D6600574D5B /* Map.xcdatamodeld */; };
+		A3405A622BA49E1F00574D5B /* MapModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A612BA49E1F00574D5B /* MapModelExtension.swift */; };
+		A3405A642BA49FD800574D5B /* MapDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A632BA49FD800574D5B /* MapDataRepository.swift */; };
+		A3405A672BA4A2FF00574D5B /* PlayerCard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3405A652BA4A2FF00574D5B /* PlayerCard.xcdatamodeld */; };
+		A3405A692BA4A3BE00574D5B /* PlayerCardDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A682BA4A3BE00574D5B /* PlayerCardDataRepository.swift */; };
+		A3405A6B2BA4A47700574D5B /* PlayerCardModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A6A2BA4A47700574D5B /* PlayerCardModelExtension.swift */; };
 		A34131A02BA1701A0004E908 /* AgentContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = A341319F2BA1701A0004E908 /* AgentContract.swift */; };
 		A34131A22BA1711F0004E908 /* GetAgentContractsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34131A12BA1711F0004E908 /* GetAgentContractsResponse.swift */; };
 		A34131A42BA171590004E908 /* GetAgentContractsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34131A32BA171590004E908 /* GetAgentContractsUseCase.swift */; };
@@ -118,6 +124,12 @@
 		A3405A1C2BA44FF900574D5B /* BaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepository.swift; sourceTree = "<group>"; };
 		A3405A582BA4867000574D5B /* AgentModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentModelExtension.swift; sourceTree = "<group>"; };
 		A3405A5C2BA4971F00574D5B /* WeaponModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponModelExtension.swift; sourceTree = "<group>"; };
+		A3405A5F2BA49D6600574D5B /* Map.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Map.xcdatamodel; sourceTree = "<group>"; };
+		A3405A612BA49E1F00574D5B /* MapModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModelExtension.swift; sourceTree = "<group>"; };
+		A3405A632BA49FD800574D5B /* MapDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDataRepository.swift; sourceTree = "<group>"; };
+		A3405A662BA4A2FF00574D5B /* PlayerCardModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PlayerCardModel.xcdatamodel; sourceTree = "<group>"; };
+		A3405A682BA4A3BE00574D5B /* PlayerCardDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCardDataRepository.swift; sourceTree = "<group>"; };
+		A3405A6A2BA4A47700574D5B /* PlayerCardModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCardModelExtension.swift; sourceTree = "<group>"; };
 		A341319F2BA1701A0004E908 /* AgentContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentContract.swift; sourceTree = "<group>"; };
 		A34131A12BA1711F0004E908 /* GetAgentContractsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAgentContractsResponse.swift; sourceTree = "<group>"; };
 		A34131A32BA171590004E908 /* GetAgentContractsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAgentContractsUseCase.swift; sourceTree = "<group>"; };
@@ -262,6 +274,8 @@
 			children = (
 				A39237832BA40DD0004DF58E /* Agent.xcdatamodeld */,
 				A3405A172BA441C900574D5B /* Weapon.xcdatamodeld */,
+				A3405A5E2BA49D6600574D5B /* Map.xcdatamodeld */,
+				A3405A652BA4A2FF00574D5B /* PlayerCard.xcdatamodeld */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -272,6 +286,8 @@
 				A3405A152BA434AD00574D5B /* AgentDataRepository.swift */,
 				A3405A1A2BA4487D00574D5B /* WeaponDataRepository.swift */,
 				A3405A1C2BA44FF900574D5B /* BaseRepository.swift */,
+				A3405A632BA49FD800574D5B /* MapDataRepository.swift */,
+				A3405A682BA4A3BE00574D5B /* PlayerCardDataRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -281,6 +297,8 @@
 			children = (
 				A3405A582BA4867000574D5B /* AgentModelExtension.swift */,
 				A3405A5C2BA4971F00574D5B /* WeaponModelExtension.swift */,
+				A3405A612BA49E1F00574D5B /* MapModelExtension.swift */,
+				A3405A6A2BA4A47700574D5B /* PlayerCardModelExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -776,6 +794,7 @@
 				A355D6282B99984600D4DF6F /* Buddy.swift in Sources */,
 				A355D6262B99983100D4DF6F /* GetBuddiesResponse.swift in Sources */,
 				A3F70BC82B8CAD8200CBA5C6 /* Haptics.swift in Sources */,
+				A3405A622BA49E1F00574D5B /* MapModelExtension.swift in Sources */,
 				A388B6CA2B8DB4A4007D87DD /* GetPlayerCardsUseCase.swift in Sources */,
 				A3F70B9B2B8C555400CBA5C6 /* SideMenuView.swift in Sources */,
 				A388B6D02B8DC187007D87DD /* GetSpraysResponse.swift in Sources */,
@@ -787,6 +806,7 @@
 				A355D62A2B9998A300D4DF6F /* GetBuddiesUseCase.swift in Sources */,
 				A3A8755A2B95B33900840A2B /* DevMode.swift in Sources */,
 				A3405A162BA434AD00574D5B /* AgentDataRepository.swift in Sources */,
+				A3405A642BA49FD800574D5B /* MapDataRepository.swift in Sources */,
 				A3F70BC42B8CA62200CBA5C6 /* AgentsView.swift in Sources */,
 				A31E83FD2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift in Sources */,
 				A3F70BDB2B8CE8E000CBA5C6 /* WeaponDetailsView.swift in Sources */,
@@ -824,6 +844,7 @@
 				A3F70BD92B8CDD2700CBA5C6 /* Weapon.swift in Sources */,
 				A388B6CE2B8DC145007D87DD /* Spray.swift in Sources */,
 				A3F70BA72B8C722400CBA5C6 /* GameAssetsRepository.swift in Sources */,
+				A3405A672BA4A2FF00574D5B /* PlayerCard.xcdatamodeld in Sources */,
 				A3405A1B2BA4487D00574D5B /* WeaponDataRepository.swift in Sources */,
 				A3F70BE22B8CFE5500CBA5C6 /* GetMapsUseCase.swift in Sources */,
 				A3F70BD72B8CDD0C00CBA5C6 /* GetWeaponsResponse.swift in Sources */,
@@ -845,13 +866,16 @@
 				A31E83FB2BA1B256006A283E /* GetSprayByIdUseCase.swift in Sources */,
 				A34131B52BA1B0690004E908 /* GameCurrency.swift in Sources */,
 				A372A5D32B960B6600FF07A7 /* EmailController.swift in Sources */,
+				A3405A6B2BA4A47700574D5B /* PlayerCardModelExtension.swift in Sources */,
 				A3F70BAF2B8C72A600CBA5C6 /* GetAgentsUseCase.swift in Sources */,
 				A3A875582B95B15000840A2B /* AppAnalytics.swift in Sources */,
 				A388B6C82B8DB39F007D87DD /* PlayerCardDetailsView.swift in Sources */,
 				A3F70BE02B8CFC2100CBA5C6 /* Map.swift in Sources */,
 				A3F70B8A2B8C522A00CBA5C6 /* Valorant_StatsApp.swift in Sources */,
 				A388B6C12B8D83E6007D87DD /* MapDetailsView.swift in Sources */,
+				A3405A602BA49D6600574D5B /* Map.xcdatamodeld in Sources */,
 				A3D9D7762B8F0F3900C5FC64 /* ShareItem.swift in Sources */,
+				A3405A692BA4A3BE00574D5B /* PlayerCardDataRepository.swift in Sources */,
 				A3F70B9E2B8C56B000CBA5C6 /* KeyVariables.swift in Sources */,
 				A372A5DC2B9628C300FF07A7 /* SearchBarView.swift in Sources */,
 				A3405A592BA4867000574D5B /* AgentModelExtension.swift in Sources */,
@@ -1114,6 +1138,26 @@
 			);
 			currentVersion = A3405A182BA441C900574D5B /* Weapon.xcdatamodel */;
 			path = Weapon.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		A3405A5E2BA49D6600574D5B /* Map.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A3405A5F2BA49D6600574D5B /* Map.xcdatamodel */,
+			);
+			currentVersion = A3405A5F2BA49D6600574D5B /* Map.xcdatamodel */;
+			path = Map.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		A3405A652BA4A2FF00574D5B /* PlayerCard.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A3405A662BA4A2FF00574D5B /* PlayerCardModel.xcdatamodel */,
+			);
+			currentVersion = A3405A662BA4A2FF00574D5B /* PlayerCardModel.xcdatamodel */;
+			path = PlayerCard.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
