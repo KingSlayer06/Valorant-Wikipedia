@@ -25,11 +25,13 @@ struct ShimmerEffect: View {
                        startPoint: startPoint,
                        endPoint: endPoint)
             .onAppear {
-                withAnimation(.easeInOut(duration: 2.5)
-                    .repeatForever(autoreverses: false)) {
-                        startPoint = .init(x: 1, y: 0.5)
-                        endPoint = .init(x: 2, y: 0.5)
-                    }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    withAnimation(.easeInOut(duration: 2.5)
+                        .repeatForever(autoreverses: false)) {
+                            startPoint = .init(x: 1, y: 0.5)
+                            endPoint = .init(x: 2, y: 0.5)
+                        }
+                }
             }
     }
 }

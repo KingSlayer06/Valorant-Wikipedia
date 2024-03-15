@@ -28,18 +28,33 @@ struct BundlesView: View {
                 KeyVariables.secondaryColor
                 
                 VStack {
-                    SearchBarView(searchTerm: $searchBundle, prompt: "Search Bundle")
+                    if homeViewModel.showBundlesShimmer {
+                        ShimmerEffect()
+                            .frame(height: 60)
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                            .padding(.vertical)
+                    } else {
+                        SearchBarView(searchTerm: $searchBundle, prompt: "Search Bundle")
+                    }
                     
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(filteredBundles, id: \.uuid) { bundle in
-                            NavigationLink {
-                                BundleDetailsView(bundle: bundle)
-                            } label: {
-                                BundleGridView(bundle: bundle)
+                        if homeViewModel.showBundlesShimmer {
+                            ForEach(0..<24) { _ in
+                                ShimmerEffect()
+                                    .frame(height: 380)
+                                    .clipShape(RoundedRectangle(cornerRadius: 5))
                             }
-                            .simultaneousGesture(TapGesture().onEnded {
+                        } else {
+                            ForEach(filteredBundles, id: \.uuid) { bundle in
+                                NavigationLink {
+                                    BundleDetailsView(bundle: bundle)
+                                } label: {
+                                    BundleGridView(bundle: bundle)
+                                }
+                                .simultaneousGesture(TapGesture().onEnded {
 //                                AppAnalytics.shared.WeaponImageClick(weapon: weapon)
-                            })
+                                })
+                            }
                         }
                     }
                 }
