@@ -27,16 +27,24 @@ struct SpraysView: View {
             
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVGrid(columns: columns, spacing: 10) {
-                    ForEach(homeViewModel.sprays, id: \.uuid) { spray in
-                        SprayGridView(spray: spray)
-                            .frame(width: width, height: width)
-                            .onTapGesture {
-                                withAnimation(.bouncy(duration:0.6)) {
-                                    expandSprayGrid.toggle()
-                                    selectedSpray = spray
-                                    AppAnalytics.shared.SprayImageClick(spray: selectedSpray)
+                    if homeViewModel.showSpraysShimmer {
+                        ForEach(0..<24) { _ in
+                            ShimmerEffect()
+                                .frame(width: width, height: width)
+                                .clipShape(RoundedRectangle(cornerRadius: 5))
+                        }
+                    } else {
+                        ForEach(homeViewModel.sprays, id: \.uuid) { spray in
+                            SprayGridView(spray: spray)
+                                .frame(width: width, height: width)
+                                .onTapGesture {
+                                    withAnimation(.bouncy(duration:0.6)) {
+                                        expandSprayGrid.toggle()
+                                        selectedSpray = spray
+                                        AppAnalytics.shared.SprayImageClick(spray: selectedSpray)
+                                    }
                                 }
-                            }
+                        }
                     }
                 }
                 .blur(radius: expandSprayGrid ? 10 : 0)

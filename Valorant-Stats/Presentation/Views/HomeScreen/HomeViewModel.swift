@@ -28,7 +28,15 @@ final class HomeViewModel: NSObject, ObservableObject {
     @Published var shareImage: UIImage?
     @Published var showAlert: Bool = false
     @Published var alertText: String = ""
-    @Published var showShimmer: Bool = false
+    
+    @Published var showAgentsShimmer: Bool = false
+    @Published var showMapsShimmer: Bool = false
+    @Published var showWeaponsShimmer: Bool = false
+    @Published var showPlayerCardsShimmer: Bool = false
+    @Published var showSpraysShimmer: Bool = false
+    @Published var showRanksShimmer: Bool = false
+    @Published var showBundlesShimmer: Bool = false
+    @Published var showContractsShimmer: Bool = false
     
     private var getAgentsUseCase: PGetAgentsUseCase?
     private var getWeaponsUseCase: PGetWeaponsUseCase?
@@ -60,7 +68,7 @@ final class HomeViewModel: NSObject, ObservableObject {
     
     func getAgents() {
         DispatchQueue.main.async {
-            self.showShimmer = true
+            self.showAgentsShimmer = true
         }
         
         self.getAgentsUseCase?.execute { [weak self] result in
@@ -71,7 +79,7 @@ final class HomeViewModel: NSObject, ObservableObject {
                 self.agents = response.data.filter { $0.isPlayableCharacter == true }
                 
                 DispatchQueue.main.async {
-                    self.showShimmer = false
+                    self.showAgentsShimmer = false
                 }
                 
                 // Save Agents to CoreData
@@ -87,6 +95,10 @@ final class HomeViewModel: NSObject, ObservableObject {
     }
     
     func getWeapons() {
+        DispatchQueue.main.async {
+            self.showWeaponsShimmer = true
+        }
+        
         self.getWeaponsUseCase?.execute { [weak self] result in
             switch result {
             case .success(let response):
@@ -99,6 +111,11 @@ final class HomeViewModel: NSObject, ObservableObject {
                         $0.displayName.contains("Standard") })
                 }
                 
+                DispatchQueue.main.async {
+                    self.showWeaponsShimmer = false
+                }
+                
+                // Save Weapons to CoreData
                 self.weapons.forEach { weapon in
                     self.weaponDataRepository.add(weapon)
                 }
@@ -111,14 +128,24 @@ final class HomeViewModel: NSObject, ObservableObject {
     }
     
     func getMaps() {
+        DispatchQueue.main.async {
+            self.showMapsShimmer = true
+        }
+        
         self.getMapsUseCase?.execute { [weak self] result in
             switch result {
             case .success(let response):
-                self?.maps = response.data.filter { !($0.displayName == "District" ||
+                guard let self = self else { return }
+                
+                self.maps = response.data.filter { !($0.displayName == "District" ||
                                                       $0.displayName == "Kasbah" ||
                                                       $0.displayName == "Drift" ||
                                                       $0.displayName == "Piazza" ||
                                                       $0.displayName == "The Range") }
+                
+                DispatchQueue.main.async {
+                    self.showMapsShimmer = false
+                }
                 
             case .failure(let error):
                 print("Failed to fetch maps data \(error)")
@@ -127,10 +154,20 @@ final class HomeViewModel: NSObject, ObservableObject {
     }
     
     func getPlayerCards() {
+        DispatchQueue.main.async {
+            self.showPlayerCardsShimmer = true
+        }
+        
         self.getPlayerCardsUseCase?.execute { [weak self] result in
             switch result {
             case .success(let response):
-                self?.playerCards = response.data
+                guard let self = self else { return }
+                
+                self.playerCards = response.data
+                
+                DispatchQueue.main.async {
+                    self.showPlayerCardsShimmer = false
+                }
                 
             case .failure(let error):
                 print("Failed to fetch player cards data \(error)")
@@ -139,10 +176,20 @@ final class HomeViewModel: NSObject, ObservableObject {
     }
     
     func getSprays() {
+        DispatchQueue.main.async {
+            self.showSpraysShimmer = true
+        }
+        
         self.getSpraysUseCase?.execute { [weak self] result in
             switch result {
             case .success(let response):
-                self?.sprays = response.data.filter { !$0.isNullSpray && $0.fullTransparentIcon != nil }
+                guard let self = self else { return }
+                
+                self.sprays = response.data.filter { !$0.isNullSpray && $0.fullTransparentIcon != nil }
+                
+                DispatchQueue.main.async {
+                    self.showSpraysShimmer = false
+                }
                 
             case .failure(let error):
                 print("Failed to fetch sprays data \(error)")
@@ -151,12 +198,22 @@ final class HomeViewModel: NSObject, ObservableObject {
     }
     
     func getRanks() {
+        DispatchQueue.main.async {
+            self.showRanksShimmer = true
+        }
+        
         self.getRanksUseCase?.execute { [weak self] result in
             switch result {
             case .success(let response):
-                self?.tiers = response.data.last!.tiers.filter { !($0.tierName == "UNRANKED" ||
+                guard let self = self else { return }
+                
+                self.tiers = response.data.last!.tiers.filter { !($0.tierName == "UNRANKED" ||
                                                                    $0.tierName == "Unused1" ||
                                                                    $0.tierName == "Unused2") }
+                
+                DispatchQueue.main.async {
+                    self.showRanksShimmer = false
+                }
                 
             case .failure(let error):
                 print("Failed to fetch ranks data \(error)")
@@ -176,10 +233,20 @@ final class HomeViewModel: NSObject, ObservableObject {
     }
     
     func getBundles() {
+        DispatchQueue.main.async {
+            self.showBundlesShimmer = true
+        }
+        
         self.getBundlesUseCase?.execute { [weak self] result in
             switch result {
             case .success(let response):
-                self?.bundles = response.data
+                guard let self = self else { return }
+                
+                self.bundles = response.data
+                
+                DispatchQueue.main.async {
+                    self.showBundlesShimmer = false
+                }
             case .failure(let error):
                 print("Failed to fetch bundles data \(error)")
             }
@@ -187,6 +254,10 @@ final class HomeViewModel: NSObject, ObservableObject {
     }
                                                                   
     func getAgentContracts() {
+        DispatchQueue.main.async {
+            self.showContractsShimmer = true
+        }
+        
         self.getAgentsContractsUseCase?.execute { [weak self] result in
             switch result {
             case .success(let response):
@@ -196,6 +267,9 @@ final class HomeViewModel: NSObject, ObservableObject {
             }
         }
     }
+}
+
+extension HomeViewModel {
     
     func downloadImage(url: String, completion: @escaping () -> Void) {
         KingfisherManager.shared.downloadImage(with: url) { image in

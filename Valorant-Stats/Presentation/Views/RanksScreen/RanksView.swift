@@ -21,8 +21,16 @@ struct RanksView: View {
                 KeyVariables.secondaryColor
                 
                 LazyVGrid(columns: columns, spacing: 10) {
-                    ForEach(homeViewModel.tiers, id: \.self) { tier in
-                        TierGridView(tier: tier)
+                    if homeViewModel.showSpraysShimmer {
+                        ForEach(0..<24) { _ in
+                            ShimmerEffect()
+                                .frame(height: 180)
+                                .clipShape(RoundedRectangle(cornerRadius: 5))
+                        }
+                    } else {
+                        ForEach(homeViewModel.tiers, id: \.self) { tier in
+                            TierGridView(tier: tier)
+                        }
                     }
                 }
             }

@@ -20,15 +20,23 @@ struct PlayerCardsView: View {
                 KeyVariables.secondaryColor
                 
                 LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(homeViewModel.playerCards, id: \.uuid) { card in
-                        NavigationLink {
-                            PlayerCardDetailsView(card: card)
-                        }label: {
-                            PlayerCardGridView(card: card)
+                    if homeViewModel.showPlayerCardsShimmer {
+                        ForEach(0..<10) { _ in
+                            ShimmerEffect()
+                                .frame(height: 400)
+                                .clipShape(RoundedRectangle(cornerRadius: 5))
                         }
-                        .simultaneousGesture(TapGesture().onEnded {
-                            AppAnalytics.shared.PlayerCardImageClick(card: card)
-                        })
+                    } else {
+                        ForEach(homeViewModel.playerCards, id: \.uuid) { card in
+                            NavigationLink {
+                                PlayerCardDetailsView(card: card)
+                            }label: {
+                                PlayerCardGridView(card: card)
+                            }
+                            .simultaneousGesture(TapGesture().onEnded {
+                                AppAnalytics.shared.PlayerCardImageClick(card: card)
+                            })
+                        }
                     }
                 }
             }

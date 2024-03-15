@@ -17,15 +17,24 @@ struct MapsView: View {
                 KeyVariables.secondaryColor
                 
                 VStack(spacing: 20) {
-                    ForEach(homeViewModel.maps, id: \.uuid) { map in
-                        NavigationLink {
-                            MapDetailsView(map: map)
-                        } label: {
-                            MapGridView(map: map)
+                    if homeViewModel.showMapsShimmer {
+                        ForEach(0..<10) { _ in
+                            ShimmerEffect()
+                                .frame(height: 100)
+                                .clipShape(RoundedRectangle(cornerRadius: 5))
                         }
-                        .simultaneousGesture(TapGesture().onEnded {
-                            AppAnalytics.shared.MapImageClick(map: map)
-                        })
+                    }
+                    else {
+                        ForEach(homeViewModel.maps, id: \.uuid) { map in
+                            NavigationLink {
+                                MapDetailsView(map: map)
+                            } label: {
+                                MapGridView(map: map)
+                            }
+                            .simultaneousGesture(TapGesture().onEnded {
+                                AppAnalytics.shared.MapImageClick(map: map)
+                            })
+                        }
                     }
                 }
                 .padding(.top)

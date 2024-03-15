@@ -41,7 +41,7 @@ struct AgentsView: View {
                 VStack {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            if homeViewModel.showShimmer {
+                            if homeViewModel.showAgentsShimmer {
                                 ForEach(0..<5) { _ in
                                     ShimmerEffect()
                                         .frame(width: 80, height: 40)
@@ -58,7 +58,7 @@ struct AgentsView: View {
                     .padding(.vertical)
                     
                     LazyVGrid(columns: columns, spacing: 20) {
-                        if homeViewModel.showShimmer {
+                        if homeViewModel.showAgentsShimmer {
                             ForEach(0..<10) { _ in
                                 ShimmerEffect()
                                     .frame(height: 200)

@@ -44,22 +44,39 @@ struct WeaponsView: View {
                 VStack(spacing: 20) {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            allWeaponsCatagory
-                            selectedWeaponCatagory
-                            meleeWeaponCatagory
+                            if homeViewModel.showWeaponsShimmer {
+                                ForEach(0..<5) { _ in
+                                    ShimmerEffect()
+                                        .frame(width: 80, height: 40)
+                                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                                }
+                            } else {
+                                allWeaponsCatagory
+                                selectedWeaponCatagory
+                                meleeWeaponCatagory
+                            }
+                            
                             Spacer()
                         }
                     }
                     
-                    ForEach(filteredWeapons, id: \.uuid) { weapon in
-                        NavigationLink {
-                            WeaponDetailsView(weapon: weapon)
-                        } label: {
-                            WeaponGridView(weapon: weapon)
+                    if homeViewModel.showWeaponsShimmer {
+                        ForEach(0..<10) { _ in
+                            ShimmerEffect()
+                                .frame(height: 180)
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
                         }
-                        .simultaneousGesture(TapGesture().onEnded {
-                            AppAnalytics.shared.WeaponImageClick(weapon: weapon)
-                        })
+                    } else {
+                        ForEach(filteredWeapons, id: \.uuid) { weapon in
+                            NavigationLink {
+                                WeaponDetailsView(weapon: weapon)
+                            } label: {
+                                WeaponGridView(weapon: weapon)
+                            }
+                            .simultaneousGesture(TapGesture().onEnded {
+                                AppAnalytics.shared.WeaponImageClick(weapon: weapon)
+                            })
+                        }
                     }
                 }
                 .padding(.top)
