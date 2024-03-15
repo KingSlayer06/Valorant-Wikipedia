@@ -15,27 +15,8 @@
 		A3405A192BA441C900574D5B /* Weapon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3405A172BA441C900574D5B /* Weapon.xcdatamodeld */; };
 		A3405A1B2BA4487D00574D5B /* WeaponDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A1A2BA4487D00574D5B /* WeaponDataRepository.swift */; };
 		A3405A1D2BA44FF900574D5B /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A1C2BA44FF900574D5B /* BaseRepository.swift */; };
-		A3405A312BA485BD00574D5B /* AgentAbilitiesModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A2B2BA485BC00574D5B /* AgentAbilitiesModel+CoreDataClass.swift */; };
-		A3405A322BA485BD00574D5B /* AgentAbilitiesModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A2C2BA485BD00574D5B /* AgentAbilitiesModel+CoreDataProperties.swift */; };
-		A3405A332BA485BD00574D5B /* AgentModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A2D2BA485BD00574D5B /* AgentModel+CoreDataClass.swift */; };
-		A3405A342BA485BD00574D5B /* AgentModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A2E2BA485BD00574D5B /* AgentModel+CoreDataProperties.swift */; };
-		A3405A352BA485BD00574D5B /* AgentRoleModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A2F2BA485BD00574D5B /* AgentRoleModel+CoreDataProperties.swift */; };
-		A3405A362BA485BD00574D5B /* AgentRoleModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A302BA485BD00574D5B /* AgentRoleModel+CoreDataClass.swift */; };
-		A3405A472BA4861200574D5B /* ShopDataModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A392BA4861200574D5B /* ShopDataModel+CoreDataClass.swift */; };
-		A3405A482BA4861200574D5B /* ShopDataModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A3A2BA4861200574D5B /* ShopDataModel+CoreDataProperties.swift */; };
-		A3405A492BA4861200574D5B /* WeaponSkinChromasModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A3B2BA4861200574D5B /* WeaponSkinChromasModel+CoreDataClass.swift */; };
-		A3405A4A2BA4861200574D5B /* WeaponSkinChromasModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A3C2BA4861200574D5B /* WeaponSkinChromasModel+CoreDataProperties.swift */; };
-		A3405A4B2BA4861200574D5B /* DamageRangesModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A3D2BA4861200574D5B /* DamageRangesModel+CoreDataClass.swift */; };
-		A3405A4C2BA4861200574D5B /* DamageRangesModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A3E2BA4861200574D5B /* DamageRangesModel+CoreDataProperties.swift */; };
-		A3405A4D2BA4861200574D5B /* WeaponStatsModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A3F2BA4861200574D5B /* WeaponStatsModel+CoreDataClass.swift */; };
-		A3405A4E2BA4861200574D5B /* WeaponStatsModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A402BA4861200574D5B /* WeaponStatsModel+CoreDataProperties.swift */; };
-		A3405A4F2BA4861200574D5B /* WeaponSkinLevelModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A412BA4861200574D5B /* WeaponSkinLevelModel+CoreDataClass.swift */; };
-		A3405A502BA4861200574D5B /* WeaponSkinLevelModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A422BA4861200574D5B /* WeaponSkinLevelModel+CoreDataProperties.swift */; };
-		A3405A512BA4861200574D5B /* WeaponModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A432BA4861200574D5B /* WeaponModel+CoreDataClass.swift */; };
-		A3405A522BA4861200574D5B /* WeaponModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A442BA4861200574D5B /* WeaponModel+CoreDataProperties.swift */; };
-		A3405A532BA4861200574D5B /* WeaponSkinModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A452BA4861200574D5B /* WeaponSkinModel+CoreDataClass.swift */; };
-		A3405A542BA4861200574D5B /* WeaponSkinModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A462BA4861200574D5B /* WeaponSkinModel+CoreDataProperties.swift */; };
 		A3405A592BA4867000574D5B /* AgentModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A582BA4867000574D5B /* AgentModelExtension.swift */; };
+		A3405A5D2BA4971F00574D5B /* WeaponModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A5C2BA4971F00574D5B /* WeaponModelExtension.swift */; };
 		A34131A02BA1701A0004E908 /* AgentContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = A341319F2BA1701A0004E908 /* AgentContract.swift */; };
 		A34131A22BA1711F0004E908 /* GetAgentContractsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34131A12BA1711F0004E908 /* GetAgentContractsResponse.swift */; };
 		A34131A42BA171590004E908 /* GetAgentContractsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34131A32BA171590004E908 /* GetAgentContractsUseCase.swift */; };
@@ -135,27 +116,8 @@
 		A3405A182BA441C900574D5B /* Weapon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Weapon.xcdatamodel; sourceTree = "<group>"; };
 		A3405A1A2BA4487D00574D5B /* WeaponDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponDataRepository.swift; sourceTree = "<group>"; };
 		A3405A1C2BA44FF900574D5B /* BaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepository.swift; sourceTree = "<group>"; };
-		A3405A2B2BA485BC00574D5B /* AgentAbilitiesModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AgentAbilitiesModel+CoreDataClass.swift"; sourceTree = "<group>"; };
-		A3405A2C2BA485BD00574D5B /* AgentAbilitiesModel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AgentAbilitiesModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		A3405A2D2BA485BD00574D5B /* AgentModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AgentModel+CoreDataClass.swift"; sourceTree = "<group>"; };
-		A3405A2E2BA485BD00574D5B /* AgentModel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AgentModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		A3405A2F2BA485BD00574D5B /* AgentRoleModel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AgentRoleModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		A3405A302BA485BD00574D5B /* AgentRoleModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AgentRoleModel+CoreDataClass.swift"; sourceTree = "<group>"; };
-		A3405A392BA4861200574D5B /* ShopDataModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ShopDataModel+CoreDataClass.swift"; path = "Valorant-Stats/Application/CoreData/Entity/Weapon/ManagedObjectModels/ShopDataModel+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		A3405A3A2BA4861200574D5B /* ShopDataModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ShopDataModel+CoreDataProperties.swift"; path = "Valorant-Stats/Application/CoreData/Entity/Weapon/ManagedObjectModels/ShopDataModel+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		A3405A3B2BA4861200574D5B /* WeaponSkinChromasModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "WeaponSkinChromasModel+CoreDataClass.swift"; path = "Valorant-Stats/Application/CoreData/Entity/Weapon/ManagedObjectModels/WeaponSkinChromasModel+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		A3405A3C2BA4861200574D5B /* WeaponSkinChromasModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "WeaponSkinChromasModel+CoreDataProperties.swift"; path = "Valorant-Stats/Application/CoreData/Entity/Weapon/ManagedObjectModels/WeaponSkinChromasModel+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		A3405A3D2BA4861200574D5B /* DamageRangesModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "DamageRangesModel+CoreDataClass.swift"; path = "Valorant-Stats/Application/CoreData/Entity/Weapon/ManagedObjectModels/DamageRangesModel+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		A3405A3E2BA4861200574D5B /* DamageRangesModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "DamageRangesModel+CoreDataProperties.swift"; path = "Valorant-Stats/Application/CoreData/Entity/Weapon/ManagedObjectModels/DamageRangesModel+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		A3405A3F2BA4861200574D5B /* WeaponStatsModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "WeaponStatsModel+CoreDataClass.swift"; path = "Valorant-Stats/Application/CoreData/Entity/Weapon/ManagedObjectModels/WeaponStatsModel+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		A3405A402BA4861200574D5B /* WeaponStatsModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "WeaponStatsModel+CoreDataProperties.swift"; path = "Valorant-Stats/Application/CoreData/Entity/Weapon/ManagedObjectModels/WeaponStatsModel+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		A3405A412BA4861200574D5B /* WeaponSkinLevelModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "WeaponSkinLevelModel+CoreDataClass.swift"; path = "Valorant-Stats/Application/CoreData/Entity/Weapon/ManagedObjectModels/WeaponSkinLevelModel+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		A3405A422BA4861200574D5B /* WeaponSkinLevelModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "WeaponSkinLevelModel+CoreDataProperties.swift"; path = "Valorant-Stats/Application/CoreData/Entity/Weapon/ManagedObjectModels/WeaponSkinLevelModel+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		A3405A432BA4861200574D5B /* WeaponModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "WeaponModel+CoreDataClass.swift"; path = "Valorant-Stats/Application/CoreData/Entity/Weapon/ManagedObjectModels/WeaponModel+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		A3405A442BA4861200574D5B /* WeaponModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "WeaponModel+CoreDataProperties.swift"; path = "Valorant-Stats/Application/CoreData/Entity/Weapon/ManagedObjectModels/WeaponModel+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		A3405A452BA4861200574D5B /* WeaponSkinModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "WeaponSkinModel+CoreDataClass.swift"; path = "Valorant-Stats/Application/CoreData/Entity/Weapon/ManagedObjectModels/WeaponSkinModel+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		A3405A462BA4861200574D5B /* WeaponSkinModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "WeaponSkinModel+CoreDataProperties.swift"; path = "Valorant-Stats/Application/CoreData/Entity/Weapon/ManagedObjectModels/WeaponSkinModel+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		A3405A582BA4867000574D5B /* AgentModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentModelExtension.swift; sourceTree = "<group>"; };
+		A3405A5C2BA4971F00574D5B /* WeaponModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponModelExtension.swift; sourceTree = "<group>"; };
 		A341319F2BA1701A0004E908 /* AgentContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentContract.swift; sourceTree = "<group>"; };
 		A34131A12BA1711F0004E908 /* GetAgentContractsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAgentContractsResponse.swift; sourceTree = "<group>"; };
 		A34131A32BA171590004E908 /* GetAgentContractsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAgentContractsUseCase.swift; sourceTree = "<group>"; };
@@ -298,8 +260,8 @@
 		A3405A112BA4173700574D5B /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				A3405A1E2BA4854400574D5B /* Agent */,
-				A3405A382BA485D900574D5B /* Weapon */,
+				A39237832BA40DD0004DF58E /* Agent.xcdatamodeld */,
+				A3405A172BA441C900574D5B /* Weapon.xcdatamodeld */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -314,73 +276,13 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		A3405A1E2BA4854400574D5B /* Agent */ = {
-			isa = PBXGroup;
-			children = (
-				A39237832BA40DD0004DF58E /* Agent.xcdatamodeld */,
-				A3405A372BA485C400574D5B /* ManagedObjectModels */,
-				A3405A562BA4862F00574D5B /* Extension */,
-			);
-			path = Agent;
-			sourceTree = "<group>";
-		};
-		A3405A372BA485C400574D5B /* ManagedObjectModels */ = {
-			isa = PBXGroup;
-			children = (
-				A3405A2B2BA485BC00574D5B /* AgentAbilitiesModel+CoreDataClass.swift */,
-				A3405A2C2BA485BD00574D5B /* AgentAbilitiesModel+CoreDataProperties.swift */,
-				A3405A2D2BA485BD00574D5B /* AgentModel+CoreDataClass.swift */,
-				A3405A2E2BA485BD00574D5B /* AgentModel+CoreDataProperties.swift */,
-				A3405A302BA485BD00574D5B /* AgentRoleModel+CoreDataClass.swift */,
-				A3405A2F2BA485BD00574D5B /* AgentRoleModel+CoreDataProperties.swift */,
-			);
-			path = ManagedObjectModels;
-			sourceTree = "<group>";
-		};
-		A3405A382BA485D900574D5B /* Weapon */ = {
-			isa = PBXGroup;
-			children = (
-				A3405A172BA441C900574D5B /* Weapon.xcdatamodeld */,
-				A3405A552BA4861900574D5B /* ManagedObjectModels */,
-				A3405A572BA4863A00574D5B /* Extension */,
-			);
-			path = Weapon;
-			sourceTree = "<group>";
-		};
-		A3405A552BA4861900574D5B /* ManagedObjectModels */ = {
-			isa = PBXGroup;
-			children = (
-				A3405A392BA4861200574D5B /* ShopDataModel+CoreDataClass.swift */,
-				A3405A3A2BA4861200574D5B /* ShopDataModel+CoreDataProperties.swift */,
-				A3405A3B2BA4861200574D5B /* WeaponSkinChromasModel+CoreDataClass.swift */,
-				A3405A3C2BA4861200574D5B /* WeaponSkinChromasModel+CoreDataProperties.swift */,
-				A3405A3D2BA4861200574D5B /* DamageRangesModel+CoreDataClass.swift */,
-				A3405A3E2BA4861200574D5B /* DamageRangesModel+CoreDataProperties.swift */,
-				A3405A3F2BA4861200574D5B /* WeaponStatsModel+CoreDataClass.swift */,
-				A3405A402BA4861200574D5B /* WeaponStatsModel+CoreDataProperties.swift */,
-				A3405A412BA4861200574D5B /* WeaponSkinLevelModel+CoreDataClass.swift */,
-				A3405A422BA4861200574D5B /* WeaponSkinLevelModel+CoreDataProperties.swift */,
-				A3405A432BA4861200574D5B /* WeaponModel+CoreDataClass.swift */,
-				A3405A442BA4861200574D5B /* WeaponModel+CoreDataProperties.swift */,
-				A3405A452BA4861200574D5B /* WeaponSkinModel+CoreDataClass.swift */,
-				A3405A462BA4861200574D5B /* WeaponSkinModel+CoreDataProperties.swift */,
-			);
-			path = ManagedObjectModels;
-			sourceTree = "<group>";
-		};
-		A3405A562BA4862F00574D5B /* Extension */ = {
+		A3405A5A2BA4964000574D5B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				A3405A582BA4867000574D5B /* AgentModelExtension.swift */,
+				A3405A5C2BA4971F00574D5B /* WeaponModelExtension.swift */,
 			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
-		A3405A572BA4863A00574D5B /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extension;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		A34131A52BA174DE0004E908 /* AgentContractsScreen */ = {
@@ -485,6 +387,7 @@
 			children = (
 				A3405A142BA4348C00574D5B /* Repository */,
 				A3405A112BA4173700574D5B /* Entity */,
+				A3405A5A2BA4964000574D5B /* Extensions */,
 				A3405A122BA4177400574D5B /* CoreDataStack.swift */,
 			);
 			path = CoreData;
@@ -867,17 +770,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3405A312BA485BD00574D5B /* AgentAbilitiesModel+CoreDataClass.swift in Sources */,
 				A372A5D82B96201000FF07A7 /* WebViewRepresentable.swift in Sources */,
 				A355D6332B99B87300D4DF6F /* WeaponBundle.swift in Sources */,
-				A3405A502BA4861200574D5B /* WeaponSkinLevelModel+CoreDataProperties.swift in Sources */,
 				A34131B72BA1B0C10004E908 /* GetCurrencyByIdResponse.swift in Sources */,
 				A355D6282B99984600D4DF6F /* Buddy.swift in Sources */,
 				A355D6262B99983100D4DF6F /* GetBuddiesResponse.swift in Sources */,
 				A3F70BC82B8CAD8200CBA5C6 /* Haptics.swift in Sources */,
 				A388B6CA2B8DB4A4007D87DD /* GetPlayerCardsUseCase.swift in Sources */,
 				A3F70B9B2B8C555400CBA5C6 /* SideMenuView.swift in Sources */,
-				A3405A342BA485BD00574D5B /* AgentModel+CoreDataProperties.swift in Sources */,
 				A388B6D02B8DC187007D87DD /* GetSpraysResponse.swift in Sources */,
 				A372A5DA2B9623BF00FF07A7 /* ViewAllSkinsView.swift in Sources */,
 				A372A5D62B961FE200FF07A7 /* PatchNotesView.swift in Sources */,
@@ -888,33 +788,24 @@
 				A3A8755A2B95B33900840A2B /* DevMode.swift in Sources */,
 				A3405A162BA434AD00574D5B /* AgentDataRepository.swift in Sources */,
 				A3F70BC42B8CA62200CBA5C6 /* AgentsView.swift in Sources */,
-				A3405A532BA4861200574D5B /* WeaponSkinModel+CoreDataClass.swift in Sources */,
 				A31E83FD2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift in Sources */,
-				A3405A4E2BA4861200574D5B /* WeaponStatsModel+CoreDataProperties.swift in Sources */,
 				A3F70BDB2B8CE8E000CBA5C6 /* WeaponDetailsView.swift in Sources */,
 				A3F70BD32B8CCF7200CBA5C6 /* MapsView.swift in Sources */,
 				A37A50BB2B94244600E55393 /* StickerManager.swift in Sources */,
-				A3405A512BA4861200574D5B /* WeaponModel+CoreDataClass.swift in Sources */,
-				A3405A352BA485BD00574D5B /* AgentRoleModel+CoreDataProperties.swift in Sources */,
 				A34131B32BA1AFC90004E908 /* GetSprayByIdResponse.swift in Sources */,
 				A3A875512B9587DC00840A2B /* SplashView.swift in Sources */,
 				A3F70BBD2B8C7C7100CBA5C6 /* HomeViewModel.swift in Sources */,
 				A37A50C52B9426E400E55393 /* UIImageExtension.swift in Sources */,
-				A3405A4B2BA4861200574D5B /* DamageRangesModel+CoreDataClass.swift in Sources */,
 				A3F70BB82B8C74E200CBA5C6 /* SideMenuRowView.swift in Sources */,
 				A388B6C42B8DB2B2007D87DD /* PlayerCardsView.swift in Sources */,
 				A39237812BA1B470004DF58E /* GetCurrencyByIdUseCase.swift in Sources */,
 				A3F70BBB2B8C769600CBA5C6 /* SideMenuOptionsModel.swift in Sources */,
-				A3405A482BA4861200574D5B /* ShopDataModel+CoreDataProperties.swift in Sources */,
-				A3405A4F2BA4861200574D5B /* WeaponSkinLevelModel+CoreDataClass.swift in Sources */,
 				A37A50AC2B93987000E55393 /* AVPlayerControllerRepresentable.swift in Sources */,
 				A37A50B32B93A78400E55393 /* GetRanksResponse.swift in Sources */,
-				A3405A472BA4861200574D5B /* ShopDataModel+CoreDataClass.swift in Sources */,
 				A34131B12BA1AF930004E908 /* GetPlayerCardByIdResponse.swift in Sources */,
 				A3A8755D2B95CE8A00840A2B /* AboutView.swift in Sources */,
 				A34131A92BA1ACAE0004E908 /* AgentContractsViewModel.swift in Sources */,
 				A388B6CC2B8DB4CD007D87DD /* GetPlayerCardsResponse.swift in Sources */,
-				A3405A492BA4861200574D5B /* WeaponSkinChromasModel+CoreDataClass.swift in Sources */,
 				A388B6C62B8DB359007D87DD /* PlayerCard.swift in Sources */,
 				A34131A42BA171590004E908 /* GetAgentContractsUseCase.swift in Sources */,
 				A3F70BDE2B8CEAC300CBA5C6 /* StatsCellView.swift in Sources */,
@@ -938,31 +829,25 @@
 				A3F70BD72B8CDD0C00CBA5C6 /* GetWeaponsResponse.swift in Sources */,
 				A3F70BE42B8CFEA600CBA5C6 /* GetMapsResponse.swift in Sources */,
 				A34131AB2BA1ADF90004E908 /* PlayerTitle.swift in Sources */,
-				A3405A322BA485BD00574D5B /* AgentAbilitiesModel+CoreDataProperties.swift in Sources */,
 				A3405A192BA441C900574D5B /* Weapon.xcdatamodeld in Sources */,
 				A37A50B72B93ADF200E55393 /* ColorExtension.swift in Sources */,
 				A355D6392B99C98500D4DF6F /* BundleDetailsView.swift in Sources */,
 				A34131A02BA1701A0004E908 /* AgentContract.swift in Sources */,
 				A355D6372B99B9D200D4DF6F /* GetBundlesUseCase.swift in Sources */,
-				A3405A332BA485BD00574D5B /* AgentModel+CoreDataClass.swift in Sources */,
 				A34131A22BA1711F0004E908 /* GetAgentContractsResponse.swift in Sources */,
 				A355D6242B9980F600D4DF6F /* CustomTabBar.swift in Sources */,
 				A3F70BC62B8CA8C900CBA5C6 /* Agent.swift in Sources */,
+				A3405A5D2BA4971F00574D5B /* WeaponModelExtension.swift in Sources */,
 				A3405A132BA4177400574D5B /* CoreDataStack.swift in Sources */,
-				A3405A542BA4861200574D5B /* WeaponSkinModel+CoreDataProperties.swift in Sources */,
 				A355D62E2B99A07D00D4DF6F /* WeaponBuddyDetailView.swift in Sources */,
 				A3F70B8C2B8C522A00CBA5C6 /* HomeView.swift in Sources */,
-				A3405A522BA4861200574D5B /* WeaponModel+CoreDataProperties.swift in Sources */,
 				A37A50B92B941D2B00E55393 /* ShimmerEffect.swift in Sources */,
 				A31E83FB2BA1B256006A283E /* GetSprayByIdUseCase.swift in Sources */,
-				A3405A4A2BA4861200574D5B /* WeaponSkinChromasModel+CoreDataProperties.swift in Sources */,
-				A3405A362BA485BD00574D5B /* AgentRoleModel+CoreDataClass.swift in Sources */,
 				A34131B52BA1B0690004E908 /* GameCurrency.swift in Sources */,
 				A372A5D32B960B6600FF07A7 /* EmailController.swift in Sources */,
 				A3F70BAF2B8C72A600CBA5C6 /* GetAgentsUseCase.swift in Sources */,
 				A3A875582B95B15000840A2B /* AppAnalytics.swift in Sources */,
 				A388B6C82B8DB39F007D87DD /* PlayerCardDetailsView.swift in Sources */,
-				A3405A4C2BA4861200574D5B /* DamageRangesModel+CoreDataProperties.swift in Sources */,
 				A3F70BE02B8CFC2100CBA5C6 /* Map.swift in Sources */,
 				A3F70B8A2B8C522A00CBA5C6 /* Valorant_StatsApp.swift in Sources */,
 				A388B6C12B8D83E6007D87DD /* MapDetailsView.swift in Sources */,
@@ -970,7 +855,6 @@
 				A3F70B9E2B8C56B000CBA5C6 /* KeyVariables.swift in Sources */,
 				A372A5DC2B9628C300FF07A7 /* SearchBarView.swift in Sources */,
 				A3405A592BA4867000574D5B /* AgentModelExtension.swift in Sources */,
-				A3405A4D2BA4861200574D5B /* WeaponStatsModel+CoreDataClass.swift in Sources */,
 				A355D6312B99B83F00D4DF6F /* BundlesView.swift in Sources */,
 				A3F70BD52B8CDCBE00CBA5C6 /* GetWeaponsUseCase.swift in Sources */,
 				A34131A72BA174FC0004E908 /* AgentContractsView.swift in Sources */,

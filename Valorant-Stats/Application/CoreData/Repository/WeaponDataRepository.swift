@@ -111,6 +111,15 @@ final class WeaponDataRepository: PWeaponDataRepository {
     }
     
     func getAll() -> [Weapon] {
-        return []
+        guard let records = try? context.fetch(WeaponModel.fetchRequest()) as? [WeaponModel] else { return [] }
+        
+        var weapons: [Weapon] = []
+        records.forEach { weaponModel in
+            weapons.append(weaponModel.getWeapon())
+        }
+        
+        print("Weapons fetched successfully")
+        
+        return weapons
     }
 }

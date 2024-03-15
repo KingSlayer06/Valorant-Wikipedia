@@ -91,6 +91,7 @@ final class HomeViewModel: NSObject, ObservableObject {
             case .failure(let error):
                 print("Failed to fetch agent data \(error.localizedDescription)")
                 
+                // Load Agents from CoreData
                 guard let self = self else { return }
                 self.agents = self.agentDataRepository.getAll()
                 
@@ -130,6 +131,14 @@ final class HomeViewModel: NSObject, ObservableObject {
                 
             case .failure(let error):
                 print("Failed to fetch weapons data \(error.localizedDescription)")
+                
+                // Load Weapons from CoreData
+                guard let self = self else { return }
+                self.weapons = self.weaponDataRepository.getAll()
+                
+                DispatchQueue.main.async {
+                    self.showWeaponsShimmer = false
+                }
             }
         }
     }
