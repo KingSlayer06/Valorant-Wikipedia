@@ -16,7 +16,6 @@ final class HomeViewModel: NSObject, ObservableObject {
     @Published var selectedBottomTab: SideMenuOptionsModel = .agents
     
     @Published var agents = [Agent]()
-//    @Published var filteredAgents = [Agent]()
     @Published var weapons = [Weapon]()
     @Published var maps = [GameMap]()
     @Published var playerCards = [PlayerCard]()
@@ -41,7 +40,9 @@ final class HomeViewModel: NSObject, ObservableObject {
     private var getBundlesUseCase: PGetBundlesUseCase?
     private var getAgentsContractsUseCase: PGetAgentContractsUseCase?
     
-    private var agentDataRepository: PAgentDataRepository?
+    //CoreData Repositories
+    private var agentDataRepository = AgentDataRepository()
+    private var weaponDataRepository = WeaponDataRepository()
     
     override init() {
         super.init()
@@ -55,9 +56,6 @@ final class HomeViewModel: NSObject, ObservableObject {
         self.getBuddiesUseCase = GetBuddiesUseCase(gameAssetsRepo: GameAssetsRepository())
         self.getBundlesUseCase = GetBundlesUseCase(gameAssetsRepo: GameAssetsRepository())
         self.getAgentsContractsUseCase = GetAgentContractsUseCase(gameAssetsRepo: GameAssetsRepository())
-        
-        //CoreData Repositories
-        self.agentDataRepository = AgentDataRepository()
     }
     
     func getAgents() {
@@ -78,8 +76,9 @@ final class HomeViewModel: NSObject, ObservableObject {
                 
                 // Save Agents to CoreData
                 self.agents.forEach { agent in
-                    self.agentDataRepository?.add(agent: agent)
+                    self.agentDataRepository.add(agent)
                 }
+                self.agentDataRepository.save()
                 
             case .failure(let error):
                 print("Failed to fetch agent data \(error)")
@@ -99,6 +98,11 @@ final class HomeViewModel: NSObject, ObservableObject {
                     self.weapons[index].skins.removeAll(where: { $0.displayName == "Random Favorite Skin" ||
                         $0.displayName.contains("Standard") })
                 }
+                
+                self.weapons.forEach { weapon in
+                    self.weaponDataRepository.add(weapon)
+                }
+                self.weaponDataRepository.save()
                 
             case .failure(let error):
                 print("Failed to fetch weapons data \(error)")

@@ -8,27 +8,29 @@
 import Foundation
 import CoreData
 
-protocol PAgentDataRepository {
-    func add(agent: Agent)
+protocol PAgentDataRepository: PBaseRepository {
+
 }
 
 final class AgentDataRepository: PAgentDataRepository {
     
+    typealias T = Agent
+    
     var context: NSManagedObjectContext {
-        return CoreDataStack.shared.context
+        return CoreDataStack.shared.agentContext
     }
     
-    func add(agent: Agent) {
+    func add(_ item: Agent) {
         let _agent = AgentModel(context: context)
-        _agent.uuid = agent.uuid
-        _agent.displayName = agent.displayName
-        _agent.desc = agent.description
-        _agent.displayIcon = agent.displayIcon
-        _agent.fullPortrait = agent.fullPortrait
-        _agent.background = agent.background
-        _agent.isPlayableCharacter = agent.isPlayableCharacter
+        _agent.uuid = item.uuid
+        _agent.displayName = item.displayName
+        _agent.desc = item.description
+        _agent.displayIcon = item.displayIcon
+        _agent.fullPortrait = item.fullPortrait
+        _agent.background = item.background
+        _agent.isPlayableCharacter = item.isPlayableCharacter
         
-        if let agentRole = agent.role {
+        if let agentRole = item.role {
             let _agentRole = AgentRoleModel(context: context)
             _agentRole.uuid = agentRole.uuid
             _agentRole.displayName = agentRole.displayName
@@ -38,7 +40,7 @@ final class AgentDataRepository: PAgentDataRepository {
         }
         
         var _abilities = [AgentAbilitiesModel]()
-        for ability in agent.abilities {
+        for ability in item.abilities {
             let _agentAbility = AgentAbilitiesModel(context: context)
             _agentAbility.displayName = ability.displayName
             _agentAbility.displayIcon = ability.displayIcon
@@ -49,6 +51,16 @@ final class AgentDataRepository: PAgentDataRepository {
         _agent.abilities = NSOrderedSet(array: _abilities)
         
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-        CoreDataStack.shared.save()
+    }
+    
+    func save() {
+        guard context.hasChanges else { return }
+        
+        do {
+            try context.save()
+            print("Agents saved successfully")
+        } catch {
+            print("Failed to save agents:", error.localizedDescription)
+        }
     }
 }

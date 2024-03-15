@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22225" systemVersion="23C64" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="DamageRangesModel" representedClassName="DamageRangesModel" syncable="YES" codeGenerationType="class">
+        <attribute name="bodyDamage" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="headDamage" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="legDamage" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="rangeEndMeters" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="rangeStartMeters" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="weaponStats" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeaponStatsModel" inverseName="damageRanges" inverseEntity="WeaponStatsModel"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="uuid"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="ShopDataModel" representedClassName="ShopDataModel" syncable="YES" codeGenerationType="class">
+        <attribute name="categoryText" attributeType="String"/>
+        <attribute name="cost" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="weapon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeaponModel" inverseName="shopData" inverseEntity="WeaponModel"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="uuid"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="WeaponModel" representedClassName="WeaponModel" syncable="YES" codeGenerationType="class">
+        <attribute name="category" attributeType="String"/>
+        <attribute name="displayIcon" attributeType="String"/>
+        <attribute name="displayName" attributeType="String"/>
+        <attribute name="uuid" attributeType="String"/>
+        <relationship name="shopData" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ShopDataModel" inverseName="weapon" inverseEntity="ShopDataModel"/>
+        <relationship name="skins" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="WeaponSkinModel" inverseName="weapon" inverseEntity="WeaponSkinModel"/>
+        <relationship name="weaponStats" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="WeaponStatsModel" inverseName="weapon" inverseEntity="WeaponStatsModel"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="uuid"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="WeaponSkinChromasModel" representedClassName="WeaponSkinChromasModel" syncable="YES" codeGenerationType="class">
+        <attribute name="displayName" attributeType="String"/>
+        <attribute name="fullRender" optional="YES" attributeType="String"/>
+        <attribute name="streamedVideo" optional="YES" attributeType="String"/>
+        <attribute name="swatch" optional="YES" attributeType="String"/>
+        <attribute name="uuid" attributeType="String"/>
+        <relationship name="weaponSkin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeaponSkinModel" inverseName="chromas" inverseEntity="WeaponSkinModel"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="uuid"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="WeaponSkinLevelModel" representedClassName="WeaponSkinLevelModel" syncable="YES" codeGenerationType="class">
+        <attribute name="displayIcon" optional="YES" attributeType="String"/>
+        <attribute name="displayName" attributeType="String"/>
+        <attribute name="streamedVideo" optional="YES" attributeType="String"/>
+        <attribute name="uuid" attributeType="String"/>
+        <relationship name="weaponSkin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeaponSkinModel" inverseName="levels" inverseEntity="WeaponSkinModel"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="uuid"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="WeaponSkinModel" representedClassName="WeaponSkinModel" syncable="YES" codeGenerationType="class">
+        <attribute name="displayIcon" optional="YES" attributeType="String"/>
+        <attribute name="displayName" attributeType="String"/>
+        <attribute name="uuid" attributeType="String"/>
+        <relationship name="chromas" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="WeaponSkinChromasModel" inverseName="weaponSkin" inverseEntity="WeaponSkinChromasModel"/>
+        <relationship name="levels" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="WeaponSkinLevelModel" inverseName="weaponSkin" inverseEntity="WeaponSkinLevelModel"/>
+        <relationship name="weapon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeaponModel" inverseName="skins" inverseEntity="WeaponModel"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="uuid"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="WeaponStatsModel" representedClassName="WeaponStatsModel" syncable="YES" codeGenerationType="class">
+        <attribute name="fireRate" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="magazineSize" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="damageRanges" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="DamageRangesModel" inverseName="weaponStats" inverseEntity="DamageRangesModel"/>
+        <relationship name="weapon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeaponModel" inverseName="weaponStats" inverseEntity="WeaponModel"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="uuid"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+</model>

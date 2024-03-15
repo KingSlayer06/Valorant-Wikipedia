@@ -12,6 +12,9 @@
 		A31E83FD2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31E83FC2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift */; };
 		A3405A132BA4177400574D5B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A122BA4177400574D5B /* CoreDataStack.swift */; };
 		A3405A162BA434AD00574D5B /* AgentDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A152BA434AD00574D5B /* AgentDataRepository.swift */; };
+		A3405A192BA441C900574D5B /* Weapon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3405A172BA441C900574D5B /* Weapon.xcdatamodeld */; };
+		A3405A1B2BA4487D00574D5B /* WeaponDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A1A2BA4487D00574D5B /* WeaponDataRepository.swift */; };
+		A3405A1D2BA44FF900574D5B /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A1C2BA44FF900574D5B /* BaseRepository.swift */; };
 		A34131A02BA1701A0004E908 /* AgentContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = A341319F2BA1701A0004E908 /* AgentContract.swift */; };
 		A34131A22BA1711F0004E908 /* GetAgentContractsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34131A12BA1711F0004E908 /* GetAgentContractsResponse.swift */; };
 		A34131A42BA171590004E908 /* GetAgentContractsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34131A32BA171590004E908 /* GetAgentContractsUseCase.swift */; };
@@ -108,6 +111,9 @@
 		A31E83FC2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlayerCardByIdUseCase.swift; sourceTree = "<group>"; };
 		A3405A122BA4177400574D5B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		A3405A152BA434AD00574D5B /* AgentDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentDataRepository.swift; sourceTree = "<group>"; };
+		A3405A182BA441C900574D5B /* Weapon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Weapon.xcdatamodel; sourceTree = "<group>"; };
+		A3405A1A2BA4487D00574D5B /* WeaponDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponDataRepository.swift; sourceTree = "<group>"; };
+		A3405A1C2BA44FF900574D5B /* BaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepository.swift; sourceTree = "<group>"; };
 		A341319F2BA1701A0004E908 /* AgentContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentContract.swift; sourceTree = "<group>"; };
 		A34131A12BA1711F0004E908 /* GetAgentContractsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAgentContractsResponse.swift; sourceTree = "<group>"; };
 		A34131A32BA171590004E908 /* GetAgentContractsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAgentContractsUseCase.swift; sourceTree = "<group>"; };
@@ -251,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				A39237832BA40DD0004DF58E /* Agent.xcdatamodeld */,
+				A3405A172BA441C900574D5B /* Weapon.xcdatamodeld */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -259,6 +266,8 @@
 			isa = PBXGroup;
 			children = (
 				A3405A152BA434AD00574D5B /* AgentDataRepository.swift */,
+				A3405A1A2BA4487D00574D5B /* WeaponDataRepository.swift */,
+				A3405A1C2BA44FF900574D5B /* BaseRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -797,13 +806,16 @@
 				A3F70BCD2B8CC12E00CBA5C6 /* AgentDetailsView.swift in Sources */,
 				A34131AD2BA1AE6F0004E908 /* GetPlayerTitleByIdResponse.swift in Sources */,
 				A392377F2BA1B3F1004DF58E /* GetPlayerTitleByIdUseCase.swift in Sources */,
+				A3405A1D2BA44FF900574D5B /* BaseRepository.swift in Sources */,
 				A3F70BD92B8CDD2700CBA5C6 /* Weapon.swift in Sources */,
 				A388B6CE2B8DC145007D87DD /* Spray.swift in Sources */,
 				A3F70BA72B8C722400CBA5C6 /* GameAssetsRepository.swift in Sources */,
+				A3405A1B2BA4487D00574D5B /* WeaponDataRepository.swift in Sources */,
 				A3F70BE22B8CFE5500CBA5C6 /* GetMapsUseCase.swift in Sources */,
 				A3F70BD72B8CDD0C00CBA5C6 /* GetWeaponsResponse.swift in Sources */,
 				A3F70BE42B8CFEA600CBA5C6 /* GetMapsResponse.swift in Sources */,
 				A34131AB2BA1ADF90004E908 /* PlayerTitle.swift in Sources */,
+				A3405A192BA441C900574D5B /* Weapon.xcdatamodeld in Sources */,
 				A37A50B72B93ADF200E55393 /* ColorExtension.swift in Sources */,
 				A355D6392B99C98500D4DF6F /* BundleDetailsView.swift in Sources */,
 				A34131A02BA1701A0004E908 /* AgentContract.swift in Sources */,
@@ -1079,6 +1091,16 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
+		A3405A172BA441C900574D5B /* Weapon.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A3405A182BA441C900574D5B /* Weapon.xcdatamodel */,
+			);
+			currentVersion = A3405A182BA441C900574D5B /* Weapon.xcdatamodel */;
+			path = Weapon.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		A39237832BA40DD0004DF58E /* Agent.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
