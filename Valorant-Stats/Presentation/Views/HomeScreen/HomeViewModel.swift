@@ -44,6 +44,8 @@ final class HomeViewModel: NSObject, ObservableObject {
     private var getBundlesUseCase: PGetBundlesUseCase?
     private var getAgentsContractsUseCase: PGetAgentContractsUseCase?
     
+    private var agentDataRepository: PAgentDataRepository?
+    
     override init() {
         super.init()
         
@@ -56,6 +58,9 @@ final class HomeViewModel: NSObject, ObservableObject {
         self.getBuddiesUseCase = GetBuddiesUseCase(gameAssetsRepo: GameAssetsRepository())
         self.getBundlesUseCase = GetBundlesUseCase(gameAssetsRepo: GameAssetsRepository())
         self.getAgentsContractsUseCase = GetAgentContractsUseCase(gameAssetsRepo: GameAssetsRepository())
+        
+        //CoreData Repositories
+        self.agentDataRepository = AgentDataRepository()
     }
     
     func getAgents() {
@@ -76,6 +81,9 @@ final class HomeViewModel: NSObject, ObservableObject {
                 guard let agents = self?.agents else { return }
                 
                 for agent in agents {
+                    // Save Agents to CoreData
+                    self?.agentDataRepository?.add(agent: agent)
+                    
                     if ((self?.agentRoles.first(where: { $0.displayName == agent.role!.displayName })) != nil) {
                         continue
                     }

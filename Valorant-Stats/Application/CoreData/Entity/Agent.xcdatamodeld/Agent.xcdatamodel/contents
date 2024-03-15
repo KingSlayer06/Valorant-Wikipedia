@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22225" systemVersion="23C64" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="AgentAbilitiesModel" representedClassName="AgentAbilitiesModel" syncable="YES" codeGenerationType="class">
+        <attribute name="desc" attributeType="String"/>
+        <attribute name="displayIcon" optional="YES" attributeType="String"/>
+        <attribute name="displayName" attributeType="String"/>
+        <relationship name="agent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AgentModel" inverseName="abilities" inverseEntity="AgentModel"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="displayName"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="AgentModel" representedClassName="AgentModel" syncable="YES" codeGenerationType="class">
+        <attribute name="background" optional="YES" attributeType="String"/>
+        <attribute name="desc" attributeType="String"/>
+        <attribute name="displayIcon" attributeType="String"/>
+        <attribute name="displayName" attributeType="String"/>
+        <attribute name="fullPortrait" optional="YES" attributeType="String"/>
+        <attribute name="isPlayableCharacter" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="uuid" attributeType="String"/>
+        <relationship name="abilities" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="AgentAbilitiesModel" inverseName="agent" inverseEntity="AgentAbilitiesModel"/>
+        <relationship name="role" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AgentRoleModel" inverseName="agent" inverseEntity="AgentRoleModel"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="uuid"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="AgentRoleModel" representedClassName="AgentRoleModel" syncable="YES" codeGenerationType="class">
+        <attribute name="displayIcon" attributeType="String"/>
+        <attribute name="displayName" attributeType="String"/>
+        <attribute name="uuid" attributeType="String"/>
+        <relationship name="agent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AgentModel" inverseName="role" inverseEntity="AgentModel"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="uuid"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+</model>

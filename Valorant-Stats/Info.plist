@@ -17,5 +17,7 @@
 	</array>
 	<key>CFBundleDisplayName</key>
 	<string>Valorant Wikipedia</string>
+	<key>FirebaseAutomaticScreenReportingEnabled</key>
+	<false/>
 </dict>
 </plist>

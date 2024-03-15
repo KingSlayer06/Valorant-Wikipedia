@@ -13,6 +13,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
         
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        debugPrint("CoreData Directory: \(path[0])")
+        
         return true
     }
 }

@@ -10,6 +10,8 @@
 		2260A0B65DF5B8A443BF777C /* Pods_Valorant_Stats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6135AD81346E32F9827192D0 /* Pods_Valorant_Stats.framework */; };
 		A31E83FB2BA1B256006A283E /* GetSprayByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31E83FA2BA1B256006A283E /* GetSprayByIdUseCase.swift */; };
 		A31E83FD2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31E83FC2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift */; };
+		A3405A132BA4177400574D5B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A122BA4177400574D5B /* CoreDataStack.swift */; };
+		A3405A162BA434AD00574D5B /* AgentDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A152BA434AD00574D5B /* AgentDataRepository.swift */; };
 		A34131A02BA1701A0004E908 /* AgentContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = A341319F2BA1701A0004E908 /* AgentContract.swift */; };
 		A34131A22BA1711F0004E908 /* GetAgentContractsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34131A12BA1711F0004E908 /* GetAgentContractsResponse.swift */; };
 		A34131A42BA171590004E908 /* GetAgentContractsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34131A32BA171590004E908 /* GetAgentContractsUseCase.swift */; };
@@ -61,6 +63,7 @@
 		A388B6D92B8DC6A4007D87DD /* WeaponSkinDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A388B6D82B8DC6A4007D87DD /* WeaponSkinDetailsView.swift */; };
 		A392377F2BA1B3F1004DF58E /* GetPlayerTitleByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A392377E2BA1B3F1004DF58E /* GetPlayerTitleByIdUseCase.swift */; };
 		A39237812BA1B470004DF58E /* GetCurrencyByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39237802BA1B470004DF58E /* GetCurrencyByIdUseCase.swift */; };
+		A39237852BA40DD0004DF58E /* Agent.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A39237832BA40DD0004DF58E /* Agent.xcdatamodeld */; };
 		A3A875512B9587DC00840A2B /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A875502B9587DC00840A2B /* SplashView.swift */; };
 		A3A875532B95ACC700840A2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3A875522B95ACC700840A2B /* GoogleService-Info.plist */; };
 		A3A875562B95AF0300840A2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A875552B95AF0300840A2B /* AppDelegate.swift */; };
@@ -103,6 +106,8 @@
 		6F88229B6EBFFB447D832AE9 /* Pods-Valorant-Stats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Valorant-Stats.release.xcconfig"; path = "Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats.release.xcconfig"; sourceTree = "<group>"; };
 		A31E83FA2BA1B256006A283E /* GetSprayByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSprayByIdUseCase.swift; sourceTree = "<group>"; };
 		A31E83FC2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlayerCardByIdUseCase.swift; sourceTree = "<group>"; };
+		A3405A122BA4177400574D5B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		A3405A152BA434AD00574D5B /* AgentDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentDataRepository.swift; sourceTree = "<group>"; };
 		A341319F2BA1701A0004E908 /* AgentContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentContract.swift; sourceTree = "<group>"; };
 		A34131A12BA1711F0004E908 /* GetAgentContractsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAgentContractsResponse.swift; sourceTree = "<group>"; };
 		A34131A32BA171590004E908 /* GetAgentContractsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAgentContractsUseCase.swift; sourceTree = "<group>"; };
@@ -152,6 +157,7 @@
 		A388B6D82B8DC6A4007D87DD /* WeaponSkinDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponSkinDetailsView.swift; sourceTree = "<group>"; };
 		A392377E2BA1B3F1004DF58E /* GetPlayerTitleByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlayerTitleByIdUseCase.swift; sourceTree = "<group>"; };
 		A39237802BA1B470004DF58E /* GetCurrencyByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrencyByIdUseCase.swift; sourceTree = "<group>"; };
+		A39237842BA40DD0004DF58E /* Agent.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Agent.xcdatamodel; sourceTree = "<group>"; };
 		A3A875502B9587DC00840A2B /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		A3A875522B95ACC700840A2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A3A875552B95AF0300840A2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -239,6 +245,22 @@
 				A39237802BA1B470004DF58E /* GetCurrencyByIdUseCase.swift */,
 			);
 			path = GetById;
+			sourceTree = "<group>";
+		};
+		A3405A112BA4173700574D5B /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				A39237832BA40DD0004DF58E /* Agent.xcdatamodeld */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		A3405A142BA4348C00574D5B /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				A3405A152BA434AD00574D5B /* AgentDataRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		A34131A52BA174DE0004E908 /* AgentContractsScreen */ = {
@@ -338,6 +360,16 @@
 			path = SpraysScreen;
 			sourceTree = "<group>";
 		};
+		A39237822BA40D9C004DF58E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				A3405A142BA4348C00574D5B /* Repository */,
+				A3405A112BA4173700574D5B /* Entity */,
+				A3405A122BA4177400574D5B /* CoreDataStack.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		A3A8754F2B9587CE00840A2B /* SplashScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,6 +381,7 @@
 		A3A875542B95AEDA00840A2B /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				A39237822BA40D9C004DF58E /* CoreData */,
 				A3A875552B95AF0300840A2B /* AppDelegate.swift */,
 				A3A875572B95B15000840A2B /* AppAnalytics.swift */,
 				A3F70B892B8C522A00CBA5C6 /* Valorant_StatsApp.swift */,
@@ -730,6 +763,7 @@
 				A3F70BD12B8CCF6A00CBA5C6 /* WeaponsView.swift in Sources */,
 				A355D62A2B9998A300D4DF6F /* GetBuddiesUseCase.swift in Sources */,
 				A3A8755A2B95B33900840A2B /* DevMode.swift in Sources */,
+				A3405A162BA434AD00574D5B /* AgentDataRepository.swift in Sources */,
 				A3F70BC42B8CA62200CBA5C6 /* AgentsView.swift in Sources */,
 				A31E83FD2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift in Sources */,
 				A3F70BDB2B8CE8E000CBA5C6 /* WeaponDetailsView.swift in Sources */,
@@ -759,6 +793,7 @@
 				A3A875562B95AF0300840A2B /* AppDelegate.swift in Sources */,
 				A37A50AF2B93A68100E55393 /* RanksView.swift in Sources */,
 				A388B6D22B8DC1DC007D87DD /* GetSpraysUseCase.swift in Sources */,
+				A39237852BA40DD0004DF58E /* Agent.xcdatamodeld in Sources */,
 				A3F70BCD2B8CC12E00CBA5C6 /* AgentDetailsView.swift in Sources */,
 				A34131AD2BA1AE6F0004E908 /* GetPlayerTitleByIdResponse.swift in Sources */,
 				A392377F2BA1B3F1004DF58E /* GetPlayerTitleByIdUseCase.swift in Sources */,
@@ -776,6 +811,7 @@
 				A34131A22BA1711F0004E908 /* GetAgentContractsResponse.swift in Sources */,
 				A355D6242B9980F600D4DF6F /* CustomTabBar.swift in Sources */,
 				A3F70BC62B8CA8C900CBA5C6 /* Agent.swift in Sources */,
+				A3405A132BA4177400574D5B /* CoreDataStack.swift in Sources */,
 				A355D62E2B99A07D00D4DF6F /* WeaponBuddyDetailView.swift in Sources */,
 				A3F70B8C2B8C522A00CBA5C6 /* HomeView.swift in Sources */,
 				A37A50B92B941D2B00E55393 /* ShimmerEffect.swift in Sources */,
@@ -1041,6 +1077,19 @@
 			productName = YYImageLib;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		A39237832BA40DD0004DF58E /* Agent.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A39237842BA40DD0004DF58E /* Agent.xcdatamodel */,
+			);
+			currentVersion = A39237842BA40DD0004DF58E /* Agent.xcdatamodel */;
+			path = Agent.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A3F70B7E2B8C522A00CBA5C6 /* Project object */;
 }
