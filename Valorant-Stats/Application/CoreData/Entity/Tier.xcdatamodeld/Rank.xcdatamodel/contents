@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22225" systemVersion="23C64" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="TierModel" representedClassName="TierModel" syncable="YES" codeGenerationType="class">
+        <attribute name="backgroundColor" attributeType="String"/>
+        <attribute name="color" attributeType="String"/>
+        <attribute name="largeIcon" optional="YES" attributeType="String"/>
+        <attribute name="smallIcon" optional="YES" attributeType="String"/>
+        <attribute name="tierName" attributeType="String"/>
+        <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="uuid"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+</model>

@@ -70,6 +70,18 @@ class CoreDataStack: ObservableObject {
         }
         return container
     }()
+    
+    lazy var tierPersistentContainer: NSPersistentContainer = {
+        
+        let container = NSPersistentContainer(name: "Tier")
+
+        container.loadPersistentStores { _, error in
+            if let error {
+                fatalError("Failed to load tier persistent stores: \(error.localizedDescription)")
+            }
+        }
+        return container
+    }()
         
     private init() { }
 }

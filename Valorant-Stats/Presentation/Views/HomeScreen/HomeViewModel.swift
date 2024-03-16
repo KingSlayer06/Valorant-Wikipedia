@@ -54,6 +54,7 @@ final class HomeViewModel: NSObject, ObservableObject {
     private var mapDataRepository = MapDataRepository()
     private var playerCardDataRepository = PlayerCardDataRepository()
     private var sprayDataRepository = SprayDataRepository()
+    private var tierDataRepository = TierDataRepository()
     
     override init() {
         super.init()
@@ -276,8 +277,22 @@ final class HomeViewModel: NSObject, ObservableObject {
                     self.showRanksShimmer = false
                 }
                 
+                // Save Ranks to CoreData
+                self.tiers.forEach { tier in
+                    self.tierDataRepository.add(tier)
+                }
+                self.tierDataRepository.save()
+                
             case .failure(let error):
                 print("Failed to fetch ranks data \(error.localizedDescription)")
+                
+                // Load Ranks from CoreData
+                guard let self = self else { return }
+                self.tiers = self.tierDataRepository.getAll()
+                
+                DispatchQueue.main.async {
+                    self.showRanksShimmer = false
+                }
             }
         }
     }
