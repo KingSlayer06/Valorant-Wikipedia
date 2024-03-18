@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 import CoreData
 
 protocol PTierDataRepository: PBaseRepository {
@@ -40,7 +39,7 @@ final class TierDataRepository: PTierDataRepository {
             try context.save()
             print("Tier saved successfully")
         } catch {
-            print("Failed to tier spray:", error.localizedDescription)
+            print("Failed to save tier:", error.localizedDescription)
         }
     }
     

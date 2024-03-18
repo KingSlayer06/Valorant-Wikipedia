@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22225" systemVersion="23C64" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="BundleModel" representedClassName="BundleModel" syncable="YES" codeGenerationType="class">
+        <attribute name="displayIcon2" attributeType="String"/>
+        <attribute name="displayName" attributeType="String"/>
+        <attribute name="extraDescription" optional="YES" attributeType="String"/>
+        <attribute name="uuid" attributeType="String"/>
+        <attribute name="verticalPromoImage" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="uuid"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+</model>

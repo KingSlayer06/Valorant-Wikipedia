@@ -82,6 +82,30 @@ class CoreDataStack: ObservableObject {
         }
         return container
     }()
+    
+    lazy var bundlePersistentContainer: NSPersistentContainer = {
+        
+        let container = NSPersistentContainer(name: "Bundle")
+
+        container.loadPersistentStores { _, error in
+            if let error {
+                fatalError("Failed to load bundle persistent stores: \(error.localizedDescription)")
+            }
+        }
+        return container
+    }()
+    
+    lazy var buddyPersistentContainer: NSPersistentContainer = {
+        
+        let container = NSPersistentContainer(name: "Buddy")
+
+        container.loadPersistentStores { _, error in
+            if let error {
+                fatalError("Failed to load buddy persistent stores: \(error.localizedDescription)")
+            }
+        }
+        return container
+    }()
         
     private init() { }
 }

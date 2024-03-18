@@ -89,6 +89,9 @@
 		A3A8755D2B95CE8A00840A2B /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A8755C2B95CE8A00840A2B /* AboutView.swift */; };
 		A3D9D7762B8F0F3900C5FC64 /* ShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D9D7752B8F0F3900C5FC64 /* ShareItem.swift */; };
 		A3D9D7782B8F10B900C5FC64 /* KingfisherManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D9D7772B8F10B900C5FC64 /* KingfisherManagerExtension.swift */; };
+		A3EBA6902BA7EFAD00F8BC6E /* Bundle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3EBA68E2BA7EFAD00F8BC6E /* Bundle.xcdatamodeld */; };
+		A3EBA6922BA7F03900F8BC6E /* BundleDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EBA6912BA7F03900F8BC6E /* BundleDataRepository.swift */; };
+		A3EBA6942BA7F04600F8BC6E /* BundleModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EBA6932BA7F04600F8BC6E /* BundleModelExtension.swift */; };
 		A3F70B8A2B8C522A00CBA5C6 /* Valorant_StatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F70B892B8C522A00CBA5C6 /* Valorant_StatsApp.swift */; };
 		A3F70B8C2B8C522A00CBA5C6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F70B8B2B8C522A00CBA5C6 /* HomeView.swift */; };
 		A3F70B8E2B8C522B00CBA5C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3F70B8D2B8C522B00CBA5C6 /* Assets.xcassets */; };
@@ -116,6 +119,9 @@
 		A3F70BE02B8CFC2100CBA5C6 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F70BDF2B8CFC2100CBA5C6 /* Map.swift */; };
 		A3F70BE22B8CFE5500CBA5C6 /* GetMapsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F70BE12B8CFE5500CBA5C6 /* GetMapsUseCase.swift */; };
 		A3F70BE42B8CFEA600CBA5C6 /* GetMapsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F70BE32B8CFEA600CBA5C6 /* GetMapsResponse.swift */; };
+		A3FE5B212BA85B4D00D9DD8C /* Buddy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3FE5B1F2BA85B4D00D9DD8C /* Buddy.xcdatamodeld */; };
+		A3FE5B232BA85B9400D9DD8C /* BuddyModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FE5B222BA85B9400D9DD8C /* BuddyModelExtension.swift */; };
+		A3FE5B252BA85BCD00D9DD8C /* BuddyDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FE5B242BA85BCD00D9DD8C /* BuddyDataRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -200,6 +206,9 @@
 		A3A8755C2B95CE8A00840A2B /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		A3D9D7752B8F0F3900C5FC64 /* ShareItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareItem.swift; sourceTree = "<group>"; };
 		A3D9D7772B8F10B900C5FC64 /* KingfisherManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherManagerExtension.swift; sourceTree = "<group>"; };
+		A3EBA68F2BA7EFAD00F8BC6E /* WeaponBundle.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeaponBundle.xcdatamodel; sourceTree = "<group>"; };
+		A3EBA6912BA7F03900F8BC6E /* BundleDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleDataRepository.swift; sourceTree = "<group>"; };
+		A3EBA6932BA7F04600F8BC6E /* BundleModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleModelExtension.swift; sourceTree = "<group>"; };
 		A3F70B862B8C522A00CBA5C6 /* Valorant-Stats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Valorant-Stats.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3F70B892B8C522A00CBA5C6 /* Valorant_StatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Valorant_StatsApp.swift; sourceTree = "<group>"; };
 		A3F70B8B2B8C522A00CBA5C6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -229,6 +238,9 @@
 		A3F70BDF2B8CFC2100CBA5C6 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		A3F70BE12B8CFE5500CBA5C6 /* GetMapsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMapsUseCase.swift; sourceTree = "<group>"; };
 		A3F70BE32B8CFEA600CBA5C6 /* GetMapsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMapsResponse.swift; sourceTree = "<group>"; };
+		A3FE5B202BA85B4D00D9DD8C /* Buddy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Buddy.xcdatamodel; sourceTree = "<group>"; };
+		A3FE5B222BA85B9400D9DD8C /* BuddyModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyModelExtension.swift; sourceTree = "<group>"; };
+		A3FE5B242BA85BCD00D9DD8C /* BuddyDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyDataRepository.swift; sourceTree = "<group>"; };
 		D778CBCE5EACE7E6034D98F6 /* Pods-Valorant-Stats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Valorant-Stats.debug.xcconfig"; path = "Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -290,6 +302,8 @@
 				A3405A652BA4A2FF00574D5B /* PlayerCard.xcdatamodeld */,
 				A3405A6C2BA4A87E00574D5B /* Spray.xcdatamodeld */,
 				A3405A732BA5464300574D5B /* Tier.xcdatamodeld */,
+				A3EBA68E2BA7EFAD00F8BC6E /* Bundle.xcdatamodeld */,
+				A3FE5B1F2BA85B4D00D9DD8C /* Buddy.xcdatamodeld */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -304,6 +318,8 @@
 				A3405A682BA4A3BE00574D5B /* PlayerCardDataRepository.swift */,
 				A3405A712BA4A97500574D5B /* SprayDataRepository.swift */,
 				A3405A762BA5472700574D5B /* TierDataRepository.swift */,
+				A3EBA6912BA7F03900F8BC6E /* BundleDataRepository.swift */,
+				A3FE5B242BA85BCD00D9DD8C /* BuddyDataRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -317,6 +333,8 @@
 				A3405A6A2BA4A47700574D5B /* PlayerCardModelExtension.swift */,
 				A3405A6F2BA4A90900574D5B /* SprayModelExtension.swift */,
 				A3405A782BA5487600574D5B /* TierModelExtension.swift */,
+				A3EBA6932BA7F04600F8BC6E /* BundleModelExtension.swift */,
+				A3FE5B222BA85B9400D9DD8C /* BuddyModelExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -815,6 +833,7 @@
 				A3F70BC82B8CAD8200CBA5C6 /* Haptics.swift in Sources */,
 				A3405A622BA49E1F00574D5B /* MapModelExtension.swift in Sources */,
 				A388B6CA2B8DB4A4007D87DD /* GetPlayerCardsUseCase.swift in Sources */,
+				A3EBA6942BA7F04600F8BC6E /* BundleModelExtension.swift in Sources */,
 				A3F70B9B2B8C555400CBA5C6 /* SideMenuView.swift in Sources */,
 				A388B6D02B8DC187007D87DD /* GetSpraysResponse.swift in Sources */,
 				A372A5DA2B9623BF00FF07A7 /* ViewAllSkinsView.swift in Sources */,
@@ -823,6 +842,7 @@
 				A3F70BCB2B8CB21C00CBA5C6 /* GetAgentsResponse.swift in Sources */,
 				A3405A722BA4A97500574D5B /* SprayDataRepository.swift in Sources */,
 				A3F70BD12B8CCF6A00CBA5C6 /* WeaponsView.swift in Sources */,
+				A3EBA6922BA7F03900F8BC6E /* BundleDataRepository.swift in Sources */,
 				A355D62A2B9998A300D4DF6F /* GetBuddiesUseCase.swift in Sources */,
 				A3A8755A2B95B33900840A2B /* DevMode.swift in Sources */,
 				A3405A162BA434AD00574D5B /* AgentDataRepository.swift in Sources */,
@@ -840,6 +860,7 @@
 				A388B6C42B8DB2B2007D87DD /* PlayerCardsView.swift in Sources */,
 				A39237812BA1B470004DF58E /* GetCurrencyByIdUseCase.swift in Sources */,
 				A3F70BBB2B8C769600CBA5C6 /* SideMenuOptionsModel.swift in Sources */,
+				A3EBA6902BA7EFAD00F8BC6E /* Bundle.xcdatamodeld in Sources */,
 				A37A50AC2B93987000E55393 /* AVPlayerControllerRepresentable.swift in Sources */,
 				A37A50B32B93A78400E55393 /* GetRanksResponse.swift in Sources */,
 				A34131B12BA1AF930004E908 /* GetPlayerCardByIdResponse.swift in Sources */,
@@ -895,7 +916,9 @@
 				A388B6C82B8DB39F007D87DD /* PlayerCardDetailsView.swift in Sources */,
 				A3F70BE02B8CFC2100CBA5C6 /* Map.swift in Sources */,
 				A3F70B8A2B8C522A00CBA5C6 /* Valorant_StatsApp.swift in Sources */,
+				A3FE5B212BA85B4D00D9DD8C /* Buddy.xcdatamodeld in Sources */,
 				A3405A772BA5472700574D5B /* TierDataRepository.swift in Sources */,
+				A3FE5B252BA85BCD00D9DD8C /* BuddyDataRepository.swift in Sources */,
 				A388B6C12B8D83E6007D87DD /* MapDetailsView.swift in Sources */,
 				A3405A602BA49D6600574D5B /* Map.xcdatamodeld in Sources */,
 				A3D9D7762B8F0F3900C5FC64 /* ShareItem.swift in Sources */,
@@ -907,6 +930,7 @@
 				A3F70BD52B8CDCBE00CBA5C6 /* GetWeaponsUseCase.swift in Sources */,
 				A34131A72BA174FC0004E908 /* AgentContractsView.swift in Sources */,
 				A37A50B52B93A7CC00E55393 /* GetRanksUseCase.swift in Sources */,
+				A3FE5B232BA85B9400D9DD8C /* BuddyModelExtension.swift in Sources */,
 				A3D9D7782B8F10B900C5FC64 /* KingfisherManagerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1212,6 +1236,26 @@
 			);
 			currentVersion = A39237842BA40DD0004DF58E /* Agent.xcdatamodel */;
 			path = Agent.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		A3EBA68E2BA7EFAD00F8BC6E /* Bundle.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A3EBA68F2BA7EFAD00F8BC6E /* WeaponBundle.xcdatamodel */,
+			);
+			currentVersion = A3EBA68F2BA7EFAD00F8BC6E /* WeaponBundle.xcdatamodel */;
+			path = Bundle.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		A3FE5B1F2BA85B4D00D9DD8C /* Buddy.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A3FE5B202BA85B4D00D9DD8C /* Buddy.xcdatamodel */,
+			);
+			currentVersion = A3FE5B202BA85B4D00D9DD8C /* Buddy.xcdatamodel */;
+			path = Buddy.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

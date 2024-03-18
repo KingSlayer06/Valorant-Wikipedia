@@ -55,6 +55,8 @@ final class HomeViewModel: NSObject, ObservableObject {
     private var playerCardDataRepository = PlayerCardDataRepository()
     private var sprayDataRepository = SprayDataRepository()
     private var tierDataRepository = TierDataRepository()
+    private var buddyDataRepository = BuddyDataRepository()
+    private var bundleDataRepository = BundleDataRepository()
     
     override init() {
         super.init()
@@ -302,8 +304,18 @@ final class HomeViewModel: NSObject, ObservableObject {
             switch result {
             case .success(let response):
                 self?.buddies = response.data
+                
+                // Save Buddies to CoreData
+                self?.buddies.forEach { buddy in
+                    self?.buddyDataRepository.add(buddy)
+                }
+                self?.buddyDataRepository.save()
             case .failure(let error):
                 print("Failed to fetch buddies data \(error.localizedDescription)")
+                
+                // Load Bundles from CoreData
+                guard let self = self else { return }
+                self.buddies = self.buddyDataRepository.getAll()
             }
         }
     }
@@ -323,8 +335,23 @@ final class HomeViewModel: NSObject, ObservableObject {
                 DispatchQueue.main.async {
                     self.showBundlesShimmer = false
                 }
+                
+                // Save Bundles to CoreData
+                self.bundles.forEach { bundle in
+                    self.bundleDataRepository.add(bundle)
+                }
+                self.bundleDataRepository.save()
+                
             case .failure(let error):
                 print("Failed to fetch bundles data \(error.localizedDescription)")
+                
+                // Load Bundles from CoreData
+                guard let self = self else { return }
+                self.bundles = self.bundleDataRepository.getAll()
+                
+                DispatchQueue.main.async {
+                    self.showBundlesShimmer = false
+                }
             }
         }
     }
