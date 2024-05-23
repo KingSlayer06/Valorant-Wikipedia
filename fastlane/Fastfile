@@ -16,7 +16,7 @@
 fastlane_require 'dotenv'
 api_key = nil
 # Define the profile type, e.g. appstore, adhoc, development etc"
-profile_type = "development"
+profile_type = "appstore"
 
 before_all do |lane|
   setup_ci()
@@ -24,11 +24,11 @@ before_all do |lane|
 end
 
 lane :release do
-  certificate_info = certificate_update(
-    apiKey: api_key,
-    appIdentifiers: [ENV["BUNDLE_ID"]],
-    profileType: profile_type,
-  )
+  # certificate_info = certificate_update(
+  #   apiKey: api_key,
+  #   appIdentifiers: [ENV["BUNDLE_ID"]],
+  #   profileType: profile_type,
+  # )
 
   pod_install()
   update_version_number()
@@ -72,9 +72,9 @@ lane :update_version_number do
    increment_build_number(build_number: version_number_at_testflight + 1, xcodeproj: "Valorant-Stats.xcodeproj")
 end
 
-lane :archive do |options|
+lane :archive do
   build_app(
-    export_method: profile_type,
+    export_method: "app-store",
     workspace: "Valorant-Stats.xcworkspace", 
     scheme: "Valorant-Stats"
   )
