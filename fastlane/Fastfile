@@ -64,7 +64,9 @@ lane :certificate_update do
     git_basic_authorization: Base64.strict_encode64(git_basic_auth),
     git_url: ENV['MATCH_GIT_URL'],
     keychain_name: keychain_name,
-    platform: "ios"
+    platform: "ios",
+    username: ENV['APP_STORE_CONNECT_USERNAME'],
+    team_id: ENV['APP_STORE_CONNECT_TEAM_ID']
   )
 end
 
