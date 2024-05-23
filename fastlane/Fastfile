@@ -18,7 +18,7 @@ api_key = nil
 keychain_name='fastlane_tmp_keychain'
 
 before_all do |lane|
-  Dotenv.overload '.env.secret'
+  # Dotenv.overload '.env.secret'
   setup_ci()
   api_key = get_api_key()
 end
@@ -27,13 +27,13 @@ lane :release do
   certificate_info = certificate_update(
     apiKey: api_key,
     appIdentifiers: [ENV["BUNDLE_ID"]],
-    profileType: "appstore",
+    profileType: "development",
   )
 
   pod_install()
-  test()
   update_version_number()
   archive()
+  upload()
 end
 
 desc "fetch API key using AppStore Connect API"
@@ -53,18 +53,10 @@ desc "Sync code signing certificates and profiles"
 desc "Required parameters:"
 desc "- profileType : Define the profile type, e.g. appstore, adhoc, development etc"
 lane :certificate_update do |options|
-  match(
-    api_key: api_key,
-    app_identifier: ENV['BUNDLE_ID'],
-    derive_catalyst_app_identifier: false,
-    force_for_new_devices: true,
-    git_url: ENV['MATCH_GIT_URL'],
-    keychain_name: keychain_name,
-    platform: "ios",
-    team_id: ENV['APP_STORE_CONNECT_TEAM_ID'],
-    type: options[:profileType],
-    readonly: is_ci,
-    username: ENV['APP_STORE_CONNECT_USERNAME'],
+  sync_code_signing(
+      type: options[:profileType],
+      app_identifier: ENV['BUNDLE_ID'],
+      readonly: true
   )
 end
 
@@ -74,31 +66,18 @@ lane :pod_install do
   )
 end
 
-lane :test do
-  scan(
-    scheme: ENV["SCHEME"]
-  )
-end
-
 lane :update_version_number do
   version_number_at_testflight = latest_testflight_build_number(
      api_key: api_key,
      app_identifier: ENV["BUNDLE_ID"]
    )
-   increment_build_number(build_number: version_number_at_testflight + 1)
+   increment_build_number(build_number: version_number_at_testflight + 1, xcodeproj: "Valorant-Stats.xcodeproj")
 end
 
 lane :archive do
- gym(
-     clean: true,
-     export_method: "app-store",
-     export_options: {
-       provisioningProfiles: {
-         ENV["BUNDLE_ID"] => ENV["sigh_"+ ENV["BUNDLE_ID"] + "_appstore_profile-name"]
-       }
-     },
-     include_symbols: true,
-     scheme: ENV["SCHEME"],
-     silent: false,
-   )
+  build_app(workspace: "Valorant-Stats.xcworkspace", scheme: "Valorant-Stats")
 end
+
+lane :upload do 
+  upload_to_testflight(api_key: api_key)
+end 

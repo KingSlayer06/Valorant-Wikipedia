@@ -49,14 +49,6 @@ Required parameters:
 
 
 
-### test
-
-```sh
-[bundle exec] fastlane test
-```
-
-
-
 ### update_version_number
 
 ```sh
@@ -69,6 +61,14 @@ Required parameters:
 
 ```sh
 [bundle exec] fastlane archive
+```
+
+
+
+### upload
+
+```sh
+[bundle exec] fastlane upload
 ```
 
 
