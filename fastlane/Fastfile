@@ -34,8 +34,8 @@ lane :release do
 
   # pod_install()
   update_version_number()
-  # archive()
-  # upload()
+  archive()
+  upload()
 end
 
 desc "fetch API key using AppStore Connect API"
@@ -54,19 +54,13 @@ end
 desc "Sync code signing certificates and profiles"
 lane :certificate_update do
   git_basic_auth = ENV['GIT_BASIC_AUTHORIZATION']
-  match(
-    api_key: api_key,
-    derive_catalyst_app_identifier: false,
-    force_for_new_devices: true,
-    type: profile_type,
-    app_identifier: ENV['BUNDLE_ID'],
-    readonly: is_ci,
-    git_basic_authorization: Base64.strict_encode64(git_basic_auth),
-    git_url: ENV['MATCH_GIT_URL'],
-    keychain_name: keychain_name,
-    platform: "ios",
-    username: ENV['APP_STORE_CONNECT_USERNAME'],
-    team_id: ENV['APP_STORE_CONNECT_TEAM_ID']
+  sync_code_signing(
+      type: profile_type,
+      app_identifier: ENV['BUNDLE_ID'],
+      readonly: is_ci,
+      git_basic_authorization: Base64.strict_encode64(git_basic_auth),
+      git_url: ENV['MATCH_GIT_URL'],
+      keychain_name: keychain_name,
   )
 end
 
