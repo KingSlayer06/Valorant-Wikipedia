@@ -34,7 +34,7 @@ Other frameworks I used:
 - [Kingfisher](https://github.com/onevcat/Kingfisher)
 - [Alomofire](https://github.com/Alamofire/Alamofire)
 - [Firebase](https://github.com/firebase/firebase-ios-sdk)
-
+- [CoreData](https://developer.apple.com/documentation/coredata)
 
 ## Demo
 
