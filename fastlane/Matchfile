@@ -1,4 +1,4 @@
-git_url("git@github.com:KingSlayer06/CodeSigning-Certificates.git")
+git_url("https://github.com/KingSlayer06/CodeSigning-Certificates.git")
 
 storage_mode("git")
 
