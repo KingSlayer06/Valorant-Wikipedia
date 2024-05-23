@@ -16,7 +16,6 @@
 fastlane_require 'dotenv'
 
 api_key = nil
-keychain_name='fastlane_tmp_keychain'
 # Define the profile type, e.g. appstore, adhoc, development etc"
 profile_type = "appstore"
 
@@ -59,7 +58,6 @@ lane :certificate_update do
       git_basic_authorization: Base64.strict_encode64(git_basic_auth),
       git_url: ENV['MATCH_GIT_URL'],
       type: profile_type,
-      keychain_name: keychain_name,
       readonly: is_ci,
   )
 end
