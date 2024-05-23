@@ -1,4 +1,4 @@
-name: iOS starter workflow
+name: iOS App Workflow
 
 on:
   push:
@@ -19,15 +19,12 @@ jobs:
         uses: styfle/cancel-workflow-action@0.9.1
         with:
           access_token: ${{ github.token }} 
-
+          
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
-
-      - name: Install Bundler
-        run: gem install bundler
-
-      - name: Install gems
-        run: bundle install
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
 
       - name: Build and distribute app
         env: 
