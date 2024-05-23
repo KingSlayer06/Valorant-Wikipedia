@@ -34,8 +34,8 @@ lane :release do
 
   # pod_install()
   update_version_number()
-  archive()
-  upload()
+  # archive()
+  # upload()
 end
 
 desc "fetch API key using AppStore Connect API"
