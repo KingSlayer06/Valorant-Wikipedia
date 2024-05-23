@@ -14,7 +14,9 @@
 # update_fastlane
 
 fastlane_require 'dotenv'
+
 api_key = nil
+keychain_name='fastlane_tmp_keychain'
 # Define the profile type, e.g. appstore, adhoc, development etc"
 profile_type = "appstore"
 
@@ -24,13 +26,13 @@ before_all do |lane|
 end
 
 lane :release do
-  # certificate_info = certificate_update(
-  #   apiKey: api_key,
-  #   appIdentifiers: [ENV["BUNDLE_ID"]],
-  #   profileType: profile_type,
-  # )
+  certificate_info = certificate_update(
+    apiKey: api_key,
+    appIdentifiers: [ENV["BUNDLE_ID"]],
+    profileType: profile_type,
+  )
 
-  pod_install()
+  # pod_install()
   update_version_number()
   archive()
   upload()
@@ -51,10 +53,14 @@ end
 
 desc "Sync code signing certificates and profiles"
 lane :certificate_update do
+  git_basic_auth = ENV['GIT_BASIC_AUTHORIZATION']
   sync_code_signing(
       type: profile_type,
       app_identifier: ENV['BUNDLE_ID'],
-      readonly: true
+      readonly: is_ci,
+      git_basic_authorization: Base64.strict_encode64(git_basic_auth),
+      git_url: ENV['MATCH_GIT_URL'],
+      keychain_name: keychain_name,
   )
 end
 
