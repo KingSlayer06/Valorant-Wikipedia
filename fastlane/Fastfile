@@ -15,7 +15,6 @@
 
 fastlane_require 'dotenv'
 api_key = nil
-keychain_name='fastlane_tmp_keychain'
 
 before_all do |lane|
   # Dotenv.overload '.env.secret'
