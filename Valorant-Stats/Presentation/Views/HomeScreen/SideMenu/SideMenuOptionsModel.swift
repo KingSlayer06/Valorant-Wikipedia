@@ -50,5 +50,5 @@ extension SideMenuOptionsModel: Identifiable {
 }
 
 let tabOptions: [SideMenuOptionsModel] = [.agents, .maps, .weapons]
-let menuOptions: [SideMenuOptionsModel] = [.home, .bundles, .contracts, .playerCards, .sprays, .ranks]
+let menuOptions: [SideMenuOptionsModel] = [.home, .bundles, .playerCards, .sprays, .ranks]
 

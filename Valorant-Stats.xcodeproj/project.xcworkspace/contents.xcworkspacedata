@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/himanshu/Developer/iOS Apps/Valorant-Stats/Valorant-Stats.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>

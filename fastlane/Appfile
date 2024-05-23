@@ -1,0 +1,8 @@
+app_identifier("com.KingSlayer.Valorant-Wiki") # The bundle identifier of your app
+apple_id("sherkarhimanshu00@gmail.com") # Your Apple Developer Portal username
+
+itc_team_id("126950109") # App Store Connect Team ID
+team_id("4B485XW35X") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
