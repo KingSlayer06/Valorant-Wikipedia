@@ -16,7 +16,7 @@
 fastlane_require 'dotenv'
 api_key = nil
 # Define the profile type, e.g. appstore, adhoc, development etc"
-profile_type = "appstore"
+profile_type = "development"
 
 before_all do |lane|
   setup_ci()
