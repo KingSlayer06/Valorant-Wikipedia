@@ -28,7 +28,7 @@ jobs:
           KEY_ID: ${{ secrets.KEY_ID }}
           API_KEY_FILE_CONTENT: ${{ secrets.API_KEY_FILE_CONTENT }}
           MATCH_GIT_URL: ${{ secrets.MATCH_GIT_URL }}
-          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
           
         run: |
           export LC_ALL=en_US.UTF-8
