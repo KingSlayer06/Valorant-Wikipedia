@@ -15,9 +15,10 @@
 
 fastlane_require 'dotenv'
 api_key = nil
+# Define the profile type, e.g. appstore, adhoc, development etc"
+profile_type = "appstore"
 
 before_all do |lane|
-  # Dotenv.overload '.env.secret'
   setup_ci()
   api_key = get_api_key()
 end
@@ -26,7 +27,7 @@ lane :release do
   certificate_info = certificate_update(
     apiKey: api_key,
     appIdentifiers: [ENV["BUNDLE_ID"]],
-    profileType: "development",
+    profileType: profile_type,
   )
 
   pod_install()
@@ -49,11 +50,9 @@ lane :get_api_key do
 end
 
 desc "Sync code signing certificates and profiles"
-desc "Required parameters:"
-desc "- profileType : Define the profile type, e.g. appstore, adhoc, development etc"
-lane :certificate_update do |options|
+lane :certificate_update do
   sync_code_signing(
-      type: options[:profileType],
+      type: profile_type,
       app_identifier: ENV['BUNDLE_ID'],
       readonly: true
   )
@@ -73,8 +72,12 @@ lane :update_version_number do
    increment_build_number(build_number: version_number_at_testflight + 1, xcodeproj: "Valorant-Stats.xcodeproj")
 end
 
-lane :archive do
-  build_app(workspace: "Valorant-Stats.xcworkspace", scheme: "Valorant-Stats")
+lane :archive do |options|
+  build_app(
+    export_method: profile_type,
+    workspace: "Valorant-Stats.xcworkspace", 
+    scheme: "Valorant-Stats"
+  )
 end
 
 lane :upload do 

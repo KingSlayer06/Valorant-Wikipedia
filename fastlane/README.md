@@ -37,10 +37,6 @@ fetch API key using AppStore Connect API
 
 Sync code signing certificates and profiles
 
-Required parameters:
-
-- profileType : Define the profile type, e.g. appstore, adhoc, development etc
-
 ### pod_install
 
 ```sh
