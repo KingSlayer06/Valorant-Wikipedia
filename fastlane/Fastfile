@@ -54,13 +54,17 @@ end
 desc "Sync code signing certificates and profiles"
 lane :certificate_update do
   git_basic_auth = ENV['GIT_BASIC_AUTHORIZATION']
-  sync_code_signing(
-      type: profile_type,
-      app_identifier: ENV['BUNDLE_ID'],
-      readonly: is_ci,
-      git_basic_authorization: Base64.strict_encode64(git_basic_auth),
-      git_url: ENV['MATCH_GIT_URL'],
-      keychain_name: keychain_name,
+  match(
+    api_key: api_key,
+    derive_catalyst_app_identifier: false,
+    force_for_new_devices: true,
+    type: profile_type,
+    app_identifier: ENV['BUNDLE_ID'],
+    readonly: is_ci,
+    git_basic_authorization: Base64.strict_encode64(git_basic_auth),
+    git_url: ENV['MATCH_GIT_URL'],
+    keychain_name: keychain_name,
+    platform: "ios"
   )
 end
 
