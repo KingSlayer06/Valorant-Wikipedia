@@ -20,6 +20,14 @@ jobs:
           ruby-version: '3.1'
           bundler-cache: true
       - name: Build and distribute app
+        env: 
+          APP_STORE_CONNECT_TEAM_ID: ${{ secrets.APP_STORE_CONNECT_TEAM_ID }}
+          APP_STORE_CONNECT_USERNAME: ${{ secrets.APP_STORE_CONNECT_USERNAME }}
+          BUNDLE_ID: ${{ secrets.BUNDLE_ID }}
+          ISSUER_ID: ${{ secrets.ISSUER_ID }}
+          KEY_ID: ${{ secrets.KEY_ID }}
+          API_KEY_FILE_CONTENT: ${{ secrets.API_KEY_FILE_CONTENT }}
+          MATCH_GIT_URL: ${{ secrets.MATCH_GIT_URL }}
         run: |
           export LC_ALL=en_US.UTF-8
           export LANG=en_US.UTF-8
