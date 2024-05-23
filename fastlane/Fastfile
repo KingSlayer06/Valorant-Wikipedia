@@ -13,45 +13,92 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
-default_platform(:ios)
+fastlane_require 'dotenv'
+api_key = nil
+keychain_name='fastlane_tmp_keychain'
 
-def bump_build_number()
-  latest_build_number = latest_testflight_build_number(initial_build_number: 0)
-  return (latest_build_number + 1)
+before_all do |lane|
+  Dotenv.overload '.env.secret'
+  setup_ci()
+  api_key = get_api_key()
 end
 
-def get_version()
-  version_name = lane_context[SharedValues::LATEST_TESTFLIGHT_VERSION]
+lane :release do
+  certificate_info = certificate_update(
+    apiKey: api_key,
+    appIdentifiers: [ENV["BUNDLE_ID"]],
+    profileType: "appstore",
+  )
 
-  if version_name.empty?
-    puts "*** Version name is empty, add version 1.0.0 ***"
-    version_name = "1.0.0"
-  end
-
-  return version_name
+  pod_install()
+  test()
+  update_version_number()
+  archive()
 end
 
-platform :ios do
-  desc "Release new build to TestFlight"
-  lane :release_build_to_testflight do
-    commit = last_git_commit
-    puts "*** Starting iOS release for commit(#{commit[:abbreviated_commit_hash]}) ***"
+desc "fetch API key using AppStore Connect API"
+lane :get_api_key do
+  issuer_id = ENV['ISSUER_ID']
+  key_id = ENV['KEY_ID']
+  api_key_file_content = ENV['API_KEY_FILE_CONTENT']
+  app_store_connect_api_key(
+    is_key_content_base64: true,
+    issuer_id: issuer_id,
+    key_content: Base64.strict_encode64(api_key_file_content),
+    key_id: key_id,
+  )
+end
 
-    #read api key from app_store_connect_api_key lane variable
-    api_key = lane_context[SharedValues::APP_STORE_CONNECT_API_KEY]
+desc "Sync code signing certificates and profiles"
+desc "Required parameters:"
+desc "- profileType : Define the profile type, e.g. appstore, adhoc, development etc"
+lane :certificate_update do |options|
+  match(
+    api_key: api_key,
+    app_identifier: ENV['BUNDLE_ID'],
+    derive_catalyst_app_identifier: false,
+    force_for_new_devices: true,
+    git_url: ENV['MATCH_GIT_URL'],
+    keychain_name: keychain_name,
+    platform: "ios",
+    team_id: ENV['APP_STORE_CONNECT_TEAM_ID'],
+    type: options[:profileType],
+    readonly: is_ci,
+    username: ENV['APP_STORE_CONNECT_USERNAME'],
+  )
+end
 
-    #sync certificates and profiles using match
-    # sync_code_signing(
-    #   api_key: api_key,
-    #   type: "appstore",
-    #   readonly: true,
-    # )
+lane :pod_install do
+  cocoapods(
+    clean_install: true,
+  )
+end
 
-    increment_build_number(
-      build_number: bump_build_number(),
-      xcodeproj: "Valorant-Stats.xcodeproj"
-    )
-    build_app(workspace: "Valorant-Stats.xcworkspace", scheme: "Valorant-Stats")
-    upload_to_testflight(api_key: api_key)
-  end
+lane :test do
+  scan(
+    scheme: ENV["SCHEME"]
+  )
+end
+
+lane :update_version_number do
+  version_number_at_testflight = latest_testflight_build_number(
+     api_key: api_key,
+     app_identifier: ENV["BUNDLE_ID"]
+   )
+   increment_build_number(build_number: version_number_at_testflight + 1)
+end
+
+lane :archive do
+ gym(
+     clean: true,
+     export_method: "app-store",
+     export_options: {
+       provisioningProfiles: {
+         ENV["BUNDLE_ID"] => ENV["sigh_"+ ENV["BUNDLE_ID"] + "_appstore_profile-name"]
+       }
+     },
+     include_symbols: true,
+     scheme: ENV["SCHEME"],
+     silent: false,
+   )
 end

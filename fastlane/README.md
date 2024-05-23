@@ -13,15 +13,65 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 # Available Actions
 
-## iOS
-
-### ios release_build_to_testflight
+### release
 
 ```sh
-[bundle exec] fastlane ios release_build_to_testflight
+[bundle exec] fastlane release
 ```
 
-Release new build to TestFlight
+
+
+### get_api_key
+
+```sh
+[bundle exec] fastlane get_api_key
+```
+
+fetch API key using AppStore Connect API
+
+### certificate_update
+
+```sh
+[bundle exec] fastlane certificate_update
+```
+
+Sync code signing certificates and profiles
+
+Required parameters:
+
+- profileType : Define the profile type, e.g. appstore, adhoc, development etc
+
+### pod_install
+
+```sh
+[bundle exec] fastlane pod_install
+```
+
+
+
+### test
+
+```sh
+[bundle exec] fastlane test
+```
+
+
+
+### update_version_number
+
+```sh
+[bundle exec] fastlane update_version_number
+```
+
+
+
+### archive
+
+```sh
+[bundle exec] fastlane archive
+```
+
+
 
 ----
 
