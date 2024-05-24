@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2260A0B65DF5B8A443BF777C /* Pods_Valorant_Stats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6135AD81346E32F9827192D0 /* Pods_Valorant_Stats.framework */; };
+		8E3DAB07CFF90A1B55C1E018 /* Pods_Valorant_Stats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3A7DF4A1F68D88B91146E48 /* Pods_Valorant_Stats.framework */; };
 		A31E83FB2BA1B256006A283E /* GetSprayByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31E83FA2BA1B256006A283E /* GetSprayByIdUseCase.swift */; };
 		A31E83FD2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31E83FC2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift */; };
 		A3405A132BA4177400574D5B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A122BA4177400574D5B /* CoreDataStack.swift */; };
@@ -125,8 +125,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6135AD81346E32F9827192D0 /* Pods_Valorant_Stats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Valorant_Stats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F88229B6EBFFB447D832AE9 /* Pods-Valorant-Stats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Valorant-Stats.release.xcconfig"; path = "Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats.release.xcconfig"; sourceTree = "<group>"; };
+		2E8722035D94983E74875451 /* Pods-Valorant-Stats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Valorant-Stats.release.xcconfig"; path = "Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats.release.xcconfig"; sourceTree = "<group>"; };
 		A31E83FA2BA1B256006A283E /* GetSprayByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSprayByIdUseCase.swift; sourceTree = "<group>"; };
 		A31E83FC2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlayerCardByIdUseCase.swift; sourceTree = "<group>"; };
 		A3405A122BA4177400574D5B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -198,6 +197,7 @@
 		A392377E2BA1B3F1004DF58E /* GetPlayerTitleByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlayerTitleByIdUseCase.swift; sourceTree = "<group>"; };
 		A39237802BA1B470004DF58E /* GetCurrencyByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrencyByIdUseCase.swift; sourceTree = "<group>"; };
 		A39237842BA40DD0004DF58E /* Agent.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Agent.xcdatamodel; sourceTree = "<group>"; };
+		A3A7DF4A1F68D88B91146E48 /* Pods_Valorant_Stats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Valorant_Stats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3A875502B9587DC00840A2B /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		A3A875522B95ACC700840A2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A3A875552B95AF0300840A2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -241,7 +241,7 @@
 		A3FE5B202BA85B4D00D9DD8C /* Buddy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Buddy.xcdatamodel; sourceTree = "<group>"; };
 		A3FE5B222BA85B9400D9DD8C /* BuddyModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyModelExtension.swift; sourceTree = "<group>"; };
 		A3FE5B242BA85BCD00D9DD8C /* BuddyDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyDataRepository.swift; sourceTree = "<group>"; };
-		D778CBCE5EACE7E6034D98F6 /* Pods-Valorant-Stats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Valorant-Stats.debug.xcconfig"; path = "Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats.debug.xcconfig"; sourceTree = "<group>"; };
+		F48A95F7E9489907308F9838 /* Pods-Valorant-Stats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Valorant-Stats.debug.xcconfig"; path = "Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,18 +250,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				A37A50C12B94256900E55393 /* SwiftWebP in Frameworks */,
-				2260A0B65DF5B8A443BF777C /* Pods_Valorant_Stats.framework in Frameworks */,
 				A37A50C32B94256900E55393 /* YYImageLib in Frameworks */,
+				8E3DAB07CFF90A1B55C1E018 /* Pods_Valorant_Stats.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		16C201D69D36DCA5A498B7C8 /* Frameworks */ = {
+		9851FAA89969642F99C15C08 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6135AD81346E32F9827192D0 /* Pods_Valorant_Stats.framework */,
+				A3A7DF4A1F68D88B91146E48 /* Pods_Valorant_Stats.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -481,7 +481,7 @@
 				A3F70B882B8C522A00CBA5C6 /* Valorant-Stats */,
 				A3F70B872B8C522A00CBA5C6 /* Products */,
 				F5E15D7D4CB074971EC07C11 /* Pods */,
-				16C201D69D36DCA5A498B7C8 /* Frameworks */,
+				9851FAA89969642F99C15C08 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -695,8 +695,8 @@
 		F5E15D7D4CB074971EC07C11 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D778CBCE5EACE7E6034D98F6 /* Pods-Valorant-Stats.debug.xcconfig */,
-				6F88229B6EBFFB447D832AE9 /* Pods-Valorant-Stats.release.xcconfig */,
+				F48A95F7E9489907308F9838 /* Pods-Valorant-Stats.debug.xcconfig */,
+				2E8722035D94983E74875451 /* Pods-Valorant-Stats.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -708,12 +708,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A3F70B942B8C522B00CBA5C6 /* Build configuration list for PBXNativeTarget "Valorant-Stats" */;
 			buildPhases = (
-				6FFB16F392B9DBB8ACF95DED /* [CP] Check Pods Manifest.lock */,
+				41500BA8D1438F27795C831B /* [CP] Check Pods Manifest.lock */,
 				A3F70B822B8C522A00CBA5C6 /* Sources */,
 				A3F70B832B8C522A00CBA5C6 /* Frameworks */,
 				A3F70B842B8C522A00CBA5C6 /* Resources */,
-				F37A78D77A82B1E58BB8E9AA /* [CP] Embed Pods Frameworks */,
 				A340CCAF2C007C9F0093F5E4 /* ShellScript */,
+				58CA463EE5EF6854181F0700 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -779,7 +779,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6FFB16F392B9DBB8ACF95DED /* [CP] Check Pods Manifest.lock */ = {
+		41500BA8D1438F27795C831B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -799,6 +799,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		58CA463EE5EF6854181F0700 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A340CCAF2C007C9F0093F5E4 /* ShellScript */ = {
@@ -821,24 +838,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${BUILD_DIR%Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols --build-phase\n";
-		};
-		F37A78D77A82B1E58BB8E9AA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1082,7 +1082,7 @@
 		};
 		A3F70B952B8C522B00CBA5C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D778CBCE5EACE7E6034D98F6 /* Pods-Valorant-Stats.debug.xcconfig */;
+			baseConfigurationReference = F48A95F7E9489907308F9838 /* Pods-Valorant-Stats.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1126,7 +1126,7 @@
 		};
 		A3F70B962B8C522B00CBA5C6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6F88229B6EBFFB447D832AE9 /* Pods-Valorant-Stats.release.xcconfig */;
+			baseConfigurationReference = 2E8722035D94983E74875451 /* Pods-Valorant-Stats.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
