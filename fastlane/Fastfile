@@ -17,6 +17,7 @@ fastlane_require 'dotenv'
 
 api_key = nil
 # Define the profile type, e.g. appstore, adhoc, development etc"
+bundle_id = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
 profile_type = "appstore"
 
 before_all do |lane|
@@ -27,7 +28,7 @@ end
 lane :release do
   certificate_info = certificate_update(
     apiKey: api_key,
-    appIdentifiers: [ENV["BUNDLE_ID"]],
+    appIdentifiers: [bundle_id],
     profileType: profile_type,
   )
 
@@ -54,7 +55,7 @@ desc "Sync code signing certificates and profiles"
 lane :certificate_update do
   git_basic_auth = ENV['GIT_BASIC_AUTHORIZATION']
   sync_code_signing(
-      app_identifier: ENV['BUNDLE_ID'],
+      app_identifier: bundle_id,
       git_basic_authorization: Base64.strict_encode64(git_basic_auth),
       git_url: ENV['MATCH_GIT_URL'],
       type: profile_type,
@@ -71,7 +72,7 @@ end
 lane :update_version_number do
   version_number_at_testflight = latest_testflight_build_number(
      api_key: api_key,
-     app_identifier: ENV["BUNDLE_ID"]
+     app_identifier: bundle_id
    )
    increment_build_number(build_number: version_number_at_testflight + 1, xcodeproj: "Valorant-Stats.xcodeproj")
 end
