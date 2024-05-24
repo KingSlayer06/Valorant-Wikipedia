@@ -29,14 +29,6 @@ jobs:
           ruby-version: '3.1'
           bundler-cache: true
 
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: App Artifacts 
-          path: |
-            /*.ipa
-            /*/dSYM.zip
-
       - name: Build and distribute app
         env: 
           APP_STORE_CONNECT_TEAM_ID: ${{ secrets.APP_STORE_CONNECT_TEAM_ID }}
@@ -53,3 +45,11 @@ jobs:
           export LC_ALL=en_US.UTF-8
           export LANG=en_US.UTF-8
           Bundle exec fastlane release
+          
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: App Artifacts 
+          path: |
+            /*.ipa
+            /*/dSYM.zip
