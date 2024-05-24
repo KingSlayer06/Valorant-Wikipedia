@@ -50,6 +50,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: App Artifacts 
-          path: |
-            /*.ipa
-            /*/dSYM.zip
+          path: /Users/runner/work/Valorant-Wikipedia/Valorant-Wikipedia/Valorant-Stats.ipa
+          retention-days: 3
