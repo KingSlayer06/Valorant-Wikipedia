@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8E3DAB07CFF90A1B55C1E018 /* Pods_Valorant_Stats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3A7DF4A1F68D88B91146E48 /* Pods_Valorant_Stats.framework */; };
+		558BBD21A3958864E1007C07 /* Pods_Valorant_Stats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA01872186AA73938A0E786 /* Pods_Valorant_Stats.framework */; };
 		A31E83FB2BA1B256006A283E /* GetSprayByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31E83FA2BA1B256006A283E /* GetSprayByIdUseCase.swift */; };
 		A31E83FD2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31E83FC2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift */; };
 		A3405A132BA4177400574D5B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A122BA4177400574D5B /* CoreDataStack.swift */; };
@@ -64,8 +64,6 @@
 		A37A50B72B93ADF200E55393 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A50B62B93ADF200E55393 /* ColorExtension.swift */; };
 		A37A50B92B941D2B00E55393 /* ShimmerEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A50B82B941D2B00E55393 /* ShimmerEffect.swift */; };
 		A37A50BB2B94244600E55393 /* StickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A50BA2B94244600E55393 /* StickerManager.swift */; };
-		A37A50C12B94256900E55393 /* SwiftWebP in Frameworks */ = {isa = PBXBuildFile; productRef = A37A50C02B94256900E55393 /* SwiftWebP */; };
-		A37A50C32B94256900E55393 /* YYImageLib in Frameworks */ = {isa = PBXBuildFile; productRef = A37A50C22B94256900E55393 /* YYImageLib */; };
 		A37A50C52B9426E400E55393 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A50C42B9426E400E55393 /* UIImageExtension.swift */; };
 		A388B6C12B8D83E6007D87DD /* MapDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A388B6C02B8D83E6007D87DD /* MapDetailsView.swift */; };
 		A388B6C42B8DB2B2007D87DD /* PlayerCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A388B6C32B8DB2B2007D87DD /* PlayerCardsView.swift */; };
@@ -125,7 +123,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2E8722035D94983E74875451 /* Pods-Valorant-Stats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Valorant-Stats.release.xcconfig"; path = "Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats.release.xcconfig"; sourceTree = "<group>"; };
+		23F8D93C4EBC09E01CBB96FA /* Pods-Valorant-Stats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Valorant-Stats.debug.xcconfig"; path = "Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats.debug.xcconfig"; sourceTree = "<group>"; };
+		9755689F22E763D0A1A83E51 /* Pods-Valorant-Stats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Valorant-Stats.release.xcconfig"; path = "Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats.release.xcconfig"; sourceTree = "<group>"; };
 		A31E83FA2BA1B256006A283E /* GetSprayByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSprayByIdUseCase.swift; sourceTree = "<group>"; };
 		A31E83FC2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlayerCardByIdUseCase.swift; sourceTree = "<group>"; };
 		A3405A122BA4177400574D5B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -197,7 +196,6 @@
 		A392377E2BA1B3F1004DF58E /* GetPlayerTitleByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlayerTitleByIdUseCase.swift; sourceTree = "<group>"; };
 		A39237802BA1B470004DF58E /* GetCurrencyByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrencyByIdUseCase.swift; sourceTree = "<group>"; };
 		A39237842BA40DD0004DF58E /* Agent.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Agent.xcdatamodel; sourceTree = "<group>"; };
-		A3A7DF4A1F68D88B91146E48 /* Pods_Valorant_Stats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Valorant_Stats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3A875502B9587DC00840A2B /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		A3A875522B95ACC700840A2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A3A875552B95AF0300840A2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -241,7 +239,7 @@
 		A3FE5B202BA85B4D00D9DD8C /* Buddy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Buddy.xcdatamodel; sourceTree = "<group>"; };
 		A3FE5B222BA85B9400D9DD8C /* BuddyModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyModelExtension.swift; sourceTree = "<group>"; };
 		A3FE5B242BA85BCD00D9DD8C /* BuddyDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyDataRepository.swift; sourceTree = "<group>"; };
-		F48A95F7E9489907308F9838 /* Pods-Valorant-Stats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Valorant-Stats.debug.xcconfig"; path = "Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats.debug.xcconfig"; sourceTree = "<group>"; };
+		FCA01872186AA73938A0E786 /* Pods_Valorant_Stats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Valorant_Stats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,19 +247,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A37A50C12B94256900E55393 /* SwiftWebP in Frameworks */,
-				A37A50C32B94256900E55393 /* YYImageLib in Frameworks */,
-				8E3DAB07CFF90A1B55C1E018 /* Pods_Valorant_Stats.framework in Frameworks */,
+				558BBD21A3958864E1007C07 /* Pods_Valorant_Stats.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9851FAA89969642F99C15C08 /* Frameworks */ = {
+		1A6455E950D7A35382BE1DDA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A3A7DF4A1F68D88B91146E48 /* Pods_Valorant_Stats.framework */,
+				FCA01872186AA73938A0E786 /* Pods_Valorant_Stats.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -481,7 +477,7 @@
 				A3F70B882B8C522A00CBA5C6 /* Valorant-Stats */,
 				A3F70B872B8C522A00CBA5C6 /* Products */,
 				F5E15D7D4CB074971EC07C11 /* Pods */,
-				9851FAA89969642F99C15C08 /* Frameworks */,
+				1A6455E950D7A35382BE1DDA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -695,8 +691,8 @@
 		F5E15D7D4CB074971EC07C11 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F48A95F7E9489907308F9838 /* Pods-Valorant-Stats.debug.xcconfig */,
-				2E8722035D94983E74875451 /* Pods-Valorant-Stats.release.xcconfig */,
+				23F8D93C4EBC09E01CBB96FA /* Pods-Valorant-Stats.debug.xcconfig */,
+				9755689F22E763D0A1A83E51 /* Pods-Valorant-Stats.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -708,22 +704,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A3F70B942B8C522B00CBA5C6 /* Build configuration list for PBXNativeTarget "Valorant-Stats" */;
 			buildPhases = (
-				41500BA8D1438F27795C831B /* [CP] Check Pods Manifest.lock */,
+				5DC4045C2E561F7CE347957D /* [CP] Check Pods Manifest.lock */,
 				A3F70B822B8C522A00CBA5C6 /* Sources */,
 				A3F70B832B8C522A00CBA5C6 /* Frameworks */,
 				A3F70B842B8C522A00CBA5C6 /* Resources */,
 				A340CCAF2C007C9F0093F5E4 /* ShellScript */,
-				58CA463EE5EF6854181F0700 /* [CP] Embed Pods Frameworks */,
+				FECEDFBD083E82ECE836096C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Valorant-Stats";
-			packageProductDependencies = (
-				A37A50C02B94256900E55393 /* SwiftWebP */,
-				A37A50C22B94256900E55393 /* YYImageLib */,
-			);
 			productName = "Valorant-Stats";
 			productReference = A3F70B862B8C522A00CBA5C6 /* Valorant-Stats.app */;
 			productType = "com.apple.product-type.application";
@@ -752,9 +744,6 @@
 				Base,
 			);
 			mainGroup = A3F70B7D2B8C522A00CBA5C6;
-			packageReferences = (
-				A37A50BF2B94256900E55393 /* XCRemoteSwiftPackageReference "SwiftWebP" */,
-			);
 			productRefGroup = A3F70B872B8C522A00CBA5C6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -779,7 +768,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		41500BA8D1438F27795C831B /* [CP] Check Pods Manifest.lock */ = {
+		5DC4045C2E561F7CE347957D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -799,23 +788,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		58CA463EE5EF6854181F0700 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A340CCAF2C007C9F0093F5E4 /* ShellScript */ = {
@@ -839,6 +811,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
+		FECEDFBD083E82ECE836096C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1082,27 +1071,26 @@
 		};
 		A3F70B952B8C522B00CBA5C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F48A95F7E9489907308F9838 /* Pods-Valorant-Stats.debug.xcconfig */;
+			baseConfigurationReference = 23F8D93C4EBC09E01CBB96FA /* Pods-Valorant-Stats.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 17;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_ASSET_PATHS = "\"Valorant-Stats/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4B485XW35X;
+				DEVELOPMENT_TEAM = 4B485XW35X;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Valorant-Stats/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Valorant Wikipedia";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow app to save image to your device.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1113,8 +1101,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.KingSlayer.Valorant-Wiki";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.KingSlayer.Valorant-Wiki";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1126,27 +1113,27 @@
 		};
 		A3F70B962B8C522B00CBA5C6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E8722035D94983E74875451 /* Pods-Valorant-Stats.release.xcconfig */;
+			baseConfigurationReference = 9755689F22E763D0A1A83E51 /* Pods-Valorant-Stats.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 17;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_ASSET_PATHS = "\"Valorant-Stats/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4B485XW35X;
+				DEVELOPMENT_TEAM = 4B485XW35X;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Valorant-Stats/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Valorant Wikipedia";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow app to save image to your device.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1157,8 +1144,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.KingSlayer.Valorant-Wiki";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AppStore com.KingSlayer.Valorant-Wiki";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1190,30 +1176,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		A37A50BF2B94256900E55393 /* XCRemoteSwiftPackageReference "SwiftWebP" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/alfianlosari/SwiftWebP.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		A37A50C02B94256900E55393 /* SwiftWebP */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A37A50BF2B94256900E55393 /* XCRemoteSwiftPackageReference "SwiftWebP" */;
-			productName = SwiftWebP;
-		};
-		A37A50C22B94256900E55393 /* YYImageLib */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A37A50BF2B94256900E55393 /* XCRemoteSwiftPackageReference "SwiftWebP" */;
-			productName = YYImageLib;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		A3405A172BA441C900574D5B /* Weapon.xcdatamodeld */ = {

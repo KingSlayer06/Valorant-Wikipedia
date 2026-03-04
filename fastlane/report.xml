@@ -5,32 +5,27 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000215">
+      <testcase classname="fastlane.lanes" name="0: setup_ci" time="0.000162">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: last_git_commit" time="0.057352">
+      <testcase classname="fastlane.lanes" name="1: Switch to get_api_key lane" time="7.3e-05">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: latest_testflight_build_number" time="7.215055">
+      <testcase classname="fastlane.lanes" name="2: app_store_connect_api_key" time="0.001267">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: increment_build_number" time="0.175176">
+      <testcase classname="fastlane.lanes" name="3: latest_testflight_build_number" time="2.712312">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: build_app" time="140.864337">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="5: upload_to_testflight" time="253.0824">
+      <testcase classname="fastlane.lanes" name="4: increment_build_number" time="0.152033">
         
       </testcase>
     

@@ -74,6 +74,7 @@ lane :update_version_number do
      api_key: api_key,
      app_identifier: bundle_id
    )
+   puts "Bumping Build Number to "+(version_number_at_testflight + 1).to_s
    increment_build_number(build_number: version_number_at_testflight + 1, xcodeproj: "Valorant-Stats.xcodeproj")
 end
 
@@ -89,5 +90,13 @@ lane :upload do
   upload_to_testflight(
     api_key: api_key,
     skip_waiting_for_build_processing: true, 
+  )
+end 
+
+lane :add_git_tag do |version|
+  add_git_tag(
+      tag: "v#{version}",
+      prefix: "v",
+      build_number: version
   )
 end 

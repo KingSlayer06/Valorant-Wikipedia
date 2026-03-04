@@ -10,8 +10,8 @@ import Foundation
 import Observation
 import SwiftUI
 import CoreImage
-import UIKit
-import SwiftWebP
+//import UIKit
+//import SwiftWebP
 
 class StickerManager {
     // UserDefaults key for storing the array of strings
@@ -24,15 +24,15 @@ class StickerManager {
     
     // Create: Add a new sticker
     func addSticker(_ sticker: String) {
-        var currentStickers = getAllStickers()
-        if currentStickers.count == 30 {
-            currentStickers.removeAll()
-            saveStickers(currentStickers)
-        }
-        if !currentStickers.contains(sticker) {
-            currentStickers.append(sticker)
-            saveStickers(currentStickers)
-        }
+//        var currentStickers = getAllStickers()
+//        if currentStickers.count == 30 {
+//            currentStickers.removeAll()
+//            saveStickers(currentStickers)
+//        }
+//        if !currentStickers.contains(sticker) {
+//            currentStickers.append(sticker)
+//            saveStickers(currentStickers)
+//        }
     }
     
     // Read: Retrieve all stickers

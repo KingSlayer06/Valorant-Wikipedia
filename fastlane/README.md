@@ -69,6 +69,14 @@ Sync code signing certificates and profiles
 
 
 
+### add_git_tag
+
+```sh
+[bundle exec] fastlane add_git_tag
+```
+
+
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.

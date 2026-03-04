@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 import Kingfisher
-import SwiftWebP
+//import SwiftWebP
 import CoreImage
 
 final class HomeViewModel: NSObject, ObservableObject {
@@ -419,39 +419,39 @@ extension HomeViewModel {
             currentStickeres = []
         }
         
-        if currentStickeres.count < 3 {
-            var stickersDict = [String: Any]()
-            for sticker in currentStickeres {
-                stickersDict["image_data"] = sticker
-                stickersDict["emojis"] = ["🤣"]
-                stickersArray.append(stickersDict)
-            }
-            while( stickersArray.count != 3 ){
-                let outputPngData = image.scaleToFit(targetSize: .init(width: 512, height: 512))
-                    .scaledPNGData()
-                if let imageData = WebPEncoder().encodePNG(data: outputPngData) {
-                    stickersDict["image_data"] = imageData.base64EncodedString()
-                    StickerManager.shared.addSticker(imageData.base64EncodedString())
-                    stickersDict["emojis"] = ["🤣"]
-                    stickersArray.append(stickersDict)
-                }
-            }
-        }else {
-            var stickersDict = [String: Any]()
-            for sticker in currentStickeres {
-                stickersDict["image_data"] = sticker
-                stickersDict["emojis"] = ["🤣"]
-                stickersArray.append(stickersDict)
-            }
-            let outputPngData = image.scaleToFit(targetSize: .init(width: 512, height: 512))
-                .scaledPNGData()
-            if let imageData = WebPEncoder().encodePNG(data: outputPngData) {
-                stickersDict["image_data"] = imageData.base64EncodedString()
-                StickerManager.shared.addSticker(imageData.base64EncodedString())
-                stickersDict["emojis"] = ["🤣"]
-                stickersArray.append(stickersDict)
-            }
-        }
+//        if currentStickeres.count < 3 {
+//            var stickersDict = [String: Any]()
+//            for sticker in currentStickeres {
+//                stickersDict["image_data"] = sticker
+//                stickersDict["emojis"] = ["🤣"]
+//                stickersArray.append(stickersDict)
+//            }
+//            while( stickersArray.count != 3 ){
+//                let outputPngData = image.scaleToFit(targetSize: .init(width: 512, height: 512))
+//                    .scaledPNGData()
+//                if let imageData = WebPEncoder().encodePNG(data: outputPngData) {
+//                    stickersDict["image_data"] = imageData.base64EncodedString()
+//                    StickerManager.shared.addSticker(imageData.base64EncodedString())
+//                    stickersDict["emojis"] = ["🤣"]
+//                    stickersArray.append(stickersDict)
+//                }
+//            }
+//        }else {
+//            var stickersDict = [String: Any]()
+//            for sticker in currentStickeres {
+//                stickersDict["image_data"] = sticker
+//                stickersDict["emojis"] = ["🤣"]
+//                stickersArray.append(stickersDict)
+//            }
+//            let outputPngData = image.scaleToFit(targetSize: .init(width: 512, height: 512))
+//                .scaledPNGData()
+//            if let imageData = WebPEncoder().encodePNG(data: outputPngData) {
+//                stickersDict["image_data"] = imageData.base64EncodedString()
+//                StickerManager.shared.addSticker(imageData.base64EncodedString())
+//                stickersDict["emojis"] = ["🤣"]
+//                stickersArray.append(stickersDict)
+//            }
+//        }
         
         json["identifier"] = "Valorant-Wiki\(id)"
         json["name"] = "Valorant Stickers"
