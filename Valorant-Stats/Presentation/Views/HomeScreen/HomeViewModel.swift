@@ -159,11 +159,7 @@ final class HomeViewModel: NSObject, ObservableObject {
             case .success(let response):
                 guard let self = self else { return }
                 
-                self.maps = response.data.filter { !($0.displayName == "District" ||
-                                                      $0.displayName == "Kasbah" ||
-                                                      $0.displayName == "Drift" ||
-                                                      $0.displayName == "Piazza" ||
-                                                      $0.displayName == "The Range") }
+                self.maps = response.data
                 
                 DispatchQueue.main.async {
                     self.showMapsShimmer = false
