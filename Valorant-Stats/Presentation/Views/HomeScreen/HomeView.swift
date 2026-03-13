@@ -78,10 +78,17 @@ struct HomeView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     withAnimation(.easeInOut(duration: 3)) {
-                        Text("\(homeViewModel.selectedTab.title)")
-                            .font(Font.custom(KeyVariables.primaryFont, size: 20))
-                            .foregroundStyle(.foreground)
-                            .opacity(showMenu ? 0 : 1)
+                        if (homeViewModel.selectedTab == .home) {
+                            Text("\(homeViewModel.selectedBottomTab.title)")
+                                .font(Font.custom(KeyVariables.primaryFont, size: 20))
+                                .foregroundStyle(.foreground)
+                                .opacity(showMenu ? 0 : 1)
+                        } else {
+                            Text("\(homeViewModel.selectedTab.title)")
+                                .font(Font.custom(KeyVariables.primaryFont, size: 20))
+                                .foregroundStyle(.foreground)
+                                .opacity(showMenu ? 0 : 1)
+                        }
                     }
                 }
                 
