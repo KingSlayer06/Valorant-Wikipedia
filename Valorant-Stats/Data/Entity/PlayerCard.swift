@@ -10,6 +10,6 @@ import Foundation
 struct PlayerCard: Codable {
     let uuid: String
     let displayName: String
-    let wideArt: String
-    let largeArt: String
+    let wideArt: String?
+    let largeArt: String?
 }

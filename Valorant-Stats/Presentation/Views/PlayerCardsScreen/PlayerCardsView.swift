@@ -55,7 +55,7 @@ struct PlayerCardGridView: View {
     
     var body: some View {
         ZStack {
-            KFImage(URL(string: card.largeArt))
+            KFImage(URL(string: card.largeArt ?? ""))
                 .placeholder {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())

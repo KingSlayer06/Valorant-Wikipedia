@@ -15,7 +15,7 @@ struct PlayerCardDetailsView: View {
     
     var body: some View {
         VStack {
-            KFImage(URL(string: card.largeArt))
+            KFImage(URL(string: card.largeArt ?? ""))
                 .placeholder {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
@@ -28,12 +28,12 @@ struct PlayerCardDetailsView: View {
                     HStack(spacing: 20) {
                         CustomButton(image: "download", label: "Download") {
                             AppAnalytics.shared.PlayerCardDetailsDownloadClick(card: card)
-                            homeViewModel.saveImageToGallary(url: card.largeArt)
+                            homeViewModel.saveImageToGallary(url: card.largeArt ?? "")
                         }
                         
                         CustomButton(image: "share", label: "Share") {
                             AppAnalytics.shared.PlayerCardDetailsShareClick(card: card)
-                            homeViewModel.downloadImage(url: card.largeArt) {
+                            homeViewModel.downloadImage(url: card.largeArt ?? "") {
                                 self.showShareSheeet.toggle()
                             }
                         }
