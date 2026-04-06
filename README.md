@@ -6,6 +6,12 @@
 
 Valorant Wikipedia is a wikipedia for Valorant game developed by Riot Games. You can find all the helpful information about the game in this app!
 
+## Android Version
+
+The app is also available for Android, built with Kotlin and Jetpack Compose. Check it out if you are interested !
+
+[https://github.com/KingSlayer06/Valorant-Wikipedia.git](https://github.com/KingSlayer06/ValorantWikipedia.git)
+
 ## Get Started
 
 1\. Install Xcode. We currently support XCode 15.0.1 Swift 5.9.
