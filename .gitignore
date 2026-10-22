@@ -91,4 +91,5 @@ fastlane/.env.default
 
 iOSInjectionProject/
 
-*.DS_Store
+.DS_Store
+
