@@ -12,6 +12,7 @@ struct Valorant_WikiApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     @State var splashScreenPresented = true
+    @StateObject private var homeViewModel = HomeViewModel()
     
     var body: some Scene {
         WindowGroup {
@@ -19,7 +20,7 @@ struct Valorant_WikiApp: App {
                 SplashView(splashScreenPresented: $splashScreenPresented)
             } else {
                 HomeView()
-                    .environmentObject(HomeViewModel())
+                    .environmentObject(homeViewModel)
             }
         }
     }

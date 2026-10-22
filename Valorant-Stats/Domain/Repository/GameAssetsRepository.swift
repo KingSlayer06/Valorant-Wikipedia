@@ -33,7 +33,13 @@ final class GameAssetsRepository: PGameAssetsRepository {
     func getAgents(completion: @escaping (Result<GetAgentsResponse, AFError>) -> Void) {
         print("getAgents API called")
         
-        AF.request("\(KeyVariables.baseApiUrl)/v1/agents", method: .get, parameters: nil)
+        AF.request(
+            "\(KeyVariables.baseApiUrl)/v1/agents",
+            method: .get,
+            parameters: ["isPlayableCharacter": "true"],
+            encoding: URLEncoding.default
+        )
+            .validate()
             .publishDecodable(type: GetAgentsResponse.self)
             .sink(receiveValue: { response in
                 completion(response.result)
