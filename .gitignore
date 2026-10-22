@@ -90,3 +90,5 @@ fastlane/.env.default
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
+*.DS_Store

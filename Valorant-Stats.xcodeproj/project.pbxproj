@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		558BBD21A3958864E1007C07 /* Pods_Valorant_Stats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA01872186AA73938A0E786 /* Pods_Valorant_Stats.framework */; };
 		A31E83FB2BA1B256006A283E /* GetSprayByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31E83FA2BA1B256006A283E /* GetSprayByIdUseCase.swift */; };
 		A31E83FD2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31E83FC2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift */; };
 		A3405A132BA4177400574D5B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3405A122BA4177400574D5B /* CoreDataStack.swift */; };
@@ -85,6 +84,13 @@
 		A3A875582B95B15000840A2B /* AppAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A875572B95B15000840A2B /* AppAnalytics.swift */; };
 		A3A8755A2B95B33900840A2B /* DevMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A875592B95B33900840A2B /* DevMode.swift */; };
 		A3A8755D2B95CE8A00840A2B /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A8755C2B95CE8A00840A2B /* AboutView.swift */; };
+		A3B2B41E308A837F000B0886 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A3B2B41D308A837F000B0886 /* Kingfisher */; };
+		A3B2B428308A8431000B0886 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A3B2B427308A8431000B0886 /* Alamofire */; };
+		A3B2B42B308A849E000B0886 /* libwebp in Frameworks */ = {isa = PBXBuildFile; productRef = A3B2B42A308A849E000B0886 /* libwebp */; };
+		A3B2B42E308A8573000B0886 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A3B2B42D308A8573000B0886 /* FirebaseAnalytics */; };
+		A3B2B430308A8573000B0886 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = A3B2B42F308A8573000B0886 /* FirebaseCore */; };
+		A3B2B432308A8573000B0886 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = A3B2B431308A8573000B0886 /* FirebaseCrashlytics */; };
+		A3B2B434308A8573000B0886 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = A3B2B433308A8573000B0886 /* FirebaseRemoteConfig */; };
 		A3D9D7762B8F0F3900C5FC64 /* ShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D9D7752B8F0F3900C5FC64 /* ShareItem.swift */; };
 		A3D9D7782B8F10B900C5FC64 /* KingfisherManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D9D7772B8F10B900C5FC64 /* KingfisherManagerExtension.swift */; };
 		A3EBA6902BA7EFAD00F8BC6E /* Bundle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3EBA68E2BA7EFAD00F8BC6E /* Bundle.xcdatamodeld */; };
@@ -123,8 +129,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		23F8D93C4EBC09E01CBB96FA /* Pods-Valorant-Stats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Valorant-Stats.debug.xcconfig"; path = "Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats.debug.xcconfig"; sourceTree = "<group>"; };
-		9755689F22E763D0A1A83E51 /* Pods-Valorant-Stats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Valorant-Stats.release.xcconfig"; path = "Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats.release.xcconfig"; sourceTree = "<group>"; };
 		A31E83FA2BA1B256006A283E /* GetSprayByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSprayByIdUseCase.swift; sourceTree = "<group>"; };
 		A31E83FC2BA1B2D1006A283E /* GetPlayerCardByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlayerCardByIdUseCase.swift; sourceTree = "<group>"; };
 		A3405A122BA4177400574D5B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -239,7 +243,6 @@
 		A3FE5B202BA85B4D00D9DD8C /* Buddy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Buddy.xcdatamodel; sourceTree = "<group>"; };
 		A3FE5B222BA85B9400D9DD8C /* BuddyModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyModelExtension.swift; sourceTree = "<group>"; };
 		A3FE5B242BA85BCD00D9DD8C /* BuddyDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyDataRepository.swift; sourceTree = "<group>"; };
-		FCA01872186AA73938A0E786 /* Pods_Valorant_Stats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Valorant_Stats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,21 +250,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				558BBD21A3958864E1007C07 /* Pods_Valorant_Stats.framework in Frameworks */,
+				A3B2B42B308A849E000B0886 /* libwebp in Frameworks */,
+				A3B2B430308A8573000B0886 /* FirebaseCore in Frameworks */,
+				A3B2B428308A8431000B0886 /* Alamofire in Frameworks */,
+				A3B2B434308A8573000B0886 /* FirebaseRemoteConfig in Frameworks */,
+				A3B2B432308A8573000B0886 /* FirebaseCrashlytics in Frameworks */,
+				A3B2B42E308A8573000B0886 /* FirebaseAnalytics in Frameworks */,
+				A3B2B41E308A837F000B0886 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1A6455E950D7A35382BE1DDA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				FCA01872186AA73938A0E786 /* Pods_Valorant_Stats.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		A31E83F82BA1B1D6006A283E /* GetAll */ = {
 			isa = PBXGroup;
 			children = (
@@ -476,8 +477,6 @@
 			children = (
 				A3F70B882B8C522A00CBA5C6 /* Valorant-Stats */,
 				A3F70B872B8C522A00CBA5C6 /* Products */,
-				F5E15D7D4CB074971EC07C11 /* Pods */,
-				1A6455E950D7A35382BE1DDA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -688,15 +687,6 @@
 			path = SupportingViews;
 			sourceTree = "<group>";
 		};
-		F5E15D7D4CB074971EC07C11 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				23F8D93C4EBC09E01CBB96FA /* Pods-Valorant-Stats.debug.xcconfig */,
-				9755689F22E763D0A1A83E51 /* Pods-Valorant-Stats.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -704,18 +694,25 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A3F70B942B8C522B00CBA5C6 /* Build configuration list for PBXNativeTarget "Valorant-Stats" */;
 			buildPhases = (
-				5DC4045C2E561F7CE347957D /* [CP] Check Pods Manifest.lock */,
 				A3F70B822B8C522A00CBA5C6 /* Sources */,
 				A3F70B832B8C522A00CBA5C6 /* Frameworks */,
 				A3F70B842B8C522A00CBA5C6 /* Resources */,
 				A340CCAF2C007C9F0093F5E4 /* ShellScript */,
-				FECEDFBD083E82ECE836096C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Valorant-Stats";
+			packageProductDependencies = (
+				A3B2B41D308A837F000B0886 /* Kingfisher */,
+				A3B2B427308A8431000B0886 /* Alamofire */,
+				A3B2B42A308A849E000B0886 /* libwebp */,
+				A3B2B42D308A8573000B0886 /* FirebaseAnalytics */,
+				A3B2B42F308A8573000B0886 /* FirebaseCore */,
+				A3B2B431308A8573000B0886 /* FirebaseCrashlytics */,
+				A3B2B433308A8573000B0886 /* FirebaseRemoteConfig */,
+			);
 			productName = "Valorant-Stats";
 			productReference = A3F70B862B8C522A00CBA5C6 /* Valorant-Stats.app */;
 			productType = "com.apple.product-type.application";
@@ -728,7 +725,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 2710;
 				TargetAttributes = {
 					A3F70B852B8C522A00CBA5C6 = {
 						CreatedOnToolsVersion = 15.0.1;
@@ -744,6 +741,12 @@
 				Base,
 			);
 			mainGroup = A3F70B7D2B8C522A00CBA5C6;
+			packageReferences = (
+				A3B2B41C308A837F000B0886 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				A3B2B426308A8431000B0886 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				A3B2B429308A849E000B0886 /* XCRemoteSwiftPackageReference "libwebp-Xcode" */,
+				A3B2B42C308A8573000B0886 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = A3F70B872B8C522A00CBA5C6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -768,28 +771,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5DC4045C2E561F7CE347957D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Valorant-Stats-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A340CCAF2C007C9F0093F5E4 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -810,24 +791,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
-		};
-		FECEDFBD083E82ECE836096C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Valorant-Stats/Pods-Valorant-Stats-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "if [ -f \"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\" ]; then\n  \"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\nelif [ -f \"${PODS_ROOT}/FirebaseCrashlytics/run\" ]; then\n  \"${PODS_ROOT}/FirebaseCrashlytics/run\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -985,6 +949,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 4B485XW35X;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1008,6 +973,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1048,6 +1014,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 4B485XW35X;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1064,6 +1031,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1071,7 +1039,6 @@
 		};
 		A3F70B952B8C522B00CBA5C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 23F8D93C4EBC09E01CBB96FA /* Pods-Valorant-Stats.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1079,7 +1046,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_ASSET_PATHS = "\"Valorant-Stats/Preview Content\"";
-				DEVELOPMENT_TEAM = 4B485XW35X;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1113,7 +1079,6 @@
 		};
 		A3F70B962B8C522B00CBA5C6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9755689F22E763D0A1A83E51 /* Pods-Valorant-Stats.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1122,7 +1087,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_ASSET_PATHS = "\"Valorant-Stats/Preview Content\"";
-				DEVELOPMENT_TEAM = 4B485XW35X;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1176,6 +1140,79 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A3B2B41C308A837F000B0886 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.14.0;
+			};
+		};
+		A3B2B426308A8431000B0886 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.12.2;
+			};
+		};
+		A3B2B429308A849E000B0886 /* XCRemoteSwiftPackageReference "libwebp-Xcode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/libwebp-Xcode";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.6.0;
+			};
+		};
+		A3B2B42C308A8573000B0886 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 13.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A3B2B41D308A837F000B0886 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3B2B41C308A837F000B0886 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		A3B2B427308A8431000B0886 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3B2B426308A8431000B0886 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		A3B2B42A308A849E000B0886 /* libwebp */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3B2B429308A849E000B0886 /* XCRemoteSwiftPackageReference "libwebp-Xcode" */;
+			productName = libwebp;
+		};
+		A3B2B42D308A8573000B0886 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3B2B42C308A8573000B0886 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		A3B2B42F308A8573000B0886 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3B2B42C308A8573000B0886 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		A3B2B431308A8573000B0886 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3B2B42C308A8573000B0886 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		A3B2B433308A8573000B0886 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3B2B42C308A8573000B0886 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		A3405A172BA441C900574D5B /* Weapon.xcdatamodeld */ = {
