@@ -15,13 +15,11 @@ struct SpraysView: View {
     
     @Namespace private var namespace
     
-    let columns = [GridItem(.flexible(), spacing: 10),
-                   GridItem(.flexible(), spacing: 10),
-                   GridItem(.flexible(), spacing: 10)]
+    let columns = [GridItem(.flexible(minimum: 0), spacing: 10),
+                   GridItem(.flexible(minimum: 0), spacing: 10),
+                   GridItem(.flexible(minimum: 0), spacing: 10)]
     
     var body: some View {
-        let width = (UIScreen.main.bounds.width - 50)/3
-        
         ZStack {
             KeyVariables.secondaryColor
             
@@ -30,13 +28,13 @@ struct SpraysView: View {
                     if homeViewModel.showSpraysShimmer {
                         ForEach(0..<24) { _ in
                             ShimmerEffect()
-                                .frame(width: width, height: width)
+                                .aspectRatio(1, contentMode: .fit)
                                 .clipShape(RoundedRectangle(cornerRadius: 5))
                         }
                     } else {
                         ForEach(homeViewModel.sprays, id: \.uuid) { spray in
                             SprayGridView(spray: spray)
-                                .frame(width: width, height: width)
+                                .aspectRatio(1, contentMode: .fit)
                                 .onTapGesture {
                                     withAnimation(.bouncy(duration:0.6)) {
                                         expandSprayGrid.toggle()
@@ -50,7 +48,7 @@ struct SpraysView: View {
                 .blur(radius: expandSprayGrid ? 10 : 0)
                 .disabled(expandSprayGrid)
                 .padding(.horizontal)
-                .padding(.bottom, KeyVariables.bottomSafeAreaInsets)
+                .padding(.bottom)
             }
             .onTapGesture {
                 withAnimation(.linear(duration:0.2)) {
@@ -72,7 +70,6 @@ struct SpraysView: View {
                 SprayCardView(expandSprayGrid: $expandSprayGrid, selectedSpray: $selectedSpray, namespace: namespace)
             }
         }
-        .edgesIgnoringSafeArea(.bottom)
     }
 }
 

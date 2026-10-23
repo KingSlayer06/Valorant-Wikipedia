@@ -24,8 +24,6 @@ struct WeaponSkinDetailsView: View {
     }
     
     var body: some View {
-        let width = UIScreen.main.bounds.width - 15
-        
         ZStack {
             KeyVariables.secondaryColor
             
@@ -110,7 +108,7 @@ struct WeaponSkinDetailsView: View {
                         Text("No Video")
                             .font(Font.custom(KeyVariables.primaryFont, size: 20))
                             .foregroundStyle(.foreground)
-                            .frame(maxWidth: width - 10, maxHeight: 200)
+                            .frame(maxWidth: .infinity, minHeight: 200, maxHeight: 200)
                             .overlay {
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(Color.white, lineWidth: 2)
@@ -118,7 +116,7 @@ struct WeaponSkinDetailsView: View {
                     } else {
                         if let player = player {
                             AVPlayerControllerRepresentable(player: player)
-                                .frame(maxWidth: width - 10, maxHeight: 200)
+                                .frame(maxWidth: .infinity, minHeight: 200, maxHeight: 200)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 10)

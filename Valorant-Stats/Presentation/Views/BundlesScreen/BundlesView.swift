@@ -11,8 +11,8 @@ import Kingfisher
 struct BundlesView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
     
-    let columns = [GridItem(.flexible(), spacing: 20),
-                   GridItem(.flexible(), spacing: 20)]
+    let columns = [GridItem(.flexible(minimum: 0), spacing: 20),
+                   GridItem(.flexible(minimum: 0), spacing: 20)]
     
     @State private var searchBundle = ""
     
@@ -41,7 +41,7 @@ struct BundlesView: View {
                         if homeViewModel.showBundlesShimmer {
                             ForEach(0..<24) { _ in
                                 ShimmerEffect()
-                                    .frame(height: 380)
+                                    .aspectRatio(0.7, contentMode: .fit)
                                     .clipShape(RoundedRectangle(cornerRadius: 5))
                             }
                         } else {
@@ -60,9 +60,8 @@ struct BundlesView: View {
                 }
             }
             .padding(.horizontal)
-            .padding(.bottom, KeyVariables.bottomSafeAreaInsets)
+            .padding(.bottom)
         }
-        .edgesIgnoringSafeArea(.bottom)
         .onAppear {
 //            AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.viewAllSkinsScreen)
         }
@@ -76,8 +75,6 @@ struct BundleGridView: View {
     let bundle: WeaponBundle
     
     var body: some View {
-        let width = UIScreen.main.bounds.width/2 - 20
-        
         ZStack {
             KFImage(URL(string: bundle.verticalPromoImage ?? ""))
                 .placeholder {
@@ -88,10 +85,10 @@ struct BundleGridView: View {
                 }
                 .resizable()
                 .scaledToFill()
-                .frame(maxWidth: width)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             
             LinearGradient(colors: [.black.opacity(0.8), .clear], startPoint: .bottom, endPoint: .top)
-                .frame(maxWidth: width)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             
             Text(bundle.displayName)
                 .font(Font.custom(KeyVariables.primaryFont, size: 20))
@@ -100,9 +97,8 @@ struct BundleGridView: View {
             
             RoundedRectangle(cornerRadius: 5)
                 .stroke(KeyVariables.primaryColor, lineWidth: 2)
-                .frame(maxWidth: width)
         }
-        .frame(maxHeight: 300)
+        .aspectRatio(0.7, contentMode: .fit)
         .clipShape(RoundedRectangle(cornerRadius: 5))
     }
 }

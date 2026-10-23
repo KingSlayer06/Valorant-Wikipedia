@@ -47,30 +47,27 @@ struct BundleDetailsView: View {
         return sprays
     }
     
-    var spacerLength: CGFloat {
-        return (UIScreen.main.bounds.width - 100)/2
-    }
-    
     var body: some View {
-        ZStack {
-            KFImage(URL(string: bundle.verticalPromoImage ?? ""))
-                .placeholder {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle())
-                        .foregroundStyle(KeyVariables.primaryColor)
-                        .scaleEffect(3)
-                }
-                .resizable()
-                .scaledToFill()
-                .frame(width: UIScreen.main.bounds.width)
-                .clipShape(Rectangle())
-                .opacity(0.75)
-                .edgesIgnoringSafeArea(.all)
-            
-            LinearGradient(colors: [.black, .clear, .black], startPoint: .top, endPoint: .bottom)
-                .edgesIgnoringSafeArea(.all)
-            
-            VStack {
+        GeometryReader { proxy in
+            let sideInset = max((proxy.size.width - 100) / 2, 0)
+
+            ZStack {
+                KFImage(URL(string: bundle.verticalPromoImage ?? ""))
+                    .placeholder {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .foregroundStyle(KeyVariables.primaryColor)
+                            .scaleEffect(3)
+                    }
+                    .resizable()
+                    .scaledToFill()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .clipShape(Rectangle())
+                    .opacity(0.75)
+
+                LinearGradient(colors: [.black, .clear, .black], startPoint: .top, endPoint: .bottom)
+
+                VStack {
                 Spacer(minLength: 100)
                 
                 if selectedIndex < bundleWeapons.count {
@@ -101,7 +98,7 @@ struct BundleDetailsView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 15) {
                             
-                            Spacer(minLength: spacerLength)
+                            Spacer(minLength: sideInset)
                             
                             ForEach(bundleWeapons.indices, id:\.self) { index in
                                 BundleDetailsGridView(image: bundleWeapons[index].displayIcon,
@@ -127,7 +124,7 @@ struct BundleDetailsView: View {
                                 .id(index + bundleWeapons.count + bundleSprays.count)
                             }
                             
-                            Spacer(minLength: spacerLength)
+                            Spacer(minLength: sideInset)
                         }
                         .padding(.horizontal)
                     }
@@ -136,6 +133,7 @@ struct BundleDetailsView: View {
                             scrollView.scrollTo(newValue, anchor: .center)
                         }
                     }
+                }
                 }
             }
         }
@@ -214,7 +212,6 @@ struct BundleDetailsImageView: View {
                     }
                     .resizable()
                     .scaledToFit()
-                    .edgesIgnoringSafeArea(.all)
                     .clipShape(RoundedRectangle(cornerRadius: 5))
                 
                 Spacer(minLength: 0)

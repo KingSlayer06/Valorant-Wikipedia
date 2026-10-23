@@ -21,8 +21,8 @@ struct AgentContractsView: View {
 //                               title: PlayerTitle, spray2: Spray?,
 //                               currency: GameCurrency)
     
-    let columns = [GridItem(.flexible(), spacing: 20),
-                   GridItem(.flexible(), spacing: 20)]
+    let columns = [GridItem(.flexible(minimum: 0), spacing: 20),
+                   GridItem(.flexible(minimum: 0), spacing: 20)]
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -41,7 +41,8 @@ struct AgentContractsView: View {
                                 RoundedRectangle(cornerRadius: 5)
                                     .stroke(KeyVariables.primaryColor, lineWidth: 2)
                             }
-                            .frame(width: UIScreen.main.bounds.width - 40, height: 350)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 350)
                             .padding(.vertical)
                             
                             if selectedChapter1 {
@@ -56,9 +57,8 @@ struct AgentContractsView: View {
                 }
             }
             .padding(.horizontal)
-            .padding(.bottom, KeyVariables.bottomSafeAreaInsets)
+            .padding(.bottom)
         }
-        .edgesIgnoringSafeArea(.bottom)
         .onChange(of: selectedAgent) {
             selectedChapter1 = true
         }
@@ -162,11 +162,16 @@ struct AgentContractGridView: View {
 struct ChaptersView: View {
     let chapter: ContractChapters
     @State var selectedLevel: ContractLevel?
+
+    private var columns: [GridItem] {
+        Array(
+            repeating: GridItem(.flexible(minimum: 0), spacing: 10),
+            count: max(chapter.levels.count, 1)
+        )
+    }
     
     var body: some View {
-        let width = UIScreen.main.bounds.width/CGFloat(chapter.levels.count) - 10
-        
-        HStack {
+        LazyVGrid(columns: columns, spacing: 10) {
             ForEach(chapter.levels.indices, id:\.self) { index in
                 ZStack {
                     Text(chapter.levels[index].reward.type)
@@ -175,7 +180,7 @@ struct ChaptersView: View {
                     RoundedRectangle(cornerRadius: 5)
                         .stroke(isSelected(chapter.levels[index]) ? .white : KeyVariables.primaryColor, lineWidth: 2)
                 }
-                .frame(width: width, height: width)
+                .aspectRatio(1, contentMode: .fit)
                 .clipShape(RoundedRectangle(cornerRadius: 5))
                 .contentShape(RoundedRectangle(cornerRadius: 5))
                 .animation(.smooth, value: isSelected(chapter.levels[index]))
