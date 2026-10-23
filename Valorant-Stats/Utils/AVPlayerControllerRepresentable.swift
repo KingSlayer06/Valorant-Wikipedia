@@ -23,4 +23,10 @@ struct AVPlayerControllerRepresentable : UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) {
         
     }
+
+    static func dismantleUIViewController(_ uiViewController: AVPlayerViewController, coordinator: ()) {
+        uiViewController.player?.pause()
+        uiViewController.player?.replaceCurrentItem(with: nil)
+        uiViewController.player = nil
+    }
 }

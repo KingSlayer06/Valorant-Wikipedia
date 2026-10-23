@@ -10,7 +10,7 @@ import Kingfisher
 import AVKit
 
 struct WeaponSkinDetailsView: View {
-    @State var player: AVPlayer?
+    @State private var player: AVPlayer?
     @State var selectedSkinLevel: WeaponSkinLevel?
     @State var selectedChroma: WeaponSkinChromas?
     
@@ -159,6 +159,7 @@ struct WeaponSkinDetailsView: View {
             }
         }
         .onDisappear {
+            stopPlayback()
             AppAnalytics.shared.WeaponSkinDetailsBackClick(skin: skin)
         }
     }
@@ -176,20 +177,23 @@ struct WeaponSkinDetailsView: View {
     }
     
     func addObserver() {
+        removeObserver()
+
         foregroundEnteredObserver = NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: nil) { notification in
             print("App entered foreground state!")
             Task {
-                player?.play()
+                await player?.play()
             }
         }
-        
+
+        guard let currentItem = player?.currentItem else { return }
         videoCompleteObserver = NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime,
-                                               object: player?.currentItem,
+                                               object: currentItem,
                                                queue: nil) { notification in
             print("Video Complete")
             Task {
-                player?.seek(to: .zero)
-                player?.play()
+                await player?.seek(to: .zero)
+                await player?.play()
             }
         }
     }
@@ -197,14 +201,26 @@ struct WeaponSkinDetailsView: View {
     func removeObserver() {
         if let foregroundEnteredObserver = foregroundEnteredObserver {
             NotificationCenter.default.removeObserver(foregroundEnteredObserver)
+            self.foregroundEnteredObserver = nil
         }
-    
+
         if let videoCompleteObserver = videoCompleteObserver {
             NotificationCenter.default.removeObserver(videoCompleteObserver)
+            self.videoCompleteObserver = nil
         }
+    }
+
+    func stopPlayback() {
+        removeObserver()
+        player?.pause()
+        player?.replaceCurrentItem(with: nil)
+        player = nil
     }
     
     func loadPlayerItem(_ videoURL: URL) async {
+        player?.pause()
+        removeObserver()
+
         let asset = AVAsset(url: videoURL)
         do {
             let (_, _, _) = try await asset.load(.tracks, .duration, .preferredTransform)
@@ -212,9 +228,12 @@ struct WeaponSkinDetailsView: View {
             print(error.localizedDescription)
         }
         
+        guard let player else { return }
+
         let item = AVPlayerItem(asset: asset)
-        player?.replaceCurrentItem(with: item)
-        player?.play()
+        player.replaceCurrentItem(with: item)
+        addObserver()
+        player.play()
     }
 }
 
