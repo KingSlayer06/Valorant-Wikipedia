@@ -16,10 +16,6 @@ struct HomeView: View {
     
     @GestureState var gestureOffset: CGFloat = 0
     
-    init() {
-        UITabBar.appearance().isHidden = true
-    }
-    
     var body: some View {
         let sideMenuwidth = KeyVariables.sideMenuWidth
         
@@ -190,26 +186,7 @@ struct HomeView: View {
 extension HomeView {
     
     var tabBar: some View {
-        TabView(selection: $homeViewModel.selectedBottomTab) {
-            ForEach(tabOptions) { tab in
-                switch tab {
-                    case .agents:
-                        AgentsView()
-                            .tag(tab)
-                    case .maps:
-                        MapsView()
-                            .tag(tab)
-                    case .weapons:
-                        WeaponsView()
-                            .tag(tab)
-                    default:
-                        EmptyView()
-                }
-            }
-        }
-        .overlay(alignment: .bottom) {
-            CustomTabBar()
-        }
+        CustomTabBar()
     }
 }
 
