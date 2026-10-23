@@ -16,21 +16,33 @@ struct CustomTabBar: View {
     }
 
     var body: some View {
+        tabView
+            .tabViewStyle(.tabBarOnly)
+            .tabBarMinimizeBehavior(.never)
+    }
+
+    private var tabView: some View {
         TabView(selection: $homeViewModel.selectedBottomTab) {
             AgentsView()
-                .tabItem { Label(SideMenuOptionsModel.agents.title, systemImage: "person.2.fill") }
+                .tabItem {
+                    Label(SideMenuOptionsModel.agents.title, systemImage: "person.2.fill")
+                }
                 .tag(SideMenuOptionsModel.agents)
 
             MapsView()
-                .tabItem { Label(SideMenuOptionsModel.maps.title, systemImage: "map.fill") }
+                .tabItem {
+                    Label(SideMenuOptionsModel.maps.title, systemImage: "map.fill")
+                }
                 .tag(SideMenuOptionsModel.maps)
 
             WeaponsView()
-                .tabItem { Label(SideMenuOptionsModel.weapons.title, systemImage: "scope") }
+                .tabItem {
+                    Label(SideMenuOptionsModel.weapons.title, systemImage: "scope")
+                }
                 .tag(SideMenuOptionsModel.weapons)
         }
-        .tabViewStyle(.automatic)
         .tint(KeyVariables.primaryColor)
+        .toolbar(.visible, for: .tabBar)
         .toolbarBackground(KeyVariables.secondaryColor.opacity(0.92), for: .tabBar)
         .toolbarBackground(.visible, for: .tabBar)
     }

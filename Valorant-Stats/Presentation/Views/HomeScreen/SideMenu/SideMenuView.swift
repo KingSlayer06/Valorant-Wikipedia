@@ -9,9 +9,9 @@ import SwiftUI
 
 struct SideMenuView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
-    
     @Binding var isShowing: Bool
-    
+    let width: CGFloat
+
     var body: some View {
         VStack(alignment: .leading, spacing: 32) {
             headerView
@@ -44,7 +44,7 @@ struct SideMenuView: View {
             footerView
                 .frame(maxWidth: .infinity, alignment: .center)
         }
-        .frame(width: KeyVariables.sideMenuWidth)
+        .frame(width: width)
         .frame(maxWidth: .infinity, alignment: .leading)
     }
     
@@ -102,6 +102,6 @@ extension SideMenuView {
 }
 
 #Preview {
-    SideMenuView(isShowing: .constant(true))
+    SideMenuView(isShowing: .constant(true), width: 300)
         .environmentObject(HomeViewModel())
 }

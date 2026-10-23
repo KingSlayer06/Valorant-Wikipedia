@@ -12,8 +12,7 @@ struct AgentsView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
     @State var selectedRole: AgentRole?
     
-    let columns = [GridItem(.flexible(), spacing: 20),
-                   GridItem(.flexible(), spacing: 20)]
+    let columns = [GridItem(.adaptive(minimum: 160, maximum: 240), spacing: 20)]
     
     var agentRoles: [AgentRole] {
         var roles = [AgentRole]()
@@ -80,10 +79,8 @@ struct AgentsView: View {
                 }
             }
             .padding(.horizontal)
-            .padding(.bottom, 62)
-            .padding(.bottom, KeyVariables.bottomSafeAreaInsets)
+            .padding(.bottom)
         }
-        .edgesIgnoringSafeArea(.bottom)
         .onAppear {
             AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.agentScreen)
         }

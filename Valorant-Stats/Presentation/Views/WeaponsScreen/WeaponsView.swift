@@ -82,10 +82,8 @@ struct WeaponsView: View {
                 .padding(.top)
             }
             .padding(.horizontal)
-            .padding(.bottom, 62)
-            .padding(.bottom, KeyVariables.bottomSafeAreaInsets)
+            .padding(.bottom)
         }
-        .edgesIgnoringSafeArea(.bottom)
         .onAppear {
             AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.weaponScreen)
         }

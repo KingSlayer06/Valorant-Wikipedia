@@ -10,64 +10,47 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
     @State var showMenu: Bool = false
-    
-    @State var offset: CGFloat = 0
-    @State var lastStoredOffset: CGFloat = 0
-    
-    @GestureState var gestureOffset: CGFloat = 0
+    @GestureState private var menuDragOffset: CGFloat = 0
     
     var body: some View {
-        let sideMenuwidth = KeyVariables.sideMenuWidth
-        
         NavigationStack {
-            ZStack {
-                KeyVariables.secondaryColor
-                
-                HStack(spacing: 0) {
-                    SideMenuView(isShowing: $showMenu)
-                    
-                    VStack(spacing: 0) {
-                        switch(homeViewModel.selectedTab) {
-                            case .home:
-                                tabBar
-                            case .playerCards:
-                                PlayerCardsView()
-                            case .sprays:
-                                SpraysView()
-                            case .ranks:
-                                RanksView()
-                            case .bundles:
-                                BundlesView()
-                            case .contracts:
-                                AgentContractsView()
-                            case .patchNotes:
-                                PatchNotesView()
-                            default:
-                                EmptyView()
-                        }
-                    }
-                    .frame(width: UIScreen.main.bounds.width)
-                    .overlay {
-                        Rectangle()
-                            .opacity(Double((offset/sideMenuwidth)/5))
-                            .ignoresSafeArea(.container, edges: .vertical)
-                            .onTapGesture {
-                                withAnimation {
-                                    showMenu.toggle()
-                                }
+            GeometryReader { proxy in
+                let menuWidth = min(max(proxy.size.width * 0.72, 280), 360)
+                let restingOffset = showMenu ? menuWidth : 0
+                let menuOffset = min(max(restingOffset + menuDragOffset, 0), menuWidth)
+
+                ZStack(alignment: .leading) {
+                    KeyVariables.secondaryColor
+
+                    selectedContent
+                        .frame(width: proxy.size.width, height: proxy.size.height)
+                        .offset(x: menuOffset)
+                        .overlay {
+                            if menuOffset > 0 {
+                                Color.black
+                                    .opacity(0.2 * (menuOffset / menuWidth))
+                                    .onTapGesture {
+                                        withAnimation {
+                                            showMenu = false
+                                        }
+                                    }
                             }
-                    }
+                        }
+
+                    SideMenuView(isShowing: $showMenu, width: menuWidth)
+                        .frame(width: menuWidth, height: proxy.size.height, alignment: .leading)
+                        .offset(x: menuOffset - menuWidth)
                 }
-                .edgesIgnoringSafeArea(.bottom)
-                .frame(width: UIScreen.main.bounds.width + sideMenuwidth)
-                .offset(x: -sideMenuwidth/2)
-                .offset(x: offset > 0 ? offset : 0)
+                .frame(width: proxy.size.width, height: proxy.size.height, alignment: .leading)
+                .animation(.easeOut, value: showMenu)
                 .gesture(
                     DragGesture()
-                        .updating($gestureOffset) { value, out, _ in
-                            out = value.translation.width
+                        .updating($menuDragOffset) { value, state, _ in
+                            state = value.translation.width
                         }
-                        .onEnded(onEnded(value: ))
+                        .onEnded { value in
+                            endMenuDrag(value, menuWidth: menuWidth)
+                        }
                 )
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -124,67 +107,40 @@ struct HomeView: View {
             homeViewModel.getBundles()
             homeViewModel.getAgentContracts()
         }
-        .animation(.easeOut, value: offset == 0)
-        .onChange(of: showMenu) {
-            if showMenu && offset == 0 {
-                offset = sideMenuwidth
-                lastStoredOffset = offset
-            }
-            
-            if !showMenu && offset == sideMenuwidth {
-                offset = 0
-                lastStoredOffset = 0
-            }
-        }
-        .onChange(of: gestureOffset) {
-            onChange()
-        }
     }
-    
-    func onChange() {
-        let sideMenuwidth = KeyVariables.sideMenuWidth
-        
-        offset = (gestureOffset != 0) ? (gestureOffset + lastStoredOffset < sideMenuwidth ? gestureOffset + lastStoredOffset : offset) : offset
-    }
-    
-    func onEnded(value: DragGesture.Value) {
-        let sideMenuwidth = KeyVariables.sideMenuWidth
-        let translation = value.translation.width
-        
+
+    private func endMenuDrag(_ value: DragGesture.Value, menuWidth: CGFloat) {
+        let projectedOffset = (showMenu ? menuWidth : 0) + value.predictedEndTranslation.width
+
         withAnimation {
-            if translation > 0 {
-                if translation > (sideMenuwidth/2) {
-                    offset = sideMenuwidth
-                    showMenu = true
-                } else {
-                    if offset == sideMenuwidth {
-                        return
-                    }
-                    
-                    offset = 0
-                    showMenu = false
-                }
-            } else {
-                if -translation > (sideMenuwidth/2) {
-                    offset = 0
-                    showMenu = false
-                } else {
-                    if offset == 0 || !showMenu {
-                        return
-                    }
-                    
-                    offset = sideMenuwidth
-                    showMenu = true
-                }
-            }
+            showMenu = projectedOffset > menuWidth / 2
         }
-        
-        lastStoredOffset = offset
     }
 }
 
 extension HomeView {
-    
+    @ViewBuilder
+    var selectedContent: some View {
+        switch homeViewModel.selectedTab {
+        case .home:
+            tabBar
+        case .playerCards:
+            PlayerCardsView()
+        case .sprays:
+            SpraysView()
+        case .ranks:
+            RanksView()
+        case .bundles:
+            BundlesView()
+        case .contracts:
+            AgentContractsView()
+        case .patchNotes:
+            PatchNotesView()
+        default:
+            EmptyView()
+        }
+    }
+
     var tabBar: some View {
         CustomTabBar()
     }
