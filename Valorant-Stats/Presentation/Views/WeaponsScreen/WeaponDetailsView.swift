@@ -12,45 +12,41 @@ struct WeaponDetailsView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
     
     let weapon: Weapon
-    let width = (UIScreen.main.bounds.width)/4
     
     var body: some View {
-        NavigationStack {
-            ScrollView(.vertical, showsIndicators: false) {
-                ZStack {
-                    KeyVariables.secondaryColor
-                    
-                    VStack {
-                        KFImage(URL(string: weapon.displayIcon))
-                            .placeholder {
-                                ProgressView()
-                                    .progressViewStyle(CircularProgressViewStyle())
-                                    .foregroundStyle(KeyVariables.primaryColor)
-                                    .scaleEffect(5)
-                            }
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth: .infinity, maxHeight: 200)
-                        
-                        weaponName
-                        weaponCreds
-                        
-                        if weapon.displayName != "Melee" {
-                            weaponMagzine
-                            fireRate
-                            damage
+        ScrollView(.vertical, showsIndicators: false) {
+            ZStack {
+                KeyVariables.secondaryColor
+
+                VStack {
+                    KFImage(URL(string: weapon.displayIcon))
+                        .placeholder {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle())
+                                .foregroundStyle(KeyVariables.primaryColor)
+                                .scaleEffect(5)
                         }
-                            
-                        weaponSkins
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: .infinity, maxHeight: 200)
+
+                    weaponName
+                    weaponCreds
+
+                    if weapon.displayName != "Melee" {
+                        weaponMagzine
+                        fireRate
+                        damage
+                    }
                         
-                        if weapon.displayName != "Melee" {
-                            buddies
-                        }
+                    weaponSkins
+
+                    if weapon.displayName != "Melee" {
+                        buddies
                     }
                 }
-                .padding(.horizontal)
             }
-            .navigationBarTitleDisplayMode(.inline)
+            .padding(.horizontal)
         }
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -96,22 +92,22 @@ extension WeaponDetailsView {
                 Text("Range")
                     .font(Font.custom(KeyVariables.primaryFont, size: 20))
                     .foregroundStyle(KeyVariables.primaryColor)
-                    .frame(maxWidth: width)
+                    .frame(maxWidth: .infinity)
                 
                 Text("Body")
                     .font(Font.custom(KeyVariables.primaryFont, size: 20))
                     .foregroundStyle(KeyVariables.primaryColor)
-                    .frame(maxWidth: width)
+                    .frame(maxWidth: .infinity)
                 
                 Text("Head")
                     .font(Font.custom(KeyVariables.primaryFont, size: 20))
                     .foregroundStyle(KeyVariables.primaryColor)
-                    .frame(maxWidth: width)
+                    .frame(maxWidth: .infinity)
                 
                 Text("Leg")
                     .font(Font.custom(KeyVariables.primaryFont, size: 20))
                     .foregroundStyle(KeyVariables.primaryColor)
-                    .frame(maxWidth: width)
+                    .frame(maxWidth: .infinity)
             }
             
             if let damageRanges = weapon.weaponStats?.damageRanges {
@@ -120,22 +116,22 @@ extension WeaponDetailsView {
                         Text("\(damage.rangeStartMeters)-\(damage.rangeEndMeters)")
                             .font(Font.custom(KeyVariables.primaryFont, size: 20))
                             .foregroundStyle(.foreground)
-                            .frame(maxWidth: width)
+                            .frame(maxWidth: .infinity)
                         
                         Text("\(String(format: "%.1f", damage.bodyDamage))")
                             .font(Font.custom(KeyVariables.primaryFont, size: 20))
                             .foregroundStyle(.foreground)
-                            .frame(maxWidth: width)
+                            .frame(maxWidth: .infinity)
                         
                         Text("\(String(format: "%.1f", damage.headDamage))")
                             .font(Font.custom(KeyVariables.primaryFont, size: 20))
                             .foregroundStyle(.foreground)
-                            .frame(maxWidth: width)
+                            .frame(maxWidth: .infinity)
                         
                         Text("\(String(format: "%.1f", damage.legDamage))")
                             .font(Font.custom(KeyVariables.primaryFont, size: 20))
                             .foregroundStyle(.foreground)
-                            .frame(maxWidth: width)
+                            .frame(maxWidth: .infinity)
                     }
                 }
             }

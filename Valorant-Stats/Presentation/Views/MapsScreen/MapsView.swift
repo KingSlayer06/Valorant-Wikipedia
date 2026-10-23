@@ -10,8 +10,23 @@ import Kingfisher
 
 struct MapsView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    @State private var selectedMap: GameMap?
     
     var body: some View {
+        if #available(iOS 27.1, *), horizontalSizeClass == .regular {
+            ArrangementView {
+                mapList(usesSplitSelection: true)
+            } secondary: {
+                mapDetail
+            }
+            .arrangementViewStyle(.split.axes(.horizontal))
+        } else {
+            mapList(usesSplitSelection: false)
+        }
+    }
+
+    private func mapList(usesSplitSelection: Bool) -> some View {
         ScrollView(.vertical, showsIndicators: false) {
             ZStack {
                 KeyVariables.secondaryColor
@@ -26,26 +41,59 @@ struct MapsView: View {
                     }
                     else {
                         ForEach(homeViewModel.maps, id: \.uuid) { map in
-                            NavigationLink {
-                                MapDetailsView(map: map)
-                            } label: {
-                                MapGridView(map: map)
-                            }
-                            .simultaneousGesture(TapGesture().onEnded {
-                                AppAnalytics.shared.MapImageClick(map: map)
-                            })
+                            mapCell(map, usesSplitSelection: usesSplitSelection)
                         }
                     }
                 }
                 .padding(.top)
             }
             .padding(.horizontal)
-            .padding(.bottom, 62)
-            .padding(.bottom, KeyVariables.bottomSafeAreaInsets)
+            .padding(.bottom)
         }
-        .edgesIgnoringSafeArea(.bottom)
         .onAppear {
             AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.mapScreen)
+        }
+    }
+
+    @ViewBuilder
+    private func mapCell(_ map: GameMap, usesSplitSelection: Bool) -> some View {
+        if usesSplitSelection {
+            Button {
+                selectedMap = map
+                AppAnalytics.shared.MapImageClick(map: map)
+            } label: {
+                MapGridView(map: map)
+            }
+            .buttonStyle(.plain)
+        } else {
+            NavigationLink {
+                MapDetailsView(map: map)
+            } label: {
+                MapGridView(map: map)
+            }
+            .simultaneousGesture(TapGesture().onEnded {
+                AppAnalytics.shared.MapImageClick(map: map)
+            })
+        }
+    }
+
+    @ViewBuilder
+    private var mapDetail: some View {
+        if let selectedMap {
+            MapDetailsView(map: selectedMap)
+        } else {
+            VStack(spacing: 12) {
+                Image(systemName: "map")
+                    .font(.largeTitle)
+                    .foregroundStyle(KeyVariables.primaryColor)
+                Text("Select a Map")
+                    .font(Font.custom(KeyVariables.primaryFont, size: 20))
+                    .foregroundStyle(.foreground)
+                Text("Choose an item to view its details.")
+                    .foregroundStyle(.secondary)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(KeyVariables.secondaryColor)
         }
     }
 }

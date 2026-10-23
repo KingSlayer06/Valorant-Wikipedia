@@ -10,7 +10,9 @@ import Kingfisher
 
 struct AgentsView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @State var selectedRole: AgentRole?
+    @State private var selectedAgent: Agent?
     
     let columns = [GridItem(.adaptive(minimum: 160, maximum: 240), spacing: 20)]
     
@@ -33,6 +35,19 @@ struct AgentsView: View {
     }
     
     var body: some View {
+        if #available(iOS 27.1, *), horizontalSizeClass == .regular {
+            ArrangementView {
+                agentList(usesSplitSelection: true)
+            } secondary: {
+                agentDetail
+            }
+            .arrangementViewStyle(.split.axes(.horizontal))
+        } else {
+            agentList(usesSplitSelection: false)
+        }
+    }
+
+    private func agentList(usesSplitSelection: Bool) -> some View {
         ScrollView(.vertical, showsIndicators: false) {
             ZStack {
                 KeyVariables.secondaryColor
@@ -65,14 +80,7 @@ struct AgentsView: View {
                             }
                         } else {
                             ForEach(filteredAgents, id: \.uuid) { agent in
-                                NavigationLink {
-                                    AgentDetailsView(agent: agent)
-                                } label: {
-                                    AgentGridView(agent: agent)
-                                }
-                                .simultaneousGesture(TapGesture().onEnded {
-                                    AppAnalytics.shared.AgentImageClick(agent: agent)
-                                })
+                                agentCell(agent, usesSplitSelection: usesSplitSelection)
                             }
                         }
                     }
@@ -84,6 +92,52 @@ struct AgentsView: View {
         .onAppear {
             AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.agentScreen)
         }
+    }
+
+    @ViewBuilder
+    private func agentCell(_ agent: Agent, usesSplitSelection: Bool) -> some View {
+        if usesSplitSelection {
+            Button {
+                selectedAgent = agent
+                AppAnalytics.shared.AgentImageClick(agent: agent)
+            } label: {
+                AgentGridView(agent: agent)
+            }
+            .buttonStyle(.plain)
+        } else {
+            NavigationLink {
+                AgentDetailsView(agent: agent)
+            } label: {
+                AgentGridView(agent: agent)
+            }
+            .simultaneousGesture(TapGesture().onEnded {
+                AppAnalytics.shared.AgentImageClick(agent: agent)
+            })
+        }
+    }
+
+    @ViewBuilder
+    private var agentDetail: some View {
+        if let selectedAgent {
+            AgentDetailsView(agent: selectedAgent)
+        } else {
+            detailPlaceholder("Select an Agent", systemImage: "person.2")
+        }
+    }
+
+    private func detailPlaceholder(_ title: String, systemImage: String) -> some View {
+        VStack(spacing: 12) {
+            Image(systemName: systemImage)
+                .font(.largeTitle)
+                .foregroundStyle(KeyVariables.primaryColor)
+            Text(title)
+                .font(Font.custom(KeyVariables.primaryFont, size: 20))
+                .foregroundStyle(.foreground)
+            Text("Choose an item to view its details.")
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(KeyVariables.secondaryColor)
     }
     
     func isSelected(_ role: AgentRole) -> Bool {

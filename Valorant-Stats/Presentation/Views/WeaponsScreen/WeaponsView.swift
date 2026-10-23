@@ -10,7 +10,9 @@ import Kingfisher
 
 struct WeaponsView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @State var selectedWeapon: String?
+    @State private var selectedWeaponDetail: Weapon?
     
     var weaponCatagories: [String] {
         var catagories = [String]()
@@ -37,6 +39,19 @@ struct WeaponsView: View {
     }
     
     var body: some View {
+        if #available(iOS 27.1, *), horizontalSizeClass == .regular {
+            ArrangementView {
+                weaponList(usesSplitSelection: true)
+            } secondary: {
+                weaponDetail
+            }
+            .arrangementViewStyle(.split.axes(.horizontal))
+        } else {
+            weaponList(usesSplitSelection: false)
+        }
+    }
+
+    private func weaponList(usesSplitSelection: Bool) -> some View {
         ScrollView(.vertical, showsIndicators: false) {
             ZStack {
                 KeyVariables.secondaryColor
@@ -68,14 +83,7 @@ struct WeaponsView: View {
                         }
                     } else {
                         ForEach(filteredWeapons, id: \.uuid) { weapon in
-                            NavigationLink {
-                                WeaponDetailsView(weapon: weapon)
-                            } label: {
-                                WeaponGridView(weapon: weapon)
-                            }
-                            .simultaneousGesture(TapGesture().onEnded {
-                                AppAnalytics.shared.WeaponImageClick(weapon: weapon)
-                            })
+                            weaponCell(weapon, usesSplitSelection: usesSplitSelection)
                         }
                     }
                 }
@@ -86,6 +94,48 @@ struct WeaponsView: View {
         }
         .onAppear {
             AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.weaponScreen)
+        }
+    }
+
+    @ViewBuilder
+    private func weaponCell(_ weapon: Weapon, usesSplitSelection: Bool) -> some View {
+        if usesSplitSelection {
+            Button {
+                selectedWeaponDetail = weapon
+                AppAnalytics.shared.WeaponImageClick(weapon: weapon)
+            } label: {
+                WeaponGridView(weapon: weapon)
+            }
+            .buttonStyle(.plain)
+        } else {
+            NavigationLink {
+                WeaponDetailsView(weapon: weapon)
+            } label: {
+                WeaponGridView(weapon: weapon)
+            }
+            .simultaneousGesture(TapGesture().onEnded {
+                AppAnalytics.shared.WeaponImageClick(weapon: weapon)
+            })
+        }
+    }
+
+    @ViewBuilder
+    private var weaponDetail: some View {
+        if let selectedWeaponDetail {
+            WeaponDetailsView(weapon: selectedWeaponDetail)
+        } else {
+            VStack(spacing: 12) {
+                Image(systemName: "scope")
+                    .font(.largeTitle)
+                    .foregroundStyle(KeyVariables.primaryColor)
+                Text("Select a Weapon")
+                    .font(Font.custom(KeyVariables.primaryFont, size: 20))
+                    .foregroundStyle(.foreground)
+                Text("Choose an item to view its details.")
+                    .foregroundStyle(.secondary)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(KeyVariables.secondaryColor)
         }
     }
     
