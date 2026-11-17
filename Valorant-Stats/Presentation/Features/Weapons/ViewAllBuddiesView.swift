@@ -15,14 +15,41 @@ struct ViewAllBuddiesView: View {
                    GridItem(.flexible(), spacing: 20)]
     
     @State private var searchBuddy = ""
-    
+    @State private var selectedBuddy: Buddy?
+
     var filteredBuddies: [Buddy] {
         guard !searchBuddy.isEmpty else { return homeViewModel.buddies }
-        
+
         return homeViewModel.buddies.filter { $0.displayName.localizedCaseInsensitiveContains(searchBuddy) }
     }
-    
+
     var body: some View {
+        Group {
+            if KeyVariables.showBuddyDetails {
+                ListDetailArrangement { usesSplitSelection in
+                    buddyList(usesSplitSelection: usesSplitSelection)
+                } detail: {
+                    if let selectedBuddy {
+                        WeaponBuddyDetailView(buddy: selectedBuddy)
+                            .id(selectedBuddy.uuid)
+                    } else {
+                        ListDetailPlaceholder(title: "Select a Buddy", systemImage: "key.fill")
+                    }
+                }
+            } else {
+                buddyList(usesSplitSelection: false)
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("Gun Buddies")
+                    .font(Font.custom(KeyVariables.primaryFont, size: 20))
+                    .foregroundStyle(.foreground)
+            }
+        }
+    }
+
+    private func buddyList(usesSplitSelection: Bool) -> some View {
         ScrollView(.vertical, showsIndicators: false) {
             ZStack {
                 KeyVariables.secondaryColor
@@ -32,29 +59,23 @@ struct ViewAllBuddiesView: View {
                     
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(filteredBuddies, id:\.uuid) { buddy in
-                            NavigationLink {
+                            ListDetailLink(
+                                usesSplitSelection: usesSplitSelection,
+                                isSelected: selectedBuddy?.uuid == buddy.uuid,
+                                onTap: { AppAnalytics.shared.ViewAllBuddiesImageClick(buddy: buddy) },
+                                select: { selectedBuddy = buddy }
+                            ) {
                                 WeaponBuddyDetailView(buddy: buddy)
                             } label: {
                                 BuddyGridView(buddy: buddy)
                             }
-                            .simultaneousGesture(TapGesture().onEnded {
-                                AppAnalytics.shared.ViewAllBuddiesImageClick(buddy: buddy)
-                            })
                             .allowsHitTesting(KeyVariables.showBuddyDetails)
                         }
                     }
                 }
             }
             .padding(.horizontal)
-            .padding(.bottom, KeyVariables.bottomSafeAreaInsets)
-        }
-        .edgesIgnoringSafeArea(.bottom)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text("Gun Buddies")
-                    .font(Font.custom(KeyVariables.primaryFont, size: 20))
-                    .foregroundStyle(.foreground)
-            }
+            .padding(.bottom)
         }
         .onAppear {
             AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.viewAllBuddiesScreen)

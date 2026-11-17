@@ -15,14 +15,28 @@ struct BundlesView: View {
                    GridItem(.flexible(minimum: 0), spacing: 20)]
     
     @State private var searchBundle = ""
-    
+    @State private var selectedBundle: WeaponBundle?
+
     var filteredBundles: [WeaponBundle] {
         guard !searchBundle.isEmpty else { return homeViewModel.bundles }
-        
+
         return homeViewModel.bundles.filter { $0.displayName.localizedCaseInsensitiveContains(searchBundle) }
     }
-    
+
     var body: some View {
+        ListDetailArrangement { usesSplitSelection in
+            bundleList(usesSplitSelection: usesSplitSelection)
+        } detail: {
+            if let selectedBundle {
+                BundleDetailsView(bundle: selectedBundle)
+                    .id(selectedBundle.uuid)
+            } else {
+                ListDetailPlaceholder(title: "Select a Bundle", systemImage: "shippingbox")
+            }
+        }
+    }
+
+    private func bundleList(usesSplitSelection: Bool) -> some View {
         ScrollView(.vertical, showsIndicators: false) {
             ZStack {
                 KeyVariables.secondaryColor
@@ -46,14 +60,15 @@ struct BundlesView: View {
                             }
                         } else {
                             ForEach(filteredBundles, id: \.uuid) { bundle in
-                                NavigationLink {
+                                ListDetailLink(
+                                    usesSplitSelection: usesSplitSelection,
+                                    isSelected: selectedBundle?.uuid == bundle.uuid,
+                                    select: { selectedBundle = bundle }
+                                ) {
                                     BundleDetailsView(bundle: bundle)
                                 } label: {
                                     BundleGridView(bundle: bundle)
                                 }
-                                .simultaneousGesture(TapGesture().onEnded {
-//                                AppAnalytics.shared.WeaponImageClick(weapon: weapon)
-                                })
                             }
                         }
                     }

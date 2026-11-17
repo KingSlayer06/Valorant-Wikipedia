@@ -25,7 +25,6 @@ struct KeyVariables {
     static let primaryColor: Color = Color("kPrimary")
     static let secondaryColor: Color = Color("kSecondary")
     static let primaryFont: String = "BowlbyOneSC-Regular"
-    static let bottomSafeAreaInsets: CGFloat = 50
     
     static let baseApiUrl = "https://valorant-api.com"
     

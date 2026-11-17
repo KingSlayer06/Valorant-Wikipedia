@@ -16,14 +16,35 @@ struct ViewAllSkinsView: View {
                    GridItem(.flexible(), spacing: 20)]
     
     @State private var searchSkin = ""
-    
+    @State private var selectedSkin: WeaponSkin?
+
     var filteredSkins: [WeaponSkin] {
         guard !searchSkin.isEmpty else { return skins }
-        
+
         return skins.filter { $0.displayName.localizedCaseInsensitiveContains(searchSkin) }
     }
-    
+
     var body: some View {
+        ListDetailArrangement { usesSplitSelection in
+            skinList(usesSplitSelection: usesSplitSelection)
+        } detail: {
+            if let selectedSkin {
+                WeaponSkinDetailsView(skin: selectedSkin)
+                    .id(selectedSkin.uuid)
+            } else {
+                ListDetailPlaceholder(title: "Select a Skin", systemImage: "paintpalette")
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("\(weaponName) Skins")
+                    .font(Font.custom(KeyVariables.primaryFont, size: 20))
+                    .foregroundStyle(.foreground)
+            }
+        }
+    }
+
+    private func skinList(usesSplitSelection: Bool) -> some View {
         ScrollView(.vertical, showsIndicators: false) {
             ZStack {
                 KeyVariables.secondaryColor
@@ -33,28 +54,22 @@ struct ViewAllSkinsView: View {
                     
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(filteredSkins, id:\.uuid) { skin in
-                            NavigationLink {
+                            ListDetailLink(
+                                usesSplitSelection: usesSplitSelection,
+                                isSelected: selectedSkin?.uuid == skin.uuid,
+                                onTap: { AppAnalytics.shared.ViewAllSkinsImageClick(weaponName: weaponName, skin: skin) },
+                                select: { selectedSkin = skin }
+                            ) {
                                 WeaponSkinDetailsView(skin: skin)
                             } label: {
                                 SkinGridView(skin: skin)
                             }
-                            .simultaneousGesture(TapGesture().onEnded {
-                                AppAnalytics.shared.ViewAllSkinsImageClick(weaponName: weaponName, skin: skin)
-                            })
                         }
                     }
                 }
             }
             .padding(.horizontal)
-            .padding(.bottom, KeyVariables.bottomSafeAreaInsets)
-        }
-        .edgesIgnoringSafeArea(.bottom)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text("\(weaponName) Skins")
-                    .font(Font.custom(KeyVariables.primaryFont, size: 20))
-                    .foregroundStyle(.foreground)
-            }
+            .padding(.bottom)
         }
         .onAppear {
             AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.viewAllSkinsScreen)

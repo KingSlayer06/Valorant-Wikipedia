@@ -10,19 +10,13 @@ import Kingfisher
 
 struct MapsView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
-    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @State private var selectedMap: GameMap?
-    
+
     var body: some View {
-        if #available(iOS 27.1, *), horizontalSizeClass == .regular {
-            ArrangementView {
-                mapList(usesSplitSelection: true)
-            } secondary: {
-                mapDetail
-            }
-            .arrangementViewStyle(.split.axes(.horizontal))
-        } else {
-            mapList(usesSplitSelection: false)
+        ListDetailArrangement { usesSplitSelection in
+            mapList(usesSplitSelection: usesSplitSelection)
+        } detail: {
+            mapDetail
         }
     }
 
@@ -55,25 +49,16 @@ struct MapsView: View {
         }
     }
 
-    @ViewBuilder
     private func mapCell(_ map: GameMap, usesSplitSelection: Bool) -> some View {
-        if usesSplitSelection {
-            Button {
-                selectedMap = map
-                AppAnalytics.shared.MapImageClick(map: map)
-            } label: {
-                MapGridView(map: map)
-            }
-            .buttonStyle(.plain)
-        } else {
-            NavigationLink {
-                MapDetailsView(map: map)
-            } label: {
-                MapGridView(map: map)
-            }
-            .simultaneousGesture(TapGesture().onEnded {
-                AppAnalytics.shared.MapImageClick(map: map)
-            })
+        ListDetailLink(
+            usesSplitSelection: usesSplitSelection,
+            isSelected: selectedMap?.uuid == map.uuid,
+            onTap: { AppAnalytics.shared.MapImageClick(map: map) },
+            select: { selectedMap = map }
+        ) {
+            MapDetailsView(map: map)
+        } label: {
+            MapGridView(map: map)
         }
     }
 
@@ -81,19 +66,9 @@ struct MapsView: View {
     private var mapDetail: some View {
         if let selectedMap {
             MapDetailsView(map: selectedMap)
+                .id(selectedMap.uuid)
         } else {
-            VStack(spacing: 12) {
-                Image(systemName: "map")
-                    .font(.largeTitle)
-                    .foregroundStyle(KeyVariables.primaryColor)
-                Text("Select a Map")
-                    .font(Font.custom(KeyVariables.primaryFont, size: 20))
-                    .foregroundStyle(.foreground)
-                Text("Choose an item to view its details.")
-                    .foregroundStyle(.secondary)
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(KeyVariables.secondaryColor)
+            ListDetailPlaceholder(title: "Select a Map", systemImage: "map")
         }
     }
 }

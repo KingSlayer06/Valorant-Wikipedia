@@ -10,11 +10,25 @@ import Kingfisher
 
 struct PlayerCardsView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
-    
+    @State private var selectedCard: PlayerCard?
+
     let columns = [GridItem(.flexible(), spacing: 20),
                    GridItem(.flexible(), spacing: 20)]
-    
+
     var body: some View {
+        ListDetailArrangement { usesSplitSelection in
+            cardList(usesSplitSelection: usesSplitSelection)
+        } detail: {
+            if let selectedCard {
+                PlayerCardDetailsView(card: selectedCard)
+                    .id(selectedCard.uuid)
+            } else {
+                ListDetailPlaceholder(title: "Select a Card", systemImage: "person.text.rectangle")
+            }
+        }
+    }
+
+    private func cardList(usesSplitSelection: Bool) -> some View {
         ScrollView(.vertical, showsIndicators: false) {
             ZStack {
                 KeyVariables.secondaryColor
@@ -28,22 +42,23 @@ struct PlayerCardsView: View {
                         }
                     } else {
                         ForEach(homeViewModel.playerCards, id: \.uuid) { card in
-                            NavigationLink {
+                            ListDetailLink(
+                                usesSplitSelection: usesSplitSelection,
+                                isSelected: selectedCard?.uuid == card.uuid,
+                                onTap: { AppAnalytics.shared.PlayerCardImageClick(card: card) },
+                                select: { selectedCard = card }
+                            ) {
                                 PlayerCardDetailsView(card: card)
-                            }label: {
+                            } label: {
                                 PlayerCardGridView(card: card)
                             }
-                            .simultaneousGesture(TapGesture().onEnded {
-                                AppAnalytics.shared.PlayerCardImageClick(card: card)
-                            })
                         }
                     }
                 }
             }
             .padding(.horizontal)
-            .padding(.bottom, KeyVariables.bottomSafeAreaInsets)
+            .padding(.bottom)
         }
-        .edgesIgnoringSafeArea(.bottom)
         .onAppear {
             AppAnalytics.shared.ScreenVisit(screen: AppAnalytics.shared.playerCardScreen)
         }

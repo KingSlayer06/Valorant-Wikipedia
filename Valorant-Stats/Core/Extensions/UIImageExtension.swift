@@ -33,13 +33,12 @@ extension UIImage {
     }
     
     func scaledPNGData() -> Data {
-        let targetSize = CGSize(
-            width: size.width / UIScreen.main.scale,
-            height: size.height / UIScreen.main.scale)
-        
-        let renderer = UIGraphicsImageRenderer(size: targetSize)
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = 1
+
+        let renderer = UIGraphicsImageRenderer(size: size, format: format)
         let resized = renderer.image { _ in
-            self.draw(in: .init(origin: .zero, size: targetSize))
+            self.draw(in: .init(origin: .zero, size: size))
         }
         return resized.pngData()!
     }

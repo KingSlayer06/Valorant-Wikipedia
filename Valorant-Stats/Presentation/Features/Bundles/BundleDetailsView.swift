@@ -52,17 +52,20 @@ struct BundleDetailsView: View {
             let sideInset = max((proxy.size.width - 100) / 2, 0)
 
             ZStack {
-                KFImage(URL(string: bundle.verticalPromoImage ?? ""))
-                    .placeholder {
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle())
-                            .foregroundStyle(KeyVariables.primaryColor)
-                            .scaleEffect(3)
+                
+                Color.clear
+                    .overlay {
+                        KFImage(URL(string: bundle.verticalPromoImage ?? ""))
+                            .placeholder {
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle())
+                                    .foregroundStyle(KeyVariables.primaryColor)
+                                    .scaleEffect(3)
+                            }
+                            .resizable()
+                            .scaledToFill()
                     }
-                    .resizable()
-                    .scaledToFill()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .clipShape(Rectangle())
+                    .clipped()
                     .opacity(0.75)
 
                 LinearGradient(colors: [.black, .clear, .black], startPoint: .top, endPoint: .bottom)
@@ -77,19 +80,16 @@ struct BundleDetailsView: View {
                         BundleDetailsImageView(name: bundleWeapons[selectedIndex].displayName,
                                                image: bundleWeapons[selectedIndex].displayIcon)
                     }
-//                    .animation(Animation.smooth, value: selectedIndex)
-                } else if selectedIndex < bundleWeapons.count + bundleSprays.count {
+                } else if selectedIndex < bundleWeapons.count + bundleCards.count {
                     NavigationLink {
                         PlayerCardDetailsView(card: bundleCards[selectedIndex - bundleWeapons.count])
                     } label: {
                         BundleDetailsImageView(name: bundleCards[selectedIndex - bundleWeapons.count].displayName,
                                                image: bundleCards[selectedIndex - bundleWeapons.count].largeArt)
                     }
-//                    .animation(Animation.smooth, value: selectedIndex)
-                } else {
+                } else if selectedIndex < bundleWeapons.count + bundleCards.count + bundleSprays.count {
                     BundleDetailsImageView(name: bundleSprays[selectedIndex - bundleWeapons.count - bundleCards.count].displayName,
                                            image: bundleSprays[selectedIndex - bundleWeapons.count - bundleCards.count].fullTransparentIcon)
-//                    .animation(Animation.smooth, value: selectedIndex)
                 }
                 
                 Spacer(minLength: 100)
@@ -118,10 +118,10 @@ struct BundleDetailsView: View {
                             
                             ForEach(bundleSprays.indices, id: \.self) { index in
                                 BundleDetailsGridView(image: bundleSprays[index].fullTransparentIcon,
-                                                      isSelected: selectedIndex == index + bundleWeapons.count + bundleSprays.count) {
-                                    selectedIndex = index + bundleWeapons.count + bundleSprays.count
+                                                      isSelected: selectedIndex == index + bundleWeapons.count + bundleCards.count) {
+                                    selectedIndex = index + bundleWeapons.count + bundleCards.count
                                 }
-                                .id(index + bundleWeapons.count + bundleSprays.count)
+                                .id(index + bundleWeapons.count + bundleCards.count)
                             }
                             
                             Spacer(minLength: sideInset)

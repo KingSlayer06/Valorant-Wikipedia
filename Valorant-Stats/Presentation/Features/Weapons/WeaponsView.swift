@@ -10,7 +10,6 @@ import Kingfisher
 
 struct WeaponsView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
-    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @State var selectedWeapon: String?
     @State private var selectedWeaponDetail: Weapon?
     
@@ -39,15 +38,10 @@ struct WeaponsView: View {
     }
     
     var body: some View {
-        if #available(iOS 27.1, *), horizontalSizeClass == .regular {
-            ArrangementView {
-                weaponList(usesSplitSelection: true)
-            } secondary: {
-                weaponDetail
-            }
-            .arrangementViewStyle(.split.axes(.horizontal))
-        } else {
-            weaponList(usesSplitSelection: false)
+        ListDetailArrangement { usesSplitSelection in
+            weaponList(usesSplitSelection: usesSplitSelection)
+        } detail: {
+            weaponDetail
         }
     }
 
@@ -97,25 +91,16 @@ struct WeaponsView: View {
         }
     }
 
-    @ViewBuilder
     private func weaponCell(_ weapon: Weapon, usesSplitSelection: Bool) -> some View {
-        if usesSplitSelection {
-            Button {
-                selectedWeaponDetail = weapon
-                AppAnalytics.shared.WeaponImageClick(weapon: weapon)
-            } label: {
-                WeaponGridView(weapon: weapon)
-            }
-            .buttonStyle(.plain)
-        } else {
-            NavigationLink {
-                WeaponDetailsView(weapon: weapon)
-            } label: {
-                WeaponGridView(weapon: weapon)
-            }
-            .simultaneousGesture(TapGesture().onEnded {
-                AppAnalytics.shared.WeaponImageClick(weapon: weapon)
-            })
+        ListDetailLink(
+            usesSplitSelection: usesSplitSelection,
+            isSelected: selectedWeaponDetail?.uuid == weapon.uuid,
+            onTap: { AppAnalytics.shared.WeaponImageClick(weapon: weapon) },
+            select: { selectedWeaponDetail = weapon }
+        ) {
+            WeaponDetailsView(weapon: weapon)
+        } label: {
+            WeaponGridView(weapon: weapon)
         }
     }
 
@@ -123,19 +108,9 @@ struct WeaponsView: View {
     private var weaponDetail: some View {
         if let selectedWeaponDetail {
             WeaponDetailsView(weapon: selectedWeaponDetail)
+                .id(selectedWeaponDetail.uuid)
         } else {
-            VStack(spacing: 12) {
-                Image(systemName: "scope")
-                    .font(.largeTitle)
-                    .foregroundStyle(KeyVariables.primaryColor)
-                Text("Select a Weapon")
-                    .font(Font.custom(KeyVariables.primaryFont, size: 20))
-                    .foregroundStyle(.foreground)
-                Text("Choose an item to view its details.")
-                    .foregroundStyle(.secondary)
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(KeyVariables.secondaryColor)
+            ListDetailPlaceholder(title: "Select a Weapon", systemImage: "scope")
         }
     }
     

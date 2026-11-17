@@ -10,7 +10,6 @@ import Kingfisher
 
 struct AgentsView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
-    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @State var selectedRole: AgentRole?
     @State private var selectedAgent: Agent?
     
@@ -35,15 +34,10 @@ struct AgentsView: View {
     }
     
     var body: some View {
-        if #available(iOS 27.1, *), horizontalSizeClass == .regular {
-            ArrangementView {
-                agentList(usesSplitSelection: true)
-            } secondary: {
-                agentDetail
-            }
-            .arrangementViewStyle(.split.axes(.horizontal))
-        } else {
-            agentList(usesSplitSelection: false)
+        ListDetailArrangement { usesSplitSelection in
+            agentList(usesSplitSelection: usesSplitSelection)
+        } detail: {
+            agentDetail
         }
     }
 
@@ -94,25 +88,16 @@ struct AgentsView: View {
         }
     }
 
-    @ViewBuilder
     private func agentCell(_ agent: Agent, usesSplitSelection: Bool) -> some View {
-        if usesSplitSelection {
-            Button {
-                selectedAgent = agent
-                AppAnalytics.shared.AgentImageClick(agent: agent)
-            } label: {
-                AgentGridView(agent: agent)
-            }
-            .buttonStyle(.plain)
-        } else {
-            NavigationLink {
-                AgentDetailsView(agent: agent)
-            } label: {
-                AgentGridView(agent: agent)
-            }
-            .simultaneousGesture(TapGesture().onEnded {
-                AppAnalytics.shared.AgentImageClick(agent: agent)
-            })
+        ListDetailLink(
+            usesSplitSelection: usesSplitSelection,
+            isSelected: selectedAgent?.uuid == agent.uuid,
+            onTap: { AppAnalytics.shared.AgentImageClick(agent: agent) },
+            select: { selectedAgent = agent }
+        ) {
+            AgentDetailsView(agent: agent)
+        } label: {
+            AgentGridView(agent: agent)
         }
     }
 
@@ -120,24 +105,10 @@ struct AgentsView: View {
     private var agentDetail: some View {
         if let selectedAgent {
             AgentDetailsView(agent: selectedAgent)
+                .id(selectedAgent.uuid)
         } else {
-            detailPlaceholder("Select an Agent", systemImage: "person.2")
+            ListDetailPlaceholder(title: "Select an Agent", systemImage: "person.2")
         }
-    }
-
-    private func detailPlaceholder(_ title: String, systemImage: String) -> some View {
-        VStack(spacing: 12) {
-            Image(systemName: systemImage)
-                .font(.largeTitle)
-                .foregroundStyle(KeyVariables.primaryColor)
-            Text(title)
-                .font(Font.custom(KeyVariables.primaryFont, size: 20))
-                .foregroundStyle(.foreground)
-            Text("Choose an item to view its details.")
-                .foregroundStyle(.secondary)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(KeyVariables.secondaryColor)
     }
     
     func isSelected(_ role: AgentRole) -> Bool {
