@@ -8,7 +8,6 @@
 import Foundation
 import SwiftData
 
-/// Owns the app's single SwiftData `ModelContainer`, used as an offline cache of API data.
 enum PersistenceController {
 
     static let schema = Schema([
@@ -57,7 +56,6 @@ enum PersistenceController {
         }
     }
 
-    /// Deletes the per-entity SQLite stores left behind by the old CoreData cache.
     private static func removeLegacyCoreDataStores() {
         guard let directory = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first else {
             return

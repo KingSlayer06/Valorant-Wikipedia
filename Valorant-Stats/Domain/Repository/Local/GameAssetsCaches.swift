@@ -8,8 +8,6 @@
 import Foundation
 import SwiftData
 
-/// The offline caches used by `HomeViewModel`, grouped so they can be injected
-/// (e.g. in-memory fakes in tests and previews) without the ViewModel knowing about SwiftData.
 struct GameAssetsCaches {
     var agents: any PCacheRepository<Agent>
     var weapons: any PCacheRepository<Weapon>
@@ -20,8 +18,7 @@ struct GameAssetsCaches {
     var buddies: any PCacheRepository<Buddy>
     var bundles: any PCacheRepository<WeaponBundle>
 
-    /// Caches backed by the shared SwiftData container.
-    static func swiftData(container: ModelContainer = PersistenceController.shared) -> GameAssetsCaches {
+    static func localCache(container: ModelContainer = PersistenceController.shared) -> GameAssetsCaches {
         GameAssetsCaches(
             agents: CacheRepository<AgentModel>(modelContainer: container),
             weapons: CacheRepository<WeaponModel>(modelContainer: container),

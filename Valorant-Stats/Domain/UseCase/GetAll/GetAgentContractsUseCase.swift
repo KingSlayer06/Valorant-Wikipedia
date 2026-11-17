@@ -8,7 +8,6 @@
 import Foundation
 
 protocol PGetAgentContractsUseCase {
-    /// - Throws: `NetworkError`
     func execute() async throws -> GetAgentContractsResponse
 }
 

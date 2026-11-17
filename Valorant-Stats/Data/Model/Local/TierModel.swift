@@ -8,8 +8,6 @@
 import Foundation
 import SwiftData
 
-/// Tiers have no identifier in the API, so they are not uniqued; the cache is
-/// replaced wholesale on every successful fetch.
 @Model
 final class TierModel: CachedModel {
     var sortIndex: Int

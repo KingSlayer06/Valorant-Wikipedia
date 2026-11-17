@@ -59,8 +59,10 @@ final class HomeViewModel: NSObject, ObservableObject {
     // Offline caches
     private let caches: GameAssetsCaches
     
-    init(gameAssetsRepo: PGameAssetsRepository = GameAssetsRepository(),
-         caches: GameAssetsCaches = .swiftData()) {
+    init(
+        gameAssetsRepo: PGameAssetsRepository = GameAssetsRepository(),
+        caches: GameAssetsCaches = .localCache()
+    ) {
         self.caches = caches
         self.getAgentsUseCase = GetAgentsUseCase(gameAssetsRepo: gameAssetsRepo)
         self.getWeaponsUseCase = GetWeaponsUseCase(gameAssetsRepo: gameAssetsRepo)

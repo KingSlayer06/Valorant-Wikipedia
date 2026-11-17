@@ -8,22 +8,6 @@
 import Foundation
 import SwiftData
 
-protocol PCacheRepository<Item>: Sendable {
-    associatedtype Item
-
-    func fetchAll() async throws -> [Item]
-    func replaceAll(with items: [Item]) async throws
-}
-
-protocol CachedModel: PersistentModel {
-    associatedtype Entity
-
-    var sortIndex: Int { get }
-    var entity: Entity { get }
-
-    init(entity: Entity, sortIndex: Int)
-}
-
 actor CacheRepository<Model: CachedModel>: PCacheRepository, ModelActor {
 
     nonisolated let modelContainer: ModelContainer
