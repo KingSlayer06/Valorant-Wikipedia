@@ -6,23 +6,20 @@
 //
 
 import Foundation
-import Alamofire
 
 protocol PGetAgentsUseCase {
-    func execute(completion: @escaping (Result<GetAgentsResponse, AFError>) -> Void)
+    func execute() async throws -> GetAgentsResponse
 }
 
 final class GetAgentsUseCase: PGetAgentsUseCase {
     
-    private var gameAssetsRepo: GameAssetsRepository
+    private let gameAssetsRepo: PGameAssetsRepository
     
-    init(gameAssetsRepo: GameAssetsRepository) {
+    init(gameAssetsRepo: PGameAssetsRepository) {
         self.gameAssetsRepo = gameAssetsRepo
     }
     
-    func execute(completion: @escaping (Result<GetAgentsResponse, AFError>) -> Void) {
-        gameAssetsRepo.getAgents { result in
-            completion(result)
-        }
+    func execute() async throws -> GetAgentsResponse {
+        try await gameAssetsRepo.getAgents()
     }
 }

@@ -6,23 +6,20 @@
 //
 
 import Foundation
-import Alamofire
 
 protocol PGetSpraysUseCase {
-    func execute(completion: @escaping (Result<GetSpraysResponse, AFError>) -> Void)
+    func execute() async throws -> GetSpraysResponse
 }
 
 final class GetSpraysUseCase: PGetSpraysUseCase {
     
-    private var gameAssetsRepo: GameAssetsRepository
+    private let gameAssetsRepo: PGameAssetsRepository
     
-    init(gameAssetsRepo: GameAssetsRepository) {
+    init(gameAssetsRepo: PGameAssetsRepository) {
         self.gameAssetsRepo = gameAssetsRepo
     }
     
-    func execute(completion: @escaping (Result<GetSpraysResponse, AFError>) -> Void) {
-        gameAssetsRepo.getSprays { result in
-            completion(result)
-        }
+    func execute() async throws -> GetSpraysResponse {
+        try await gameAssetsRepo.getSprays()
     }
 }

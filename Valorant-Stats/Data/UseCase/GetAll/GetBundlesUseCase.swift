@@ -6,23 +6,20 @@
 //
 
 import Foundation
-import Alamofire
 
 protocol PGetBundlesUseCase {
-    func execute(completion: @escaping (Result<GetBundlesResponse, AFError>) -> Void)
+    func execute() async throws -> GetBundlesResponse
 }
 
 final class GetBundlesUseCase: PGetBundlesUseCase {
     
-    private var gameAssetsRepo: GameAssetsRepository
+    private let gameAssetsRepo: PGameAssetsRepository
     
-    init(gameAssetsRepo: GameAssetsRepository) {
+    init(gameAssetsRepo: PGameAssetsRepository) {
         self.gameAssetsRepo = gameAssetsRepo
     }
     
-    func execute(completion: @escaping (Result<GetBundlesResponse, AFError>) -> Void) {
-        gameAssetsRepo.getBundles { result in
-            completion(result)
-        }
+    func execute() async throws -> GetBundlesResponse {
+        try await gameAssetsRepo.getBundles()
     }
 }

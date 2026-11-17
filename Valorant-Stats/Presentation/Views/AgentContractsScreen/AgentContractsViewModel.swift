@@ -7,61 +7,61 @@
 
 import Foundation
 
+@MainActor
 final class AgentContractsViewModel: ObservableObject {
-    
-    private let getSprayByIdUseCase: PGetSprayByIdUseCase?
-    private let getPlayerCardByIdUseCase: PGetPlayerCardByIdUseCase?
-    private let getPlayerTitleByIdUseCase: PGetPlayerTitleByIdUseCase?
-    private let getCurrencyByIdUseCase: PGetCurrencyByIdUseCase?
-    
-    init() {
-        self.getSprayByIdUseCase = GetSprayByIdUseCase(gameAssetsRepo: GameAssetsRepository())
-        self.getPlayerCardByIdUseCase = GetPlayerCardByIdUseCase(gameAssetsRepo: GameAssetsRepository())
-        self.getPlayerTitleByIdUseCase = GetPlayerTitleByIdUseCase(gameAssetsRepo: GameAssetsRepository())
-        self.getCurrencyByIdUseCase = GetCurrencyByIdUseCase(gameAssetsRepo: GameAssetsRepository())
+    @Published var error: NetworkError?
+
+    var isShowingError: Bool {
+        get { error != nil }
+        set { if !newValue { error = nil } }
     }
-    
-    func getSpray(uuid: String, completion: @escaping (Spray) -> Void) {
-        self.getSprayByIdUseCase?.execute(uuid: uuid) { result in
-            switch result {
-                case .success(let response):
-                    completion(response.data)
-                case .failure(let error):
-                    print("Failed to fetch spray data \(error)")
-            }
+
+    private let getSprayByIdUseCase: PGetSprayByIdUseCase
+    private let getPlayerCardByIdUseCase: PGetPlayerCardByIdUseCase
+    private let getPlayerTitleByIdUseCase: PGetPlayerTitleByIdUseCase
+    private let getCurrencyByIdUseCase: PGetCurrencyByIdUseCase
+
+    init(gameAssetsRepo: PGameAssetsRepository = GameAssetsRepository()) {
+        self.getSprayByIdUseCase = GetSprayByIdUseCase(gameAssetsRepo: gameAssetsRepo)
+        self.getPlayerCardByIdUseCase = GetPlayerCardByIdUseCase(gameAssetsRepo: gameAssetsRepo)
+        self.getPlayerTitleByIdUseCase = GetPlayerTitleByIdUseCase(gameAssetsRepo: gameAssetsRepo)
+        self.getCurrencyByIdUseCase = GetCurrencyByIdUseCase(gameAssetsRepo: gameAssetsRepo)
+    }
+
+    func getSpray(uuid: String) async -> Spray? {
+        await perform("spray") {
+            try await self.getSprayByIdUseCase.execute(uuid: uuid).data
         }
     }
-    
-    func getPlayerCard(uuid: String, completion: @escaping (PlayerCard) -> Void) {
-        self.getPlayerCardByIdUseCase?.execute(uuid: uuid) { result in
-            switch result {
-                case .success(let response):
-                    completion(response.data)
-                case .failure(let error):
-                    print("Failed to fetch player card data \(error)")
-            }
+
+    func getPlayerCard(uuid: String) async -> PlayerCard? {
+        await perform("player card") {
+            try await self.getPlayerCardByIdUseCase.execute(uuid: uuid).data
         }
     }
-    
-    func getPlayerTitle(uuid: String, completion: @escaping (PlayerTitle) -> Void) {
-        self.getPlayerTitleByIdUseCase?.execute(uuid: uuid) { result in
-            switch result {
-                case .success(let response):
-                    completion(response.data)
-                case .failure(let error):
-                    print("Failed to fetch player title data \(error)")
-            }
+
+    func getPlayerTitle(uuid: String) async -> PlayerTitle? {
+        await perform("player title") {
+            try await self.getPlayerTitleByIdUseCase.execute(uuid: uuid).data
         }
     }
-    
-    func getCurrency(uuid: String, completion: @escaping (GameCurrency) -> Void) {
-        self.getCurrencyByIdUseCase?.execute(uuid: uuid) { result in
-            switch result {
-                case .success(let response):
-                    completion(response.data)
-                case .failure(let error):
-                    print("Failed to fetch currency data \(error)")
-            }
+
+    func getCurrency(uuid: String) async -> GameCurrency? {
+        await perform("currency") {
+            try await self.getCurrencyByIdUseCase.execute(uuid: uuid).data
+        }
+    }
+
+    private func perform<Value>(_ name: String, _ operation: () async throws -> Value) async -> Value? {
+        do {
+            return try await operation()
+        } catch {
+            let networkError = NetworkError(error)
+            if case .cancelled = networkError { return nil }
+
+            print("Failed to fetch \(name) data: \(networkError.localizedDescription)")
+            self.error = networkError
+            return nil
         }
     }
 }

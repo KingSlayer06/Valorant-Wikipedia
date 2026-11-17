@@ -62,38 +62,40 @@ struct AgentContractsView: View {
         .onChange(of: selectedAgent) {
             selectedChapter1 = true
         }
-//        .onChange(of: selectedContract) {
+//        .task(id: selectedContract?.uuid) {
 //            chapter1Items.spray1 = nil
 //            chapter1Items.spray2 = nil
-//            selectedContract?.content.chapters[0].levels.forEach { level in
+//            for level in selectedContract?.content.chapters[0].levels ?? [] {
 //                switch level.reward.type {
 //                    case "Spray":
-//                        viewModel.getSpray(uuid: level.reward.uuid) { spray in
-//                            if chapter1Items.spray1 == nil {
-//                                chapter1Items.spray1 = spray
-//                            } else {
-//                                chapter1Items.spray2 = spray
-//                            }
+//                        guard let spray = await viewModel.getSpray(uuid: level.reward.uuid) else { continue }
+//                        if chapter1Items.spray1 == nil {
+//                            chapter1Items.spray1 = spray
+//                        } else {
+//                            chapter1Items.spray2 = spray
 //                        }
 //                    case "PlayerCard":
-//                        viewModel.getPlayerCard(uuid: level.reward.uuid) { playerCard in
+//                        if let playerCard = await viewModel.getPlayerCard(uuid: level.reward.uuid) {
 //                            chapter1Items.playerCard = playerCard
 //                        }
 //                    case "Title":
-//                        viewModel.getPlayerTitle(uuid: level.reward.uuid) { title in
+//                        if let title = await viewModel.getPlayerTitle(uuid: level.reward.uuid) {
 //                            chapter1Items.title = title
 //                        }
 //                    case "Currency":
-//                        viewModel.getCurrency(uuid: level.reward.uuid) { currency in
+//                        if let currency = await viewModel.getCurrency(uuid: level.reward.uuid) {
 //                            chapter1Items.currency = currency
 //                        }
 //                    default:
 //                        break
 //                }
 //            }
-//            
+//
 //            chapter2Items.removeAll()
 //        }
+        .alert(isPresented: $viewModel.isShowingError, error: viewModel.error) {
+            Button("OK", role: .cancel) { }
+        }
         .onAppear {
             selectedAgent = homeViewModel.agents.first
             selectedContract = homeViewModel.contracts.first(where: { $0.displayName.contains(selectedAgent!.displayName) })

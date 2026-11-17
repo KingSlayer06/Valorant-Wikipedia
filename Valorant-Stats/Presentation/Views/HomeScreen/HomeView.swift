@@ -96,16 +96,17 @@ struct HomeView: View {
                 }
             }
         }
-        .onAppear {
-            homeViewModel.getAgents()
-            homeViewModel.getWeapons()
-            homeViewModel.getMaps()
-            homeViewModel.getBuddies()
-            homeViewModel.getPlayerCards()
-            homeViewModel.getSprays()
-            homeViewModel.getRanks()
-            homeViewModel.getBundles()
-            homeViewModel.getAgentContracts()
+        .task {
+            await homeViewModel.loadContent()
+        }
+        .alert(isPresented: $homeViewModel.isShowingContentLoadError,
+               error: homeViewModel.contentLoadError) {
+            if homeViewModel.contentLoadError?.isRetryable == true {
+                Button("Retry") {
+                    Task { await homeViewModel.loadContent() }
+                }
+            }
+            Button("OK", role: .cancel) { }
         }
     }
 

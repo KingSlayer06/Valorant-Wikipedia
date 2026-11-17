@@ -6,23 +6,20 @@
 //
 
 import Foundation
-import Alamofire
 
 protocol PGetCurrencyByIdUseCase {
-    func execute(uuid: String, completion: @escaping (Result<GetCurrencyByIdResponse, AFError>) -> Void)
+    func execute(uuid: String) async throws -> GetCurrencyByIdResponse
 }
 
 final class GetCurrencyByIdUseCase: PGetCurrencyByIdUseCase {
     
-    private var gameAssetsRepo: GameAssetsRepository
+    private let gameAssetsRepo: PGameAssetsRepository
     
-    init(gameAssetsRepo: GameAssetsRepository) {
+    init(gameAssetsRepo: PGameAssetsRepository) {
         self.gameAssetsRepo = gameAssetsRepo
     }
     
-    func execute(uuid: String, completion: @escaping (Result<GetCurrencyByIdResponse, AFError>) -> Void) {
-        gameAssetsRepo.getCurrencyById(uuid: uuid) { result in
-            completion(result)
-        }
+    func execute(uuid: String) async throws -> GetCurrencyByIdResponse {
+        try await gameAssetsRepo.getCurrencyById(uuid: uuid)
     }
 }

@@ -6,23 +6,20 @@
 //
 
 import Foundation
-import Alamofire
 
 protocol PGetMapsUseCase {
-    func execute(completion: @escaping (Result<GetMapsResponse, AFError>) -> Void)
+    func execute() async throws -> GetMapsResponse
 }
 
 final class GetMapsUseCase: PGetMapsUseCase {
     
-    private var gameAssetsRepo: GameAssetsRepository
+    private let gameAssetsRepo: PGameAssetsRepository
     
-    init(gameAssetsRepo: GameAssetsRepository) {
+    init(gameAssetsRepo: PGameAssetsRepository) {
         self.gameAssetsRepo = gameAssetsRepo
     }
     
-    func execute(completion: @escaping (Result<GetMapsResponse, AFError>) -> Void) {
-        gameAssetsRepo.getMaps { result in
-            completion(result)
-        }
+    func execute() async throws -> GetMapsResponse {
+        try await gameAssetsRepo.getMaps()
     }
 }

@@ -11,6 +11,7 @@ import Kingfisher
 //import SwiftWebP
 import CoreImage
 
+@MainActor
 final class HomeViewModel: NSObject, ObservableObject {
     @Published var selectedTab: SideMenuOptionsModel = .home
     @Published var selectedBottomTab: SideMenuOptionsModel = .agents
@@ -29,6 +30,8 @@ final class HomeViewModel: NSObject, ObservableObject {
     @Published var showAlert: Bool = false
     @Published var alertText: String = ""
     
+    @Published var contentLoadError: NetworkError?
+    
     @Published var showAgentsShimmer: Bool = false
     @Published var showMapsShimmer: Bool = false
     @Published var showWeaponsShimmer: Bool = false
@@ -38,353 +41,261 @@ final class HomeViewModel: NSObject, ObservableObject {
     @Published var showBundlesShimmer: Bool = false
     @Published var showContractsShimmer: Bool = false
     
-    private var getAgentsUseCase: PGetAgentsUseCase?
-    private var getWeaponsUseCase: PGetWeaponsUseCase?
-    private var getMapsUseCase: PGetMapsUseCase?
-    private var getPlayerCardsUseCase: PGetPlayerCardsUseCase?
-    private var getSpraysUseCase: PGetSpraysUseCase?
-    private var getRanksUseCase: PGetRanksUseCase?
-    private var getBuddiesUseCase: PGetBuddiesUseCase?
-    private var getBundlesUseCase: PGetBundlesUseCase?
-    private var getAgentsContractsUseCase: PGetAgentContractsUseCase?
+    var isShowingContentLoadError: Bool {
+        get { contentLoadError != nil }
+        set { if !newValue { contentLoadError = nil } }
+    }
+    
+    private let getAgentsUseCase: PGetAgentsUseCase
+    private let getWeaponsUseCase: PGetWeaponsUseCase
+    private let getMapsUseCase: PGetMapsUseCase
+    private let getPlayerCardsUseCase: PGetPlayerCardsUseCase
+    private let getSpraysUseCase: PGetSpraysUseCase
+    private let getRanksUseCase: PGetRanksUseCase
+    private let getBuddiesUseCase: PGetBuddiesUseCase
+    private let getBundlesUseCase: PGetBundlesUseCase
+    private let getAgentsContractsUseCase: PGetAgentContractsUseCase
     
     //CoreData Repositories
-    private var agentDataRepository = AgentDataRepository()
-    private var weaponDataRepository = WeaponDataRepository()
-    private var mapDataRepository = MapDataRepository()
-    private var playerCardDataRepository = PlayerCardDataRepository()
-    private var sprayDataRepository = SprayDataRepository()
-    private var tierDataRepository = TierDataRepository()
-    private var buddyDataRepository = BuddyDataRepository()
-    private var bundleDataRepository = BundleDataRepository()
+    private let agentDataRepository = AgentDataRepository()
+    private let weaponDataRepository = WeaponDataRepository()
+    private let mapDataRepository = MapDataRepository()
+    private let playerCardDataRepository = PlayerCardDataRepository()
+    private let sprayDataRepository = SprayDataRepository()
+    private let tierDataRepository = TierDataRepository()
+    private let buddyDataRepository = BuddyDataRepository()
+    private let bundleDataRepository = BundleDataRepository()
     
-    override init() {
+    init(gameAssetsRepo: PGameAssetsRepository = GameAssetsRepository()) {
+        self.getAgentsUseCase = GetAgentsUseCase(gameAssetsRepo: gameAssetsRepo)
+        self.getWeaponsUseCase = GetWeaponsUseCase(gameAssetsRepo: gameAssetsRepo)
+        self.getMapsUseCase = GetMapsUseCase(gameAssetsRepo: gameAssetsRepo)
+        self.getPlayerCardsUseCase = GetPlayerCardsUseCase(gameAssetsRepo: gameAssetsRepo)
+        self.getSpraysUseCase = GetSpraysUseCase(gameAssetsRepo: gameAssetsRepo)
+        self.getRanksUseCase = GetRanksUseCase(gameAssetsRepo: gameAssetsRepo)
+        self.getBuddiesUseCase = GetBuddiesUseCase(gameAssetsRepo: gameAssetsRepo)
+        self.getBundlesUseCase = GetBundlesUseCase(gameAssetsRepo: gameAssetsRepo)
+        self.getAgentsContractsUseCase = GetAgentContractsUseCase(gameAssetsRepo: gameAssetsRepo)
+        
         super.init()
-        
-        self.getAgentsUseCase = GetAgentsUseCase(gameAssetsRepo: GameAssetsRepository())
-        self.getWeaponsUseCase = GetWeaponsUseCase(gameAssetsRepo: GameAssetsRepository())
-        self.getMapsUseCase = GetMapsUseCase(gameAssetsRepo: GameAssetsRepository())
-        self.getPlayerCardsUseCase = GetPlayerCardsUseCase(gameAssetsRepo: GameAssetsRepository())
-        self.getSpraysUseCase = GetSpraysUseCase(gameAssetsRepo: GameAssetsRepository())
-        self.getRanksUseCase = GetRanksUseCase(gameAssetsRepo: GameAssetsRepository())
-        self.getBuddiesUseCase = GetBuddiesUseCase(gameAssetsRepo: GameAssetsRepository())
-        self.getBundlesUseCase = GetBundlesUseCase(gameAssetsRepo: GameAssetsRepository())
-        self.getAgentsContractsUseCase = GetAgentContractsUseCase(gameAssetsRepo: GameAssetsRepository())
     }
     
-    func getAgents() {
-        DispatchQueue.main.async {
-            self.showAgentsShimmer = true
-        }
-        
-        self.getAgentsUseCase?.execute { [weak self] result in
-            switch result {
-            case .success(let response):
-                guard let self = self else { return }
-                
-                self.agents = response.data.filter { $0.isPlayableCharacter == true }
-                
-                DispatchQueue.main.async {
-                    self.showAgentsShimmer = false
-                }
-                
-                // Save Agents to CoreData
-                self.agents.forEach { agent in
-                    self.agentDataRepository.add(agent)
-                }
-                self.agentDataRepository.save()
-                
-            case .failure(let error):
-                print("Failed to fetch agent data \(error.localizedDescription)")
-                
-                // Load Agents from CoreData
-                guard let self = self else { return }
-                self.agents = self.agentDataRepository.getAll()
-                
-                DispatchQueue.main.async {
-                    self.showAgentsShimmer = false
-                }
+    // MARK: - Content Loading
+    func loadContent() async {
+        let errors = await withTaskGroup(of: NetworkError?.self) { group in
+            group.addTask { await self.loadAgents() }
+            group.addTask { await self.loadWeapons() }
+            group.addTask { await self.loadMaps() }
+            group.addTask { await self.loadBuddies() }
+            group.addTask { await self.loadPlayerCards() }
+            group.addTask { await self.loadSprays() }
+            group.addTask { await self.loadRanks() }
+            group.addTask { await self.loadBundles() }
+            group.addTask { await self.loadAgentContracts() }
+            
+            var errors = [NetworkError]()
+            for await error in group {
+                if let error { errors.append(error) }
             }
+            return errors
+        }
+        
+        guard !Task.isCancelled else { return }
+        contentLoadError = errors.first
+    }
+    
+    private func loadAgents() async -> NetworkError? {
+        await loadSection(
+            "agents",
+            into: \.agents,
+            shimmer: \.showAgentsShimmer,
+            cache: SectionCache(agentDataRepository)
+        ) {
+            try await self.getAgentsUseCase.execute().data
+                .filter { $0.isPlayableCharacter == true }
         }
     }
     
-    func getWeapons() {
-        DispatchQueue.main.async {
-            self.showWeaponsShimmer = true
-        }
-        
-        self.getWeaponsUseCase?.execute { [weak self] result in
-            switch result {
-            case .success(let response):
-                guard let self = self else { return }
-                
-                self.weapons = response.data
-                
-                for index in 0..<self.weapons.count {
-                    self.weapons[index].skins.removeAll(where: { $0.displayName == "Random Favorite Skin" ||
-                        $0.displayName.contains("Standard") })
-                }
-                
-                DispatchQueue.main.async {
-                    self.showWeaponsShimmer = false
-                }
-                
-                // Save Weapons to CoreData
-                self.weapons.forEach { weapon in
-                    self.weaponDataRepository.add(weapon)
-                }
-                self.weaponDataRepository.save()
-                
-            case .failure(let error):
-                print("Failed to fetch weapons data \(error.localizedDescription)")
-                
-                // Load Weapons from CoreData
-                guard let self = self else { return }
-                self.weapons = self.weaponDataRepository.getAll()
-                
-                DispatchQueue.main.async {
-                    self.showWeaponsShimmer = false
-                }
+    private func loadWeapons() async -> NetworkError? {
+        await loadSection(
+            "weapons",
+            into: \.weapons,
+            shimmer: \.showWeaponsShimmer,
+            cache: SectionCache(weaponDataRepository)
+        ) {
+            var weapons = try await self.getWeaponsUseCase.execute().data
+            
+            for index in weapons.indices {
+                weapons[index].skins.removeAll(where: { $0.displayName == "Random Favorite Skin" ||
+                    $0.displayName.contains("Standard") })
             }
+            return weapons
         }
     }
     
-    func getMaps() {
-        DispatchQueue.main.async {
-            self.showMapsShimmer = true
+    private func loadMaps() async -> NetworkError? {
+        await loadSection(
+            "maps",
+            into: \.maps,
+            shimmer: \.showMapsShimmer,
+            cache: SectionCache(mapDataRepository)
+        ) {
+            try await self.getMapsUseCase.execute().data
         }
-        
-        self.getMapsUseCase?.execute { [weak self] result in
-            switch result {
-            case .success(let response):
-                guard let self = self else { return }
-                
-                self.maps = response.data
-                
-                DispatchQueue.main.async {
-                    self.showMapsShimmer = false
-                }
-                
-                // Save Maps to CoreData
-                self.maps.forEach { map in
-                    self.mapDataRepository.add(map)
-                }
-                self.mapDataRepository.save()
-                
-            case .failure(let error):
-                print("Failed to fetch maps data \(error.localizedDescription)")
-                
-                // Load Maps from CoreData
-                guard let self = self else { return }
-                self.maps = self.mapDataRepository.getAll()
-                
-                DispatchQueue.main.async {
-                    self.showMapsShimmer = false
-                }
+    }
+    
+    private func loadPlayerCards() async -> NetworkError? {
+        await loadSection(
+            "player cards",
+            into: \.playerCards,
+            shimmer: \.showPlayerCardsShimmer,
+            cache: SectionCache(playerCardDataRepository)
+        ) {
+            try await self.getPlayerCardsUseCase.execute().data
+        }
+    }
+    
+    private func loadSprays() async -> NetworkError? {
+        await loadSection(
+            "sprays",
+            into: \.sprays,
+            shimmer: \.showSpraysShimmer,
+            cache: SectionCache(sprayDataRepository)
+        ) {
+            try await self.getSpraysUseCase.execute().data
+                .filter { !$0.isNullSpray && $0.fullTransparentIcon != nil }
+        }
+    }
+    
+    private func loadRanks() async -> NetworkError? {
+        await loadSection(
+            "ranks", into: \.tiers,
+            shimmer: \.showRanksShimmer,
+            cache: SectionCache(tierDataRepository)
+        ) {
+            guard let latestEpisode = try await self.getRanksUseCase.execute().data.last else {
+                throw NetworkError.emptyResponse
+            }
+            
+            return latestEpisode.tiers.filter {
+                !($0.tierName == "UNRANKED" || $0.tierName == "Unused1" || $0.tierName == "Unused2")
             }
         }
     }
     
-    func getPlayerCards() {
-        DispatchQueue.main.async {
-            self.showPlayerCardsShimmer = true
-        }
-        
-        self.getPlayerCardsUseCase?.execute { [weak self] result in
-            switch result {
-            case .success(let response):
-                guard let self = self else { return }
-                
-                self.playerCards = response.data
-                
-                DispatchQueue.main.async {
-                    self.showPlayerCardsShimmer = false
-                }
-                
-                // Save Player Cards to CoreData
-                self.playerCards.forEach { playerCard in
-                    self.playerCardDataRepository.add(playerCard)
-                }
-                self.playerCardDataRepository.save()
-                
-            case .failure(let error):
-                print("Failed to fetch player cards data \(error.localizedDescription)")
-                
-                // Load Player Cards from CoreData
-                guard let self = self else { return }
-                self.playerCards = self.playerCardDataRepository.getAll()
-                
-                DispatchQueue.main.async {
-                    self.showPlayerCardsShimmer = false
-                }
-            }
+    private func loadBuddies() async -> NetworkError? {
+        await loadSection(
+            "buddies",
+            into: \.buddies,
+            cache: SectionCache(buddyDataRepository)
+        ) {
+            try await self.getBuddiesUseCase.execute().data
         }
     }
     
-    func getSprays() {
-        DispatchQueue.main.async {
-            self.showSpraysShimmer = true
-        }
-        
-        self.getSpraysUseCase?.execute { [weak self] result in
-            switch result {
-            case .success(let response):
-                guard let self = self else { return }
-                
-                self.sprays = response.data.filter { !$0.isNullSpray && $0.fullTransparentIcon != nil }
-                
-                DispatchQueue.main.async {
-                    self.showSpraysShimmer = false
-                }
-                
-                // Save Sprays to CoreData
-                self.sprays.forEach { spray in
-                    self.sprayDataRepository.add(spray)
-                }
-                self.sprayDataRepository.save()
-                
-            case .failure(let error):
-                print("Failed to fetch sprays data \(error.localizedDescription)")
-                
-                // Load Sprays from CoreData
-                guard let self = self else { return }
-                self.sprays = self.sprayDataRepository.getAll()
-                
-                DispatchQueue.main.async {
-                    self.showSpraysShimmer = false
-                }
-            }
+    private func loadBundles() async -> NetworkError? {
+        await loadSection(
+            "bundles", into: \.bundles,
+            shimmer: \.showBundlesShimmer,
+            cache: SectionCache(bundleDataRepository)
+        ) {
+            try await self.getBundlesUseCase.execute().data
         }
     }
     
-    func getRanks() {
-        DispatchQueue.main.async {
-            self.showRanksShimmer = true
-        }
-        
-        self.getRanksUseCase?.execute { [weak self] result in
-            switch result {
-            case .success(let response):
-                guard let self = self else { return }
-                
-                self.tiers = response.data.last!.tiers.filter { !($0.tierName == "UNRANKED" ||
-                                                                   $0.tierName == "Unused1" ||
-                                                                   $0.tierName == "Unused2") }
-                
-                DispatchQueue.main.async {
-                    self.showRanksShimmer = false
-                }
-                
-                // Save Ranks to CoreData
-                self.tiers.forEach { tier in
-                    self.tierDataRepository.add(tier)
-                }
-                self.tierDataRepository.save()
-                
-            case .failure(let error):
-                print("Failed to fetch ranks data \(error.localizedDescription)")
-                
-                // Load Ranks from CoreData
-                guard let self = self else { return }
-                self.tiers = self.tierDataRepository.getAll()
-                
-                DispatchQueue.main.async {
-                    self.showRanksShimmer = false
-                }
-            }
+    private func loadAgentContracts() async -> NetworkError? {
+        await loadSection(
+            "contracts",
+            into: \.contracts,
+            shimmer: \.showContractsShimmer
+        ) {
+            try await self.getAgentsContractsUseCase.execute().data
         }
     }
     
-    func getBuddies() {
-        self.getBuddiesUseCase?.execute { [weak self] result in
-            switch result {
-            case .success(let response):
-                self?.buddies = response.data
-                
-                // Save Buddies to CoreData
-                self?.buddies.forEach { buddy in
-                    self?.buddyDataRepository.add(buddy)
-                }
-                self?.buddyDataRepository.save()
-            case .failure(let error):
-                print("Failed to fetch buddies data \(error.localizedDescription)")
-                
-                // Load Bundles from CoreData
-                guard let self = self else { return }
-                self.buddies = self.buddyDataRepository.getAll()
+    private func loadSection<Item>(
+        _ name: String,
+        into items: ReferenceWritableKeyPath<HomeViewModel, [Item]>,
+        shimmer: ReferenceWritableKeyPath<HomeViewModel, Bool>? = nil,
+        cache: SectionCache<Item>? = nil,
+        fetch: () async throws -> [Item]
+    ) async -> NetworkError? {
+        if let shimmer { self[keyPath: shimmer] = true }
+        defer {
+            if let shimmer { self[keyPath: shimmer] = false }
+        }
+        
+        do {
+            let fetched = try await fetch()
+            self[keyPath: items] = fetched
+            cache?.save(fetched)
+            return nil
+        } catch {
+            let networkError = NetworkError(error)
+            if case .cancelled = networkError { return nil }
+            
+            print("Failed to fetch \(name) data: \(networkError.localizedDescription)")
+            
+            let cached = cache?.load() ?? []
+            if !cached.isEmpty {
+                self[keyPath: items] = cached
+                return nil
             }
+            return self[keyPath: items].isEmpty ? networkError : nil
         }
     }
+}
+
+private struct SectionCache<Item> {
+    let load: () -> [Item]
+    let save: ([Item]) -> Void
     
-    func getBundles() {
-        DispatchQueue.main.async {
-            self.showBundlesShimmer = true
-        }
-        
-        self.getBundlesUseCase?.execute { [weak self] result in
-            switch result {
-            case .success(let response):
-                guard let self = self else { return }
-                
-                self.bundles = response.data
-                
-                DispatchQueue.main.async {
-                    self.showBundlesShimmer = false
-                }
-                
-                // Save Bundles to CoreData
-                self.bundles.forEach { bundle in
-                    self.bundleDataRepository.add(bundle)
-                }
-                self.bundleDataRepository.save()
-                
-            case .failure(let error):
-                print("Failed to fetch bundles data \(error.localizedDescription)")
-                
-                // Load Bundles from CoreData
-                guard let self = self else { return }
-                self.bundles = self.bundleDataRepository.getAll()
-                
-                DispatchQueue.main.async {
-                    self.showBundlesShimmer = false
-                }
-            }
-        }
-    }
-                                                                  
-    func getAgentContracts() {
-        DispatchQueue.main.async {
-            self.showContractsShimmer = true
-        }
-        
-        self.getAgentsContractsUseCase?.execute { [weak self] result in
-            switch result {
-            case .success(let response):
-                self?.contracts = response.data
-            case .failure(let error):
-                print("Failed to fetch contracts data \(error.localizedDescription)")
-            }
+    init<Repository: PBaseRepository>(_ repository: Repository) where Repository.T == Item {
+        self.load = repository.getAll
+        self.save = { items in
+            items.forEach(repository.add)
+            repository.save()
         }
     }
 }
 
 extension HomeViewModel {
-    
-    func downloadImage(url: String, completion: @escaping () -> Void) {
-        KingfisherManager.shared.downloadImage(with: url) { image in
-            guard let image = image else { return }
-            
-            self.shareImage = image
-            completion()
+    func prepareShareImage(url: String) async -> Bool {
+        do {
+            shareImage = try await KingfisherManager.shared.downloadImage(with: url)
+            return true
+        } catch {
+            showImageDownloadFailedAlert(error)
+            return false
         }
     }
     
-    func saveImageToGallary(url: String) {
-        self.downloadImage(url: url) {
-            guard let image = self.shareImage else { return }
+    func saveImageToGallary(url: String) async {
+        do {
+            let image = try await KingfisherManager.shared.downloadImage(with: url)
+            shareImage = image
             
             UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
+        } catch {
+            showImageDownloadFailedAlert(error)
         }
+    }
+    
+    func shareStickerOnWhatsapp(imageURL: String, completion: @escaping () -> Void) async {
+        do {
+            let image = try await KingfisherManager.shared.downloadImage(with: imageURL)
+            shareStickerOnWhatsapp(image: image, completion: completion)
+        } catch {
+            print("Failed to download sticker image: \(error.localizedDescription)")
+        }
+    }
+    
+    private func showImageDownloadFailedAlert(_ error: Error) {
+        guard !(error is CancellationError) else { return }
+        
+        print("Failed to download image: \(error.localizedDescription)")
+        alertText = "Couldn't download the image. Check your connection and try again."
+        showAlert = true
     }
     
     @objc

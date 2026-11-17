@@ -6,23 +6,20 @@
 //
 
 import Foundation
-import Alamofire
 
 protocol PGetRanksUseCase {
-    func execute(completion: @escaping (Result<GetRanksResponse, AFError>) -> Void)
+    func execute() async throws -> GetRanksResponse
 }
 
 final class GetRanksUseCase: PGetRanksUseCase {
     
-    private var gameAssetsRepo: GameAssetsRepository
+    private let gameAssetsRepo: PGameAssetsRepository
     
-    init(gameAssetsRepo: GameAssetsRepository) {
+    init(gameAssetsRepo: PGameAssetsRepository) {
         self.gameAssetsRepo = gameAssetsRepo
     }
     
-    func execute(completion: @escaping (Result<GetRanksResponse, AFError>) -> Void) {
-        gameAssetsRepo.getRanks { result in
-            completion(result)
-        }
+    func execute() async throws -> GetRanksResponse {
+        try await gameAssetsRepo.getRanks()
     }
 }

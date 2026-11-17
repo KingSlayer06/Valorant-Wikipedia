@@ -28,13 +28,17 @@ struct PlayerCardDetailsView: View {
                     HStack(spacing: 20) {
                         CustomButton(image: "download", label: "Download") {
                             AppAnalytics.shared.PlayerCardDetailsDownloadClick(card: card)
-                            homeViewModel.saveImageToGallary(url: card.largeArt ?? "")
+                            Task {
+                                await homeViewModel.saveImageToGallary(url: card.largeArt ?? "")
+                            }
                         }
-                        
+
                         CustomButton(image: "share", label: "Share") {
                             AppAnalytics.shared.PlayerCardDetailsShareClick(card: card)
-                            homeViewModel.downloadImage(url: card.largeArt ?? "") {
-                                self.showShareSheeet.toggle()
+                            Task {
+                                if await homeViewModel.prepareShareImage(url: card.largeArt ?? "") {
+                                    self.showShareSheeet.toggle()
+                                }
                             }
                         }
                     }

@@ -7,23 +7,19 @@
 
 import Foundation
 
-import Alamofire
-
 protocol PGetWeaponsUseCase {
-    func execute(completion: @escaping (Result<GetWeaponsResponse, AFError>) -> Void)
+    func execute() async throws -> GetWeaponsResponse
 }
 
 final class GetWeaponsUseCase: PGetWeaponsUseCase {
     
-    private var gameAssetsRepo: GameAssetsRepository
+    private let gameAssetsRepo: PGameAssetsRepository
     
-    init(gameAssetsRepo: GameAssetsRepository) {
+    init(gameAssetsRepo: PGameAssetsRepository) {
         self.gameAssetsRepo = gameAssetsRepo
     }
     
-    func execute(completion: @escaping (Result<GetWeaponsResponse, AFError>) -> Void) {
-        gameAssetsRepo.getWeapons { result in
-            completion(result)
-        }
+    func execute() async throws -> GetWeaponsResponse {
+        try await gameAssetsRepo.getWeapons()
     }
 }

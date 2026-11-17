@@ -7,177 +7,109 @@
 
 import Foundation
 import Alamofire
-import Combine
 
 protocol PGameAssetsRepository {
-    func getAgents(completion: @escaping (Result<GetAgentsResponse, AFError>) -> Void)
-    func getWeapons(completion: @escaping (Result<GetWeaponsResponse, AFError>) -> Void)
-    func getMaps(completion: @escaping (Result<GetMapsResponse, AFError>) -> Void)
-    func getPlayerCards(completion: @escaping (Result<GetPlayerCardsResponse, AFError>) -> Void)
-    func getSprays(completion: @escaping (Result<GetSpraysResponse, AFError>) -> Void)
-    func getRanks(completion: @escaping (Result<GetRanksResponse, AFError>) -> Void)
-    func getBuddies(completion: @escaping (Result<GetBuddiesResponse, AFError>) -> Void)
-    
-    func getSprayById(uuid: String, completion: @escaping (Result<GetSprayByIdResponse, AFError>) -> Void)
-    func getPlayerCardById(uuid: String, completion: @escaping (Result<GetPlayerCardByIdResponse, AFError>) -> Void)
-    func getPlayerTitleById(uuid: String, completion: @escaping (Result<GetPlayerTitleByIdResponse, AFError>) -> Void)
-    func getCurrencyById(uuid: String, completion: @escaping (Result<GetCurrencyByIdResponse, AFError>) -> Void)
+    func getAgents() async throws -> GetAgentsResponse
+    func getWeapons() async throws -> GetWeaponsResponse
+    func getMaps() async throws -> GetMapsResponse
+    func getPlayerCards() async throws -> GetPlayerCardsResponse
+    func getSprays() async throws -> GetSpraysResponse
+    func getRanks() async throws -> GetRanksResponse
+    func getBuddies() async throws -> GetBuddiesResponse
+    func getBundles() async throws -> GetBundlesResponse
+    func getAgentContracts() async throws -> GetAgentContractsResponse
+
+    func getSprayById(uuid: String) async throws -> GetSprayByIdResponse
+    func getPlayerCardById(uuid: String) async throws -> GetPlayerCardByIdResponse
+    func getPlayerTitleById(uuid: String) async throws -> GetPlayerTitleByIdResponse
+    func getCurrencyById(uuid: String) async throws -> GetCurrencyByIdResponse
 }
 
 final class GameAssetsRepository: PGameAssetsRepository {
-    
-    private var cancellables = Set<AnyCancellable>()
-    
+
+    private let session: Session
+
+    init(session: Session = .default) {
+        self.session = session
+    }
+
     // MARK: - Fetch All
-    
-    func getAgents(completion: @escaping (Result<GetAgentsResponse, AFError>) -> Void) {
-        print("getAgents API called")
-        
-        AF.request(
-            "\(KeyVariables.baseApiUrl)/v1/agents",
-            method: .get,
-            parameters: ["isPlayableCharacter": "true"],
-            encoding: URLEncoding.default
-        )
-            .validate()
-            .publishDecodable(type: GetAgentsResponse.self)
-            .sink(receiveValue: { response in
-                completion(response.result)
-            })
-            .store(in: &cancellables)
+
+    func getAgents() async throws -> GetAgentsResponse {
+        try await request("/v1/agents", parameters: ["isPlayableCharacter": "true"])
     }
-    
-    func getWeapons(completion: @escaping (Result<GetWeaponsResponse, AFError>) -> Void) {
-        print("getWeapons API called")
-        
-        AF.request("\(KeyVariables.baseApiUrl)/v1/weapons", method: .get, parameters: nil)
-            .publishDecodable(type: GetWeaponsResponse.self)
-            .sink(receiveValue: { response in
-                completion(response.result)
-            })
-            .store(in: &cancellables)
+
+    func getWeapons() async throws -> GetWeaponsResponse {
+        try await request("/v1/weapons")
     }
-    
-    func getMaps(completion: @escaping (Result<GetMapsResponse, AFError>) -> Void) {
-        print("getMaps API called")
-        
-        AF.request("\(KeyVariables.baseApiUrl)/v1/maps", method: .get, parameters: nil)
-            .publishDecodable(type: GetMapsResponse.self)
-            .sink(receiveValue: { response in
-                completion(response.result)
-            })
-            .store(in: &cancellables)
+
+    func getMaps() async throws -> GetMapsResponse {
+        try await request("/v1/maps")
     }
-    
-    func getPlayerCards(completion: @escaping (Result<GetPlayerCardsResponse, AFError>) -> Void) {
-        print("getPlayerCards API called")
-        
-        AF.request("\(KeyVariables.baseApiUrl)/v1/playercards", method: .get, parameters: nil)
-            .publishDecodable(type: GetPlayerCardsResponse.self)
-            .sink(receiveValue: { response in
-                completion(response.result)
-            })
-            .store(in: &cancellables)
+
+    func getPlayerCards() async throws -> GetPlayerCardsResponse {
+        try await request("/v1/playercards")
     }
-    
-    func getSprays(completion: @escaping (Result<GetSpraysResponse, AFError>) -> Void) {
-        print("getSprays API called")
-        
-        AF.request("\(KeyVariables.baseApiUrl)/v1/sprays", method: .get, parameters: nil)
-            .publishDecodable(type: GetSpraysResponse.self)
-            .sink(receiveValue: { response in
-                completion(response.result)
-            })
-            .store(in: &cancellables)
+
+    func getSprays() async throws -> GetSpraysResponse {
+        try await request("/v1/sprays")
     }
-    
-    func getRanks(completion: @escaping (Result<GetRanksResponse, AFError>) -> Void) {
-        print("getRanks API called")
-        
-        AF.request("\(KeyVariables.baseApiUrl)/v1/competitivetiers", method: .get, parameters: nil)
-            .publishDecodable(type: GetRanksResponse.self)
-            .sink(receiveValue: { response in
-                completion(response.result)
-            })
-            .store(in: &cancellables)
+
+    func getRanks() async throws -> GetRanksResponse {
+        try await request("/v1/competitivetiers")
     }
-    
-    func getBuddies(completion: @escaping (Result<GetBuddiesResponse, AFError>) -> Void) {
-        print("getBuddies API called")
-        
-        AF.request("\(KeyVariables.baseApiUrl)/v1/buddies", method: .get, parameters: nil)
-            .publishDecodable(type: GetBuddiesResponse.self)
-            .sink(receiveValue: { response in
-                completion(response.result)
-            })
-            .store(in: &cancellables)
+
+    func getBuddies() async throws -> GetBuddiesResponse {
+        try await request("/v1/buddies")
     }
-    
-    func getBundles(completion: @escaping (Result<GetBundlesResponse, AFError>) -> Void) {
-        print("getBundles API called")
-        
-        AF.request("\(KeyVariables.baseApiUrl)/v1/bundles", method: .get, parameters: nil)
-            .publishDecodable(type: GetBundlesResponse.self)
-            .sink(receiveValue: { response in
-                completion(response.result)
-            })
-            .store(in: &cancellables)
+
+    func getBundles() async throws -> GetBundlesResponse {
+        try await request("/v1/bundles")
     }
-    
-    func getAgentContracts(completion: @escaping (Result<GetAgentContractsResponse, AFError>) -> Void) {
-        print("getAgentContracts API called")
-        
-        AF.request("\(KeyVariables.baseApiUrl)/v1/contracts", method: .get, parameters: nil)
-            .publishDecodable(type: GetAgentContractsResponse.self)
-            .sink(receiveValue: { response in
-                completion(response.result)
-            })
-            .store(in: &cancellables)
+
+    func getAgentContracts() async throws -> GetAgentContractsResponse {
+        try await request("/v1/contracts")
     }
-    
+
     // MARK: - Fetch By UUID
-    
-    func getSprayById(uuid: String, completion: @escaping (Result<GetSprayByIdResponse, AFError>) -> Void) {
-        print("getSprayById API called")
-        
-        AF.request("\(KeyVariables.baseApiUrl)/v1/sprays/\(uuid)", method: .get, parameters: nil)
-            .publishDecodable(type: GetSprayByIdResponse.self)
-            .sink(receiveValue: { response in
-                completion(response.result)
-            })
-            .store(in: &cancellables)
+
+    func getSprayById(uuid: String) async throws -> GetSprayByIdResponse {
+        try await request("/v1/sprays/\(uuid)")
     }
-    
-    func getPlayerCardById(uuid: String, completion: @escaping (Result<GetPlayerCardByIdResponse, AFError>) -> Void) {
-        print("getPlayerCardById API called")
-        
-        AF.request("\(KeyVariables.baseApiUrl)/v1/playercards/\(uuid)", method: .get, parameters: nil)
-            .publishDecodable(type: GetPlayerCardByIdResponse.self)
-            .sink(receiveValue: { response in
-                completion(response.result)
-            })
-            .store(in: &cancellables)
+
+    func getPlayerCardById(uuid: String) async throws -> GetPlayerCardByIdResponse {
+        try await request("/v1/playercards/\(uuid)")
     }
-    
-    func getPlayerTitleById(uuid: String, completion: @escaping (Result<GetPlayerTitleByIdResponse, AFError>) -> Void) {
-        print("getPlayerTitleById API called")
-        
-        AF.request("\(KeyVariables.baseApiUrl)/v1/playertitles/\(uuid)", method: .get, parameters: nil)
-            .publishDecodable(type: GetPlayerTitleByIdResponse.self)
-            .sink(receiveValue: { response in
-                completion(response.result)
-            })
-            .store(in: &cancellables)
+
+    func getPlayerTitleById(uuid: String) async throws -> GetPlayerTitleByIdResponse {
+        try await request("/v1/playertitles/\(uuid)")
     }
-    
-    func getCurrencyById(uuid: String, completion: @escaping (Result<GetCurrencyByIdResponse, AFError>) -> Void) {
-        print("getCurrencyById API called")
-        
-        AF.request("\(KeyVariables.baseApiUrl)/v1/currencies/\(uuid)", method: .get, parameters: nil)
-            .publishDecodable(type: GetCurrencyByIdResponse.self)
-            .sink(receiveValue: { response in
-                completion(response.result)
-            })
-            .store(in: &cancellables)
+
+    func getCurrencyById(uuid: String) async throws -> GetCurrencyByIdResponse {
+        try await request("/v1/currencies/\(uuid)")
+    }
+
+    // MARK: - Request
+    private func request<Response: Decodable>(
+        _ path: String,
+        parameters: [String: String]? = nil
+    ) async throws -> Response {
+        print("\(path) API called")
+
+        do {
+            try Task.checkCancellation()
+
+            return try await session.request(
+                "\(KeyVariables.baseApiUrl)\(path)",
+                method: .get,
+                parameters: parameters,
+                encoder: URLEncodedFormParameterEncoder.default
+            )
+            .validate()
+            .serializingDecodable(Response.self, automaticallyCancelling: true)
+            .value
+        } catch {
+            throw NetworkError(error)
+        }
     }
 }
