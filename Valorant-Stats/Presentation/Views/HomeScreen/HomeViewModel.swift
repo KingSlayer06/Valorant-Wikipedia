@@ -56,17 +56,12 @@ final class HomeViewModel: NSObject, ObservableObject {
     private let getBundlesUseCase: PGetBundlesUseCase
     private let getAgentsContractsUseCase: PGetAgentContractsUseCase
     
-    //CoreData Repositories
-    private let agentDataRepository = AgentDataRepository()
-    private let weaponDataRepository = WeaponDataRepository()
-    private let mapDataRepository = MapDataRepository()
-    private let playerCardDataRepository = PlayerCardDataRepository()
-    private let sprayDataRepository = SprayDataRepository()
-    private let tierDataRepository = TierDataRepository()
-    private let buddyDataRepository = BuddyDataRepository()
-    private let bundleDataRepository = BundleDataRepository()
+    // Offline caches
+    private let caches: GameAssetsCaches
     
-    init(gameAssetsRepo: PGameAssetsRepository = GameAssetsRepository()) {
+    init(gameAssetsRepo: PGameAssetsRepository = GameAssetsRepository(),
+         caches: GameAssetsCaches = .swiftData()) {
+        self.caches = caches
         self.getAgentsUseCase = GetAgentsUseCase(gameAssetsRepo: gameAssetsRepo)
         self.getWeaponsUseCase = GetWeaponsUseCase(gameAssetsRepo: gameAssetsRepo)
         self.getMapsUseCase = GetMapsUseCase(gameAssetsRepo: gameAssetsRepo)
@@ -109,7 +104,7 @@ final class HomeViewModel: NSObject, ObservableObject {
             "agents",
             into: \.agents,
             shimmer: \.showAgentsShimmer,
-            cache: SectionCache(agentDataRepository)
+            cache: caches.agents
         ) {
             try await self.getAgentsUseCase.execute().data
                 .filter { $0.isPlayableCharacter == true }
@@ -121,7 +116,7 @@ final class HomeViewModel: NSObject, ObservableObject {
             "weapons",
             into: \.weapons,
             shimmer: \.showWeaponsShimmer,
-            cache: SectionCache(weaponDataRepository)
+            cache: caches.weapons
         ) {
             var weapons = try await self.getWeaponsUseCase.execute().data
             
@@ -138,7 +133,7 @@ final class HomeViewModel: NSObject, ObservableObject {
             "maps",
             into: \.maps,
             shimmer: \.showMapsShimmer,
-            cache: SectionCache(mapDataRepository)
+            cache: caches.maps
         ) {
             try await self.getMapsUseCase.execute().data
         }
@@ -149,7 +144,7 @@ final class HomeViewModel: NSObject, ObservableObject {
             "player cards",
             into: \.playerCards,
             shimmer: \.showPlayerCardsShimmer,
-            cache: SectionCache(playerCardDataRepository)
+            cache: caches.playerCards
         ) {
             try await self.getPlayerCardsUseCase.execute().data
         }
@@ -160,7 +155,7 @@ final class HomeViewModel: NSObject, ObservableObject {
             "sprays",
             into: \.sprays,
             shimmer: \.showSpraysShimmer,
-            cache: SectionCache(sprayDataRepository)
+            cache: caches.sprays
         ) {
             try await self.getSpraysUseCase.execute().data
                 .filter { !$0.isNullSpray && $0.fullTransparentIcon != nil }
@@ -171,7 +166,7 @@ final class HomeViewModel: NSObject, ObservableObject {
         await loadSection(
             "ranks", into: \.tiers,
             shimmer: \.showRanksShimmer,
-            cache: SectionCache(tierDataRepository)
+            cache: caches.tiers
         ) {
             guard let latestEpisode = try await self.getRanksUseCase.execute().data.last else {
                 throw NetworkError.emptyResponse
@@ -187,7 +182,7 @@ final class HomeViewModel: NSObject, ObservableObject {
         await loadSection(
             "buddies",
             into: \.buddies,
-            cache: SectionCache(buddyDataRepository)
+            cache: caches.buddies
         ) {
             try await self.getBuddiesUseCase.execute().data
         }
@@ -197,7 +192,7 @@ final class HomeViewModel: NSObject, ObservableObject {
         await loadSection(
             "bundles", into: \.bundles,
             shimmer: \.showBundlesShimmer,
-            cache: SectionCache(bundleDataRepository)
+            cache: caches.bundles
         ) {
             try await self.getBundlesUseCase.execute().data
         }
@@ -217,7 +212,7 @@ final class HomeViewModel: NSObject, ObservableObject {
         _ name: String,
         into items: ReferenceWritableKeyPath<HomeViewModel, [Item]>,
         shimmer: ReferenceWritableKeyPath<HomeViewModel, Bool>? = nil,
-        cache: SectionCache<Item>? = nil,
+        cache: (any PCacheRepository<Item>)? = nil,
         fetch: () async throws -> [Item]
     ) async -> NetworkError? {
         if let shimmer { self[keyPath: shimmer] = true }
@@ -228,7 +223,9 @@ final class HomeViewModel: NSObject, ObservableObject {
         do {
             let fetched = try await fetch()
             self[keyPath: items] = fetched
-            cache?.save(fetched)
+            if let shimmer { self[keyPath: shimmer] = false }
+            
+            await saveToCache(fetched, cache: cache, name: name)
             return nil
         } catch {
             let networkError = NetworkError(error)
@@ -236,7 +233,7 @@ final class HomeViewModel: NSObject, ObservableObject {
             
             print("Failed to fetch \(name) data: \(networkError.localizedDescription)")
             
-            let cached = cache?.load() ?? []
+            let cached = await loadFromCache(cache, name: name)
             if !cached.isEmpty {
                 self[keyPath: items] = cached
                 return nil
@@ -244,17 +241,31 @@ final class HomeViewModel: NSObject, ObservableObject {
             return self[keyPath: items].isEmpty ? networkError : nil
         }
     }
-}
-
-private struct SectionCache<Item> {
-    let load: () -> [Item]
-    let save: ([Item]) -> Void
     
-    init<Repository: PBaseRepository>(_ repository: Repository) where Repository.T == Item {
-        self.load = repository.getAll
-        self.save = { items in
-            items.forEach(repository.add)
-            repository.save()
+    // Save data into local cache
+    private func saveToCache<Item>(
+        _ items: [Item],
+        cache: (any PCacheRepository<Item>)?,
+        name: String
+    ) async {
+        guard let cache else { return }
+        
+        do {
+            try await cache.replaceAll(with: items)
+        } catch {
+            print("Failed to cache \(name) data: \(error.localizedDescription)")
+        }
+    }
+    
+    // Load data from cache
+    private func loadFromCache<Item>(_ cache: (any PCacheRepository<Item>)?, name: String) async -> [Item] {
+        guard let cache else { return [] }
+        
+        do {
+            return try await cache.fetchAll()
+        } catch {
+            print("Failed to load cached \(name) data: \(error.localizedDescription)")
+            return []
         }
     }
 }
