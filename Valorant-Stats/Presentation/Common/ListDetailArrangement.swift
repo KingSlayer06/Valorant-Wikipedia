@@ -33,17 +33,19 @@ struct ListDetailArrangement<List: View, Detail: View>: View {
 }
 
 
-struct ListDetailLink<Destination: View, Label: View>: View {
+struct ListDetailLink<Label: View>: View {
+    @Environment(NavigationManager.self) private var navigationManager
+
     let usesSplitSelection: Bool
     let isSelected: Bool
-    
-    // Push destination view on `NavigationStack`
+    let destination: Destination
+
+    // Called on tap (for analytics)
     var onTap: () -> Void = {}
-    
+
     // Show destination view side-by-side in `ArrangementView`
     let select: () -> Void
-    
-    @ViewBuilder let destination: () -> Destination
+
     @ViewBuilder let label: () -> Label
 
     var body: some View {
@@ -63,8 +65,12 @@ struct ListDetailLink<Destination: View, Label: View>: View {
             .buttonStyle(.plain)
             .accessibilityAddTraits(isSelected ? .isSelected : [])
         } else {
-            NavigationLink(destination: destination, label: label)
-                .simultaneousGesture(TapGesture().onEnded(onTap))
+            Button {
+                onTap()
+                navigationManager.navigate(to: destination)
+            } label: {
+                label()
+            }
         }
     }
 }

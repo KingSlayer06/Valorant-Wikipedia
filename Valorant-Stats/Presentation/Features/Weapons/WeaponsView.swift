@@ -95,11 +95,10 @@ struct WeaponsView: View {
         ListDetailLink(
             usesSplitSelection: usesSplitSelection,
             isSelected: selectedWeaponDetail?.uuid == weapon.uuid,
+            destination: .weaponDetails(weapon),
             onTap: { AppAnalytics.shared.WeaponImageClick(weapon: weapon) },
             select: { selectedWeaponDetail = weapon }
         ) {
-            WeaponDetailsView(weapon: weapon)
-        } label: {
             WeaponGridView(weapon: weapon)
         }
     }
@@ -207,4 +206,5 @@ extension WeaponsView {
 #Preview {
     WeaponsView()
         .environmentObject(HomeViewModel())
+        .environment(NavigationManager())
 }

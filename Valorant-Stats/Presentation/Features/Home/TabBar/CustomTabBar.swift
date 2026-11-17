@@ -73,4 +73,5 @@ private enum TabBarAppearance {
 #Preview {
     CustomTabBar()
         .environmentObject(HomeViewModel())
+        .environment(NavigationManager())
 }

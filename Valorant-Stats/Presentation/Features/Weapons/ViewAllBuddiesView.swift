@@ -62,11 +62,10 @@ struct ViewAllBuddiesView: View {
                             ListDetailLink(
                                 usesSplitSelection: usesSplitSelection,
                                 isSelected: selectedBuddy?.uuid == buddy.uuid,
+                                destination: .buddyDetails(buddy),
                                 onTap: { AppAnalytics.shared.ViewAllBuddiesImageClick(buddy: buddy) },
                                 select: { selectedBuddy = buddy }
                             ) {
-                                WeaponBuddyDetailView(buddy: buddy)
-                            } label: {
                                 BuddyGridView(buddy: buddy)
                             }
                             .allowsHitTesting(KeyVariables.showBuddyDetails)
@@ -120,4 +119,5 @@ struct BuddyGridView: View {
 #Preview {
     ViewAllBuddiesView()
         .environmentObject(HomeViewModel())
+        .environment(NavigationManager())
 }

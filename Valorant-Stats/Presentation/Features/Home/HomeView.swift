@@ -9,11 +9,14 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
+    @Environment(NavigationManager.self) private var navigationManager
     @State var showMenu: Bool = false
     @GestureState private var menuDragOffset: CGFloat = 0
-    
+
     var body: some View {
-        NavigationStack {
+        @Bindable var navigationManager = navigationManager
+
+        NavigationStack(path: $navigationManager.path) {
             GeometryReader { proxy in
                 let menuWidth = min(max(proxy.size.width * 0.72, 280), 360)
                 let restingOffset = showMenu ? menuWidth : 0
@@ -54,6 +57,9 @@ struct HomeView: View {
                 )
             }
             .navigationBarTitleDisplayMode(.inline)
+            .navigationDestination(for: Destination.self) { destination in
+                DestinationView(destination: destination)
+            }
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     withAnimation(.easeInOut(duration: 3)) {
@@ -83,15 +89,13 @@ struct HomeView: View {
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    NavigationLink {
-                        AboutView()
+                    Button {
+                        AppAnalytics.shared.QuestionMarkIconClick(screen: homeViewModel.selectedTab.title)
+                        navigationManager.navigate(to: .about)
                     } label: {
                         Image(systemName: "questionmark.circle")
                             .foregroundStyle(KeyVariables.primaryColor)
                     }
-                    .simultaneousGesture(TapGesture().onEnded {
-                        AppAnalytics.shared.QuestionMarkIconClick(screen: homeViewModel.selectedTab.title)
-                    })
                     .allowsHitTesting(!showMenu)
                 }
             }
@@ -150,4 +154,5 @@ extension HomeView {
 #Preview {
     HomeView()
         .environmentObject(HomeViewModel())
+        .environment(NavigationManager())
 }

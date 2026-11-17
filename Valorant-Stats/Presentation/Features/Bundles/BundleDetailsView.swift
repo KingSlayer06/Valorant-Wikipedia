@@ -10,6 +10,7 @@ import Kingfisher
 
 struct BundleDetailsView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
+    @Environment(NavigationManager.self) private var navigationManager
     @State var selectedIndex = 0
     
     let bundle: WeaponBundle
@@ -74,15 +75,15 @@ struct BundleDetailsView: View {
                 Spacer(minLength: 100)
                 
                 if selectedIndex < bundleWeapons.count {
-                    NavigationLink {
-                        WeaponSkinDetailsView(skin: bundleWeapons[selectedIndex])
+                    Button {
+                        navigationManager.navigate(to: .weaponSkinDetails(bundleWeapons[selectedIndex]))
                     } label: {
                         BundleDetailsImageView(name: bundleWeapons[selectedIndex].displayName,
                                                image: bundleWeapons[selectedIndex].displayIcon)
                     }
                 } else if selectedIndex < bundleWeapons.count + bundleCards.count {
-                    NavigationLink {
-                        PlayerCardDetailsView(card: bundleCards[selectedIndex - bundleWeapons.count])
+                    Button {
+                        navigationManager.navigate(to: .playerCardDetails(bundleCards[selectedIndex - bundleWeapons.count]))
                     } label: {
                         BundleDetailsImageView(name: bundleCards[selectedIndex - bundleWeapons.count].displayName,
                                                image: bundleCards[selectedIndex - bundleWeapons.count].largeArt)
@@ -143,11 +144,6 @@ struct BundleDetailsView: View {
                     .font(Font.custom(KeyVariables.primaryFont, size: 20))
                     .foregroundStyle(.foreground)
             }
-        }
-        .onAppear {
-            print("bundleWeapons : \(bundleWeapons.count)")
-            print("bundleCards : \(bundleCards.count)")
-            print("bundleSprays : \(bundleSprays.count)")
         }
     }
 }

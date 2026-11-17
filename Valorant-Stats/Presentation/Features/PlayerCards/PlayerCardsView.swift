@@ -45,11 +45,10 @@ struct PlayerCardsView: View {
                             ListDetailLink(
                                 usesSplitSelection: usesSplitSelection,
                                 isSelected: selectedCard?.uuid == card.uuid,
+                                destination: .playerCardDetails(card),
                                 onTap: { AppAnalytics.shared.PlayerCardImageClick(card: card) },
                                 select: { selectedCard = card }
                             ) {
-                                PlayerCardDetailsView(card: card)
-                            } label: {
                                 PlayerCardGridView(card: card)
                             }
                         }
@@ -90,4 +89,5 @@ struct PlayerCardGridView: View {
 #Preview {
     PlayerCardsView()
         .environmentObject(HomeViewModel())
+        .environment(NavigationManager())
 }

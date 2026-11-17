@@ -13,7 +13,8 @@ struct Valorant_WikiApp: App {
     
     @State var splashScreenPresented = true
     @StateObject private var homeViewModel = HomeViewModel()
-    
+    @State private var navigationManager = NavigationManager()
+
     var body: some Scene {
         WindowGroup {
             if splashScreenPresented {
@@ -21,6 +22,7 @@ struct Valorant_WikiApp: App {
             } else {
                 HomeView()
                     .environmentObject(homeViewModel)
+                    .environment(navigationManager)
             }
         }
     }

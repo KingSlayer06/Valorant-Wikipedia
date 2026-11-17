@@ -10,7 +10,8 @@ import Kingfisher
 
 struct WeaponDetailsView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
-    
+    @Environment(NavigationManager.self) private var navigationManager
+
     let weapon: Weapon
     
     var body: some View {
@@ -151,8 +152,8 @@ extension WeaponDetailsView {
                 
                 Spacer()
                 
-                NavigationLink {
-                    ViewAllSkinsView(skins: weapon.skins, weaponName: weapon.displayName)
+                Button {
+                    navigationManager.navigate(to: .allWeaponSkins(skins: weapon.skins, weaponName: weapon.displayName))
                 } label: {
                     Text("View All")
                         .font(Font.custom(KeyVariables.primaryFont, size: 20))
@@ -163,8 +164,9 @@ extension WeaponDetailsView {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(weapon.skins.prefix(10), id: \.uuid) { skin in
-                        NavigationLink {
-                            WeaponSkinDetailsView(skin: skin)
+                        Button {
+                            AppAnalytics.shared.WeaponDetailsSkinClick(skin: skin)
+                            navigationManager.navigate(to: .weaponSkinDetails(skin))
                         } label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 5)
@@ -189,9 +191,6 @@ extension WeaponDetailsView {
                             .frame(width: 175, height: 175)
                             .padding(.trailing)
                         }
-                        .simultaneousGesture(TapGesture().onEnded {
-                            AppAnalytics.shared.WeaponDetailsSkinClick(skin: skin)
-                        })
                     }
                 }
             }
@@ -212,8 +211,8 @@ extension WeaponDetailsView {
                 
                 Spacer()
                 
-                NavigationLink {
-                    ViewAllBuddiesView()
+                Button {
+                    navigationManager.navigate(to: .allBuddies)
                 } label: {
                     Text("View All")
                         .font(Font.custom(KeyVariables.primaryFont, size: 20))
@@ -224,8 +223,9 @@ extension WeaponDetailsView {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(homeViewModel.buddies.prefix(10), id: \.uuid) { buddy in
-                        NavigationLink {
-                            WeaponBuddyDetailView(buddy: buddy)
+                        Button {
+                            AppAnalytics.shared.WeaponDetailsBuddyClick(buddy: buddy)
+                            navigationManager.navigate(to: .buddyDetails(buddy))
                         } label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 5)
@@ -251,9 +251,6 @@ extension WeaponDetailsView {
                             .frame(width: 175, height: 175)
                             .padding(.trailing)
                         }
-                        .simultaneousGesture(TapGesture().onEnded {
-                            AppAnalytics.shared.WeaponDetailsBuddyClick(buddy: buddy)
-                        })
                         .allowsHitTesting(KeyVariables.showBuddyDetails)
                     }
                 }

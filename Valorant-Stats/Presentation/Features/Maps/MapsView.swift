@@ -53,11 +53,10 @@ struct MapsView: View {
         ListDetailLink(
             usesSplitSelection: usesSplitSelection,
             isSelected: selectedMap?.uuid == map.uuid,
+            destination: .mapDetails(map),
             onTap: { AppAnalytics.shared.MapImageClick(map: map) },
             select: { selectedMap = map }
         ) {
-            MapDetailsView(map: map)
-        } label: {
             MapGridView(map: map)
         }
     }
@@ -101,4 +100,5 @@ struct MapGridView: View {
 
 #Preview {
     MapsView()
+        .environment(NavigationManager())
 }

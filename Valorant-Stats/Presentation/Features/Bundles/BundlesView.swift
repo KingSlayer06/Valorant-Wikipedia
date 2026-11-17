@@ -63,10 +63,9 @@ struct BundlesView: View {
                                 ListDetailLink(
                                     usesSplitSelection: usesSplitSelection,
                                     isSelected: selectedBundle?.uuid == bundle.uuid,
+                                    destination: .bundleDetails(bundle),
                                     select: { selectedBundle = bundle }
                                 ) {
-                                    BundleDetailsView(bundle: bundle)
-                                } label: {
                                     BundleGridView(bundle: bundle)
                                 }
                             }
@@ -120,4 +119,5 @@ struct BundleGridView: View {
 
 #Preview {
     BundlesView()
+        .environment(NavigationManager())
 }

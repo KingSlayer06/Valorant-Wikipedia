@@ -92,11 +92,10 @@ struct AgentsView: View {
         ListDetailLink(
             usesSplitSelection: usesSplitSelection,
             isSelected: selectedAgent?.uuid == agent.uuid,
+            destination: .agentDetails(agent),
             onTap: { AppAnalytics.shared.AgentImageClick(agent: agent) },
             select: { selectedAgent = agent }
         ) {
-            AgentDetailsView(agent: agent)
-        } label: {
             AgentGridView(agent: agent)
         }
     }
@@ -187,4 +186,5 @@ extension AgentsView {
 #Preview {
     AgentsView()
         .environmentObject(HomeViewModel())
+        .environment(NavigationManager())
 }

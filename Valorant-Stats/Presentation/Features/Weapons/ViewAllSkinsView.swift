@@ -57,11 +57,10 @@ struct ViewAllSkinsView: View {
                             ListDetailLink(
                                 usesSplitSelection: usesSplitSelection,
                                 isSelected: selectedSkin?.uuid == skin.uuid,
+                                destination: .weaponSkinDetails(skin),
                                 onTap: { AppAnalytics.shared.ViewAllSkinsImageClick(weaponName: weaponName, skin: skin) },
                                 select: { selectedSkin = skin }
                             ) {
-                                WeaponSkinDetailsView(skin: skin)
-                            } label: {
                                 SkinGridView(skin: skin)
                             }
                         }
@@ -112,4 +111,5 @@ struct SkinGridView: View {
 
 #Preview {
     ViewAllSkinsView(skins: [], weaponName: "")
+        .environment(NavigationManager())
 }
