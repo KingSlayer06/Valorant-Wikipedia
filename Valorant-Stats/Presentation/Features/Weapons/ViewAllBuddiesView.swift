@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct ViewAllBuddiesView: View {
-    @EnvironmentObject var homeViewModel: HomeViewModel
+    @Environment(HomeViewModel.self) private var homeViewModel
     
     let columns = [GridItem(.flexible(), spacing: 20),
                    GridItem(.flexible(), spacing: 20)]
@@ -118,6 +118,6 @@ struct BuddyGridView: View {
 
 #Preview {
     ViewAllBuddiesView()
-        .environmentObject(HomeViewModel())
+        .environment(HomeViewModel())
         .environment(NavigationManager())
 }

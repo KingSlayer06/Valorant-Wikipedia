@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct SideMenuView: View {
-    @EnvironmentObject var homeViewModel: HomeViewModel
+    @Environment(HomeViewModel.self) private var homeViewModel
     @Binding var isShowing: Bool
     let width: CGFloat
 
     var body: some View {
+        @Bindable var homeViewModel = homeViewModel
+        
         VStack(alignment: .leading, spacing: 32) {
             headerView
                 .padding(.horizontal)
@@ -103,5 +105,5 @@ extension SideMenuView {
 
 #Preview {
     SideMenuView(isShowing: .constant(true), width: 300)
-        .environmentObject(HomeViewModel())
+        .environment(HomeViewModel())
 }

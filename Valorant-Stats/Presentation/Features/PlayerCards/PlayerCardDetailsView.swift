@@ -9,11 +9,13 @@ import SwiftUI
 import Kingfisher
 
 struct PlayerCardDetailsView: View {
-    @EnvironmentObject var homeViewModel: HomeViewModel
+    @Environment(HomeViewModel.self) var homeViewModel
     @State var showShareSheeet: Bool = false
     let card: PlayerCard
     
     var body: some View {
+        @Bindable var homeViewModel = homeViewModel
+        
         VStack {
             KFImage(URL(string: card.largeArt ?? ""))
                 .placeholder {

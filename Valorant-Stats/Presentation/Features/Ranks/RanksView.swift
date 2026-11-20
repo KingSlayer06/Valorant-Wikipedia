@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct RanksView: View {
-    @EnvironmentObject var homeViewModel: HomeViewModel
+    @Environment(HomeViewModel.self) private var homeViewModel
     
     let columns = [GridItem(.flexible(), spacing: 10),
                    GridItem(.flexible(), spacing: 10),

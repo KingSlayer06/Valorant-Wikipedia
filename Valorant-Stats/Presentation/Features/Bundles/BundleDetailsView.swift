@@ -9,8 +9,9 @@ import SwiftUI
 import Kingfisher
 
 struct BundleDetailsView: View {
-    @EnvironmentObject var homeViewModel: HomeViewModel
+    @Environment(HomeViewModel.self) var homeViewModel
     @Environment(NavigationManager.self) private var navigationManager
+    
     @State var selectedIndex = 0
     
     let bundle: WeaponBundle

@@ -234,7 +234,3 @@ struct WeaponSkinDetailsView: View {
         player.play()
     }
 }
-
-extension WeaponSkinDetailsView {
-    
-}

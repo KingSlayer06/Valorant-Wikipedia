@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct SpraysView: View {
-    @EnvironmentObject var homeViewModel: HomeViewModel
+    @Environment(HomeViewModel.self) private var homeViewModel
     @State var expandSprayGrid: Bool = false
     @State var selectedSpray: Spray? = nil
     
@@ -96,7 +96,7 @@ struct SprayGridView: View {
 }
 
 struct SprayCardView: View {
-    @EnvironmentObject var homeViewModel: HomeViewModel
+    @Environment(HomeViewModel.self) private var homeViewModel
     @Binding var expandSprayGrid: Bool
     @Binding var selectedSpray: Spray?
     

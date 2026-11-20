@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var homeViewModel: HomeViewModel
+    @Environment(HomeViewModel.self) private var homeViewModel
     @Environment(NavigationManager.self) private var navigationManager
+    
     @State var showMenu: Bool = false
     @GestureState private var menuDragOffset: CGFloat = 0
 
     var body: some View {
         @Bindable var navigationManager = navigationManager
+        @Bindable var homeViewModel = homeViewModel
 
         NavigationStack(path: $navigationManager.path) {
             GeometryReader { proxy in
@@ -153,6 +155,6 @@ extension HomeView {
 
 #Preview {
     HomeView()
-        .environmentObject(HomeViewModel())
+        .environment(HomeViewModel())
         .environment(NavigationManager())
 }

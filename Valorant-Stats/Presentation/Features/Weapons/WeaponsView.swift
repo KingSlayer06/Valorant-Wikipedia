@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct WeaponsView: View {
-    @EnvironmentObject var homeViewModel: HomeViewModel
+    @Environment(HomeViewModel.self) private var homeViewModel
     @State var selectedWeapon: String?
     @State private var selectedWeaponDetail: Weapon?
     
@@ -205,6 +205,6 @@ extension WeaponsView {
 
 #Preview {
     WeaponsView()
-        .environmentObject(HomeViewModel())
+        .environment(HomeViewModel())
         .environment(NavigationManager())
 }

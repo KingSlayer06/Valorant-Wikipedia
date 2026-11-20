@@ -8,9 +8,11 @@
 import Foundation
 
 @MainActor
-final class AgentContractsViewModel: ObservableObject {
-    @Published var error: NetworkError?
+@Observable
+final class AgentContractsViewModel {
+    var error: NetworkError?
 
+    @ObservationIgnored
     var isShowingError: Bool {
         get { error != nil }
         set { if !newValue { error = nil } }

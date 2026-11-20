@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 
 struct CustomTabBar: View {
-    @EnvironmentObject private var homeViewModel: HomeViewModel
+    @Environment(HomeViewModel.self) private var homeViewModel
 
     init() {
         TabBarAppearance.configure()
@@ -22,7 +22,9 @@ struct CustomTabBar: View {
     }
 
     private var tabView: some View {
-        TabView(selection: $homeViewModel.selectedBottomTab) {
+        @Bindable var homeViewModel = homeViewModel
+        
+        return TabView(selection: $homeViewModel.selectedBottomTab) {
             AgentsView()
                 .tabItem {
                     Label(SideMenuOptionsModel.agents.title, systemImage: "person.2.fill")
@@ -72,6 +74,6 @@ private enum TabBarAppearance {
 
 #Preview {
     CustomTabBar()
-        .environmentObject(HomeViewModel())
+        .environment(HomeViewModel())
         .environment(NavigationManager())
 }

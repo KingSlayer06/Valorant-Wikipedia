@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct AgentsView: View {
-    @EnvironmentObject var homeViewModel: HomeViewModel
+    @Environment(HomeViewModel.self) private var homeViewModel
     @State var selectedRole: AgentRole?
     @State private var selectedAgent: Agent?
     
@@ -185,6 +185,6 @@ extension AgentsView {
 
 #Preview {
     AgentsView()
-        .environmentObject(HomeViewModel())
+        .environment(HomeViewModel())
         .environment(NavigationManager())
 }

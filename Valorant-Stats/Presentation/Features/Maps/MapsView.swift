@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct MapsView: View {
-    @EnvironmentObject var homeViewModel: HomeViewModel
+    @Environment(HomeViewModel.self) private var homeViewModel
     @State private var selectedMap: GameMap?
 
     var body: some View {

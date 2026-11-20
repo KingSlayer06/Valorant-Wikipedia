@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct PlayerCardsView: View {
-    @EnvironmentObject var homeViewModel: HomeViewModel
+    @Environment(HomeViewModel.self) private var homeViewModel
     @State private var selectedCard: PlayerCard?
 
     let columns = [GridItem(.flexible(), spacing: 20),
@@ -88,6 +88,6 @@ struct PlayerCardGridView: View {
 
 #Preview {
     PlayerCardsView()
-        .environmentObject(HomeViewModel())
+        .environment(HomeViewModel())
         .environment(NavigationManager())
 }

@@ -9,8 +9,8 @@ import SwiftUI
 import Kingfisher
 
 struct AgentContractsView: View {
-    @EnvironmentObject var homeViewModel: HomeViewModel
-    @StateObject var viewModel = AgentContractsViewModel()
+    @Environment(HomeViewModel.self) var homeViewModel
+    @State var viewModel = AgentContractsViewModel()
     @Namespace var namespace
     
     @State var selectedAgent: Agent?

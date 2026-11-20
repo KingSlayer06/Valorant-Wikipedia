@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct BundlesView: View {
-    @EnvironmentObject var homeViewModel: HomeViewModel
+    @Environment(HomeViewModel.self) private var homeViewModel
     
     let columns = [GridItem(.flexible(minimum: 0), spacing: 20),
                    GridItem(.flexible(minimum: 0), spacing: 20)]

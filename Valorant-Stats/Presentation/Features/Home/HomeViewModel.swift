@@ -12,35 +12,37 @@ import Kingfisher
 import CoreImage
 
 @MainActor
-final class HomeViewModel: NSObject, ObservableObject {
-    @Published var selectedTab: SideMenuOptionsModel = .home
-    @Published var selectedBottomTab: SideMenuOptionsModel = .agents
+@Observable
+final class HomeViewModel: NSObject {
+    var selectedTab: SideMenuOptionsModel = .home
+    var selectedBottomTab: SideMenuOptionsModel = .agents
     
-    @Published var agents = [Agent]()
-    @Published var weapons = [Weapon]()
-    @Published var maps = [GameMap]()
-    @Published var playerCards = [PlayerCard]()
-    @Published var sprays = [Spray]()
-    @Published var tiers = [Tier]()
-    @Published var buddies = [Buddy]()
-    @Published var bundles = [WeaponBundle]()
-    @Published var contracts = [AgentContract]()
+    var agents = [Agent]()
+    var weapons = [Weapon]()
+    var maps = [GameMap]()
+    var playerCards = [PlayerCard]()
+    var sprays = [Spray]()
+    var tiers = [Tier]()
+    var buddies = [Buddy]()
+    var bundles = [WeaponBundle]()
+    var contracts = [AgentContract]()
     
-    @Published var shareImage: UIImage?
-    @Published var showAlert: Bool = false
-    @Published var alertText: String = ""
+    var shareImage: UIImage?
+    var showAlert: Bool = false
+    var alertText: String = ""
     
-    @Published var contentLoadError: NetworkError?
+    var contentLoadError: NetworkError?
     
-    @Published var showAgentsShimmer: Bool = false
-    @Published var showMapsShimmer: Bool = false
-    @Published var showWeaponsShimmer: Bool = false
-    @Published var showPlayerCardsShimmer: Bool = false
-    @Published var showSpraysShimmer: Bool = false
-    @Published var showRanksShimmer: Bool = false
-    @Published var showBundlesShimmer: Bool = false
-    @Published var showContractsShimmer: Bool = false
+    var showAgentsShimmer: Bool = false
+    var showMapsShimmer: Bool = false
+    var showWeaponsShimmer: Bool = false
+    var showPlayerCardsShimmer: Bool = false
+    var showSpraysShimmer: Bool = false
+    var showRanksShimmer: Bool = false
+    var showBundlesShimmer: Bool = false
+    var showContractsShimmer: Bool = false
     
+    @ObservationIgnored
     var isShowingContentLoadError: Bool {
         get { contentLoadError != nil }
         set { if !newValue { contentLoadError = nil } }
